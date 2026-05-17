@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investimento | ID&IA Global</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/style.css">
+    <style>
+        .movie-hero { position: relative; width: 100vw; height: 100vh; display: flex; align-items: center; justify-content: center; padding: var(--padding-global); text-align: center; }
+        .movie-hero img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+        .movie-hero::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(0deg, var(--bg-dark) 0%, rgba(5,5,5,0.4) 50%, var(--bg-dark) 100%); z-index: -1; }
+        
+        .editorial-content {
+            padding: 100px var(--padding-global);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .intro-lead {
+            font-size: clamp(1.2rem, 2.5vw, 2rem);
+            line-height: 1.6;
+            font-weight: 300;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 60px;
+            border-left: 3px solid var(--color-gold);
+            padding-left: 30px;
+        }
+        .invest-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 80px;
+        }
+        .invest-card {
+            background: rgba(255,255,255,0.01);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 40px;
+            transition: all 0.3s ease;
+            border-top: 3px solid var(--color-gold);
+        }
+        .invest-card:hover {
+            border-color: var(--color-gold);
+            background: rgba(255,255,255,0.03);
+            transform: translateY(-5px);
+        }
+        .invest-num {
+            font-family: var(--font-heading);
+            color: var(--color-gold);
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+        }
+        .invest-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="noise-canvas"></canvas>
+    <div class="custom-cursor"></div>
+
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <a href="/index.html"><img src="/ideiaa.png" alt="ID&IA" class="nav-logo"></a>
+            <div class="nav-text" style="display:none;">
+                <span class="brand-name">ID&IA</span>
+            </div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/index.html">INÍCIO</a></li>
+            <li><a href="/instituto.html">O INSTITUTO</a></li>
+            <li><a href="/areas-estrategicas.html">ÁREAS</a></li>
+            <li><a href="/centros.html">CENTROS</a></li>
+            <li class="has-dropdown">
+                <a href="#">ECOSSISTEMA ▾</a>
+                <ul class="dropdown">
+                    <li><a href="/projectos.html">Projectos</a></li>
+                    <li><a href="/investimento.html">Investimento</a></li>
+                </ul>
+            </li>
+            <li><a href="/contacto.html">CONTACTO</a></li>
+            <li><a href="/parcerias.html" class="btn btn-primary" style="padding: 8px 15px; font-size: 0.65rem;">PARCERIAS</a></li>
+        </ul>
+        <div class="menu-toggle"><span></span><span></span></div>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu">
+        <ul class="mobile-links">
+            <li><a href="/index.html">INÍCIO</a></li>
+            <li><a href="/instituto.html">O INSTITUTO</a></li>
+            <li><a href="/areas-estrategicas.html">ÁREAS</a></li>
+            <li><a href="/centros.html">CENTROS</a></li>
+            <li><a href="/projectos.html">PROJECTOS</a></li>
+            <li><a href="/investimento.html">INVESTIMENTO</a></li>
+            <li><a href="/contacto.html">CONTACTO</a></li>
+            <li><a href="/parcerias.html">PARCERIAS</a></li>
+        </ul>
+    </div>
+
+    <main id="smooth-wrapper">
+        <div id="smooth-content">
+            
+            <section class="movie-hero">
+                <img src="/bg_ideia_global_1778978622357.png" alt="Investimento Soberano" class="parallax-bg">
+                <div>
+                    <h4 class="kicker">MECANISMOS FINANCEIROS SOBERANOS</h4>
+                    <h1 class="massive-title">O <span class="text-gold">INVESTIMENTO</span></h1>
+                    <p class="cinematic-desc" style="margin: 0 auto;">Criação de novos modelos de financiamento e soberania industrial.</p>
+                </div>
+            </section>
+
+            <div class="editorial-content">
+                <div class="intro-lead">
+                    O ID&IA coordena veículos de investimento especializados que garantem a canalização de capital para infraestruturas críticas e inovação profunda em solo africano.
+                </div>
+
+                <div class="invest-grid">
+                    <div class="invest-card">
+                        <div class="invest-num">01 / FUNDO ESTRATÉGICO</div>
+                        <h3 class="invest-title">Infraestruturas Críticas</h3>
+                        <p class="cinematic-desc" style="text-align: left; margin: 0; color: rgba(255,255,255,0.85);">Alocação de capital soberano e privado para o desenvolvimento de centros de dados regionais, redes de energia verde e malhas de comunicação inteligentes de alta performance.</p>
+                    </div>
+
+                    <div class="invest-card">
+                        <div class="invest-num">02 / CAPITAL RISCO</div>
+                        <h3 class="invest-title">Inovação Aplicada</h3>
+                        <p class="cinematic-desc" style="text-align: left; margin: 0; color: rgba(255,255,255,0.85);">Apoio financeiro a startups tecnológicas locais e centros de investigação que utilizam a metodologia MAHAMBA para resolver problemas demográficos e industriais.</p>
+                    </div>
+
+                    <div class="invest-card">
+                        <div class="invest-num">03 / PARCERIA GLOBAL</div>
+                        <h3 class="invest-title">Títulos Soberanos</h3>
+                        <p class="cinematic-desc" style="text-align: left; margin: 0; color: rgba(255,255,255,0.85);">Emissão de obrigações institucionais destinadas a financiar projetos agrícolas de grande escala suportados pela automação e sistemas inteligentes.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FOOTER -->
+            <footer class="footer-section" style="padding-top: 80px;">
+                <div class="footer-grid" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));">
+                    <div class="footer-col">
+                        <p style="font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-bottom: 5px;">Logo</p>
+                        <p style="font-size: 0.9rem; font-weight: 500; color: var(--color-white); margin-bottom: 5px;">Instituto de Identidade<br>e Inteligência Artificial</p>
+                        <p style="font-size: 0.75rem; color: rgba(255,255,255,0.6);">Identidade, Consciência & Tecnologia</p>
+                    </div>
+                    <div class="footer-col">
+                        <h5 style="color: var(--color-white);">INSTITUTO</h5>
+                        <ul>
+                            <li><a href="/instituto.html">Visão e Missão</a></li>
+                            <li><a href="/africa-concreta.html">África Concreta</a></li>
+                            <li><a href="/mahamba.html">Metodologia MAHAMBA</a></li>
+                            <li><a href="/ideia-africa.html">Ideia África</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h5 style="color: var(--color-white);">ÁREAS</h5>
+                        <ul>
+                            <li><a href="/areas-estrategicas.html">Identidade</a></li>
+                            <li><a href="/areas-estrategicas.html">Inteligência Artificial</a></li>
+                            <li><a href="/areas-estrategicas.html">Transformação</a></li>
+                            <li><a href="/areas-estrategicas.html">Soberania</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h5 style="color: var(--color-white);">CENTROS</h5>
+                        <ul>
+                            <li><a href="/centros.html">Observatório</a></li>
+                            <li><a href="/centros.html">Lab MALELWA</a></li>
+                            <li><a href="/centros.html">Centro MAHAMBA</a></li>
+                            <li><a href="/centros.html">Soberania Tecnológica</a></li>
+                            <li><a href="/centros.html">Rede África</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col" style="min-width: 170px;">
+                        <h5 style="color: var(--color-white);">ECOSSISTEMA</h5>
+                        <ul>
+                            <li><a href="/projectos.html">Projectos</a></li>
+                            <li><a href="/publicacoes.html">Publicações</a></li>
+                            <li><a href="/investimento.html">Investimento</a></li>
+                            <li><a href="/noticias.html">Notícias & Eventos</a></li>
+                            <li><a href="/ideia-global.html">Ideia Global</a></li>
+                            <li><a href="/travessia-continentes.html">Travessia Continentes</a></li>
+                            <li><a href="/o-filme.html">Humano Concreto – O Filme</a></li>
+                            <li><a href="/o-livro-o-filme.html">O Livro e O Filme</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col" style="min-width: 200px;">
+                        <h5 style="color: var(--color-white);">CONTACTO</h5>
+                        <p style="font-size: 0.8rem; color: rgba(255,255,255,0.6); margin-bottom: 10px;">info@idia.universidademahamba.org</p>
+                        <p style="font-size: 0.8rem; color: rgba(255,255,255,0.6);">Cuito Cuanavale, Província do Cuando<br>Angola, África</p>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <p>&copy; 2026 ID&IA – Instituto de Identidade e Inteligência Artificial. Todos os direitos reservados.</p>
+                    <p class="text-gold">MAHAMBA ECOSSISTEMA →</p>
+                </div>
+            </footer>
+
+        </div>
+    </main>
+
+    <script type="module" src="/src/main.js"></script>
+</body>
+</html>

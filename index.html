@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ID&IA - Instituto de Identidade e Inteligência Artificial</title>
+    
+    <meta name="description" content="Plataforma africana de investigação, desenvolvimento e implementação de sistemas de inteligência aplicada.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+    <canvas id="noise-canvas"></canvas>
+    <div class="custom-cursor"></div>
+
+    <div id="loader">
+        <img src="/ideiaa.png" alt="ID&IA Logo" class="loader-logo">
+    </div>
+
+    <!-- MAIN NAVIGATION (simplified) -->
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <a href="/index.html"><img src="/ideiaa.png" alt="ID&IA" class="nav-logo"></a>
+            <div class="nav-text" style="display:none;">
+                <span class="brand-name">ID&IA</span>
+            </div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/index.html">INÍCIO</a></li>
+            <li><a href="/instituto.html">O INSTITUTO</a></li>
+            <li><a href="/areas-estrategicas.html">ÁREAS</a></li>
+            <li><a href="/centros.html">CENTROS</a></li>
+            <li class="has-dropdown">
+                <a href="#">ECOSSISTEMA ▾</a>
+                <ul class="dropdown">
+                    <li><a href="/projectos.html">Projectos</a></li>
+                    <li><a href="/investimento.html">Investimento</a></li>
+                </ul>
+            </li>
+            <li><a href="/contacto.html">CONTACTO</a></li>
+            <li><a href="/parcerias.html" class="btn btn-primary" style="padding: 8px 15px; font-size: 0.65rem;">PARCERIAS</a></li>
+        </ul>
+        <div class="menu-toggle"><span></span><span></span></div>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu">
+        <ul class="mobile-links">
+            <li><a href="/index.html">INÍCIO</a></li>
+            <li><a href="/instituto.html">O INSTITUTO</a></li>
+            <li><a href="/areas-estrategicas.html">ÁREAS</a></li>
+            <li><a href="/centros.html">CENTROS</a></li>
+            <li><a href="/projectos.html">PROJECTOS</a></li>
+            <li><a href="/investimento.html">INVESTIMENTO</a></li>
+            <li><a href="/contacto.html">CONTACTO</a></li>
+            <li><a href="/parcerias.html">PARCERIAS</a></li>
+        </ul>
+    </div>
+
+    <main id="smooth-wrapper">
+        <div id="smooth-content">
+            
+            <!-- HERO SECTION -->
+            <section class="hero" id="home">
+                <div class="hero-background">
+                    <video src="/vidbanner.mp4" autoplay loop muted playsinline class="hero-image parallax-bg" style="object-fit: cover;"></video>
+                    <div class="hero-overlay" style="background: linear-gradient(0deg, var(--bg-dark) 0%, rgba(5,5,5,0.6) 30%, rgba(5,5,5,0.1) 60%, transparent 100%), linear-gradient(90deg, rgba(5,5,5,0.95) 0%, rgba(5,5,5,0.7) 35%, rgba(5,5,5,0.2) 65%, transparent 100%);"></div>
+                </div>
+                
+                <div class="hero-content">
+                    <h1 class="hero-title" style="margin-bottom: 20px; font-size: clamp(3rem, 6vw, 6rem); line-height: 1; letter-spacing: -1px;">
+                        <span class="line" style="display: block;">ÁFRICA PRECISA</span>
+                        <span class="line text-gold" style="display: block;">PRODUZIR INTELIGÊNCIA.</span>
+                    </h1>
+                    <p class="hero-desc" style="font-size: 0.95rem; max-width: 600px; margin-top: 15px;">O ID&IA desenvolve sistemas humanos, tecnológicos e institucionais para a próxima transformação estrutural africana.</p>
+                    
+                    <div class="hero-actions" style="margin-top: 30px;">
+                        <a href="/instituto.html" class="btn btn-primary">EXPLORAR O ID&IA →</a>
+                        <a href="/parcerias.html" class="btn btn-secondary">PARCERIAS ESTRATÉGICAS →</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- O QUE É O ID&IA (Pillars) -->
+            <section style="padding: 100px var(--padding-global); background-color: var(--bg-dark); border-bottom: 1px solid rgba(255,255,255,0.05);">
+                <div style="display: flex; flex-wrap: wrap; gap: 50px;">
+                    <div style="flex: 1; min-width: 300px;">
+                        <h4 class="text-gold" style="letter-spacing: 2px; margin-bottom: 15px; font-size: 0.8rem;">O QUE É O ID&IA</h4>
+                        <p style="color: rgba(255,255,255,0.8); line-height: 1.6; font-size: 0.9rem; margin-bottom: 30px;">
+                            O ID&IA é uma plataforma africana de investigação, desenvolvimento e implementação de sistemas de inteligência aplicada, orientada à soberania tecnológica, transformação económica e reconfiguração estratégica do futuro africano.
+                        </p>
+                        <a href="/instituto.html" class="text-gold" style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 600;">SAIBA MAIS SOBRE O INSTITUTO →</a>
+                    </div>
+                    
+                    <div style="flex: 2; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px;">
+                        <div>
+                            <div style="color: var(--color-gold); font-size: 2rem; margin-bottom: 15px;">❂</div>
+                            <h4 style="margin-bottom: 15px;">IDENTIDADE</h4>
+                            <p class="small-dim" style="line-height: 1.6;">Reconstrução estrutural da consciência e continuidade civilizacional africana.</p>
+                        </div>
+                        <div>
+                            <div style="color: var(--color-gold); font-size: 2rem; margin-bottom: 15px;">⎊</div>
+                            <h4 style="margin-bottom: 15px;">INTELIGÊNCIA ARTIFICIAL</h4>
+                            <p class="small-dim" style="line-height: 1.6;">Desenvolvimento de inteligência aplicada para transformação económica e institucional.</p>
+                        </div>
+                        <div>
+                            <div style="color: var(--color-gold); font-size: 2rem; margin-bottom: 15px;">▤</div>
+                            <h4 style="margin-bottom: 15px;">TRANSFORMAÇÃO ECONÓMICA</h4>
+                            <p class="small-dim" style="line-height: 1.6;">Criação de sistemas produtivos e modelos sustentáveis de desenvolvimento continental.</p>
+                        </div>
+                        <div>
+                            <div style="color: var(--color-gold); font-size: 2rem; margin-bottom: 15px;">盾</div>
+                            <h4 style="margin-bottom: 15px;">SOBERANIA TECNOLÓGICA</h4>
+                            <p class="small-dim" style="line-height: 1.6;">Construção de capacidade tecnológica autônoma para África.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Teasers: itens movidos do menu (Visão, África Concreta, MAHAMBA, Ideias, Mídia, Publicações, Projectos) -->
+            <section id="teasers" style="padding: 80px var(--padding-global); background-color: var(--bg-dark); border-bottom: 1px solid rgba(255,255,255,0.04);">
+                <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:30px;">
+                    <h3 class="text-gold" style="letter-spacing:2px;">DESTAQUES</h3>
+                    <a href="/instituto.html" style="font-size:0.8rem; color:rgba(255,255,255,0.6);">VER MAIS →</a>
+                </div>
+                <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
+                    <article style="background:var(--bg-night); padding:24px; border:1px solid rgba(255,255,255,0.04);">
+                        <h4 class="text-gold" style="margin-bottom:8px;">Visão e Missão</h4>
+                        <p class="small-dim" style="margin-bottom:12px;">Resumo da visão e missão do ID&IA — propósito, metas e impacto.</p>
+                        <a href="/instituto.html" class="text-gold">LER MAIS →</a>
+                    </article>
+                    <article style="background:var(--bg-night); padding:24px; border:1px solid rgba(255,255,255,0.04);">
+                        <h4 class="text-gold" style="margin-bottom:8px;">África Concreta</h4>
+                        <p class="small-dim" style="margin-bottom:12px;">Projeto continente — abordagem, princípios e resultados esperados.</p>
+                        <a href="/africa-concreta.html" class="text-gold">LER MAIS →</a>
+                    </article>
+                    <article style="background:var(--bg-night); padding:24px; border:1px solid rgba(255,255,255,0.04);">
+                        <h4 class="text-gold" style="margin-bottom:8px;">Metodologia MAHAMBA</h4>
+                        <p class="small-dim" style="margin-bottom:12px;">Núcleo metodológico para investigação aplicada e implementação institucional.</p>
+                        <a href="/mahamba.html" class="text-gold">LER MAIS →</a>
+                    </article>
+                    <article style="background:var(--bg-night); padding:24px; border:1px solid rgba(255,255,255,0.04);">
+                        <h4 class="text-gold" style="margin-bottom:8px;">Ideia África / Ideia Global</h4>
+                        <p class="small-dim" style="margin-bottom:12px;">Princípios de política e escopo estratégico — síntese das ideias centrais.</p>
+                        <a href="/ideia-africa.html" class="text-gold">LER MAIS →</a>
+                    </article>
+                    <article style="background:var(--bg-night); padding:24px; border:1px solid rgba(255,255,255,0.04);">
+                        <h4 class="text-gold" style="margin-bottom:8px;">O Filme / O Livro</h4>
+                        <p class="small-dim" style="margin-bottom:12px;">Mídia e narrativa — trailers, excertos e chamadas para evento.</p>
+                        <a href="/o-filme.html" class="text-gold">VER TRAILER →</a>
+                    </article>
+                    <article style="background:var(--bg-night); padding:24px; border:1px solid rgba(255,255,255,0.04);">
+                        <h4 class="text-gold" style="margin-bottom:8px;">Publicações & Notícias</h4>
+                        <p class="small-dim" style="margin-bottom:12px;">Últimas publicações e eventos selecionados — destaques recentes.</p>
+                        <a href="/noticias.html" class="text-gold">VER TODAS →</a>
+                    </article>
+                    <article style="background:var(--bg-night); padding:24px; border:1px solid rgba(255,255,255,0.04);">
+                        <h4 class="text-gold" style="margin-bottom:8px;">Projectos</h4>
+                        <p class="small-dim" style="margin-bottom:12px;">Portefólio resumido de projectos em curso — impacto e parceiros.</p>
+                        <a href="/projectos.html" class="text-gold">VER PORTFÓLIO →</a>
+                    </article>
+                </div>
+            </section>
+
+            <!-- CENTROS ESTRUTURAIS -->
+            <section style="padding: 100px var(--padding-global); background-color: var(--bg-night);">
+                <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 50px;">
+                    <h3 class="text-gold" style="letter-spacing: 2px;">CENTROS ESTRUTURAIS</h3>
+                    <a href="/centros.html" style="font-size: 0.8rem; color: rgba(255,255,255,0.6); letter-spacing: 1px;">VER TODOS OS CENTROS →</a>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
+                    <!-- Card 1 -->
+                    <div style="background: var(--bg-dark); border: 1px solid rgba(255,255,255,0.1); padding: 30px; transition: 0.3s; cursor: pointer; display: flex; flex-direction: column;">
+                        <p class="small-dim" style="margin-bottom: 5px; font-weight: 600; letter-spacing: 1px;">Observatório</p>
+                        <h4 style="color: var(--color-gold); margin-bottom: 15px;">OBSERVATÓRIO DE TRANSFORMAÇÃO AFRICANA</h4>
+                        <p class="small-dim" style="flex-grow: 1;">Monitorização, análise e produção de conhecimento estratégico sobre os processos de transformação em África.</p>
+                        <div style="color: var(--color-gold); text-align: right; margin-top: 15px;">→</div>
+                    </div>
+                    <!-- Card 2 -->
+                    <div style="background: var(--bg-dark); border: 1px solid rgba(255,255,255,0.1); padding: 30px; transition: 0.3s; cursor: pointer; display: flex; flex-direction: column;">
+                        <p class="small-dim" style="margin-bottom: 5px; font-weight: 600; letter-spacing: 1px;">MALELWA</p>
+                        <h4 style="color: var(--color-gold); margin-bottom: 15px;">LABORATÓRIO MALELWA</h4>
+                        <p class="small-dim" style="flex-grow: 1;">Laboratório de inovação, sistemas inteligentes, IA aplicada e soluções tecnológicas para desafios africanos.</p>
+                        <div style="color: var(--color-gold); text-align: right; margin-top: 15px;">→</div>
+                    </div>
+                    <!-- Card 3 -->
+                    <div style="background: var(--bg-dark); border: 1px solid rgba(255,255,255,0.1); padding: 30px; transition: 0.3s; cursor: pointer; display: flex; flex-direction: column;">
+                        <p class="small-dim" style="margin-bottom: 5px; font-weight: 600; letter-spacing: 1px;">MAHAMBA</p>
+                        <h4 style="color: var(--color-gold); margin-bottom: 15px;">CENTRO MAHAMBA DE INTELIGÊNCIA APLICADA</h4>
+                        <p class="small-dim" style="flex-grow: 1;">Núcleo de investigação aplicada para desenvolvimento de modelos institucionais, económicos e tecnológicos.</p>
+                        <div style="color: var(--color-gold); text-align: right; margin-top: 15px;">→</div>
+                    </div>
+                    <!-- Card 4 -->
+                    <div style="background: var(--bg-dark); border: 1px solid rgba(255,255,255,0.1); padding: 30px; transition: 0.3s; cursor: pointer; display: flex; flex-direction: column;">
+                        <p class="small-dim" style="margin-bottom: 5px; font-weight: 600; letter-spacing: 1px;">Soberania</p>
+                        <h4 style="color: var(--color-gold); margin-bottom: 15px;">PROGRAMA DE SOBERANIA TECNOLÓGICA</h4>
+                        <p class="small-dim" style="flex-grow: 1;">Desenvolvimento de infraestrutura digital, plataformas, dados e sistemas críticos de propriedade africana.</p>
+                        <div style="color: var(--color-gold); text-align: right; margin-top: 15px;">→</div>
+                    </div>
+                    <!-- Card 5 -->
+                    <div style="background: var(--bg-dark); border: 1px solid rgba(255,255,255,0.1); padding: 30px; transition: 0.3s; cursor: pointer; display: flex; flex-direction: column;">
+                        <p class="small-dim" style="margin-bottom: 5px; font-weight: 600; letter-spacing: 1px;">Rede</p>
+                        <h4 style="color: var(--color-gold); margin-bottom: 15px;">REDE MAHAMBA ÁFRICA</h4>
+                        <p class="small-dim" style="flex-grow: 1;">Rede continental de instituições, parceiros e centros de excelência para colaboração e impacto estratégico.</p>
+                        <div style="color: var(--color-gold); text-align: right; margin-top: 15px;">→</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- NÚCLEO ESTRATÉGICO (Cuito) -->
+            <section id="nucleo" class="stats-section">
+                <div class="stats-background">
+                    <img src="/sadc.jpeg" alt="SADC" class="parallax-stats">
+                    <div class="stats-overlay" style="background: linear-gradient(90deg, var(--bg-dark) 0%, rgba(5,5,5,0.8) 50%, transparent 100%);"></div>
+                </div>
+
+                <div class="stats-content" style="display: flex; gap: 50px; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 300px;">
+                        <h4 class="text-gold" style="letter-spacing: 2px; margin-bottom: 10px; font-size: 0.8rem;">NÚCLEO ESTRATÉGICO</h4>
+                        <h2 class="section-title" style="font-size: 2.2rem;">Cuito Cuanavale<br><span style="color: rgba(255,255,255,0.5); font-size: 1.5rem;">Província do Cuando</span></h2>
+                        <p style="margin: 30px 0; line-height: 1.6; font-size: 0.9rem; color: rgba(255,255,255,0.8);">O primeiro núcleo físico do ID&IA emerge no território histórico da libertação da África Austral para inaugurar uma nova infraestrutura continental de inteligência aplicada, formação tecnológica e transformação.</p>
+                        <a href="/instituto.html" class="btn btn-primary">SAIBA MAIS →</a>
+                    </div>
+                    
+                    <div style="flex: 1; min-width: 300px; display: flex; flex-direction: column; gap: 30px; justify-content: center;">
+                        <div>
+                            <h4 class="text-gold">LOCALIZAÇÃO ESTRATÉGICA</h4>
+                            <p class="small-dim">Centro da África Austral</p>
+                        </div>
+                        <div>
+                            <h4 class="text-gold">HISTÓRIA DE LIBERTAÇÃO</h4>
+                            <p class="small-dim">Símbolo da resistência africana</p>
+                        </div>
+                        <div>
+                            <h4 class="text-gold">POTENCIAL DE DESENVOLVIMENTO</h4>
+                            <p class="small-dim">Infraestrutura, educação e tecnologia</p>
+                        </div>
+                        <div>
+                            <h4 class="text-gold">NÚCLEO DE INTELIGÊNCIA</h4>
+                            <p class="small-dim">Formação, investigação e inovação</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ÁFRICA EM NÚMEROS -->
+            <section style="background-color: var(--bg-night); padding: 60px var(--padding-global);">
+                <div class="stats-grid" style="margin-top: 0; border-top: none;">
+                    <div class="stat-counter-box" style="border-top: none; padding: 20px;">
+                        <h3 class="counter" data-target="1.4">0</h3><span class="suffix">B</span>
+                        <p>População até 2025</p>
+                        <p class="small-dim" style="font-size: 0.7rem; margin-top: 5px;">60% abaixo dos 25 anos</p>
+                    </div>
+                    <div class="stat-counter-box" style="border-top: none; padding: 20px;">
+                        <h3 class="counter" data-target="180">0</h3><span class="suffix">B</span>
+                        <p>Economia digital</p>
+                    </div>
+                    <div class="stat-counter-box" style="border-top: none; padding: 20px;">
+                        <h3 class="counter" data-target="10">0</h3><span class="suffix">X</span>
+                        <p>Crescimento de dados</p>
+                    </div>
+                    <div class="stat-counter-box" style="border-top: none; padding: 20px;">
+                        <h3 class="counter" data-target="700">0</h3><span class="suffix">M</span>
+                        <p>Jovens conectados</p>
+                    </div>
+                    <div class="stat-counter-box" style="border-top: none; padding: 20px;">
+                        <h3 class="counter" data-target="54">0</h3><span class="suffix"></span>
+                        <p>Países unidos</p>
+                        <p class="small-dim" style="font-size: 0.7rem; margin-top: 5px;">por um futuro comum</p>
+                    </div>
+                    <div class="stat-counter-box" style="border-top: none; padding: 20px;">
+                        <h3 class="counter" data-target="1">0</h3><span class="suffix"></span>
+                        <p>Destino:</p>
+                        <p class="small-dim" style="font-size: 0.7rem; margin-top: 5px;">Transformação</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PARCEIROS INSTITUCIONAIS -->
+            <section style="padding: 50px var(--padding-global); background-color: var(--bg-dark); border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05);">
+                <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 30px;">
+                    <div style="flex-shrink: 0;">
+                        <h4 class="text-gold" style="font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 5px;">PARCEIROS</h4>
+                        <h4 style="font-size: 1rem;">INSTITUCIONAIS</h4>
+                    </div>
+                    <div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: center; color: rgba(255,255,255,0.5); font-size: 0.8rem; font-weight: 500;">
+                        <div style="display: flex; align-items: center; gap: 10px;">◎ <span>União Africana</span></div>
+                        <div style="display: flex; align-items: center; gap: 10px;">◈ <span>SADC</span></div>
+                        <div style="display: flex; align-items: center; gap: 10px;">◓ <span>Governo de Angola</span></div>
+                        <div style="display: flex; align-items: center; gap: 10px;">❂ <span>Nações Unidas</span></div>
+                        <div style="display: flex; align-items: center; gap: 10px;">⎊ <span>Banco Africano de Desenvolvimento</span></div>
+                        <div style="display: flex; align-items: center; gap: 10px;">📚 <span>Universidades</span></div>
+                        <div style="display: flex; align-items: center; gap: 10px;">🏢 <span>Sector Privado</span></div>
+                        <div style="display: flex; align-items: center; gap: 10px;">🌍 <span>Investidores Internacionais</span></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- QUOTE BANNER -->
+            <section style="padding: 100px var(--padding-global); background: radial-gradient(circle at center, rgba(199, 161, 83, 0.2) 0%, var(--bg-dark) 70%); text-align: center;">
+                <h2 style="font-size: clamp(2rem, 4vw, 3rem); font-family: var(--font-body); font-weight: 300; margin-bottom: 20px;">"ÁFRICA NÃO PODE APENAS CONSUMIR INTELIGÊNCIA.</h2>
+                <h2 class="text-gold" style="font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 40px;">DEVE PRODUZI-LA."</h2>
+                <a href="/ideia-global.html" class="btn btn-primary">ENTRAR NO ECOSSISTEMA ID&IA →</a>
+            </section>
+
+            <!-- FOOTER (From ideia-modelo.jpeg) -->
+            <footer class="footer-section" style="padding-top: 80px;">
+                <div class="footer-grid" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));">
+                    <div class="footer-col">
+                        <p style="font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-bottom: 5px;">Logo</p>
+                        <p style="font-size: 0.9rem; font-weight: 500; color: var(--color-white); margin-bottom: 5px;">Instituto de Identidade<br>e Inteligência Artificial</p>
+                        <p style="font-size: 0.75rem; color: rgba(255,255,255,0.6);">Identidade, Consciência & Tecnologia</p>
+                    </div>
+                    <div class="footer-col">
+                        <h5 style="color: var(--color-white);">INSTITUTO</h5>
+                        <ul>
+                            <li><a href="/instituto.html">Visão e Missão</a></li>
+                            <li><a href="/africa-concreta.html">África Concreta</a></li>
+                            <li><a href="/mahamba.html">Metodologia MAHAMBA</a></li>
+                            <li><a href="/ideia-africa.html">Ideia África</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h5 style="color: var(--color-white);">ÁREAS</h5>
+                        <ul>
+                            <li><a href="/areas-estrategicas.html">Identidade</a></li>
+                            <li><a href="/areas-estrategicas.html">Inteligência Artificial</a></li>
+                            <li><a href="/areas-estrategicas.html">Transformação</a></li>
+                            <li><a href="/areas-estrategicas.html">Soberania</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h5 style="color: var(--color-white);">CENTROS</h5>
+                        <ul>
+                            <li><a href="/centros.html">Observatório</a></li>
+                            <li><a href="/centros.html">Lab MALELWA</a></li>
+                            <li><a href="/centros.html">Centro MAHAMBA</a></li>
+                            <li><a href="/centros.html">Soberania Tecnológica</a></li>
+                            <li><a href="/centros.html">Rede África</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col" style="min-width: 170px;">
+                        <h5 style="color: var(--color-white);">ECOSSISTEMA</h5>
+                        <ul>
+                            <li><a href="/projectos.html">Projectos</a></li>
+                            <li><a href="/publicacoes.html">Publicações</a></li>
+                            <li><a href="/investimento.html">Investimento</a></li>
+                            <li><a href="/noticias.html">Notícias & Eventos</a></li>
+                            <li><a href="/ideia-global.html">Ideia Global</a></li>
+                            <li><a href="/travessia-continentes.html">Travessia Continentes</a></li>
+                            <li><a href="/o-filme.html">Humano Concreto – O Filme</a></li>
+                            <li><a href="/o-livro-o-filme.html">O Livro e O Filme</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col" style="min-width: 200px;">
+                        <h5 style="color: var(--color-white);">CONTACTO</h5>
+                        <p style="font-size: 0.8rem; color: rgba(255,255,255,0.6); margin-bottom: 10px;">info@idia.universidademahamba.org</p>
+                        <p style="font-size: 0.8rem; color: rgba(255,255,255,0.6);">Cuito Cuanavale, Província do Cuando<br>Angola, África</p>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <p>&copy; 2026 ID&IA – Instituto de Identidade e Inteligência Artificial. Todos os direitos reservados.</p>
+                    <p class="text-gold">MAHAMBA ECOSSISTEMA →</p>
+                </div>
+            </footer>
+
+        </div>
+    </main>
+
+    <script type="module" src="/src/main.js"></script>
+</body>
+</html>
