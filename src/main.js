@@ -189,60 +189,93 @@ if(menuToggle && mobileMenu) {
 // Animations (Loader & Hero)
 // --------------------------------------------------------------------------
 
-// Loader Timeline (Cinematic Exit)
-const tlLoader = gsap.timeline();
+// Loader Timeline (Cinematic Exit) - only on pages with loader
+const loaderEl = document.getElementById('loader');
 
-tlLoader.to('.loader-logo', {
-    opacity: 1,
-    scale: 1.1,
-    duration: 1.5,
-    ease: "power2.out"
-})
-.to('.loader-logo', {
-    opacity: 0,
-    scale: 1.5, // Cinematic zoom-in fade
-    duration: 1,
-    delay: 0.5,
-    ease: "power2.in"
-})
-.to('#loader', {
-    scaleY: 0,
-    transformOrigin: "top center",
-    duration: 1.2,
-    ease: "expo.inOut"
-}, "-=0.5")
-.from('.hero-title .line', {
-    y: 50,
-    opacity: 0,
-    duration: 1.2,
-    stagger: 0.2,
-    ease: "power4.out"
-}, "-=0.8")
-.from('.hero-subtitle, .hero-desc, .hero-actions, .nav-brand, .nav-links', {
-    y: 20,
-    opacity: 0,
-    duration: 1,
-    stagger: 0.1,
-    ease: "power2.out"
-}, "-=1")
-.from('.hero-bottom-stats', {
-    y: 30,
-    opacity: 0,
-    duration: 1,
-    ease: "power2.out"
-}, "-=0.8");
+if (loaderEl) {
+    const tlLoader = gsap.timeline();
+
+    tlLoader.to('.loader-logo', {
+        opacity: 1,
+        scale: 1.1,
+        duration: 1.5,
+        ease: "power2.out"
+    })
+    .to('.loader-logo', {
+        opacity: 0,
+        scale: 1.5,
+        duration: 1,
+        delay: 0.5,
+        ease: "power2.in"
+    })
+    .to('#loader', {
+        scaleY: 0,
+        transformOrigin: "top center",
+        duration: 1.2,
+        ease: "expo.inOut"
+    }, "-=0.5")
+    .from('.hero-title .line', {
+        y: 50,
+        opacity: 0,
+        duration: 1.2,
+        stagger: 0.2,
+        ease: "power4.out"
+    }, "-=0.8")
+    .from('.hero-subtitle, .hero-desc, .hero-actions, .nav-brand, .nav-links', {
+        y: 20,
+        opacity: 0,
+        duration: 1,
+        stagger: 0.1,
+        ease: "power2.out"
+    }, "-=1")
+    .from('.hero-bottom-stats', {
+        y: 30,
+        opacity: 0,
+        duration: 1,
+        ease: "power2.out"
+    }, "-=0.8");
+} else {
+    // Subpages: animate entry elements immediately
+    gsap.from('.massive-title .split-word span', {
+        y: 60,
+        opacity: 0,
+        duration: 1,
+        stagger: 0.08,
+        ease: "power4.out",
+        delay: 0.3
+    });
+    gsap.from('.kicker, .cinematic-desc', {
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.15,
+        ease: "power2.out",
+        delay: 0.6
+    });
+    gsap.from('.nav-brand, .nav-links', {
+        y: -20,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.1,
+        ease: "power2.out",
+        delay: 0.2
+    });
+}
 
 // Parallax Hero Image
-gsap.to('.parallax-bg', {
-    yPercent: 15,
-    ease: "none",
-    scrollTrigger: {
-        trigger: ".hero",
-        start: "top top", 
-        end: "bottom top",
-        scrub: true
-    }
-});
+const heroSec = document.querySelector('.hero') || document.querySelector('.movie-hero');
+if (heroSec) {
+    gsap.to('.parallax-bg', {
+        yPercent: 15,
+        ease: "none",
+        scrollTrigger: {
+            trigger: heroSec,
+            start: "top top", 
+            end: "bottom top",
+            scrub: true
+        }
+    });
+}
 
 // --------------------------------------------------------------------------
 // Animations (Chapter Section - A Origem)

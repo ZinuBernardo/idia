@@ -85,6 +85,12 @@ a {
     color: var(--color-gold);
 }
 
+.small-dim {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.6;
+}
+
 /* -------------------------------------------------------------------------- */
 /*                                CINEMATIC FX                                */
 /* -------------------------------------------------------------------------- */
@@ -395,47 +401,45 @@ a {
 }
 
 /* -------------------------------------------------------------------------- */
-/*                             LEGACY MOVIE HERO (ALL PAGES)                 */
+/*                             PREMIUM MOVIE HERO (ALL PAGES)                 */
 /* -------------------------------------------------------------------------- */
 .movie-hero {
     position: relative;
     width: 100vw;
-    height: 70vh;
+    height: 100vh; /* Full height for premium cinematic impact */
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: calc(var(--padding-global) / 2);
+    padding: var(--padding-global);
     text-align: center;
     overflow: hidden;
 }
-.movie-hero img,
-.movie-hero .parallax-bg,
+.movie-hero img.parallax-bg,
 .movie-hero .hero-image {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 120%; /* Extra height for smooth GSAP parallax scrolling */
     object-fit: cover;
     z-index: -2;
-    filter: brightness(0.56) contrast(1.02);
+    filter: brightness(0.72) contrast(1.05); /* Vibrant highlight of the cover image */
+    transform-origin: center center;
 }
 .movie-hero::after {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(180deg, rgba(5,5,5,0.6) 0%, rgba(5,5,5,0.25) 45%, transparent 100%);
+    inset: 0;
+    /* Rich composite linear gradient: bottom to dark, top to dark (navbar blend), middle clean to pop the cover */
+    background: linear-gradient(0deg, var(--bg-dark) 0%, rgba(5,5,5,0.15) 50%, var(--bg-dark) 100%);
     z-index: -1;
 }
 
-@media (min-width: 1024px) {
-    .movie-hero { height: 60vh; }
-}
-@media (max-width: 640px) {
-    .movie-hero { height: 50vh; }
+@media (max-width: 768px) {
+    .movie-hero {
+        height: 100vh; /* Maintain 100vh for immersive feel */
+        padding: calc(var(--padding-global) / 2);
+    }
 }
 
 .stat-item {
@@ -941,10 +945,85 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
     border-top: 1px solid rgba(255,255,255,0.1);
     padding-top: 30px;
     font-size: 0.75rem;
     color: rgba(255,255,255,0.4);
+}
+
+/* -------------------------------------------------------------------------- */
+/*                           TRAILER MODAL                                    */
+/* -------------------------------------------------------------------------- */
+
+.trailer-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.trailer-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.92);
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+}
+
+.modal-container {
+    position: relative;
+    z-index: 2;
+    width: 90%;
+    max-width: 900px;
+}
+
+.close-modal-btn {
+    position: absolute;
+    top: -50px;
+    right: 0;
+    background: none;
+    border: none;
+    color: var(--color-white);
+    font-size: 2.5rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    line-height: 1;
+}
+
+.close-modal-btn:hover {
+    color: var(--color-gold);
+}
+
+.video-wrapper {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+}
+
+.video-wrapper video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -1048,6 +1127,109 @@ a {
     display: inline-block;
     transform: translateY(100%);
     opacity: 0;
+}
+
+/* ========================================================================== */
+/*                   CINEMATIC WEBFLOW PREMIUM ENHANCEMENTS                 */
+/* ========================================================================== */
+
+.premium-glass-card {
+    background: linear-gradient(145deg, rgba(20, 24, 34, 0.6) 0%, rgba(10, 12, 18, 0.8) 100%);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid rgba(199, 161, 83, 0.15);
+    border-radius: 12px;
+    padding: 35px 25px;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.premium-glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle at top right, rgba(199, 161, 83, 0.08) 0%, transparent 60%);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.premium-glass-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(199, 161, 83, 0.1);
+    border-color: rgba(199, 161, 83, 0.4);
+    background: linear-gradient(145deg, rgba(25, 30, 42, 0.7) 0%, rgba(15, 18, 25, 0.9) 100%);
+}
+
+.premium-glass-card:hover::before {
+    opacity: 1;
+}
+
+.editorial-section {
+    position: relative;
+    padding: 100px var(--padding-global);
+    border-top: 1px solid rgba(255,255,255,0.03);
+    overflow: hidden;
+}
+
+.glow-orb {
+    position: absolute;
+    width: 60vw;
+    height: 60vw;
+    max-width: 800px;
+    max-height: 800px;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.15;
+    z-index: 0;
+    pointer-events: none;
+    mix-blend-mode: screen;
+}
+
+.glow-orb-primary {
+    background: radial-gradient(circle, rgba(199, 161, 83, 1) 0%, transparent 70%);
+}
+
+.glow-orb-secondary {
+    background: radial-gradient(circle, rgba(60, 100, 180, 1) 0%, transparent 70%);
+}
+
+.structural-line {
+    width: 1px;
+    height: 100px;
+    background: linear-gradient(to bottom, rgba(199, 161, 83, 0.5), transparent);
+    margin: 0 auto 40px auto;
+}
+
+.editorial-section > div:not(.glow-orb):not(.stats-background) {
+    position: relative;
+    z-index: 2;
+}
+
+.stats-background {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 0;
+}
+
+.parallax-stats {
+    width: 100%;
+    height: 120%;
+    object-fit: cover;
+    filter: brightness(0.6) contrast(1.1) grayscale(0.5);
+}
+
+.stats-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+}
+
+.stats-content {
+    position: relative;
+    z-index: 2;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -1244,5 +1426,94 @@ a {
     }
     .stat-counter-box h3 {
         font-size: 2rem !important;
+    }
+
+    /* Subpage card grids - force single column on small screens */
+    .synergy-grid,
+    .news-grid,
+    .pub-grid,
+    .concept-grid,
+    .traverse-grid,
+    .vision-grid {
+        grid-template-columns: 1fr !important;
+        gap: 25px !important;
+    }
+
+    .synergy-card,
+    .news-card,
+    .pub-card,
+    .concept-card,
+    .traverse-card,
+    .vision-card,
+    .method-layer {
+        padding: 25px !important;
+    }
+
+    .synergy-title,
+    .news-title,
+    .pub-title,
+    .concept-title,
+    .traverse-title,
+    .layer-title {
+        font-size: 1.3rem !important;
+    }
+
+    /* Trailer Modal on mobile */
+    .close-modal-btn {
+        top: -40px;
+        font-size: 2rem;
+    }
+
+    .modal-container {
+        width: 95%;
+    }
+
+    /* Intro lead on mobile */
+    .intro-lead {
+        font-size: 1.1rem !important;
+        padding-left: 20px !important;
+        margin-bottom: 40px !important;
+    }
+
+    /* Editorial content on mobile */
+    .editorial-content {
+        padding: 60px var(--padding-global) !important;
+    }
+}
+
+/* -------------------------------------------------------------------------- */
+/*                            ACCESSIBILITY                                   */
+/* -------------------------------------------------------------------------- */
+
+/* Focus-visible for keyboard navigation */
+a:focus-visible,
+button:focus-visible,
+.btn:focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
+}
+
+/* Better text rendering */
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .custom-cursor {
+        display: none !important;
+    }
+
+    .glow-orb {
+        display: none !important;
     }
 }

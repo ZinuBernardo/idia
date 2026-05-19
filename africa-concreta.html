@@ -7,70 +7,224 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/src/style.css">
     <style>
-        
-        .editorial-content {
-            padding: 60px var(--padding-global) 120px;
+        /* Split Hero Layout */
+        .book-hero-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 60px;
+            align-items: center;
+            text-align: left;
+            z-index: 2;
+            position: relative;
+            padding: 0 var(--padding-global);
+        }
+
+        @media (max-width: 992px) {
+            .book-hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 40px;
+                padding-top: 100px;
+            }
+        }
+
+        .hero-book-showcase {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        @media (max-width: 992px) {
+            .hero-book-showcase {
+                justify-content: center;
+            }
+        }
+
+        .hero-book-img {
+            max-width: 320px;
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 20px 45px rgba(0, 0, 0, 0.7));
+            transform: none;
+            transition: none;
+        }
+
+        /* Pillars styling */
+        .concreto-section {
+            padding: 120px var(--padding-global);
+            background-color: var(--bg-dark);
+            position: relative;
+        }
+
+        .pillars-grid-concreto {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
             max-width: 1200px;
             margin: 0 auto;
         }
-        .intro-lead {
-            font-size: clamp(1.2rem, 2.5vw, 2rem);
-            line-height: 1.6;
-            font-weight: 300;
-            color: rgba(255,255,255,0.9);
-            margin-bottom: 60px;
-            border-left: 3px solid var(--color-gold);
-            padding-left: 30px;
+
+        @media (max-width: 768px) {
+            .pillars-grid-concreto {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
         }
-        .chapters-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 28px;
-            margin-top: 40px;
+
+        .concreto-card {
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            padding: 45px 35px;
+            position: relative;
+            transition: all 0.4s ease;
         }
-        .chapter-card {
-            background: rgba(12,14,17,0.6);
-            border: 1px solid rgba(199,161,83,0.06);
-            padding: 30px 28px;
-            border-left: 3px solid rgba(199,161,83,0.95);
-            transition: transform 0.28s ease, box-shadow 0.28s ease;
-            min-height: 200px;
-            color: rgba(255,255,255,0.95);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.6) inset, 0 6px 18px rgba(0,0,0,0.5);
+
+        .concreto-card:hover {
+            background: rgba(255, 255, 255, 0.03);
+            border-color: rgba(199, 161, 83, 0.25);
+            transform: translateY(-8px);
         }
-        .chapter-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 18px 48px rgba(0,0,0,0.6);
-            border-color: var(--color-gold);
+
+        .concreto-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--color-gold);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+            transform-origin: right center;
         }
-        .chapter-num {
-            font-family: var(--font-heading);
+
+        .concreto-card:hover::after {
+            transform: scaleX(1);
+            transform-origin: left center;
+        }
+
+        .concreto-icon {
+            font-size: 2.2rem;
             color: var(--color-gold);
+            margin-bottom: 25px;
+            text-shadow: 0 0 15px rgba(199, 161, 83, 0.3);
+        }
+
+        .concreto-card h3 {
             font-size: 1.1rem;
             margin-bottom: 15px;
-            letter-spacing: 2px;
-        }
-        .chapter-title {
-            font-size: 1.25rem;
-            margin-bottom: 12px;
+            letter-spacing: 1px;
+            color: #fff;
             text-transform: uppercase;
-            letter-spacing: 0.6px;
         }
 
-        @media (min-width: 1024px) {
-            .chapters-grid { grid-template-columns: repeat(3, 1fr); }
+        .concreto-card p {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
         }
 
-        @media (max-width: 640px) {
-            .editorial-content { padding: 30px 20px 60px; }
-            .chapter-card { padding: 22px; }
+        /* Memorial/Core split section */
+        .memorial-section {
+            padding: 120px var(--padding-global);
+            background-color: var(--bg-night);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .memorial-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        @media (max-width: 992px) {
+            .memorial-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+        }
+
+        .memorial-img-wrapper {
+            position: relative;
+            border: 1px solid rgba(199, 161, 83, 0.15);
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .memorial-img-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: contrast(1.05) brightness(0.9);
+            transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .memorial-img-wrapper:hover img {
+            transform: scale(1.02);
+        }
+
+        .core-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .core-details .core-title {
+            font-size: clamp(2rem, 3.5vw, 2.8rem);
+            color: var(--color-white);
+            line-height: 1.2;
+            margin: 15px 0 25px 0;
+            font-family: var(--font-heading);
+        }
+
+        .core-spec-list {
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+            margin-top: 15px;
+        }
+
+        .core-spec-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 15px;
+        }
+
+        .core-spec-label {
+            font-size: 0.7rem;
+            color: var(--color-gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .core-spec-val {
+            font-size: 1.1rem;
+            color: #fff;
+            font-weight: 500;
         }
     </style>
 </head>
 <body>
+    <svg style="display: none;">
+        <defs>
+            <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#F2D091" />
+                <stop offset="50%" stop-color="#C7A153" />
+                <stop offset="100%" stop-color="#8C6B2D" />
+            </linearGradient>
+        </defs>
+    </svg>
     <canvas id="noise-canvas"></canvas>
     <div class="custom-cursor"></div>
 
+    <!-- NAVEGAÇÃO PRINCIPAL -->
     <nav class="main-nav">
         <div class="nav-brand">
             <a href="/index.html"><img src="/ideiaa.png" alt="ID&IA" class="nav-logo"></a>
@@ -81,6 +235,7 @@
         <ul class="nav-links">
             <li><a href="/index.html">INÍCIO</a></li>
             <li><a href="/instituto.html">O INSTITUTO</a></li>
+            <li><a href="/humano-concreto.html">HUMANO CONCRETO</a></li>
             <li><a href="/areas-estrategicas.html">ÁREAS</a></li>
             <li><a href="/centros.html">CENTROS</a></li>
             <li class="has-dropdown">
@@ -101,6 +256,7 @@
         <ul class="mobile-links">
             <li><a href="/index.html">INÍCIO</a></li>
             <li><a href="/instituto.html">O INSTITUTO</a></li>
+            <li><a href="/humano-concreto.html">HUMANO CONCRETO</a></li>
             <li><a href="/areas-estrategicas.html">ÁREAS</a></li>
             <li><a href="/centros.html">CENTROS</a></li>
             <li><a href="/projectos.html">PROJECTOS</a></li>
@@ -110,86 +266,117 @@
         </ul>
     </div>
 
+    <!-- MAIN SCROLL CONTAINERS FOR LENIS & GSAP -->
     <main id="smooth-wrapper">
         <div id="smooth-content">
             
-            <section class="movie-hero">
+            <!-- BOOK IMPRESSIVE HERO -->
+            <section class="movie-hero" style="height: 100vh;">
                 <img src="/bg_africa_concreta_1778978607545.png" alt="África Concreta" class="parallax-bg">
-                <div>
-                    <h1 class="massive-title">ÁFRICA CONCRETA</h1>
-                    <h2 style="margin-top:8px; font-weight:500; letter-spacing:1px; color:var(--color-gold);">A TRADUÇÃO ESTRUTURAL DE UMA CIVILIZAÇÃO</h2>
-                    <p class="cinematic-desc" style="margin: 14px auto 0; font-size:0.95rem; max-width:900px; letter-spacing:1px;">IMAGENS ESTRUTURAIS DOS CAPÍTULOS</p>
+                
+                <div class="book-hero-container">
+                    <!-- Left: Titles and Quotes -->
+                    <div>
+                        <h5 style="color: var(--color-gold); font-size: 0.88rem; letter-spacing: 3px; text-transform: uppercase; font-weight: 600; margin-bottom: 20px; text-shadow: 0 2px 10px rgba(0,0,0,0.85);">
+                            Universidade MAHAMBA apresenta
+                        </h5>
+                        <h1 class="massive-title" style="font-size: clamp(3rem, 6.2vw, 5.2rem) !important; letter-spacing: 5px !important; margin: 0 0 20px 0 !important; line-height: 1.1; text-align: left; text-shadow: 0 4px 25px rgba(0,0,0,0.95), 0 2px 10px rgba(0,0,0,0.85);">
+                            ÁFRICA <span class="text-gold">CONCRETA</span>
+                        </h1>
+                        <h2 style="font-size: clamp(1.15rem, 2.5vw, 1.6rem); font-weight: 500; letter-spacing: 1px; color: #fff; margin-bottom: 35px; line-height: 1.4; text-shadow: 0 2px 15px rgba(0,0,0,0.9), 0 1px 5px rgba(0,0,0,0.7);">
+                            A Tradução Estrutural Aplicada de uma Civilização
+                        </h2>
+                        
+                        <blockquote style="font-size: clamp(1.1rem, 2vw, 1.45rem); font-style: italic; color: var(--color-gold); font-weight: 400; border-left: 2px solid var(--color-gold); padding-left: 25px; line-height: 1.6; max-width: 600px; margin-bottom: 40px; text-shadow: 0 2px 10px rgba(0,0,0,0.8);">
+                            "África não precisa apenas de esperança. Precisa de estrutura."
+                        </blockquote>
+
+                        <div class="hero-actions" style="display: flex; gap: 20px;">
+                            <a href="#pilares" class="btn btn-secondary" style="padding: 16px 35px;">
+                                Explorar o Universo
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right: Premium eBook 3D showcase -->
+                    <div class="hero-book-showcase">
+                        <img src="africa_concreta_book.png" alt="Livro África Concreta 3D Mockup" class="hero-book-img">
+                    </div>
                 </div>
             </section>
 
-            <div class="editorial-content">
-                <div class="intro-lead" style="border-left:3px solid rgba(199,161,83,0.9); padding-left:28px;">
-                    Um compêndio em oito capítulos que articula a passagem do pensamento para a infraestrutura.
-                </div>
-
-                <div class="chapters-grid">
-                    <div class="chapter-card">
-                        <div class="chapter-num">CAPÍTULO I</div>
-                        <h3 class="chapter-title">ÁFRICA COBERTA</h3>
-                        <p class="small-dim">Descrição: A origem material da humanidade.</p>
-                        <p class="small-dim"><strong>Conceitos:</strong> Terra. Tempo. Continuidade.</p>
+            <!-- PILARES DO PROJETO -->
+            <section class="concreto-section" id="pilares">
+                <div class="pillars-grid-concreto">
+                    <!-- Pilar 1 -->
+                    <div class="concreto-card">
+                        <div class="concreto-icon">
+                            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 50px; height: 50px;">
+                                <path d="M32 4L8 16v20c0 14.8 10.2 24.2 24 24 13.8.2 24-9.2 24-24V16L32 4zm0 6.5l18 9v16.5c0 10.6-7.2 18-18 18-10.8 0-18-7.4-18-18V19.5l18-9z" fill="url(#gold-grad)" />
+                                <line x1="22" y1="32" x2="42" y2="32" stroke="url(#gold-grad)" stroke-width="2" />
+                                <circle cx="32" cy="32" r="4" fill="url(#gold-grad)" />
+                            </svg>
+                        </div>
+                        <h3>O Problema</h3>
+                        <p>África enfrenta desafios estruturais profundos que não serão resolvidos apenas por crescimento económico ou consumo tecnológico.</p>
                     </div>
 
-                    <div class="chapter-card">
-                        <div class="chapter-num">CAPÍTULO II</div>
-                        <h3 class="chapter-title">ÁFRICA "DES"COBERTA</h3>
-                        <p class="small-dim">Descrição: Movimentos. Rotas. Civilizações.</p>
-                        <p class="small-dim"><strong>Conceitos:</strong> África no centro da circulação humana.</p>
-                        <p class="small-dim"><em>Notas na imagem:</em> Mali, Kemet, Axum, Sofala</p>
+                    <!-- Pilar 2 -->
+                    <div class="concreto-card">
+                        <div class="concreto-icon">
+                            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 50px; height: 50px;">
+                                <path d="M32 6L8 19v26l24 13 24-13V19L32 6zm-2 7.7v18.6L10 21.3l20-7.6zm4 0l20 7.6-20 11V13.7zM12 25.5l18 9.9v18.7L12 44.2v-18.7zm22 28.6V35.4l18-9.9v18.7l-18 9.9z" fill="url(#gold-grad)" />
+                            </svg>
+                        </div>
+                        <h3>A Tradução Estrutural</h3>
+                        <p>ÁFRICA CONCRETA apresenta um modelo de tradução estrutural aplicado para transformar consciência em sistemas e capacidades reais.</p>
                     </div>
 
-                    <div class="chapter-card">
-                        <div class="chapter-num">CAPÍTULO III</div>
-                        <h3 class="chapter-title">ÁFRICA SECRETA</h3>
-                        <p class="small-dim">Descrição: Memória. Oralidade. Conhecimento.</p>
-                        <p class="small-dim"><strong>Conceitos:</strong> A continuidade preservada.</p>
-                    </div>
-
-                    <div class="chapter-card">
-                        <div class="chapter-num">CAPÍTULO IV</div>
-                        <h3 class="chapter-title">ÁFRICA DISCRETA</h3>
-                        <p class="small-dim">Descrição: Rupturas. Independências. Reorganização.</p>
-                        <p class="small-dim"><strong>Conceitos:</strong> África reemerge.</p>
-                        <p class="small-dim"><em>Nota na imagem:</em> Conferência de Berlim 1884-1885</p>
-                    </div>
-
-                    <div class="chapter-card">
-                        <div class="chapter-num">CAPÍTULO V</div>
-                        <h3 class="chapter-title">ÁFRICA CONCRETA</h3>
-                        <p class="small-dim">Descrição: Infraestrutura. Tecnologia. Produção.</p>
-                        <p class="small-dim"><strong>Conceitos:</strong> África em movimento concreto.</p>
-                    </div>
-
-                    <div class="chapter-card">
-                        <div class="chapter-num">CAPÍTULO VI</div>
-                        <h3 class="chapter-title">METODOLOGIA MAHAMBA</h3>
-                        <p class="small-dim">Descrição: Transformação como método.</p>
-                        <p class="small-dim"><strong>Conceitos:</strong> Humano, ciência e civilização.</p>
-                    </div>
-
-                    <div class="chapter-card">
-                        <div class="chapter-num">CAPÍTULO VII</div>
-                        <h3 class="chapter-title">ID&IA</h3>
-                        <p class="small-dim">Descrição: Plataforma operativa.</p>
-                        <p class="small-dim"><strong>Conceitos:</strong> Dados. Inovação. Inteligência Africana.</p>
-                    </div>
-
-                    <div class="chapter-card">
-                        <div class="chapter-num">CAPÍTULO VIII</div>
-                        <h3 class="chapter-title">IMPLEMENTAÇÃO REAL</h3>
-                        <p class="small-dim">Descrição: Corredores. Integração. Convergência.</p>
-                        <p class="small-dim"><strong>Conceitos:</strong> África construída por africanos.</p>
-                        <p class="small-dim"><em>Cidades listadas:</em> Lobito, Lusaka, Harare, Windhoek, Joanesburgo, Durban</p>
+                    <!-- Pilar 3 -->
+                    <div class="concreto-card">
+                        <div class="concreto-icon">
+                            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 50px; height: 50px;">
+                                <circle cx="32" cy="32" r="26" stroke="url(#gold-grad)" stroke-width="2" />
+                                <path d="M32 6c7.2 0 13 11.6 13 26S39.2 58 32 58 19 46.4 19 32s5.8-26 13-26z" stroke="url(#gold-grad)" stroke-width="2" />
+                                <line x1="6" y1="32" x2="58" y2="32" stroke="url(#gold-grad)" stroke-width="2" />
+                                <circle cx="32" cy="32" r="3" fill="url(#gold-grad)" />
+                            </svg>
+                        </div>
+                        <h3>A Aplicação Continental</h3>
+                        <p>Uma obra orientada à implementação prática e à construção de capacidade em todo o continente.</p>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <!-- FOOTER -->
+            <!-- LOCALIZAÇÃO E NÚCLEO (MEMORIAL CUITO CUANAVALE) -->
+            <section class="memorial-section">
+                <div class="memorial-grid">
+                    <!-- Left: Victory Memorial Image -->
+                    <div class="memorial-img-wrapper">
+                        <img src="/cuito_memorial.png" alt="Memorial da Vitória da Batalha do Cuito Cuanavale">
+                    </div>
+
+                    <!-- Right: Geo and Core Details -->
+                    <div class="core-details">
+                        <div class="core-spec-list" style="margin-top: 0;">
+                            <div class="core-spec-item" style="border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 15px;">
+                                <h3 style="font-size: 1.8rem; color: var(--color-gold); margin-bottom: 5px; font-family: var(--font-heading); font-weight: 600;">Cuito Cuanavale</h3>
+                                <span class="core-spec-val" style="font-size: 1.1rem; color: rgba(255,255,255,0.7); font-weight: 400;">Província do Cuando Cubango</span>
+                            </div>
+                            <div class="core-spec-item">
+                                <span class="core-spec-val" style="font-size: 1.1rem; color: #fff; font-weight: 500; letter-spacing: 1px;">ANGOLA — SADC</span>
+                            </div>
+                            <div class="core-spec-item" style="border-bottom: none;">
+                                <p style="font-size: 1.15rem; color: rgba(255,255,255,0.85); line-height: 1.7; font-weight: 300;">
+                                    Primeiro núcleo físico de aplicação estrutural.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FOOTER PRINCIPAL -->
             <footer class="footer-section" style="padding-top: 80px;">
                 <div class="footer-grid" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));">
                     <div class="footer-col">
@@ -234,7 +421,7 @@
                             <li><a href="/noticias.html">Notícias & Eventos</a></li>
                             <li><a href="/ideia-global.html">Ideia Global</a></li>
                             <li><a href="/travessia-continentes.html">Travessia Continentes</a></li>
-                            <li><a href="/o-filme.html">Humano Concreto – O Filme</a></li>
+                            <li><a href="/humano-concreto.html">Humano Concreto</a></li>
                             <li><a href="/o-livro-o-filme.html">O Livro e O Filme</a></li>
                         </ul>
                     </div>
