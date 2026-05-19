@@ -100,13 +100,6 @@ const lenis = new Lenis({
 //     console.log({ scroll, limit, velocity, direction, progress });
 // });
 
-function raf(time) {
-    lenis.raf(time);
-    requestAnimationFrame(raf);
-}
-
-requestAnimationFrame(raf);
-
 // Connect Lenis to GSAP ScrollTrigger
 lenis.on('scroll', ScrollTrigger.update);
 
@@ -235,10 +228,10 @@ if (loaderEl) {
         ease: "power2.out"
     }, "-=0.8");
 } else {
-    // Subpages: animate entry elements immediately
-    gsap.from('.massive-title .split-word span', {
-        y: 60,
-        opacity: 0,
+    // Subpages: animate entry elements immediately (to match their initial opacity: 0 and translateY(100%) in CSS)
+    gsap.to('.massive-title .split-word span', {
+        y: '0%',
+        opacity: 1,
         duration: 1,
         stagger: 0.08,
         ease: "power4.out",
@@ -402,58 +395,68 @@ gsap.to('.parallax-stats', {
 });
 
 // Number Counter Animation
-const counters = document.querySelectorAll('.counter');
-counters.forEach(counter => {
-    const target = parseFloat(counter.getAttribute('data-target'));
-    
-    ScrollTrigger.create({
-        trigger: ".stats-grid",
-        start: "top 80%",
-        onEnter: () => {
-            gsap.to(counter, {
-                innerHTML: target,
-                duration: 2.5,
-                ease: "power2.out",
-                snap: { innerHTML: 0.1 }, // Snap to 1 decimal place
-                onUpdate: function() {
-                    // Remove decimals if target is an integer
-                    if(Number.isInteger(target)) {
-                        counter.innerHTML = Math.round(this.targets()[0].innerHTML);
-                    } else {
-                        counter.innerHTML = parseFloat(this.targets()[0].innerHTML).toFixed(1);
-                    }
-                }
+const statsGridEl = document.querySelector('.stats-grid');
+if (statsGridEl) {
+    const counters = document.querySelectorAll('.counter');
+    counters.forEach(counter => {
+        const target = parseFloat(counter.getAttribute('data-target'));
+        if (!isNaN(target)) {
+            ScrollTrigger.create({
+                trigger: ".stats-grid",
+                start: "top 85%",
+                onEnter: () => {
+                    gsap.to(counter, {
+                        innerHTML: target,
+                        duration: 2.5,
+                        ease: "power2.out",
+                        snap: { innerHTML: 0.1 },
+                        onUpdate: function() {
+                            if(Number.isInteger(target)) {
+                                counter.innerHTML = Math.round(this.targets()[0].innerHTML);
+                            } else {
+                                counter.innerHTML = parseFloat(this.targets()[0].innerHTML).toFixed(1);
+                            }
+                        }
+                    });
+                },
+                once: true
             });
-        },
-        once: true // animate only once
+        }
     });
-});
 
-// Reveal Stats Boxes
-gsap.from(".stat-counter-box", {
-    scrollTrigger: {
-        trigger: ".stats-grid",
-        start: "top 80%",
-    },
-    y: 50,
-    opacity: 0,
-    duration: 1,
-    stagger: 0.15,
-    ease: "power3.out"
-});
+    // Reveal Stats Boxes
+    gsap.from(".stat-counter-box", {
+        scrollTrigger: {
+            trigger: ".stats-grid",
+            start: "top 85%",
+        },
+        y: 50,
+        opacity: 0,
+        duration: 1,
+        stagger: 0.15,
+        ease: "power3.out"
+    });
+}
 
 // --------------------------------------------------------------------------
 // Animations (Footer)
 // --------------------------------------------------------------------------
+const footerSec = document.querySelector('.footer-section');
+if (footerSec) {
+    gsap.from(".footer-top, .footer-grid > div", {
+        scrollTrigger: {
+            trigger: ".footer-section",
+            start: "top 90%",
+        },
+        y: 30,
+        opacity: 0,
+        duration: 1,
+        stagger: 0.1,
+        ease: "power2.out"
+    });
+}
 
-gsap.from(".footer-top, .footer-grid > div", {
-    scrollTrigger: {
-        trigger: ".footer-section",
-        start: "top 90%",
-    },
-    y: 30,
-    opacity: 0,
-    duration: 1,
-    stagger: 0.1,
-    ease: "power2.out"
+// Refresh ScrollTrigger on load to ensure correct layouts
+window.addEventListener('load', () => {
+    ScrollTrigger.refresh();
 });

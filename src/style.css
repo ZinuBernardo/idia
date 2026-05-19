@@ -602,10 +602,13 @@ a {
 }
 
 .massive-title {
-    font-size: clamp(3rem, 5vw, 5.5rem);
-    line-height: 0.9;
+    font-size: clamp(3.5rem, 6.5vw, 6.5rem);
+    line-height: 0.95;
     letter-spacing: 2px;
     margin-bottom: 30px;
+    font-weight: 800;
+    text-transform: uppercase;
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.9), 0 2px 10px rgba(0, 0, 0, 0.7);
 }
 
 .cinematic-desc {

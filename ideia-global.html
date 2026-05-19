@@ -24,19 +24,31 @@
         }
         .vision-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
             margin-top: 80px;
         }
         .vision-card {
-            background: rgba(255,255,255,0.01);
-            border: 1px solid rgba(255,255,255,0.05);
-            padding: 40px;
+            background: linear-gradient(145deg, rgba(20, 24, 34, 0.7) 0%, rgba(10, 12, 18, 0.9) 100%);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-top: 3px solid var(--color-gold);
+            padding: 40px 30px;
+            border-radius: 6px;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+        .vision-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(212, 175, 55, 0.4);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
         }
         .vision-card h3 {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--color-white);
             margin-bottom: 20px;
+            letter-spacing: 1px;
         }
     </style>
 </head>
@@ -104,18 +116,23 @@
 
                 <div class="vision-grid">
                     <div class="vision-card">
-                        <h3 class="vision-title">Redes de Conexão</h3>
-                        <p class="cinematic-desc" style="text-align: left; margin: 0; color: rgba(255,255,255,0.85);">Desenvolvimento de protocolos de intercâmbio de dados soberanos entre universidades, polos industriais e centros estatísticos governamentais africanos.</p>
+                        <h3 class="vision-title">Redes de Conexão Continental</h3>
+                        <p class="cinematic-desc" style="text-align: left; margin: 0; color: rgba(255,255,255,0.85); font-size: 0.9rem; line-height: 1.6;">Integração lógica de dados soberanos entre universidades, polos industriais e centros estatísticos governamentais africanos. Construímos pontes digitais robustas que garantem o fluxo livre e seguro de conhecimento científico através de protocolos federados de comunicação.</p>
                     </div>
 
                     <div class="vision-card">
-                        <h3 class="vision-title">IA Regionalizada</h3>
-                        <p class="cinematic-desc" style="text-align: left; margin: 0; color: rgba(255,255,255,0.85);">Treino de modelos computacionais focados nas línguas locais, demografia regional e hábitos económicos específicos de cada área do Sul global.</p>
+                        <h3 class="vision-title">IA Regionalizada e Contextual</h3>
+                        <p class="cinematic-desc" style="text-align: left; margin: 0; color: rgba(255,255,255,0.85); font-size: 0.9rem; line-height: 1.6;">Treino e desenvolvimento de modelos computacionais avançados focados nas línguas locais, dialetos e demografia regional. Esta infraestrutura respeita e modela os hábitos económicos e a diversidade cultural específica de cada região do Sul global.</p>
                     </div>
 
                     <div class="vision-card">
-                        <h3 class="vision-title">Soberania Estratégica</h3>
-                        <p class="cinematic-desc" style="text-align: left; margin: 0; color: rgba(255,255,255,0.85);">Parcerias público-privadas de larga escala para garantir que a infraestrutura lógica do continente seja de propriedade coletiva de África.</p>
+                        <h3 class="vision-title">Soberania Estratégica Digital</h3>
+                        <p class="cinematic-desc" style="text-align: left; margin: 0; color: rgba(255,255,255,0.85); font-size: 0.9rem; line-height: 1.6;">Estabelecemos parcerias público-privadas de larga escala e infraestruturas físicas de computação para garantir que a governança de dados e a infraestrutura lógica do continente sejam de propriedade coletiva africana, livre de influências de monopólios externos.</p>
+                    </div>
+
+                    <div class="vision-card">
+                        <h3 class="vision-title">Infraestrutura Crítica Local</h3>
+                        <p class="cinematic-desc" style="text-align: left; margin: 0; color: rgba(255,255,255,0.85); font-size: 0.9rem; line-height: 1.6;">Implementação de centros de computação de alta performance e datacenters alimentados por energia renovável locais. Garantimos processamento de dados local, baixa latência e total independência física e jurídica das infraestruturas de inteligência.</p>
                     </div>
                 </div>
             </div>
