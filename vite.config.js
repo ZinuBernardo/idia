@@ -36,6 +36,7 @@ export default defineConfig({
         publicacoes: resolve(__dirname, 'publicacoes.html'),
         oLivroOFilme: resolve(__dirname, 'o-livro-o-filme.html'),
         museu: resolve(__dirname, 'museu.html'),
+        sobreNos: resolve(__dirname, 'sobre-nos.html'),
       }
     }
   }
