@@ -20,6 +20,9 @@ function formatNumber(num) {
 }
 
 function initCountdown() {
+    // Countdown desativado para produção
+    return;
+
     // 1. Permitir bypass do countdown apenas através de parâmetros na URL (?bypass=true ou ?preview=true)
     const urlParams = new URLSearchParams(window.location.search);
     const hasBypass = urlParams.get('bypass') === 'true' || urlParams.get('preview') === 'true';
