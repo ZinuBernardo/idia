@@ -35,6 +35,7 @@ export default defineConfig({
         noticias: resolve(__dirname, 'noticias.html'),
         publicacoes: resolve(__dirname, 'publicacoes.html'),
         oLivroOFilme: resolve(__dirname, 'o-livro-o-filme.html'),
+        museu: resolve(__dirname, 'museu.html'),
       }
     }
   }
