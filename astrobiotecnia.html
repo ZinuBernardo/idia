@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astrobiotecnia | ID&IA Global</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/style.css">
+    <style>
+        .editorial-content {
+            padding: 60px var(--padding-global);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .intro-lead {
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            line-height: 1.6;
+            font-weight: 300;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 50px;
+            border-left: 3px solid var(--color-gold);
+            padding-left: 30px;
+        }
+        .section-separator {
+            padding: clamp(80px, 12vh, 120px) var(--padding-global);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        .warning-card {
+            background: rgba(199, 161, 83, 0.03);
+            border: 1px solid rgba(199, 161, 83, 0.2);
+            border-radius: 8px;
+            padding: 25px 30px;
+            margin-top: 30px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        .warning-card svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--color-gold);
+            flex-shrink: 0;
+        }
+        .warning-text {
+            font-size: 0.88rem;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.5;
+            margin: 0;
+        }
+        .warning-title {
+            font-weight: 600;
+            color: var(--color-gold);
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+        .structures-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 40px;
+        }
+        @media (max-width: 992px) {
+            .structures-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .structure-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-top: 2px solid var(--color-gold);
+            padding: 35px 25px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        .structure-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.04);
+            border-color: var(--color-gold);
+        }
+        .structure-title {
+            font-size: 1.25rem;
+            color: #fff;
+            margin-bottom: 15px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        .structure-desc {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.65);
+            line-height: 1.6;
+        }
+
+        /* Triologia Lógica */
+        .trilogy-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        @media (max-width: 992px) {
+            .trilogy-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .trilogy-card {
+            background: rgba(10, 14, 23, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            padding: 40px 30px;
+            border-radius: 8px;
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .trilogy-card:hover {
+            border-color: var(--color-gold);
+            box-shadow: 0 15px 40px rgba(199, 161, 83, 0.08);
+            transform: translateY(-5px);
+        }
+        .trilogy-num {
+            font-family: var(--font-heading);
+            color: var(--color-gold);
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+        .trilogy-title {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        .trilogy-desc {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        .trilogy-spec {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.5);
+            line-height: 1.6;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 20px;
+            margin-top: auto;
+        }
+        .trilogy-spec strong {
+            color: var(--color-gold);
+            display: block;
+            margin-bottom: 4px;
+        }
+        .humano-concreto-banner {
+            background: linear-gradient(135deg, rgba(20, 24, 34, 0.8) 0%, rgba(10, 12, 18, 0.95) 100%);
+            border: 1px solid rgba(199, 161, 83, 0.3);
+            border-radius: 12px;
+            padding: 40px 50px;
+            margin-top: 50px;
+            text-align: center;
+            position: relative;
+        }
+        .humano-concreto-banner h3 {
+            font-size: 1.8rem;
+            color: var(--color-gold);
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+        .humano-concreto-banner p {
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.85);
+            line-height: 1.7;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Tabela Comparativa */
+        .comparison-table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            margin-top: 40px;
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 8px;
+            background: rgba(10, 14, 23, 0.3);
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            min-width: 600px;
+        }
+        .comparison-table th, .comparison-table td {
+            padding: 20px 25px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .comparison-table th {
+            background: rgba(199, 161, 83, 0.05);
+            color: var(--color-gold);
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .comparison-table td {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.5;
+        }
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+        .comparison-table tr.highlight td {
+            background: rgba(199, 161, 83, 0.03);
+            color: #fff;
+            font-weight: 500;
+        }
+        .comparison-table tr.highlight td:first-child {
+            color: var(--color-gold);
+            font-weight: 700;
+        }
+
+        /* Atributos Humano vs IA */
+        .attributes-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        @media (max-width: 768px) {
+            .attributes-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .attributes-card {
+            background: rgba(255,255,255,0.01);
+            border: 1px solid rgba(255,255,255,0.04);
+            border-radius: 8px;
+            padding: 40px;
+        }
+        .attributes-header {
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .attributes-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        @media (max-width: 480px) {
+            .attributes-list {
+                grid-template-columns: 1fr;
+            }
+        }
+        .attributes-list li {
+            position: relative;
+            padding-left: 20px;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.85);
+        }
+        .attributes-list li::before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            color: var(--color-gold);
+        }
+
+        /* Fluxo de Validação */
+        .flow-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin-top: 50px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .flow-step {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 30px;
+            padding: 15px 30px;
+            width: 100%;
+            text-align: center;
+            box-sizing: border-box;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.85);
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        .flow-step:hover {
+            border-color: var(--color-gold);
+            background: rgba(199, 161, 83, 0.03);
+            transform: translateY(-2px);
+        }
+        .flow-step.highlight {
+            border-color: var(--color-gold);
+            background: rgba(199, 161, 83, 0.08);
+            font-weight: 600;
+            color: #fff;
+        }
+        .flow-arrow {
+            width: 2px;
+            height: 30px;
+            background: linear-gradient(to bottom, var(--color-gold), transparent);
+        }
+
+        .research-lines-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        .research-line-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.04);
+            border-radius: 6px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+        .research-line-card:hover {
+            border-color: rgba(199,161,83,0.2);
+            background: rgba(255,255,255,0.03);
+            transform: translateY(-3px);
+        }
+        .research-line-title {
+            font-size: 1.15rem;
+            color: var(--color-gold);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        .research-line-desc {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.65);
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <svg style="display: none;">
+        <defs>
+            <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#F2D091" />
+                <stop offset="50%" stop-color="#C7A153" />
+                <stop offset="100%" stop-color="#8C6B2D" />
+            </linearGradient>
+        </defs>
+    </svg>
+    <canvas id="noise-canvas"></canvas>
+    <div class="custom-cursor"></div>
+    
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <a href="/index.html"><img src="/ideiaa.png" alt="ID&IA" class="nav-logo"></a>
+            <div class="nav-text" style="display:none;">
+                <span class="brand-name">ID&IA</span>
+            </div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/index.html">INÍCIO</a></li>
+            <li><a href="/instituto.html">O INSTITUTO</a></li>
+            <li><a href="/sobre-nos.html">SOBRE NÓS</a></li>
+            <li><a href="/humano-concreto.html">HUMANO CONCRETO</a></li>
+            <li><a href="/areas-estrategicas.html">ÁREAS</a></li>
+            <li><a href="/centros.html">CENTROS</a></li>
+            <li><a href="/astrobiotecnia.html">ASTROBIOTECNIA</a></li>
+            <li class="has-dropdown">
+                <a href="#">ECOSSISTEMA ▾</a>
+                <ul class="dropdown">
+                    <li><a href="/projectos.html">Projectos</a></li>
+                    <li><a href="/investimento.html">Investimento</a></li>
+                </ul>
+            </li>
+            <li><a href="/contacto.html">CONTACTO</a></li>
+            <li><a href="/parcerias.html" class="btn btn-primary" style="padding: 8px 15px; font-size: 0.65rem;">PARCERIAS</a></li>
+        </ul>
+        <div class="menu-toggle"><span></span><span></span></div>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu">
+        <ul class="mobile-links">
+            <li><a href="/index.html">INÍCIO</a></li>
+            <li><a href="/instituto.html">O INSTITUTO</a></li>
+            <li><a href="/sobre-nos.html">SOBRE NÓS</a></li>
+            <li><a href="/humano-concreto.html">HUMANO CONCRETO</a></li>
+            <li><a href="/areas-estrategicas.html">ÁREAS</a></li>
+            <li><a href="/centros.html">CENTROS</a></li>
+            <li><a href="/astrobiotecnia.html">ASTROBIOTECNIA</a></li>
+            <li><a href="/projectos.html">PROJECTOS</a></li>
+            <li><a href="/investimento.html">INVESTIMENTO</a></li>
+            <li><a href="/contacto.html">CONTACTO</a></li>
+            <li><a href="/parcerias.html">PARCERIAS</a></li>
+        </ul>
+    </div>
+
+    <main id="smooth-wrapper">
+        <div id="smooth-content">
+            
+            <!-- HERO SECTION -->
+            <section class="movie-hero">
+                <img src="/museu_galeria_3.png" alt="Astrobiotecnia" class="parallax-bg" style="filter: brightness(0.3) contrast(1.15);">
+                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(0deg, var(--bg-dark) 0%, rgba(5,5,5,0.7) 40%, rgba(5,5,5,0.3) 100%); pointer-events: none;"></div>
+                <div style="position: relative; z-index: 2;">
+                    <h4 class="kicker">UNIVERSIDADE MAHAMBA • CONHECIMENTO • IDENTIDADE • CONTINUIDADE</h4>
+                    <h1 class="massive-title">ASTRO<span class="text-gold">BIOTECNIA</span></h1>
+                    <p class="cinematic-desc" style="max-width: 800px; margin: 15px auto 0 auto; font-size: clamp(0.9rem, 2vw, 1.15rem); line-height: 1.5; color: rgba(255,255,255,0.85);">
+                        Documento Oficial Mahamba • Estrutura Investigativa da Triologia Lógica
+                    </p>
+                    <p class="small-dim" style="margin-top: 10px; font-weight: 600; letter-spacing: 2px; color: var(--color-gold);">MA – ORIGEM | HA – MOVIMENTO | MBA – MANIFESTAÇÃO</p>
+                </div>
+            </section>
+
+            <!-- SEÇÃO I: DECLARAÇÃO FUNDAMENTAL -->
+            <section class="section-separator" style="background: transparent;">
+                <div class="glow-orb glow-orb-primary" style="top: 20%; left: -10%;"></div>
+                <div class="structural-line"></div>
+                <div class="editorial-content">
+                    <h4 class="kicker">I. DECLARAÇÃO FUNDAMENTAL</h4>
+                    <div class="intro-lead" style="margin-bottom: 40px;">
+                        A ASTROBIOTECNIA constitui um campo transdisciplinar e aberto de investigação filosófica, epistemológica e civilizacional que busca compreender possíveis continuidades entre cosmos, vida e tecnologia, com responsabilidade, prudência e abertura ao diálogo interdisciplinar. Não pretende substituir a ciência, mas complementar o horizonte de interrogação humana no tempo contemporâneo.
+                    </div>
+                    
+                    <p style="color: rgba(255,255,255,0.75); line-height: 1.8; font-size: 1rem; max-width: 900px; margin-bottom: 40px;">
+                        O avanço tecnológico contemporâneo ampliou significativamente a capacidade computacional, a manipulação biológica, a automação e a expansão aeroespacial. Contudo, a civilização contemporânea alcançou este elevado desenvolvimento técnico sem a correspondente consolidação ética, perceptiva e ecológica da <strong>continuidade humana</strong>, gerando uma dissociação crescente entre a aceleração tecnológica e a continuidade humana integrada.
+                    </p>
+
+                    <!-- SEÇÃO II: HIPÓTESE ESTRUTURAL CENTRAL -->
+                    <h4 class="kicker" style="margin-top: 60px;">II. HIPÓTESE ESTRUTURAL CENTRAL</h4>
+                    <h2 style="font-size: 2.2rem; margin-bottom: 25px; line-height: 1.2; letter-spacing: -0.5px;">As Três Estruturas de <span class="text-gold">Equilíbrio Dinâmico</span></h2>
+                    <p style="color: rgba(255,255,255,0.75); line-height: 1.7; font-size: 0.95rem; margin-bottom: 30px;">
+                        A continuidade humana depende diretamente do equilíbrio harmónico entre três pilares essenciais:
+                    </p>
+
+                    <div class="structures-grid">
+                        <div class="structure-card">
+                            <div class="structure-title" style="color: var(--color-gold);">Estrutura Biológica</div>
+                            <div class="structure-desc">Continuidade fisiológica, regenerativa, ecológica e adaptativa da vida e dos sistemas orgânicos baseados no carbono.</div>
+                        </div>
+                        <div class="structure-card">
+                            <div class="structure-title" style="color: var(--color-gold);">Estrutura Informacional</div>
+                            <div class="structure-desc">Memória cultural, linguagem, cognição, percepção, ancestralidade e organização simbólica da experiência humana.</div>
+                        </div>
+                        <div class="structure-card">
+                            <div class="structure-title" style="color: var(--color-gold);">Estrutura Energética</div>
+                            <div class="structure-desc">Fluxos ambientais, metabólicos, tecnológicos e sistémicos que sustentam e viabilizam a execução funcional da vida.</div>
+                        </div>
+                    </div>
+
+                    <!-- Nota de Risco -->
+                    <div class="warning-card">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L1 21h22L12 2zm1 14h-2v-2h2v2zm0-4h-2V8h2v4z"/>
+                        </svg>
+                        <div>
+                            <div class="warning-title">NOTA DE RISCO DE RUPTURA ESTRUTURAL</div>
+                            <p class="warning-text">
+                                A ruptura significativa em qualquer uma destas estruturas tende a produzir desorganização perceptiva, degradação ecológica, fragmentação social ou perda de continuidade humana.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEÇÃO III: A TRIOLOGIA LÓGICA -->
+            <section class="section-separator" style="background: var(--bg-night);">
+                <div class="glow-orb glow-orb-secondary" style="top: 25%; right: -5%;"></div>
+                <div class="structural-line"></div>
+                <div class="editorial-content">
+                    <h4 class="kicker" style="text-align: center; margin-bottom: 15px;">III. ORGANIZAÇÃO EPISTEMOLÓGICA</h4>
+                    <h2 style="font-size: 2.8rem; text-align: center; margin-bottom: 20px; letter-spacing: -1px;">A <span class="text-gold">Triologia Lógica</span></h2>
+                    <p class="cinematic-desc" style="max-width: 600px; margin: 0 auto 50px auto; text-align: center;">
+                        A estruturação epistemológica da ASTROBIOTECNIA assenta na intersecção de três campos vitais.
+                    </p>
+                    
+                    <div class="trilogy-grid">
+                        <!-- Astro-Lógica -->
+                        <div class="trilogy-card">
+                            <div class="trilogy-num">01</div>
+                            <h3 class="trilogy-title">Astro-Lógica</h3>
+                            <p class="trilogy-desc">
+                                Investigação sobre a origem cosmológica e a relação entre universo, matéria, energia e existência. cosmos, habitabilidade, expansão espacial, ecologia planetária e continuidade da vida fora da Terra.
+                            </p>
+                            <div class="trilogy-spec">
+                                <strong>Integração:</strong>
+                                Bioastronáutica, habitats espaciais, fisiologia espacial, adaptação humana em ambientes extraterrestres e ética da expansão civilizacional.
+                                <br><br>
+                                <em>*Nota: O "extra-terrestre" refere-se à actividade humana desenvolvida para além da Terra, incluindo investigação espacial e engenharia orbital.</em>
+                            </div>
+                        </div>
+                        
+                        <!-- Bio-Lógica -->
+                        <div class="trilogy-card">
+                            <div class="trilogy-num">02</div>
+                            <h3 class="trilogy-title">Bio-Lógica</h3>
+                            <p class="trilogy-desc">
+                                Investigação sobre a vida, consciência biológica, experiência humana, organização orgânica, memória profunda e adaptação.
+                            </p>
+                            <div class="trilogy-spec">
+                                <strong>Integração:</strong>
+                                Neurociência, biologia regenerativa, medicina integrativa, ecologia sistémica e estudos integrados da consciência biológica.
+                            </div>
+                        </div>
+                        
+                        <!-- Tecno-Lógica -->
+                        <div class="trilogy-card">
+                            <div class="trilogy-num">03</div>
+                            <h3 class="trilogy-title">Tecno-Lógica</h3>
+                            <p class="trilogy-desc">
+                                Investigação sobre tecnologia, inteligência artificial, linguagem, comunicação e a exteriorização da inteligência humana no meio técnico.
+                            </p>
+                            <div class="trilogy-spec">
+                                <strong>Integração:</strong>
+                                Sistemas cognitivos, mediação tecnológica, transmissão da informação e organização da continuidade perceptiva humana.
+                                <br><br>
+                                <em>*Papel: Não substitui a vida, opera como uma extensão organizacional, prótese cognitiva, mediação linguística e instrumento investigativo.</em>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- O Humano Concreto -->
+                    <div class="humano-concreto-banner">
+                        <h3>O Humano Concreto</h3>
+                        <p>
+                            Situa-se no centro da intersecção da Triologia Lógica. Representa o horizonte de maturação ética e civilizacional que integra a consciência, responsabilidade, tecnologia e a continuidade da vida concreta.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEÇÃO IV: ARQUITETURA DA EXISTÊNCIA (MA-HA-MBA) -->
+            <section class="section-separator" style="background: transparent;">
+                <div class="glow-orb glow-orb-primary" style="bottom: 10%; left: -5%;"></div>
+                <div class="structural-line"></div>
+                <div class="editorial-content">
+                    <h4 class="kicker" style="text-align: center; margin-bottom: 15px;">IV. ARQUITETURA DA EXISTÊNCIA E DA EXPRESSÃO</h4>
+                    <h2 style="font-size: 2.8rem; text-align: center; margin-bottom: 50px; letter-spacing: -1px;">A Dinâmica <span class="text-gold">MA-HA-MBA</span></h2>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px;">
+                        <div class="premium-glass-card" style="padding: 35px; border-top: 3px solid var(--color-gold); text-align: center;">
+                            <div style="font-family: var(--font-heading); color: var(--color-gold); font-size: 2.2rem; margin-bottom: 15px; font-weight: 800;">MA</div>
+                            <h4 style="margin-bottom: 15px; font-size: 1.25rem;">A Origem</h4>
+                            <p style="font-size: 0.9rem; color: rgba(255,255,255,0.75); line-height: 1.6; margin: 0;">
+                                Matriz, potencialidade pura, campo inicial e ancestral da existência e do conhecimento.
+                            </p>
+                        </div>
+                        <div class="premium-glass-card" style="padding: 35px; border-top: 3px solid var(--color-gold); text-align: center;">
+                            <div style="font-family: var(--font-heading); color: var(--color-gold); font-size: 2.2rem; margin-bottom: 15px; font-weight: 800;">HA</div>
+                            <h4 style="margin-bottom: 15px; font-size: 1.25rem;">O Movimento</h4>
+                            <p style="font-size: 0.9rem; color: rgba(255,255,255,0.75); line-height: 1.6; margin: 0;">
+                                Respiração, travessia ativa, dinâmica fluida, comunicação e transformação contínua das estruturas.
+                            </p>
+                        </div>
+                        <div class="premium-glass-card" style="padding: 35px; border-top: 3px solid var(--color-gold); text-align: center;">
+                            <div style="font-family: var(--font-heading); color: var(--color-gold); font-size: 2.2rem; margin-bottom: 15px; font-weight: 800;">MBA</div>
+                            <h4 style="margin-bottom: 15px; font-size: 1.25rem;">A Manifestação</h4>
+                            <p style="font-size: 0.9rem; color: rgba(255,255,255,0.75); line-height: 1.6; margin: 0;">
+                                Confirmação formal, exteriorização, concretização histórica e ancoragem real da inteligência e da vida.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEÇÃO V: RELAÇÃO HUMANO — INTELIGÊNCIA ARTIFICIAL -->
+            <section class="section-separator" style="background: var(--bg-night);">
+                <div class="glow-orb glow-orb-secondary" style="top: 20%; right: -5%;"></div>
+                <div class="structural-line"></div>
+                <div class="editorial-content">
+                    <h4 class="kicker" style="text-align: center;">V. COOPERAÇÃO CONSCIENTE</h4>
+                    <h2 style="font-size: 2.5rem; text-align: center; margin-bottom: 20px;">Relação Humano — <span class="text-gold">Inteligência Artificial</span></h2>
+                    <p class="cinematic-desc" style="max-width: 750px; margin: 0 auto 50px auto; text-align: center;">
+                        A inteligência artificial deve operar sob cooperação consciente e apoio à organização epistemológica, servindo como instrumento de clarificação conceptual, auxílio à transmissibilidade do conhecimento e extensão técnica da investigação humana.
+                    </p>
+
+                    <div class="attributes-grid">
+                        <!-- Atributos do Humano -->
+                        <div class="attributes-card premium-glass-card">
+                            <div class="attributes-header">
+                                <span style="color: #fff; font-weight: 600;">Atributos do Humano</span>
+                                <span style="font-size: 0.7rem; color: var(--color-gold); letter-spacing: 1px;">DIREÇÃO</span>
+                            </div>
+                            <ul class="attributes-list">
+                                <li>Intuição</li>
+                                <li>Experiência</li>
+                                <li>Discernimento</li>
+                                <li>Responsabilidade</li>
+                                <li>Direção Filosófica</li>
+                            </ul>
+                        </div>
+
+                        <!-- Atributos da IA -->
+                        <div class="attributes-card premium-glass-card">
+                            <div class="attributes-header">
+                                <span style="color: #fff; font-weight: 600;">Atributos da IA (Tecno-Lógica)</span>
+                                <span style="font-size: 0.7rem; color: var(--color-gold); letter-spacing: 1px;">MEDIAÇÃO</span>
+                            </div>
+                            <ul class="attributes-list">
+                                <li>Organização</li>
+                                <li>Clarificação</li>
+                                <li>Estruturação</li>
+                                <li>Mediação Linguística</li>
+                                <li>Apoio à Transmissibilidade</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Princípio de Não-Substituição -->
+                    <div class="warning-card" style="border-color: rgba(199, 161, 83, 0.4); background: rgba(10,12,18,0.6); max-width: 900px; margin: 40px auto 0 auto;">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+                        </svg>
+                        <div>
+                            <div class="warning-title" style="color: var(--color-white); font-weight: 800;">🚫 PRINCÍPIO DE NÃO-SUBSTITUIÇÃO</div>
+                            <p class="warning-text" style="color: rgba(255,255,255,0.85); margin-top: 8px;">
+                                A IA não substitui a consciência, a experiência, o discernimento, nem a responsabilidade moral. A responsabilidade ética, filosófica, científica e civilizacional permanece integralmente humana. A Tecno-Lógica auxilia unicamente a transformar emergências intuitivas humanas em linguagem organizada, estrutura investigativa e comunicação científica contemporânea.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEÇÃO VI: PRINCÍPIOS EPISTEMOLÓGICOS -->
+            <section class="section-separator" style="background: transparent;">
+                <div class="glow-orb glow-orb-primary" style="bottom: 10%; left: -5%;"></div>
+                <div class="structural-line"></div>
+                <div class="editorial-content" style="display: flex; flex-wrap: wrap; gap: 60px;">
+                    <div style="flex: 1.2; min-width: 320px;">
+                        <h4 class="kicker">VI. PRINCÍPIOS EPISTEMOLÓGICOS</h4>
+                        <h2 style="font-size: 2.2rem; margin-bottom: 25px; letter-spacing: -0.5px;">Diretrizes de <span class="text-gold">Sustentação Epistémica</span></h2>
+                        <ul class="bullet-list">
+                            <li style="font-size: 0.95rem; margin-bottom: 20px;">
+                                <strong>Abertura Investigativa:</strong> Reconhecimento explícito dos limites do conhecimento humano e abertura ativa ao debate e ao contraditório.
+                            </li>
+                            <li style="font-size: 0.95rem; margin-bottom: 20px;">
+                                <strong>Prudência Epistemológica:</strong> Distinção clara e transparente entre hipótese filosófica, investigação científica experimental, linguagem simbólica e afirmação cientificamente verificável.
+                            </li>
+                            <li style="font-size: 0.95rem; margin-bottom: 20px;">
+                                <strong>Diálogo Interdisciplinar:</strong> Aprofundamento e integração crítica com diferentes disciplinas e metodologias tradicionais e contemporâneas do conhecimento.
+                            </li>
+                            <li style="font-size: 0.95rem; margin-bottom: 20px;">
+                                <strong>Revisão Contínua:</strong> A estrutura teórica não reivindica verdade absoluta e permanece sob constante avaliação pelos pares humanos.
+                            </li>
+                            <li style="font-size: 0.95rem; margin-bottom: 20px;">
+                                <strong>Responsabilidade Ética:</strong> A continuidade constitui o critério ético regulador fundamental. Todo o avanço deve preservar, regenerar ou ampliar a dignidade e integridade da vida humana concreta.
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- SEÇÃO VII: DIFERENCIAÇÃO EPISTEMOLÓGICA (Tabela) -->
+                    <div style="flex: 1; min-width: 300px;">
+                        <h4 class="kicker">VII. DIFERENCIAÇÃO EPISTEMOLÓGICA</h4>
+                        <h2 style="font-size: 2.2rem; margin-bottom: 25px; letter-spacing: -0.5px;">Tabela <span class="text-gold">Comparativa</span></h2>
+                        
+                        <div class="comparison-table-wrapper">
+                            <table class="comparison-table">
+                                <thead>
+                                    <tr>
+                                        <th>Campo</th>
+                                        <th>Foco Principal</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Biotecnologia</td>
+                                        <td>Optimização biológica e manipulação genética.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Astrobiologia</td>
+                                        <td>Busca e estudo de vida fora da Terra.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Neurotecnologia</td>
+                                        <td>Ampliação cognitiva e interface cérebro-computador.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>IA aplicada</td>
+                                        <td>Automação de tarefas e processamento algorítmico de dados.</td>
+                                    </tr>
+                                    <tr class="highlight">
+                                        <td>ASTROBIOTECNIA</td>
+                                        <td>Continuidade integrada da vida humana (integrando ética, percepção, ecologia, continuidade civilizacional e responsabilidade tecnológica).</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEÇÃO VIII: LINHAS PRIORITÁRIAS DE INVESTIGAÇÃO -->
+            <section class="section-separator" style="background: var(--bg-night);">
+                <div class="glow-orb glow-orb-secondary" style="top: 25%; right: -5%;"></div>
+                <div class="structural-line"></div>
+                <div class="editorial-content">
+                    <h4 class="kicker" style="text-align: center;">VIII. ÁREAS DE CONCENTRAÇÃO</h4>
+                    <h2 style="font-size: 2.8rem; text-align: center; margin-bottom: 20px; letter-spacing: -1px;">Linhas Prioritárias de <span class="text-gold">Investigação</span></h2>
+                    
+                    <div class="research-lines-grid">
+                        <div class="research-line-card">
+                            <div class="research-line-title">Consciência e Inteligência</div>
+                            <div class="research-line-desc">Investigação sobre a consciência humana, processos cognitivos, neuro-regulação, recuperação perceptiva no ambiente pós-digital, bem como inteligência artificial e alinhamento ético de algoritmos.</div>
+                        </div>
+                        <div class="research-line-card">
+                            <div class="research-line-title">Cosmologia e Origem</div>
+                            <div class="research-line-desc">Estudos sobre a dinâmica do universo, a origem da vida baseada e não-baseada em carbono, tempo biológico e físico, desenvolvimento da consciência e habitabilidade planetária avançada.</div>
+                        </div>
+                        <div class="research-line-card">
+                            <div class="research-line-title">Continuidade Civilizacional</div>
+                            <div class="research-line-desc">Pesquisa sobre identidade civilizacional, reconforto existencial humano, reconstrução da pertença comunitária, memória coletiva, tecnologias sociais, soberania perceptiva e epistemologias africanas aplicadas.</div>
+                        </div>
+                        <div class="research-line-card">
+                            <div class="research-line-title">Ecologia Regenerativa</div>
+                            <div class="research-line-desc">Desenvolvimento de sistemas vivos adaptativos, processos de regeneração ambiental no solo e ar, modelos de sustentabilidade circular integrada e biologia regenerativa aplicada à sobrevivência orgânica.</div>
+                        </div>
+                        <div class="research-line-card">
+                            <div class="research-line-title">Continuidade Extra-Terrestre</div>
+                            <div class="research-line-desc">Protocolos de sustentação da vida humana em ambientes espaciais, bioética da exploração espacial, psicologia orbital de longa permanência, adaptação biológica extraterrestre e sustentabilidade fora do planeta de origem.</div>
+                        </div>
+                        <div class="research-line-card">
+                            <div class="research-line-title">Linguagem e Educação</div>
+                            <div class="research-line-desc">Símbolos e semiótica da transmissão de dados, tradução entre intuição e linguagem organizada, formação ética da consciência e pensamento sistémico voltado a uma educação concreta.</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEÇÃO IX: ORIENTAÇÃO INVESTIGATIVA (FLUXO) -->
+            <section class="section-separator" style="background: transparent;">
+                <div class="glow-orb glow-orb-primary" style="bottom: 20%; left: -5%;"></div>
+                <div class="structural-line"></div>
+                <div class="editorial-content">
+                    <h4 class="kicker" style="text-align: center;">IX. ORIENTAÇÃO INVESTIGATIVA</h4>
+                    <h2 style="font-size: 2.8rem; text-align: center; margin-bottom: 20px; letter-spacing: -1px;">Fluxo de <span class="text-gold">Publicação e Validação</span></h2>
+                    <p class="cinematic-desc" style="max-width: 700px; margin: 0 auto 50px auto; text-align: center;">
+                        Todo o conteúdo científico ou reflexivo produzido no ecossistema segue uma estrutura de validação que salvaguarda a autoria e responsabilidade exclusivamente humanas:
+                    </p>
+
+                    <div class="flow-container">
+                        <div class="flow-step highlight">1. Emergência Intuitiva (Humano)</div>
+                        <div class="flow-arrow"></div>
+                        <div class="flow-step">2. Submissão de Ideias e Reflexões</div>
+                        <div class="flow-arrow"></div>
+                        <div class="flow-step">3. Estruturação Tecno-Lógica (IA como Instrumento)</div>
+                        <div class="flow-arrow"></div>
+                        <div class="flow-step">4. Clarificação e Coerência Epistemológica</div>
+                        <div class="flow-arrow"></div>
+                        <div class="flow-step highlight">5. Validação Humana e Ética</div>
+                        <div class="flow-arrow"></div>
+                        <div class="flow-step">6. Publicação e Diálogo Aberto</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEÇÃO X: ENQUADRAMENTO INSTITUCIONAL -->
+            <section class="section-separator" style="background: var(--bg-night); border-bottom: none;">
+                <div class="glow-orb glow-orb-secondary" style="top: 20%; right: -5%;"></div>
+                <div class="structural-line"></div>
+                <div class="editorial-content">
+                    <h4 class="kicker" style="text-align: center;">X. ENQUADRAMENTO INSTITUCIONAL</h4>
+                    <h2 style="font-size: 2.5rem; text-align: center; margin-bottom: 50px;">Eixos de <span class="text-gold">Sustentação do Campo</span></h2>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px;">
+                        <div class="premium-glass-card" style="border-top-color: var(--color-gold);">
+                            <h3 style="font-size: 1.4rem; color: #fff; margin-bottom: 20px;">Universidade MAHAMBA</h3>
+                            <p class="small-dim" style="line-height: 1.7; font-size: 0.9rem;">
+                                Espaço institucional supremo voltado à preservação documental, investigação transdisciplinar avançada, debate filosófico profundo e maturação coletiva e contínua da ASTROBIOTECNIA.
+                            </p>
+                        </div>
+                        <div class="premium-glass-card" style="border-top-color: var(--color-gold);">
+                            <h3 style="font-size: 1.4rem; color: #fff; margin-bottom: 20px;">ID&IA</h3>
+                            <p class="small-dim" style="line-height: 1.7; font-size: 0.9rem;">
+                                Instituto de Identidade e Inteligência Artificial. Atua como o eixo operacional de investigação e desenvolvimento tecnológico prático relacionado à inteligência artificial, identidade clássica, consciência cognitiva e mediação Tecno-Lógica.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CONSIDERATION FINAL / QUOTE BANNER -->
+            <section class="section-separator" style="padding: 100px var(--padding-global); text-align: center; background: radial-gradient(circle at center, rgba(199, 161, 83, 0.08) 0%, var(--bg-dark) 85%); border-top: 1px solid rgba(255,255,255,0.05);">
+                <div class="glow-orb glow-orb-primary" style="top: 20%; left: 35%;"></div>
+                <div class="editorial-content" style="max-width: 950px; margin: 0 auto;">
+                    <h4 class="kicker" style="margin-bottom: 20px;">CONSIDERAÇÃO FINAL</h4>
+                    <h2 style="font-size: clamp(1.4rem, 2.5vw, 2.2rem); font-family: var(--font-body); font-weight: 300; margin-bottom: 30px; line-height: 1.6; color: rgba(255, 255, 255, 0.95); font-style: italic;">
+                        "A ASTROBIOTECNIA não procura concluir o mistério da existência. Procura preservar a possibilidade de o humano continuar a interrogá-lo conscientemente, investigando como a humanidade poderá expandir-se tecnologicamente, habitar novos ambientes e desenvolver inteligência artificial sem romper a continuidade da vida, a integridade perceptiva, a dignidade humana e a responsabilidade ética."
+                    </h2>
+                    <h2 class="text-gold" style="font-size: clamp(1.5rem, 3.5vw, 2rem); margin-bottom: 35px; font-weight: 600; font-family: var(--font-heading);">
+                        O mistério triológico continuará a vida.
+                    </h2>
+                    <div style="font-family: var(--font-heading); letter-spacing: 3px; font-size: 1.15rem; color: rgba(255,255,255,0.9); font-weight: 600;">
+                        MA-HA-MBA
+                    </div>
+                </div>
+            </section>
+
+            <!-- FOOTER -->
+            <footer class="footer-section" style="padding-top: 80px;">
+                <div class="footer-grid" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));">
+                    <div class="footer-col">
+                        <a href="/index.html"><img src="/ideiaa.png" alt="ID&IA" style="height:36px; margin-bottom:12px; display:block;"></a>
+                        <p style="font-size: 0.9rem; font-weight: 500; color: var(--color-white); margin-bottom: 5px;">Instituto de Identidade<br>e Inteligência Artificial</p>
+                        <p style="font-size: 0.75rem; color: rgba(255,255,255,0.6);">Identidade, Consciência & Tecnologia</p>
+                    </div>
+                    <div class="footer-col">
+                        <h5 style="color: var(--color-white);">INSTITUTO</h5>
+                        <ul>
+                            <li><a href="/instituto.html">Visão e Missão</a></li>
+                            <li><a href="/sobre-nos.html">Sobre Nós</a></li>
+                            <li><a href="/africa-concreta.html">África Concreta</a></li>
+                            <li><a href="/mahamba.html">Metodologia MAHAMBA</a></li>
+                            <li><a href="/ideia-africa.html">Ideia África</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h5 style="color: var(--color-white);">ÁREAS</h5>
+                        <ul>
+                            <li><a href="/areas-estrategicas.html">Identidade</a></li>
+                            <li><a href="/areas-estrategicas.html">Inteligência Artificial</a></li>
+                            <li><a href="/areas-estrategicas.html">Transformação</a></li>
+                            <li><a href="/areas-estrategicas.html">Soberania</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h5 style="color: var(--color-white);">CENTROS</h5>
+                        <ul>
+                            <li><a href="/centros.html">Observatório</a></li>
+                            <li><a href="/centros.html">Lab MALELWA</a></li>
+                            <li><a href="/centros.html">Centro MAHAMBA</a></li>
+                            <li><a href="/centros.html">Soberania Tecnológica</a></li>
+                            <li><a href="/centros.html">Rede África</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col" style="min-width: 170px;">
+                        <h5 style="color: var(--color-white);">ECOSSISTEMA</h5>
+                        <ul>
+                            <li><a href="/projectos.html">Projectos</a></li>
+                            <li><a href="/publicacoes.html">Publicações</a></li>
+                            <li><a href="/investimento.html">Investimento</a></li>
+                            <li><a href="/noticias.html">Notícias & Eventos</a></li>
+                            <li><a href="/ideia-global.html">Ideia Global</a></li>
+                            <li><a href="/travessia-continentes.html">Travessia Continentes</a></li>
+                            <li><a href="/humano-concreto.html">Humano Concreto</a></li>
+                            <li><a href="/o-livro-o-filme.html">O Livro e O Filme</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col" style="min-width: 200px;">
+                        <h5 style="color: var(--color-white);">CONTACTO</h5>
+                        <p style="font-size: 0.8rem; color: rgba(255,255,255,0.6); margin-bottom: 10px;">geral@idia-africa.com</p>
+                        <p style="font-size: 0.8rem; color: rgba(255,255,255,0.6);">Cuito Cuanavale, Província do Cuando<br>Angola, África</p>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <p>&copy; 2026 ID&IA – Instituto de Identidade e Inteligência Artificial. Todos os direitos reservados.</p>
+                    <p class="text-gold">MAHAMBA ECOSSISTEMA →</p>
+                </div>
+            </footer>
+        </div>
+    </main>
+    <script type="module" src="/src/main.js"></script>
+</body>
+</html>
