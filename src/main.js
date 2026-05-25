@@ -564,7 +564,7 @@ function initApp() {
             }
         });
 
-        // Fallback: garantir que contadores já visíveis no viewport sejam animados
+        // Fallback: garantir que contadores e suas caixas fiquem visíveis e sejam animados
         // (ex: se a página é curta ou o utilizador recarrega com scroll no meio)
         setTimeout(() => {
             counters.forEach(counter => {
@@ -573,6 +573,14 @@ function initApp() {
                     if (rect.top < window.innerHeight) {
                         animateCounter(counter);
                     }
+                }
+            });
+
+            // Garantir que as caixas de estatísticas fiquem visíveis se o ScrollTrigger falhar
+            const boxes = document.querySelectorAll('.stat-counter-box');
+            boxes.forEach(box => {
+                if (box.dataset.animatedBox !== 'true') {
+                    gsap.to(box, { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" });
                 }
             });
         }, 1500);
@@ -585,6 +593,12 @@ function initApp() {
             scrollTrigger: {
                 trigger: statsGridEl,
                 start: "top 85%",
+                once: true,
+                onEnter: () => {
+                    document.querySelectorAll('.stat-counter-box').forEach(box => {
+                        box.dataset.animatedBox = 'true';
+                    });
+                }
             },
             y: 50,
             opacity: 0,
