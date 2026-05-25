@@ -4,9 +4,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// URLs dos ativos (caminhos absolutos para funcionar tanto em dev quanto em produção)
-const videoUrl = '/vidbanner.mp4';
-const logoUrl = '/ideiaa.png';
+import videoUrl from '../vidbanner.mp4';
+import logoUrl from '../ideiaa.png';
 
 // --------------------------------------------------------------------------
 // Lançamento ID&IA - Contagem Regressiva WAT (Angola: UTC+1)
