@@ -345,6 +345,32 @@
             color: rgba(255,255,255,0.65);
             line-height: 1.6;
         }
+        @media (max-width: 992px) {
+            .movie-hero .kicker {
+                font-size: 0.8rem !important;
+                letter-spacing: 2px !important;
+                max-width: 90% !important;
+                margin: 0 auto 15px auto !important;
+                display: block !important;
+            }
+            .movie-hero .massive-title {
+                font-size: clamp(2rem, 7.5vw, 4.5rem) !important;
+                line-height: 1.0 !important;
+                word-wrap: break-word !important;
+                max-width: 95% !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
+            }
+        }
+        @media (max-width: 480px) {
+            .movie-hero .kicker {
+                font-size: 0.7rem !important;
+                letter-spacing: 1px !important;
+            }
+            .movie-hero .massive-title {
+                font-size: clamp(1.6rem, 10vw, 2.5rem) !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -622,7 +648,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
                         </svg>
                         <div>
-                            <div class="warning-title" style="color: var(--color-white); font-weight: 800;">🚫 PRINCÍPIO DE NÃO-SUBSTITUIÇÃO</div>
+                            <div class="warning-title" style="color: var(--color-white); font-weight: 800;">PRINCÍPIO DE NÃO-SUBSTITUIÇÃO</div>
                             <p class="warning-text" style="color: rgba(255,255,255,0.85); margin-top: 8px;">
                                 A IA não substitui a consciência, a experiência, o discernimento, nem a responsabilidade moral. A responsabilidade ética, filosófica, científica e civilizacional permanece integralmente humana. A Tecno-Lógica auxilia unicamente a transformar emergências intuitivas humanas em linguagem organizada, estrutura investigativa e comunicação científica contemporânea.
                             </p>
