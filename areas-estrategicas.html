@@ -9,10 +9,9 @@
     <style>
         
         .long-section {
-            min-height: 100vh;
+            padding: clamp(80px, 14vh, 120px) var(--padding-global);
             display: flex;
-            align-items: center;
-            padding: var(--padding-global);
+            align-items: flex-start;
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
         .long-content {
@@ -134,7 +133,7 @@
                         <footer class="footer-section" style="padding-top: 80px;">
                 <div class="footer-grid" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));">
                     <div class="footer-col">
-                        <p style="font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-bottom: 5px;">Logo</p>
+                        <a href="/index.html"><img src="/ideiaa.png" alt="ID&IA" style="height:36px; margin-bottom:12px; display:block;"></a>
                         <p style="font-size: 0.9rem; font-weight: 500; color: var(--color-white); margin-bottom: 5px;">Instituto de Identidade<br>e Inteligência Artificial</p>
                         <p style="font-size: 0.75rem; color: rgba(255,255,255,0.6);">Identidade, Consciência & Tecnologia</p>
                     </div>

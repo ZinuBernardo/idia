@@ -19,7 +19,7 @@
     "vite-plugin-image-optimizer": "^2.0.3"
   },
   "dependencies": {
-    "@studio-freight/lenis": "^1.0.42",
-    "gsap": "^3.12.5"
+    "gsap": "^3.12.5",
+    "lenis": "^1.1.18"
   }
 }
