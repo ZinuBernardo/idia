@@ -13,6 +13,7 @@ import logoUrl from '../ideiaa.png';
 const TARGET_TIME = Date.UTC(2026, 4, 25, 21, 1, 0); // Ajustado para terminar às 21:01, exibindo a diferença correta a partir das 13:27 do computador
 let isCountdownActive = false;
 let countdownInterval = null;
+let lenis;
 
 function formatNumber(num) {
     return num.toString().padStart(2, '0');
