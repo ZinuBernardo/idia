@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Museu da Travessia Civilizacional | ID&IA Global</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/style.css">
+    <style>
+        .museu-gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+            margin-bottom: 60px;
+        }
+        .museu-gallery-item {
+            position: relative;
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.05);
+            background: rgba(5,5,5,0.4);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            aspect-ratio: 4/5;
+        }
+        .museu-gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .museu-gallery-item:hover {
+            transform: translateY(-8px);
+            border-color: var(--color-gold);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5), 0 0 15px rgba(199,161,83,0.1);
+        }
+        .museu-gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        .museu-gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 25px;
+            background: linear-gradient(to top, rgba(5,5,5,0.9) 0%, rgba(5,5,5,0.4) 60%, transparent 100%);
+            box-sizing: border-box;
+            border-top: 1px solid rgba(255,255,255,0.03);
+        }
+        .museu-gallery-caption h4 {
+            color: var(--color-gold);
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+        }
+        .museu-gallery-caption p {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.4;
+        }
+        .editorial-content {
+            padding: 60px var(--padding-global);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .intro-lead {
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            line-height: 1.6;
+            font-weight: 300;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 50px;
+            border-left: 3px solid var(--color-gold);
+            padding-left: 30px;
+        }
+        .concept-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .concept-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 40px;
+            border-top: 2px solid var(--color-gold);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .concept-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.04);
+            border-color: var(--color-gold);
+        }
+        .concept-tag {
+            font-family: var(--font-heading);
+            color: var(--color-gold);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+        .concept-title {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+        .concept-desc {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        .bullet-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .bullet-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 10px;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+        }
+        .bullet-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--color-gold);
+            font-weight: bold;
+        }
+        .section-separator {
+            padding: clamp(80px, 12vh, 120px) var(--padding-global);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            position: relative;
+        }
+        .quote-banner {
+            border-top: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            background: var(--bg-night);
+        }
+        .rooms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        .room-card {
+            background: rgba(5,5,5,0.4);
+            border: 1px solid rgba(255,255,255,0.03);
+            border-radius: 4px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .room-card::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--color-gold);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+        .room-card:hover {
+            border-color: rgba(199,161,83,0.2);
+            background: rgba(255,255,255,0.02);
+            transform: translateY(-3px);
+        }
+        .room-card:hover::after {
+            transform: scaleX(1);
+        }
+    </style>
+</head>
+<body>
+    <svg style="display: none;">
+        <defs>
+            <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#F2D091" />
+                <stop offset="50%" stop-color="#C7A153" />
+                <stop offset="100%" stop-color="#8C6B2D" />
+            </linearGradient>
+        </defs>
+    </svg>
+    <canvas id="noise-canvas"></canvas>
+    <div class="custom-cursor"></div>
+    
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <a href="/index.html"><img src="/ideiaa.png" alt="ID&IA" class="nav-logo"></a>
+            <div class="nav-text" style="display:none;">
+                <span class="brand-name">ID&IA</span>
+            </div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/index.html">INÍCIO</a></li>
+            <li><a href="/instituto.html">O INSTITUTO</a></li>
+            <li><a href="/sobre-nos.html">SOBRE NÓS</a></li>
+            <li><a href="/humano-concreto.html">HUMANO CONCRETO</a></li>
+            <li><a href="/areas-estrategicas.html">ÁREAS</a></li>
+            <li><a href="/centros.html">CENTROS</a></li>
+            <li><a href="/astrobiotecnia.html">ASTROBIOTECNIA</a></li>
+            <li><a href="/museu.html">MUSEU</a></li>
+            <li class="has-dropdown">
+                <a href="#">ECOSSISTEMA ▾</a>
+                <ul class="dropdown">
+                    <li><a href="/projectos.html">Projectos</a></li>
+                    <li><a href="/investimento.html">Investimento</a></li>
+                </ul>
+            </li>
+            <li><a href="/contacto.html">CONTACTO</a></li>
+            <li><a href="/parcerias.html" class="btn btn-primary" style="padding: 8px 15px; font-size: 0.65rem;">PARCERIAS</a></li>
+        </ul>
+        <div class="menu-toggle"><span></span><span></span></div>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu">
+        <ul class="mobile-links">
+            <li><a href="/index.html">INÍCIO</a></li>
+            <li><a href="/instituto.html">O INSTITUTO</a></li>
+            <li><a href="/sobre-nos.html">SOBRE NÓS</a></li>
+            <li><a href="/humano-concreto.html">HUMANO CONCRETO</a></li>
+            <li><a href="/areas-estrategicas.html">ÁREAS</a></li>
+            <li><a href="/centros.html">CENTROS</a></li>
+            <li><a href="/astrobiotecnia.html">ASTROBIOTECNIA</a></li>
+            <li><a href="/museu.html">MUSEU</a></li>
+            <li><a href="/projectos.html">PROJECTOS</a></li>
+            <li><a href="/investimento.html">INVESTIMENTO</a></li>
+            <li><a href="/contacto.html">CONTACTO</a></li>
+            <li><a href="/parcerias.html">PARCERIAS</a></li>
+        </ul>
+    </div>
+
+    <main id="smooth-wrapper">
+        <div id="smooth-content">
+            
+            <!-- HERO SECTION -->
+            <section class="movie-hero">
+                <img src="/museu_galeria_3.png" alt="Museu da Travessia Civilizacional" class="parallax-bg" style="filter: brightness(0.4) contrast(1.1);">
+                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(0deg, var(--bg-dark) 0%, rgba(5,5,5,0.7) 40%, rgba(5,5,5,0.3) 100%); pointer-events: none;"></div>
+                <div style="position: relative; z-index: 2;">
+                    <h4 class="kicker">ESPAÇO CIVILIZACIONAL</h4>
+                    <h1 class="massive-title">MUSEU DA <span class="text-gold">TRAVESSIA</span></h1>
+                    <p class="cinematic-desc" style="max-width: 800px; margin: 15px auto 0 auto; font-size: clamp(0.9rem, 2vw, 1.15rem); line-height: 1.5; color: rgba(255,255,255,0.85);">
+                        Documento fundacional, declarativo e científico-conceptual sobre a travessia humana entre aceleração tecnológica e continuidade da vida concreta.
+                    </p>
+                </div>
+            </section>
+
+            <!-- SEÇÃO 1: QUEM SOMOS / O NOSSO PRINCÍPIO -->
+            <section class="section-separator" style="background: transparent;">
+                <div class="glow-orb glow-orb-primary" style="top: 20%; left: -10%;"></div>
+                <div class="structural-line"></div>
+                <div class="editorial-content">
+                    <div class="intro-lead">
+                        O Museu da Travessia Civilizacional nasce como uma estrutura viva de observação, documentação, reorganização perceptiva e mediação consciente da travessia humana contemporânea. Não é um museu tradicional de conservação histórica; é um espaço civilizacional de leitura da transição humana, memória activa, laboratório perceptivo e centro de convergência entre ciência, cultura, tecnologia, regeneração e continuidade.
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 50px; margin-top: 60px;">
+                        <div>
+                            <h4 class="kicker" style="margin-bottom: 15px;">QUEM SOMOS</h4>
+                            <h2 style="font-size: 2.2rem; margin-bottom: 25px; line-height: 1.1; letter-spacing: -0.5px;">Uma resposta às <span class="text-gold">mudanças da era presente</span></h2>
+                            <p style="color: rgba(255,255,255,0.8); line-height: 1.7; font-size: 0.95rem; margin-bottom: 20px;">
+                                O Museu surge para interpretar e acompanhar a profunda transformação que a humanidade atravessa no presente, caracterizada pela aceleração sem precedentes e reconfiguração total dos eixos da nossa sociedade.
+                            </p>
+                            <ul class="bullet-list" style="margin-top: 25px;">
+                                <li>Expansão algorítmica e aceleração tecnológica</li>
+                                <li>Emergência da inteligência artificial aplicada</li>
+                                <li>Reorganização ecológica e bioinformacional</li>
+                                <li>Expansão astro-civilizacional e espacial</li>
+                                <li>Fragmentação perceptiva e deslocamentos culturais</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="kicker" style="margin-bottom: 15px;">O NOSSO PRINCÍPIO</h4>
+                            <h2 style="font-size: 2.2rem; margin-bottom: 25px; line-height: 1.1; letter-spacing: -0.5px;">A centralidade da <span class="text-gold">vida humana concreta</span></h2>
+                            <p style="color: rgba(255,255,255,0.8); line-height: 1.7; font-size: 0.95rem; margin-bottom: 20px;">
+                                Partimos da ideia de que a humanidade vive mais do que uma mudança tecnológica. Vive uma reorganização profunda da percepção, da memória, da identidade e da continuidade.
+                            </p>
+                            <div class="premium-glass-card" style="margin-top: 30px; border-left: 2px solid var(--color-gold); padding: 25px;">
+                                <p style="font-style: italic; color: rgba(255,255,255,0.9); font-size: 0.95rem; line-height: 1.6; margin: 0;">
+                                    "A continuidade humana concreta deve permanecer o eixo regulador da expansão tecnológica, biológica e astro-civilizacional."
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ACERVO VIRTUAL / GALERIA DE IMAGENS -->
+            <section class="section-separator" style="background: var(--bg-night);">
+                <div class="glow-orb glow-orb-secondary" style="top: 15%; right: -5%;"></div>
+                <div class="structural-line"></div>
+                <div class="editorial-content">
+                    <h4 class="kicker" style="text-align: center; margin-bottom: 15px;">ACERVO CONCEITUAL</h4>
+                    <h2 style="font-size: 2.5rem; text-align: center; margin-bottom: 15px;">Arte, Identidade e <span class="text-gold">Tecnologia Algorítmica</span></h2>
+                    <p class="cinematic-desc" style="max-width: 600px; margin: 0 auto 30px auto; text-align: center;">
+                        Explorações visuais que interpretam a fusão entre a herança orgânica tradicional africana e o desenvolvimento futurista cibernético.
+                    </p>
+                    
+                    <div class="museu-gallery-grid">
+                        <div class="museu-gallery-item">
+                            <img src="/museu_galeria_1.png" alt="Esculturas de luz e silício">
+                            <div class="museu-gallery-caption">
+                                <h4>01 / Esculturas Tecnológicas</h4>
+                                <p>Símbolos e máscaras africanas reinterpretadas a partir de filamentos de luz e padrões de silício.</p>
+                            </div>
+                        </div>
+                        <div class="museu-gallery-item">
+                            <img src="/museu_galeria_2.png" alt="Padrões geométricos em 3D">
+                            <div class="museu-gallery-caption">
+                                <h4>02 / Geometria Sagrada Digital</h4>
+                                <p>Padrões tradicionais Kente e Mudcloth estilizados digitalmente em estruturas tridimensionais metálicas.</p>
+                            </div>
+                        </div>
+                        <div class="museu-gallery-item">
+                            <img src="/museu_galeria_3.png" alt="Retrato cibernético africano">
+                            <div class="museu-gallery-caption">
+                                <h4>03 / Consciência de Silício</h4>
+                                <p>Retrato digital da união harmoniosa da biologia com implantes de circuitos de ouro.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEÇÃO 2: O CONCEITO DE TRAVESSIA CIVILIZACIONAL -->
+            <section class="section-separator" style="background: transparent;">
+                <div class="glow-orb glow-orb-primary" style="bottom: 10%; left: -5%;"></div>
+                <div class="structural-line"></div>
+                <div class="editorial-content" style="display: flex; flex-wrap: wrap; gap: 50px; align-items: center;">
+                    <div style="flex: 1.2; min-width: 320px;">
+                        <h4 class="kicker">ENTENDENDO O MOMENTO</h4>
+                        <h2 style="font-size: clamp(2.2rem, 4vw, 3rem); line-height: 1.1; margin-bottom: 25px; letter-spacing: -1px;">
+                            O que é a <span class="text-gold">Travessia Civilizacional?</span>
+                        </h2>
+                        <p style="color: rgba(255,255,255,0.85); font-size: 1rem; line-height: 1.7; margin-bottom: 25px;">
+                            A Travessia Civilizacional representa o período histórico em que a humanidade atravessa simultaneamente mudanças profundas na tecnologia, na percepção, na identidade e na relação com a própria continuidade da vida.
+                        </p>
+                        <p style="color: rgba(255,255,255,0.65); font-size: 0.9rem; line-height: 1.7;">
+                            O Museu interpreta este processo não apenas como um colapso iminente das estruturas tradicionais, mas sim como uma travessia ativa – um movimento transformador que envolve adaptabilidade, ecologia regenerativa, mediação ética e preservação da nossa essência.
+                        </p>
+                    </div>
+                    
+                    <div style="flex: 1; min-width: 300px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div class="premium-glass-card" style="padding: 25px;">
+                            <h4 class="text-gold" style="font-size: 0.95rem; margin-bottom: 10px;">Ruptura Perceptiva</h4>
+                            <p style="font-size: 0.75rem; color: rgba(255,255,255,0.6); line-height: 1.4; margin: 0;">Reorganização dos sentidos sob a influência digital.</p>
+                        </div>
+                        <div class="premium-glass-card" style="padding: 25px;">
+                            <h4 class="text-gold" style="font-size: 0.95rem; margin-bottom: 10px;">Crise Ecológica</h4>
+                            <p style="font-size: 0.75rem; color: rgba(255,255,255,0.6); line-height: 1.4; margin: 0;">Desafios climáticos e regeneração planetária ativa.</p>
+                        </div>
+                        <div class="premium-glass-card" style="padding: 25px;">
+                            <h4 class="text-gold" style="font-size: 0.95rem; margin-bottom: 10px;">Convergência</h4>
+                            <p style="font-size: 0.75rem; color: rgba(255,255,255,0.6); line-height: 1.4; margin: 0;">Interação profunda e união híbrida de homem e máquina.</p>
+                        </div>
+                        <div class="premium-glass-card" style="padding: 25px;">
+                            <h4 class="text-gold" style="font-size: 0.95rem; margin-bottom: 10px;">Expansão Espacial</h4>
+                            <p style="font-size: 0.75rem; color: rgba(255,255,255,0.6); line-height: 1.4; margin: 0;">Continuidade da consciência e da vida fora da Terra.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEÇÃO 3: A TRIOLOGIA LÓGICA -->
+            <section class="section-separator" style="background: var(--bg-night);">
+                <div class="glow-orb glow-orb-secondary" style="top: 25%; right: -5%;"></div>
+                <div class="structural-line"></div>
+                <div class="editorial-content">
+                    <h4 class="kicker" style="text-align: center; margin-bottom: 15px;">ARQUITECTURA CONCEPTUAL</h4>
+                    <h2 style="font-size: 2.8rem; text-align: center; margin-bottom: 20px; letter-spacing: -1px;">A <span class="text-gold">Triologia Lógica</span></h2>
+                    <p class="cinematic-desc" style="max-width: 600px; margin: 0 auto 50px auto; text-align: center;">
+                        A estruturação lógica das salas e investigações do Museu organiza-se em torno de três campos fundamentais de continuidade.
+                    </p>
+                    
+                    <div class="concept-grid">
+                        <!-- BIO-LÓGICA -->
+                        <div class="concept-card">
+                            <div>
+                                <span class="concept-tag">CAMPO 01</span>
+                                <h3 class="concept-title">BIO-LÓGICA</h3>
+                                <p class="concept-desc">
+                                    Campo dedicado à continuidade biológica, ecológica e regenerativa da vida humana em simbiose com o planeta.
+                                </p>
+                                <ul class="bullet-list" style="margin-bottom: 30px;">
+                                    <li>Ecologia regenerativa e sistêmica</li>
+                                    <li>Saúde concreta e preservação orgânica</li>
+                                    <li>Alimentação e biodiversidade nativa</li>
+                                    <li>Bioética e regeneração humana</li>
+                                </ul>
+                            </div>
+                            <div style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 20px; font-size: 0.8rem; color: var(--color-gold); font-weight: 500;">
+                                FUNÇÃO: Proteger a integridade da vida física.
+                            </div>
+                        </div>
+                        
+                        <!-- TECNO-LÓGICA -->
+                        <div class="concept-card">
+                            <div>
+                                <span class="concept-tag">CAMPO 02</span>
+                                <h3 class="concept-title">TECNO-LÓGICA</h3>
+                                <p class="concept-desc">
+                                    Campo dedicado à mediação tecnológica, garantindo que os novos sistemas sirvam como facilitadores da humanidade.
+                                </p>
+                                <ul class="bullet-list" style="margin-bottom: 30px;">
+                                    <li>Sistemas inteligentes e algoritmos aplicados</li>
+                                    <li>Próteses cognitivas e automação ética</li>
+                                    <li>Mediação digital e interfaces neurais</li>
+                                    <li>Realidade aumentada e imersão consciente</li>
+                                </ul>
+                            </div>
+                            <div style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 20px; font-size: 0.8rem; color: var(--color-gold); font-weight: 500;">
+                                PRINCÍPIO: Tecnologia como extensão, não substituição.
+                            </div>
+                        </div>
+                        
+                        <!-- ASTRO-LÓGICA -->
+                        <div class="concept-card">
+                            <div>
+                                <span class="concept-tag">CAMPO 03</span>
+                                <h3 class="concept-title">ASTRO-LÓGICA</h3>
+                                <p class="concept-desc">
+                                    Campo voltado para a expansão civilizacional de longo prazo e sobrevivência da espécie em ambientes extraterrestres.
+                                </p>
+                                <ul class="bullet-list" style="margin-bottom: 30px;">
+                                    <li>Habitats espaciais e ecossistemas artificiais</li>
+                                    <li>Bioastronáutica e ética extra-terrestre</li>
+                                    <li>Astrobiotecnia e medicina cósmica</li>
+                                    <li>Continuidade informacional fora da Terra</li>
+                                </ul>
+                            </div>
+                            <div style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 20px; font-size: 0.8rem; color: var(--color-gold); font-weight: 500;">
+                                ASTROBIOTECNIA: Orientação ética extraterrestre.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEÇÃO 4: ESTRUTURA MUSEOLÓGICA (SALAS) -->
+            <section class="section-separator" style="background: transparent;">
+                <div class="glow-orb glow-orb-primary" style="bottom: 20%; left: -5%;"></div>
+                <div class="structural-line"></div>
+                <div class="editorial-content">
+                    <h4 class="kicker" style="text-align: center; margin-bottom: 15px;">A JORNADA DO VISITANTE</h4>
+                    <h2 style="font-size: 2.8rem; text-align: center; margin-bottom: 20px; letter-spacing: -1px;">Estrutura <span class="text-gold">Museológica</span></h2>
+                    <p class="cinematic-desc" style="max-width: 600px; margin: 0 auto 50px auto; text-align: center;">
+                        O espaço do Museu organiza-se de forma dinâmica como museu vivo, laboratório perceptivo, arquivo dinâmico e instalação civilizacional.
+                    </p>
+                    
+                    <div class="rooms-grid">
+                        <div class="room-card">
+                            <h4 class="text-gold" style="font-size: 1.1rem; margin-bottom: 15px; font-family: var(--font-heading);">01 / Sala da Ruptura</h4>
+                            <p style="font-size: 0.8rem; color: rgba(255,255,255,0.6); line-height: 1.6; margin: 0;">
+                                Observação ativa das fraturas do presente: colapso ecológico, dissociação tecnológica, fragmentação perceptiva e hiperaceleração quotidiana.
+                            </p>
+                        </div>
+                        <div class="room-card">
+                            <h4 class="text-gold" style="font-size: 1.1rem; margin-bottom: 15px; font-family: var(--font-heading);">02 / Sala da Memória</h4>
+                            <p style="font-size: 0.8rem; color: rgba(255,255,255,0.6); line-height: 1.6; margin: 0;">
+                                Ancoragem da linguagem, cultura, ancestralidade e memórias colectivas como infraestrutura e base conceitual indispensável de continuidade humana.
+                            </p>
+                        </div>
+                        <div class="room-card">
+                            <h4 class="text-gold" style="font-size: 1.1rem; margin-bottom: 15px; font-family: var(--font-heading);">03 / Sala da Regeneração</h4>
+                            <p style="font-size: 0.8rem; color: rgba(255,255,255,0.6); line-height: 1.6; margin: 0;">
+                                Exibição e estudo prático de ecologia regenerativa, saúde concreta, biotecnia integrada e reorganização regenerativa de sistemas humanos.
+                            </p>
+                        </div>
+                        <div class="room-card">
+                            <h4 class="text-gold" style="font-size: 1.1rem; margin-bottom: 15px; font-family: var(--font-heading);">04 / Sala da Expansão</h4>
+                            <p style="font-size: 0.8rem; color: rgba(255,255,255,0.6); line-height: 1.6; margin: 0;">
+                                Monitoramento da expansão astro-civilizacional: habitats cósmicos, simulação bioastronáutica e protocolos éticos da Astrobiotecnia aplicada.
+                            </p>
+                        </div>
+                        <div class="room-card">
+                            <h4 class="text-gold" style="font-size: 1.1rem; margin-bottom: 15px; font-family: var(--font-heading);">05 / Sala da Tecno-lógica</h4>
+                            <p style="font-size: 0.8rem; color: rgba(255,255,255,0.6); line-height: 1.6; margin: 0;">
+                                Espaço para decifrar a mediação contemporânea: inteligência artificial aplicada, próteses de cognição e sistemas cibernéticos híbridos.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEÇÃO 5: ORDEM MA-HA-MBA -->
+            <section class="section-separator" style="background: var(--bg-night);">
+                <div class="glow-orb glow-orb-secondary" style="top: 20%; right: -5%;"></div>
+                <div class="structural-line"></div>
+                <div class="editorial-content">
+                    <h4 class="kicker" style="text-align: center; margin-bottom: 15px;">FASES DE IMPLEMENTAÇÃO</h4>
+                    <h2 style="font-size: 2.8rem; text-align: center; margin-bottom: 20px; letter-spacing: -1px;">A Ordem <span class="text-gold">MA-HA-MBA</span></h2>
+                    <p class="cinematic-desc" style="max-width: 650px; margin: 0 auto 50px auto; text-align: center;">
+                        A estruturação física, digital e operacional do museu desenvolve-se de maneira gradual através de três fases complementares.
+                    </p>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; margin-top: 40px;">
+                        <!-- MA -->
+                        <div class="premium-glass-card" style="padding: 35px; border-top: 3px solid var(--color-gold);">
+                            <div style="font-family: var(--font-heading); color: var(--color-gold); font-size: 1.8rem; margin-bottom: 15px; font-weight: 800;">MA</div>
+                            <h4 style="margin-bottom: 15px; font-size: 1.1rem;">Fase Virtual e Conceitual</h4>
+                            <p style="font-size: 0.85rem; color: rgba(255,255,255,0.75); line-height: 1.6; margin-bottom: 20px;">
+                                Construção conceitual baseada em uma plataforma interativa de mapeamento digital, arquivo ativo de memória humana, observatório global e experiências imersivas VR/AR.
+                            </p>
+                            <span style="font-size: 0.75rem; font-weight: 600; color: var(--color-gold); letter-spacing: 1px;">OBJECTIVO: MAPEAMENTO</span>
+                        </div>
+                        
+                        <!-- HA -->
+                        <div class="premium-glass-card" style="padding: 35px; border-top: 3px solid var(--color-gold);">
+                            <div style="font-family: var(--font-heading); color: var(--color-gold); font-size: 1.8rem; margin-bottom: 15px; font-weight: 800;">HA</div>
+                            <h4 style="margin-bottom: 15px; font-size: 1.1rem;">Fase Híbrida de Conectividade</h4>
+                            <p style="font-size: 0.85rem; color: rgba(255,255,255,0.75); line-height: 1.6; margin-bottom: 20px;">
+                                Mediação integrada de virtualidade e espaços físicos intermitentes. Realização de laboratórios de discussão abertos, instalações urbanas temporárias e conexões híbridas.
+                            </p>
+                            <span style="font-size: 0.75rem; font-weight: 600; color: var(--color-gold); letter-spacing: 1px;">OBJECTIVO: EXPERIÊNCIA COLECTIVA</span>
+                        </div>
+                        
+                        <!-- MBA -->
+                        <div class="premium-glass-card" style="padding: 35px; border-top: 3px solid var(--color-gold);">
+                            <div style="font-family: var(--font-heading); color: var(--color-gold); font-size: 1.8rem; margin-bottom: 15px; font-weight: 800;">MBA</div>
+                            <h4 style="margin-bottom: 15px; font-size: 1.1rem;">Fase Concreta Territorial</h4>
+                            <p style="font-size: 0.85rem; color: rgba(255,255,255,0.75); line-height: 1.6; margin-bottom: 20px;">
+                                Institucionalização e ancoragem no território através de sede permanente, auditório conceitual, centro de referência civilizacional de investigação avançada e acervo físico.
+                            </p>
+                            <span style="font-size: 0.75rem; font-weight: 600; color: var(--color-gold); letter-spacing: 1px;">OBJECTIVO: ANCORAGEM FÍSICA</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEÇÃO 6: OBJECTIVOS ESTRATÉGICOS / POSICIONAMENTO -->
+            <section class="section-separator" style="background: transparent;">
+                <div class="glow-orb glow-orb-primary" style="bottom: 10%; left: -5%;"></div>
+                <div class="structural-line"></div>
+                <div class="editorial-content" style="display: flex; flex-wrap: wrap; gap: 60px;">
+                    <div style="flex: 1.2; min-width: 320px;">
+                        <h4 class="kicker">METAS CIVILIZACIONAIS</h4>
+                        <h2 style="font-size: 2.2rem; margin-bottom: 25px; letter-spacing: -0.5px;">Objectivos <span class="text-gold">Estratégicos</span></h2>
+                        <ul class="bullet-list">
+                            <li style="font-size: 0.95rem; margin-bottom: 15px;">Documentar em tempo real a travessia civilizacional contemporânea.</li>
+                            <li style="font-size: 0.95rem; margin-bottom: 15px;">Preservar e alimentar a memória ativa da consciência e linguagem humanas.</li>
+                            <li style="font-size: 0.95rem; margin-bottom: 15px;">Desenvolver e divulgar leitura ética e estruturada da expansão tecnológica.</li>
+                            <li style="font-size: 0.95rem; margin-bottom: 15px;">Produzir ferramentas e conceitos de mediação entre inteligência artificial e biologia.</li>
+                            <li style="font-size: 0.95rem; margin-bottom: 15px;">Delinear protocolos astrobiotécnicos de proteção humana extra-terrestre.</li>
+                            <li style="font-size: 0.95rem; margin-bottom: 15px;">Gerar plataformas e caminhos de educação imersiva e reorganização perceptiva.</li>
+                            <li style="font-size: 0.95rem; margin-bottom: 15px;">Ativar lucidez civilizacional e promover reconciliação e reconforto humano.</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="flex: 1; min-width: 300px;">
+                        <h4 class="kicker">RELEVÂNCIA GLOBAL</h4>
+                        <h2 style="font-size: 2.2rem; margin-bottom: 25px; letter-spacing: -0.5px;">Posicionamento <span class="text-gold">Internacional</span></h2>
+                        <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.7; margin-bottom: 20px;">
+                            O Museu da Travessia Civilizacional propõe-se como um centro internacional de observação da transformação humana, servindo como uma plataforma e espaço de convergência interdisciplinar indispensável.
+                        </p>
+                        <p style="color: rgba(255,255,255,0.65); font-size: 0.9rem; line-height: 1.7; margin-bottom: 25px;">
+                            Sua dimensão africana amplia sua abrangência, estabelecendo a África como território civilizacional piloto de reorganização perceptiva da humanidade contemporânea, ligando sabedoria clássica, arte e tecnologia de ponta.
+                        </p>
+                        <div class="premium-glass-card" style="padding: 20px; border-left: 2px solid var(--color-gold); font-size: 0.85rem; color: rgba(255,255,255,0.7); line-height: 1.5;">
+                            Observatório • Laboratório • Arquivo Vivo • Mediação Consciente • Astrobiotecnia
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- DECLARAÇÃO FINAL / QUOTE BANNER -->
+            <section class="section-separator quote-banner" style="padding: 100px var(--padding-global); text-align: center;">
+                <div class="glow-orb glow-orb-primary" style="top: 20%; left: 35%;"></div>
+                <div class="editorial-content" style="max-width: 900px; margin: 0 auto;">
+                    <h4 class="kicker" style="margin-bottom: 20px;">MENSAGEM FINAL</h4>
+                    <h2 style="font-size: clamp(2rem, 3.5vw, 2.8rem); font-family: var(--font-body); font-weight: 300; margin-bottom: 20px; line-height: 1.3;">
+                        "O MUSEU DA TRAVESSIA CIVILIZACIONAL NÃO EXISTE PARA CELEBRAR O PASSADO. EXISTE PARA COMPREENDER A TRAVESSIA, PROTEGER A CONTINUIDADE E RECONCILIAR EXPANSAO TECNOLÓGICA COM VIDA CONCRETA."
+                    </h2>
+                    <h2 class="text-gold" style="font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 35px; font-weight: 600; font-family: var(--font-heading);">
+                        A humanidade não deve apenas evoluir tecnologicamente. Deve continuar reconhecível para si mesma.
+                    </h2>
+                    <div style="font-family: var(--font-heading); letter-spacing: 3px; font-size: 1.1rem; color: rgba(255,255,255,0.9); font-weight: 600;">
+                        MAHAMBA
+                    </div>
+                </div>
+            </section>
+
+            <!-- FOOTER -->
+            <footer class="footer-section" style="padding-top: 80px;">
+                <div class="footer-grid" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));">
+                    <div class="footer-col">
+                        <a href="/index.html"><img src="/ideiaa.png" alt="ID&IA" style="height:36px; margin-bottom:12px; display:block;"></a>
+                        <p style="font-size: 0.9rem; font-weight: 500; color: var(--color-white); margin-bottom: 5px;">Instituto de Identidade<br>e Inteligência Artificial</p>
+                        <p style="font-size: 0.75rem; color: rgba(255,255,255,0.6);">Identidade, Consciência & Tecnologia</p>
+                    </div>
+                    <div class="footer-col">
+                        <h5 style="color: var(--color-white);">INSTITUTO</h5>
+                        <ul>
+                            <li><a href="/instituto.html">Visão e Missão</a></li>
+                            <li><a href="/sobre-nos.html">Sobre Nós</a></li>
+                            <li><a href="/africa-concreta.html">África Concreta</a></li>
+                            <li><a href="/mahamba.html">Metodologia MAHAMBA</a></li>
+                            <li><a href="/ideia-africa.html">Ideia África</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h5 style="color: var(--color-white);">ÁREAS</h5>
+                        <ul>
+                            <li><a href="/areas-estrategicas.html">Identidade</a></li>
+                            <li><a href="/areas-estrategicas.html">Inteligência Artificial</a></li>
+                            <li><a href="/areas-estrategicas.html">Transformação</a></li>
+                            <li><a href="/areas-estrategicas.html">Soberania</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h5 style="color: var(--color-white);">CENTROS</h5>
+                        <ul>
+                            <li><a href="/centros.html">Observatório</a></li>
+                            <li><a href="/centros.html">Lab MALELWA</a></li>
+                            <li><a href="/centros.html">Centro MAHAMBA</a></li>
+                            <li><a href="/centros.html">Soberania Tecnológica</a></li>
+                            <li><a href="/centros.html">Rede África</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col" style="min-width: 170px;">
+                        <h5 style="color: var(--color-white);">ECOSSISTEMA</h5>
+                        <ul>
+                            <li><a href="/projectos.html">Projectos</a></li>
+                            <li><a href="/publicacoes.html">Publicações</a></li>
+                            <li><a href="/investimento.html">Investimento</a></li>
+                            <li><a href="/noticias.html">Notícias & Eventos</a></li>
+                            <li><a href="/ideia-global.html">Ideia Global</a></li>
+                            <li><a href="/travessia-continentes.html">Travessia Continentes</a></li>
+                            <li><a href="/humano-concreto.html">Humano Concreto</a></li>
+                            <li><a href="/o-livro-o-filme.html">O Livro e O Filme</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col" style="min-width: 200px;">
+                        <h5 style="color: var(--color-white);">CONTACTO</h5>
+                        <p style="font-size: 0.8rem; color: rgba(255,255,255,0.6); margin-bottom: 10px;">geral@idia-africa.com</p>
+                        <p style="font-size: 0.8rem; color: rgba(255,255,255,0.6);">Cuito Cuanavale, Província do Cuando<br>Angola, África</p>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <p>&copy; 2026 ID&IA – Instituto de Identidade e Inteligência Artificial. Todos os direitos reservados.</p>
+                    <p class="text-gold">MAHAMBA ECOSSISTEMA →</p>
+                </div>
+            </footer>
+        </div>
+    </main>
+    <script type="module" src="/src/main.js"></script>
+</body>
+</html>
