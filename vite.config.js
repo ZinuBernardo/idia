@@ -30,7 +30,7 @@ export default defineConfig({
         africaConcreta: resolve(__dirname, 'africa-concreta.html'),
         mahamba: resolve(__dirname, 'mahamba.html'),
         ideiaAfrica: resolve(__dirname, 'ideia-africa.html'),
-        ideiaGlobal: resolve(__dirname, 'ideia-global.html'),
+        ideiaConcreto: resolve(__dirname, 'ideia-concreto.html'),
         travessia: resolve(__dirname, 'travessia-continentes.html'),
         noticias: resolve(__dirname, 'noticias.html'),
         publicacoes: resolve(__dirname, 'publicacoes.html'),
