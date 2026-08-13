@@ -8,30 +8,30 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/src/style.css">
     <style>
-        /* Estilos Dedicados para Humano Concreto */
+        /* Estilos Bespoke & Editoriais para Humano Concreto */
         .hc-hero {
             position: relative;
             min-height: 100vh;
-            padding: calc(var(--nav-height) + 60px) var(--padding-global) 80px var(--padding-global);
+            padding: calc(var(--nav-height) + 40px) var(--padding-global) 60px var(--padding-global);
             display: flex;
             align-items: center;
             justify-content: center;
-            background: radial-gradient(circle at 50% 30%, rgba(199, 161, 83, 0.15) 0%, rgba(10, 14, 23, 0.95) 60%, var(--bg-dark) 100%);
+            background: radial-gradient(circle at 40% 40%, rgba(199, 161, 83, 0.12) 0%, rgba(10, 14, 23, 0.98) 65%, var(--bg-dark) 100%);
             overflow: hidden;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .hc-hero-grid {
-            max-width: 1250px;
+            max-width: 1300px;
             width: 100%;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 420px 1fr;
-            gap: 60px;
+            grid-template-columns: 540px 1fr;
+            gap: 50px;
             align-items: center;
         }
 
-        @media (max-width: 992px) {
+        @media (max-width: 1024px) {
             .hc-hero-grid {
                 grid-template-columns: 1fr;
                 gap: 40px;
@@ -39,191 +39,148 @@
             }
         }
 
-        /* Capa do Livro */
+        /* Capa do Livro (MUITO GRANDE & SEM FUNDO / CAIXA DE MOLDURA) */
         .book-showcase {
             position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
-            perspective: 1200px;
+            width: 100%;
         }
 
         .book-cover-wrapper {
             position: relative;
-            max-width: 380px;
+            max-width: 520px;
             width: 100%;
-            border-radius: 12px;
-            box-shadow: 
-                0 25px 50px rgba(0, 0, 0, 0.9),
-                0 0 50px rgba(199, 161, 83, 0.25),
-                inset 0 0 1px rgba(255, 255, 255, 0.3);
-            transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.6s ease;
-            overflow: hidden;
-            background: #0a0e17;
-            border: 1px solid rgba(199, 161, 83, 0.4);
-        }
-
-        .book-cover-wrapper:hover {
-            transform: translateY(-12px) rotateY(-6deg) rotateX(2deg) scale(1.03);
-            box-shadow: 
-                0 35px 80px rgba(0, 0, 0, 0.95),
-                0 0 70px rgba(199, 161, 83, 0.45);
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            padding: 0;
+            margin: 0;
         }
 
         .book-cover-img {
             width: 100%;
             height: auto;
             display: block;
-            object-fit: cover;
+            object-fit: contain;
+            background: transparent !important;
+            filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.9)) drop-shadow(0 0 50px rgba(199, 161, 83, 0.25));
+            transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1), filter 0.6s ease;
         }
 
-        .book-badge-date {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(10, 14, 23, 0.85);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--color-gold);
-            color: var(--color-gold);
-            padding: 8px 16px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            border-radius: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        .book-cover-wrapper:hover .book-cover-img {
+            transform: scale(1.03) translateY(-6px);
+            filter: drop-shadow(0 40px 80px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 70px rgba(199, 161, 83, 0.4));
         }
 
         /* Conteúdo Hero */
         .hc-hero-content {
             display: flex;
             flex-direction: column;
-            gap: 24px;
+            gap: 20px;
         }
 
         .institution-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
+            font-size: 0.78rem;
+            letter-spacing: 2.5px;
             text-transform: uppercase;
             color: var(--color-gold);
             font-weight: 600;
-            background: rgba(199, 161, 83, 0.08);
-            border: 1px solid rgba(199, 161, 83, 0.25);
-            padding: 8px 18px;
-            border-radius: 4px;
-            width: fit-content;
-        }
-
-        @media (max-width: 992px) {
-            .institution-tag {
-                margin: 0 auto;
-            }
+            opacity: 0.9;
         }
 
         .hc-main-title {
-            font-size: clamp(2.2rem, 4.5vw, 3.8rem);
-            font-weight: 800;
-            line-height: 1.1;
-            letter-spacing: -0.02em;
+            font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+            font-weight: 700;
+            line-height: 1.25;
+            letter-spacing: -0.01em;
             color: #ffffff;
-            text-shadow: 0 4px 30px rgba(0,0,0,0.8);
         }
 
         .hc-main-title .gold-accent {
             color: var(--color-gold);
-            background: linear-gradient(135deg, #FFF 0%, #C7A153 50%, #F2D091 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
         }
 
         .hc-description {
-            font-size: clamp(1.05rem, 1.8vw, 1.25rem);
-            line-height: 1.7;
-            color: rgba(255, 255, 255, 0.9);
+            font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+            line-height: 1.65;
+            color: rgba(255, 255, 255, 0.82);
             font-weight: 300;
-            border-left: 3px solid var(--color-gold);
-            padding-left: 20px;
-            margin-top: 5px;
+            border-left: 2px solid var(--color-gold);
+            padding-left: 18px;
+            margin-top: 2px;
         }
 
-        @media (max-width: 992px) {
+        @media (max-width: 1024px) {
             .hc-description {
                 border-left: none;
-                border-top: 2px solid var(--color-gold);
+                border-top: 1px solid rgba(199, 161, 83, 0.4);
                 padding-left: 0;
-                padding-top: 20px;
+                padding-top: 16px;
             }
         }
 
         .astro-highlight {
             color: var(--color-gold);
-            font-weight: 700;
-            letter-spacing: 1px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
         }
 
         .hc-meta-info {
             display: flex;
             flex-wrap: wrap;
-            gap: 25px;
-            margin-top: 10px;
-            padding-top: 20px;
+            gap: 18px;
+            margin-top: 5px;
+            padding-top: 18px;
             border-top: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        @media (max-width: 992px) {
+        @media (max-width: 1024px) {
             .hc-meta-info {
                 justify-content: center;
             }
         }
 
         .meta-pill {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 0.88rem;
-            color: rgba(255, 255, 255, 0.85);
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 8px 16px;
-            border-radius: 20px;
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.8);
+            letter-spacing: 0.5px;
         }
 
-        .meta-pill svg {
-            width: 16px;
-            height: 16px;
-            stroke: var(--color-gold);
-            fill: none;
+        .meta-pill strong {
+            color: var(--color-gold);
+            font-weight: 600;
         }
 
         /* SECTION: O Espaço Que Se Abre (3 Pilares) */
         .opening-space-section {
-            padding: 100px var(--padding-global);
+            padding: 90px var(--padding-global);
             background-color: var(--bg-dark);
             position: relative;
         }
 
         .section-header {
             text-align: center;
-            max-width: 900px;
-            margin: 0 auto 60px auto;
+            max-width: 800px;
+            margin: 0 auto 55px auto;
         }
 
         .section-subtitle {
-            font-size: 0.85rem;
+            font-size: 0.78rem;
             letter-spacing: 3px;
             color: var(--color-gold);
             text-transform: uppercase;
             font-weight: 600;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
+            display: block;
         }
 
         .section-heading {
-            font-size: clamp(1.8rem, 3.2vw, 2.8rem);
+            font-size: clamp(1.5rem, 2.5vw, 2.2rem);
             color: #ffffff;
-            margin-bottom: 20px;
+            font-weight: 600;
+            letter-spacing: -0.01em;
         }
 
         .opening-grid {
@@ -231,7 +188,7 @@
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+            gap: 28px;
         }
 
         @media (max-width: 992px) {
@@ -241,81 +198,52 @@
         }
 
         .opening-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(199, 161, 83, 0.25);
-            padding: 50px 35px;
-            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.015);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 42px 30px;
+            border-radius: 6px;
             position: relative;
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            transition: all 0.4s ease;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        .opening-card::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
-            opacity: 0;
-            transition: opacity 0.4s ease;
+            align-items: flex-start;
+            text-align: left;
         }
 
         .opening-card:hover {
-            transform: translateY(-8px);
-            background: rgba(255, 255, 255, 0.04);
-            border-color: var(--color-gold);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(199, 161, 83, 0.15);
+            background: rgba(255, 255, 255, 0.03);
+            border-color: rgba(199, 161, 83, 0.4);
+            transform: translateY(-4px);
         }
 
-        .opening-card:hover::after {
-            opacity: 1;
-        }
-
-        .opening-icon {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            background: rgba(199, 161, 83, 0.1);
-            border: 1px solid rgba(199, 161, 83, 0.4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 25px;
+        .opening-number {
+            font-size: 0.8rem;
+            font-weight: 700;
             color: var(--color-gold);
-        }
-
-        .opening-icon svg {
-            width: 32px;
-            height: 32px;
-            stroke: var(--color-gold);
-            stroke-width: 1.5;
-            fill: none;
+            letter-spacing: 2px;
+            margin-bottom: 18px;
+            opacity: 0.9;
         }
 
         .opening-title {
-            font-size: 1.15rem;
-            font-weight: 700;
-            letter-spacing: 1.5px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            letter-spacing: 1px;
             color: #ffffff;
             margin-bottom: 12px;
             text-transform: uppercase;
         }
 
         .opening-desc {
-            font-size: 0.88rem;
+            font-size: 0.86rem;
             color: rgba(255, 255, 255, 0.65);
-            line-height: 1.6;
+            line-height: 1.65;
+            font-weight: 300;
         }
 
         /* SECTION: Formato e Idiomas */
         .digital-launch-section {
-            padding: 80px var(--padding-global);
+            padding: 70px var(--padding-global);
             background-color: var(--bg-night);
             border-top: 1px solid rgba(255, 255, 255, 0.05);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -324,84 +252,55 @@
         .digital-launch-card {
             max-width: 1100px;
             margin: 0 auto;
-            background: linear-gradient(135deg, rgba(10, 14, 23, 0.95) 0%, rgba(199, 161, 83, 0.1) 100%);
-            border: 1px solid rgba(199, 161, 83, 0.35);
-            border-radius: 12px;
-            padding: 60px 50px;
+            background: rgba(255, 255, 255, 0.015);
+            border: 1px solid rgba(199, 161, 83, 0.25);
+            border-radius: 8px;
+            padding: 50px 45px;
             display: grid;
             grid-template-columns: 1fr 1.1fr;
-            gap: 50px;
+            gap: 40px;
             align-items: center;
-            box-shadow: 0 15px 50px rgba(0,0,0,0.5);
         }
 
         @media (max-width: 850px) {
             .digital-launch-card {
                 grid-template-columns: 1fr;
-                padding: 40px 25px;
+                padding: 35px 25px;
                 text-align: center;
             }
         }
 
-        .digital-box-primary {
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-        }
-
-        .digital-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 16px;
-            background: rgba(199, 161, 83, 0.15);
-            border: 1px solid var(--color-gold);
-            color: var(--color-gold);
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            border-radius: 20px;
-            width: fit-content;
-        }
-
-        @media (max-width: 850px) {
-            .digital-badge {
-                margin: 0 auto;
-            }
-        }
-
         .digital-box-primary h3 {
-            font-size: clamp(1.4rem, 2.5vw, 2.1rem);
+            font-size: clamp(1.25rem, 2vw, 1.7rem);
             color: #ffffff;
-            line-height: 1.3;
-            font-weight: 700;
+            line-height: 1.35;
+            font-weight: 600;
         }
 
         .digital-box-secondary {
-            background: rgba(255, 255, 255, 0.02);
-            border-left: 3px solid var(--color-gold);
-            padding: 30px;
-            border-radius: 0 8px 8px 0;
+            border-left: 2px solid var(--color-gold);
+            padding-left: 25px;
         }
 
         @media (max-width: 850px) {
             .digital-box-secondary {
                 border-left: none;
-                border-top: 3px solid var(--color-gold);
-                border-radius: 0 0 8px 8px;
+                border-top: 2px solid var(--color-gold);
+                padding-left: 0;
+                padding-top: 20px;
             }
         }
 
         .digital-box-secondary p {
-            font-size: 1.05rem;
-            color: rgba(255, 255, 255, 0.88);
-            line-height: 1.7;
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.65;
             font-weight: 300;
         }
 
         /* SECTION: 5 Travessias & 5 Regimes */
         .civilization-architecture-section {
-            padding: 100px var(--padding-global);
+            padding: 90px var(--padding-global);
             background-color: var(--bg-dark);
         }
 
@@ -410,7 +309,7 @@
             margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 40px;
+            gap: 35px;
         }
 
         @media (max-width: 900px) {
@@ -420,97 +319,80 @@
         }
 
         .duo-card {
-            background: rgba(10, 14, 23, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 45px 35px;
-            border-radius: 12px;
+            background: rgba(10, 14, 23, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 40px 32px;
+            border-radius: 8px;
             display: flex;
             flex-direction: column;
-            gap: 25px;
-            position: relative;
-            transition: border-color 0.4s ease, transform 0.4s ease;
+            gap: 22px;
+            transition: border-color 0.4s ease;
         }
 
         .duo-card:hover {
-            border-color: rgba(199, 161, 83, 0.4);
-            transform: translateY(-4px);
+            border-color: rgba(199, 161, 83, 0.35);
         }
 
         .duo-card-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            padding-bottom: 20px;
-        }
-
-        .duo-icon-box {
-            width: 48px;
-            height: 48px;
-            border-radius: 8px;
-            background: rgba(199, 161, 83, 0.1);
-            border: 1px solid rgba(199, 161, 83, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--color-gold);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            padding-bottom: 16px;
         }
 
         .duo-title-group h3 {
-            font-size: 1.25rem;
+            font-size: 1.1rem;
             letter-spacing: 1.5px;
             color: #ffffff;
             text-transform: uppercase;
+            font-weight: 600;
         }
 
         .duo-title-group span {
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             color: var(--color-gold);
             letter-spacing: 2px;
             font-weight: 600;
+            display: block;
+            margin-bottom: 4px;
         }
 
         .continents-pills {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
+            gap: 10px;
         }
 
         .continent-pill {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(199, 161, 83, 0.3);
-            padding: 14px 22px;
-            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(199, 161, 83, 0.25);
+            padding: 12px 18px;
+            border-radius: 4px;
             color: var(--color-white);
-            font-size: 0.88rem;
-            font-weight: 600;
+            font-size: 0.82rem;
+            font-weight: 500;
             letter-spacing: 1.5px;
             transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            flex: 1 1 calc(33.333% - 12px);
-            justify-content: center;
-            min-width: 120px;
+            flex: 1 1 calc(33.333% - 10px);
+            text-align: center;
+            min-width: 110px;
         }
 
         .continent-pill:hover {
-            background: var(--color-gold);
-            color: var(--bg-dark);
-            box-shadow: 0 5px 20px rgba(199, 161, 83, 0.4);
+            border-color: var(--color-gold);
+            color: var(--color-gold);
+            background: rgba(199, 161, 83, 0.08);
         }
 
         .regimes-timeline {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
         }
 
         .regime-item {
-            background: rgba(255, 255, 255, 0.02);
-            border-left: 3px solid var(--color-gold);
-            padding: 14px 20px;
-            border-radius: 0 6px 6px 0;
+            background: rgba(255, 255, 255, 0.015);
+            border-left: 2px solid var(--color-gold);
+            padding: 12px 18px;
+            border-radius: 0 4px 4px 0;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -518,111 +400,106 @@
         }
 
         .regime-item:hover {
-            background: rgba(199, 161, 83, 0.08);
-            transform: translateX(5px);
+            background: rgba(199, 161, 83, 0.06);
+            padding-left: 22px;
         }
 
         .regime-name {
-            font-size: 0.95rem;
-            font-weight: 700;
-            letter-spacing: 2px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
             color: #ffffff;
             text-transform: uppercase;
         }
 
         .regime-index {
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             color: var(--color-gold);
-            font-weight: 800;
-            letter-spacing: 1px;
+            font-weight: 700;
         }
 
         /* SECTION: Manifesto Banner Final */
         .hc-manifesto-banner {
-            padding: 110px var(--padding-global);
-            background: radial-gradient(circle at center, rgba(199, 161, 83, 0.15) 0%, rgba(5, 5, 5, 0.98) 80%);
-            border-top: 1px solid rgba(199, 161, 83, 0.3);
+            padding: 100px var(--padding-global);
+            background: radial-gradient(circle at center, rgba(199, 161, 83, 0.12) 0%, rgba(5, 5, 5, 0.98) 75%);
+            border-top: 1px solid rgba(199, 161, 83, 0.2);
             text-align: center;
             position: relative;
-            overflow: hidden;
         }
 
         .manifesto-box {
-            max-width: 900px;
+            max-width: 850px;
             margin: 0 auto;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 25px;
+            gap: 20px;
         }
 
         .manifesto-divider {
-            font-size: 0.85rem;
-            letter-spacing: 4px;
+            font-size: 0.78rem;
+            letter-spacing: 3px;
             color: var(--color-gold);
             text-transform: uppercase;
-            font-weight: 700;
+            font-weight: 600;
         }
 
         .manifesto-work-title {
-            font-size: clamp(1.8rem, 3.5vw, 3rem);
-            font-weight: 800;
+            font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+            font-weight: 700;
             color: #ffffff;
-            line-height: 1.2;
-            letter-spacing: -0.01em;
+            line-height: 1.3;
         }
 
         .manifesto-date {
-            font-size: 1.1rem;
+            font-size: 0.95rem;
             color: var(--color-gold);
-            font-weight: 600;
-            letter-spacing: 3px;
+            font-weight: 500;
+            letter-spacing: 2px;
         }
 
         .manifesto-domain {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            margin-top: 10px;
-            padding: 14px 32px;
-            background: rgba(199, 161, 83, 0.1);
+            gap: 8px;
+            margin-top: 8px;
+            padding: 12px 28px;
             border: 1px solid var(--color-gold);
             color: var(--color-white);
-            font-size: 0.95rem;
-            font-weight: 700;
-            letter-spacing: 2px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
             border-radius: 4px;
-            transition: all 0.4s ease;
+            transition: all 0.3s ease;
         }
 
         .manifesto-domain:hover {
             background: var(--color-gold);
             color: var(--bg-dark);
-            box-shadow: 0 10px 30px rgba(199, 161, 83, 0.4);
         }
 
         .manifesto-footer-phrase {
-            margin-top: 35px;
-            padding-top: 35px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
             width: 100%;
         }
 
         .manifesto-mahamba {
-            font-size: clamp(1.5rem, 2.8vw, 2.4rem);
+            font-size: clamp(1.3rem, 2.2vw, 1.9rem);
             font-family: var(--font-heading);
-            font-weight: 800;
+            font-weight: 700;
             color: var(--color-gold);
             letter-spacing: 3px;
             text-transform: uppercase;
         }
 
         .manifesto-submahamba {
-            font-size: clamp(1.05rem, 1.8vw, 1.4rem);
+            font-size: clamp(0.95rem, 1.4vw, 1.2rem);
             font-weight: 300;
-            color: rgba(255, 255, 255, 0.9);
+            color: rgba(255, 255, 255, 0.85);
             letter-spacing: 2px;
-            margin-top: 8px;
+            margin-top: 6px;
             text-transform: uppercase;
         }
     </style>
@@ -687,21 +564,17 @@
             <section class="hc-hero">
                 <div class="hc-hero-grid">
                     
-                    <!-- CAPA DO LIVRO -->
+                    <!-- CAPA DO LIVRO (MUITO GRANDE & SEM FUNDO / CAIXA DE MOLDURA) -->
                     <div class="book-showcase">
                         <div class="book-cover-wrapper">
-                            <span class="book-badge-date">11.09.2026</span>
                             <img src="/coover.png" alt="MAHAMBA — Arquitectura Civilizacional do Humano Concreto" class="book-cover-img">
                         </div>
                     </div>
 
-                    <!-- DETALHES PRINCIPAIS DA OBRA -->
+                    <!-- DETALHES PRINCIPAIS DA OBRA (HEADLINE & SUBHEADLINE REINICIALIZADOS EM TAMANHO ELEGANTE) -->
                     <div class="hc-hero-content">
                         <div class="institution-tag">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                            </svg>
-                            ID&IA — Instituto de Identidade & Inteligência Artificial
+                            ID&IA — INSTITUTO DE IDENTIDADE & INTELIGÊNCIA ARTIFICIAL
                         </div>
 
                         <h1 class="hc-main-title">
@@ -714,19 +587,9 @@
 
                         <div class="hc-meta-info">
                             <div class="meta-pill">
-                                <svg viewBox="0 0 24 24">
-                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                                    <line x1="16" y1="2" x2="16" y2="6"></line>
-                                    <line x1="8" y1="2" x2="8" y2="6"></line>
-                                    <line x1="3" y1="10" x2="21" y2="10"></line>
-                                </svg>
                                 Lançamento: <strong>11.09.2026</strong>
                             </div>
                             <div class="meta-pill">
-                                <svg viewBox="0 0 24 24">
-                                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-                                </svg>
                                 Formato Digital & Multilingue
                             </div>
                         </div>
@@ -745,35 +608,21 @@
                 <div class="opening-grid">
                     <!-- PILAR 1 -->
                     <div class="opening-card">
-                        <div class="opening-icon">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-                            </svg>
-                        </div>
+                        <span class="opening-number">01</span>
                         <h3 class="opening-title">METODOLOGIA APLICÁVEL</h3>
                         <p class="opening-desc">Estruturação pragmática e conceitual para a aplicação directa dos princípios da Continuidade Humana nas dinâmicas sociais e tecnológicas.</p>
                     </div>
 
                     <!-- PILAR 2 -->
                     <div class="opening-card">
-                        <div class="opening-icon">
-                            <svg viewBox="0 0 24 24">
-                                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
-                                <line x1="12" y1="18" x2="12.01" y2="18"/>
-                            </svg>
-                        </div>
+                        <span class="opening-number">02</span>
                         <h3 class="opening-title">APLICATIVO RESPONSÁVEL</h3>
                         <p class="opening-desc">Desenvolvimento de soluções digitais e inteligência artificial alinhadas com a integridade ética, preservação identitária e soberania orgânica.</p>
                     </div>
 
                     <!-- PILAR 3 -->
                     <div class="opening-card">
-                        <div class="opening-icon">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                                <polyline points="9 22 9 12 15 12 15 22"/>
-                            </svg>
-                        </div>
+                        <span class="opening-number">03</span>
                         <h3 class="opening-title">INVESTIGAÇÃO HABITÁVEL</h3>
                         <p class="opening-desc">Criação de ecossistemas de pesquisa vivenciáveis onde o conhecimento científico e filosófico habita o quotidiano humano.</p>
                     </div>
@@ -784,7 +633,6 @@
             <section class="digital-launch-section">
                 <div class="digital-launch-card">
                     <div class="digital-box-primary">
-                        <div class="digital-badge">LANÇAMENTO DIGITAL</div>
                         <h3>Lançamento em formato digital e na língua Portuguesa.</h3>
                     </div>
                     <div class="digital-box-secondary">
@@ -806,13 +654,6 @@
                     <!-- CARD 1: 5 TRAVESSIAS CIVILIZACIONAIS -->
                     <div class="duo-card">
                         <div class="duo-card-header">
-                            <div class="duo-icon-box">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="12" cy="12" r="10"/>
-                                    <line x1="2" y1="12" x2="22" y2="12"/>
-                                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-                                </svg>
-                            </div>
                             <div class="duo-title-group">
                                 <span>DIMENSÃO TERRITORIAL</span>
                                 <h3>5 TRAVESSIAS CIVILIZACIONAIS</h3>
@@ -831,13 +672,6 @@
                     <!-- CARD 2: 5 REGIMES CIVILIZACIONAIS -->
                     <div class="duo-card">
                         <div class="duo-card-header">
-                            <div class="duo-icon-box">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <polygon points="12 2 2 7 12 12 22 7 12 2"/>
-                                    <polyline points="2 17 12 22 22 17"/>
-                                    <polyline points="2 12 12 17 22 12"/>
-                                </svg>
-                            </div>
                             <div class="duo-title-group">
                                 <span>ESTADOS DA PERCEPÇÃO</span>
                                 <h3>5 REGIMES CIVILIZACIONAIS</h3>
@@ -882,11 +716,6 @@
                     <div class="manifesto-date">11.09.2026</div>
 
                     <a href="https://www.idia-africa.com" target="_blank" rel="noopener noreferrer" class="manifesto-domain">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"/>
-                            <line x1="2" y1="12" x2="22" y2="12"/>
-                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1 4-10z"/>
-                        </svg>
                         www.idia-africa.com
                     </a>
 
