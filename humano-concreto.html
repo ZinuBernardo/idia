@@ -3,504 +3,1021 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Humano Concreto | MAHAMBA | ID&IA Global</title>
-    <meta name="description" content="MAHAMBA — Arquitectura Civilizacional do Humano Concreto. Uma obra que propõe uma arquitectura para compreender, experimentar e tornar perceptível a Continuidade Humana no campo da ASTROBIOTECNIA.">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <title>MAHAMBA — Arquitectura Civilizacional do Humano Concreto | Edição Especial</title>
+    <meta name="description" content="E se a humanidade precisasse repensar a forma como compreende a si própria? Adquira o livro MAHAMBA de Tony Nguxi pelo preço promocional de lançamento de 9.900 Kz.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/src/style.css">
     <style>
-        /* Estilos Bespoke & Editoriais para Humano Concreto */
-        .hc-hero {
+        /* ========================================================================== */
+        /*               DESIGN SYSTEM - LANDING PAGE DE VENDAS MAHAMBA               */
+        /* ========================================================================== */
+
+        :root {
+            --lp-bg: #050505;
+            --lp-card-bg: rgba(255, 255, 255, 0.02);
+            --lp-border: rgba(255, 255, 255, 0.08);
+            --lp-gold: #c7a153;
+            --lp-gold-light: #e6c887;
+            --lp-gold-glow: rgba(199, 161, 83, 0.25);
+            --lp-text-dim: rgba(255, 255, 255, 0.65);
+        }
+
+        /* Botões Primários de Alta Conversão */
+        .btn-cta-sales {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #e6c887 0%, #c7a153 60%, #a37c2d 100%);
+            color: #050505 !important;
+            font-family: var(--font-heading);
+            font-size: 0.95rem;
+            font-weight: 800;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            padding: 18px 36px;
+            border-radius: 4px;
+            border: 1px solid var(--lp-gold-light);
+            cursor: pointer;
+            transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+            box-shadow: 0 10px 30px rgba(199, 161, 83, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+            text-decoration: none;
+            width: fit-content;
+        }
+
+        .btn-cta-sales:hover {
+            transform: translateY(-3px);
+            background: linear-gradient(135deg, #ffffff 0%, #e6c887 50%, #c7a153 100%);
+            box-shadow: 0 16px 40px rgba(199, 161, 83, 0.5);
+            color: #000 !important;
+        }
+
+        .btn-cta-sales:active {
+            transform: translateY(0);
+        }
+
+        /* 1. HERO SECTION */
+        .sales-hero {
             position: relative;
-            min-height: 100vh;
-            padding: calc(var(--nav-height) + 40px) var(--padding-global) 60px var(--padding-global);
+            min-height: 92vh;
+            padding: calc(var(--nav-height) + 40px) var(--padding-global) 70px var(--padding-global);
             display: flex;
             align-items: center;
             justify-content: center;
-            background: radial-gradient(circle at 40% 40%, rgba(199, 161, 83, 0.12) 0%, rgba(10, 14, 23, 0.98) 65%, var(--bg-dark) 100%);
+            background: radial-gradient(circle at 35% 45%, rgba(199, 161, 83, 0.12) 0%, rgba(10, 14, 23, 0.98) 60%, var(--lp-bg) 100%);
+            border-bottom: 1px solid var(--lp-border);
             overflow: hidden;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .hc-hero-grid {
-            max-width: 1300px;
+        .sales-hero-grid {
+            max-width: 1280px;
             width: 100%;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 540px 1fr;
-            gap: 50px;
+            grid-template-columns: 500px 1fr;
+            gap: 60px;
             align-items: center;
         }
 
         @media (max-width: 1024px) {
-            .hc-hero-grid {
+            .sales-hero-grid {
                 grid-template-columns: 1fr;
                 gap: 40px;
                 text-align: center;
             }
         }
 
-        /* Capa do Livro (MUITO GRANDE & SEM FUNDO / CAIXA DE MOLDURA) */
-        .book-showcase {
+        .hero-book-wrapper {
             position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 100%;
         }
 
-        .book-cover-wrapper {
-            position: relative;
-            max-width: 520px;
+        .hero-book-img {
             width: 100%;
-            background: transparent !important;
-            border: none !important;
-            box-shadow: none !important;
-            padding: 0;
-            margin: 0;
-        }
-
-        .book-cover-img {
-            width: 100%;
+            max-width: 480px;
             height: auto;
             display: block;
             object-fit: contain;
             background: transparent !important;
-            filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.9)) drop-shadow(0 0 50px rgba(199, 161, 83, 0.25));
-            transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1), filter 0.6s ease;
+            filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 45px rgba(199, 161, 83, 0.3));
+            transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
-        .book-cover-wrapper:hover .book-cover-img {
-            transform: scale(1.03) translateY(-6px);
-            filter: drop-shadow(0 40px 80px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 70px rgba(199, 161, 83, 0.4));
+        .hero-book-wrapper:hover .hero-book-img {
+            transform: scale(1.02) translateY(-6px);
         }
 
-        /* Conteúdo Hero */
-        .hc-hero-content {
+        .hero-sales-content {
             display: flex;
             flex-direction: column;
             gap: 20px;
         }
 
-        .institution-tag {
-            font-size: 0.78rem;
-            letter-spacing: 2.5px;
+        .hero-pre-headline {
+            font-size: clamp(0.78rem, 1.2vw, 0.9rem);
+            letter-spacing: 2px;
             text-transform: uppercase;
-            color: var(--color-gold);
-            font-weight: 600;
-            opacity: 0.9;
-        }
-
-        .hc-main-title {
-            font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+            color: var(--lp-gold);
             font-weight: 700;
-            line-height: 1.25;
-            letter-spacing: -0.01em;
+            line-height: 1.4;
+        }
+
+        .hero-book-title {
+            font-size: clamp(2.2rem, 4vw, 3.4rem);
+            font-weight: 800;
+            line-height: 1.08;
+            letter-spacing: -0.02em;
             color: #ffffff;
+            margin: 0;
         }
 
-        .hc-main-title .gold-accent {
-            color: var(--color-gold);
-        }
-
-        .hc-description {
-            font-size: clamp(0.9rem, 1.2vw, 1.05rem);
-            line-height: 1.65;
-            color: rgba(255, 255, 255, 0.82);
-            font-weight: 300;
-            border-left: 2px solid var(--color-gold);
-            padding-left: 18px;
-            margin-top: 2px;
-        }
-
-        @media (max-width: 1024px) {
-            .hc-description {
-                border-left: none;
-                border-top: 1px solid rgba(199, 161, 83, 0.4);
-                padding-left: 0;
-                padding-top: 16px;
-            }
-        }
-
-        .astro-highlight {
-            color: var(--color-gold);
+        .hero-book-subtitle {
+            font-size: clamp(1.1rem, 2vw, 1.45rem);
+            color: var(--lp-gold-light);
             font-weight: 600;
             letter-spacing: 0.5px;
-        }
-
-        .hc-meta-info {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 18px;
-            margin-top: 5px;
-            padding-top: 18px;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        @media (max-width: 1024px) {
-            .hc-meta-info {
-                justify-content: center;
-            }
-        }
-
-        .meta-pill {
-            font-size: 0.82rem;
-            color: rgba(255, 255, 255, 0.8);
-            letter-spacing: 0.5px;
-        }
-
-        .meta-pill strong {
-            color: var(--color-gold);
-            font-weight: 600;
-        }
-
-        /* SECTION: O Espaço Que Se Abre (3 Pilares) */
-        .opening-space-section {
-            padding: 90px var(--padding-global);
-            background-color: var(--bg-dark);
-            position: relative;
-        }
-
-        .section-header {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 55px auto;
-        }
-
-        .section-subtitle {
-            font-size: 0.78rem;
-            letter-spacing: 3px;
-            color: var(--color-gold);
-            text-transform: uppercase;
-            font-weight: 600;
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        .section-heading {
-            font-size: clamp(1.5rem, 2.5vw, 2.2rem);
-            color: #ffffff;
-            font-weight: 600;
-            letter-spacing: -0.01em;
-        }
-
-        .opening-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 28px;
-        }
-
-        @media (max-width: 992px) {
-            .opening-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .opening-card {
-            background: rgba(255, 255, 255, 0.015);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            padding: 42px 30px;
-            border-radius: 6px;
-            position: relative;
-            transition: all 0.4s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            text-align: left;
-        }
-
-        .opening-card:hover {
-            background: rgba(255, 255, 255, 0.03);
-            border-color: rgba(199, 161, 83, 0.4);
-            transform: translateY(-4px);
-        }
-
-        .opening-number {
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: var(--color-gold);
-            letter-spacing: 2px;
-            margin-bottom: 18px;
-            opacity: 0.9;
-        }
-
-        .opening-title {
-            font-size: 1.05rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            color: #ffffff;
-            margin-bottom: 12px;
-            text-transform: uppercase;
-        }
-
-        .opening-desc {
-            font-size: 0.86rem;
-            color: rgba(255, 255, 255, 0.65);
-            line-height: 1.65;
-            font-weight: 300;
-        }
-
-        /* SECTION: Formato e Idiomas */
-        .digital-launch-section {
-            padding: 70px var(--padding-global);
-            background-color: var(--bg-night);
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .digital-launch-card {
-            max-width: 1100px;
-            margin: 0 auto;
-            background: rgba(255, 255, 255, 0.015);
-            border: 1px solid rgba(199, 161, 83, 0.25);
-            border-radius: 8px;
-            padding: 50px 45px;
-            display: grid;
-            grid-template-columns: 1fr 1.1fr;
-            gap: 40px;
-            align-items: center;
-        }
-
-        @media (max-width: 850px) {
-            .digital-launch-card {
-                grid-template-columns: 1fr;
-                padding: 35px 25px;
-                text-align: center;
-            }
-        }
-
-        .digital-box-primary h3 {
-            font-size: clamp(1.25rem, 2vw, 1.7rem);
-            color: #ffffff;
-            line-height: 1.35;
-            font-weight: 600;
-        }
-
-        .digital-box-secondary {
-            border-left: 2px solid var(--color-gold);
-            padding-left: 25px;
-        }
-
-        @media (max-width: 850px) {
-            .digital-box-secondary {
-                border-left: none;
-                border-top: 2px solid var(--color-gold);
-                padding-left: 0;
-                padding-top: 20px;
-            }
-        }
-
-        .digital-box-secondary p {
-            font-size: 0.95rem;
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.65;
-            font-weight: 300;
-        }
-
-        /* SECTION: 5 Travessias & 5 Regimes */
-        .civilization-architecture-section {
-            padding: 90px var(--padding-global);
-            background-color: var(--bg-dark);
-        }
-
-        .duo-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 35px;
-        }
-
-        @media (max-width: 900px) {
-            .duo-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .duo-card {
-            background: rgba(10, 14, 23, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            padding: 40px 32px;
-            border-radius: 8px;
-            display: flex;
-            flex-direction: column;
-            gap: 22px;
-            transition: border-color 0.4s ease;
-        }
-
-        .duo-card:hover {
-            border-color: rgba(199, 161, 83, 0.35);
-        }
-
-        .duo-card-header {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-            padding-bottom: 16px;
-        }
-
-        .duo-title-group h3 {
-            font-size: 1.1rem;
-            letter-spacing: 1.5px;
-            color: #ffffff;
-            text-transform: uppercase;
-            font-weight: 600;
-        }
-
-        .duo-title-group span {
-            font-size: 0.72rem;
-            color: var(--color-gold);
-            letter-spacing: 2px;
-            font-weight: 600;
-            display: block;
-            margin-bottom: 4px;
-        }
-
-        .continents-pills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .continent-pill {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(199, 161, 83, 0.25);
-            padding: 12px 18px;
-            border-radius: 4px;
-            color: var(--color-white);
-            font-size: 0.82rem;
-            font-weight: 500;
-            letter-spacing: 1.5px;
-            transition: all 0.3s ease;
-            flex: 1 1 calc(33.333% - 10px);
-            text-align: center;
-            min-width: 110px;
-        }
-
-        .continent-pill:hover {
-            border-color: var(--color-gold);
-            color: var(--color-gold);
-            background: rgba(199, 161, 83, 0.08);
-        }
-
-        .regimes-timeline {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .regime-item {
-            background: rgba(255, 255, 255, 0.015);
-            border-left: 2px solid var(--color-gold);
-            padding: 12px 18px;
-            border-radius: 0 4px 4px 0;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            transition: all 0.3s ease;
-        }
-
-        .regime-item:hover {
-            background: rgba(199, 161, 83, 0.06);
-            padding-left: 22px;
-        }
-
-        .regime-name {
-            font-size: 0.88rem;
-            font-weight: 600;
-            letter-spacing: 1.5px;
-            color: #ffffff;
-            text-transform: uppercase;
-        }
-
-        .regime-index {
-            font-size: 0.72rem;
-            color: var(--color-gold);
-            font-weight: 700;
-        }
-
-        /* SECTION: Manifesto Banner Final */
-        .hc-manifesto-banner {
-            padding: 100px var(--padding-global);
-            background: radial-gradient(circle at center, rgba(199, 161, 83, 0.12) 0%, rgba(5, 5, 5, 0.98) 75%);
-            border-top: 1px solid rgba(199, 161, 83, 0.2);
-            text-align: center;
-            position: relative;
-        }
-
-        .manifesto-box {
-            max-width: 850px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .manifesto-divider {
-            font-size: 0.78rem;
-            letter-spacing: 3px;
-            color: var(--color-gold);
-            text-transform: uppercase;
-            font-weight: 600;
-        }
-
-        .manifesto-work-title {
-            font-size: clamp(1.4rem, 2.5vw, 2.2rem);
-            font-weight: 700;
-            color: #ffffff;
             line-height: 1.3;
         }
 
-        .manifesto-date {
-            font-size: 0.95rem;
-            color: var(--color-gold);
-            font-weight: 500;
-            letter-spacing: 2px;
+        .hero-synopsis {
+            font-size: clamp(0.95rem, 1.3vw, 1.08rem);
+            line-height: 1.65;
+            color: rgba(255, 255, 255, 0.82);
+            font-weight: 300;
+            max-width: 620px;
         }
 
-        .manifesto-domain {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 8px;
-            padding: 12px 28px;
-            border: 1px solid var(--color-gold);
-            color: var(--color-white);
-            font-size: 0.88rem;
-            font-weight: 600;
+        .hero-pricing-box {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            background: rgba(255, 255, 255, 0.025);
+            border: 1px solid rgba(199, 161, 83, 0.3);
+            border-left: 3px solid var(--lp-gold);
+            padding: 24px 28px;
+            border-radius: 6px;
+            margin-top: 5px;
+            max-width: fit-content;
+        }
+
+        @media (max-width: 1024px) {
+            .hero-pricing-box {
+                margin: 0 auto;
+                align-items: center;
+            }
+            .btn-cta-sales {
+                margin: 0 auto;
+            }
+        }
+
+        .price-row {
+            display: flex;
+            align-items: baseline;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .promo-tag {
+            font-size: 0.72rem;
             letter-spacing: 1.5px;
-            border-radius: 4px;
+            text-transform: uppercase;
+            color: var(--lp-gold);
+            font-weight: 700;
+            background: rgba(199, 161, 83, 0.15);
+            padding: 4px 10px;
+            border-radius: 3px;
+        }
+
+        .current-price {
+            font-size: clamp(1.8rem, 2.8vw, 2.4rem);
+            font-family: var(--font-heading);
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -0.01em;
+        }
+
+        .old-price {
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.4);
+            text-decoration: line-through;
+            font-weight: 500;
+        }
+
+        .promo-validity-text {
+            font-size: 0.8rem;
+            color: var(--lp-text-dim);
+            letter-spacing: 0.5px;
+        }
+
+        /* 2. FRASE DE IMPACTO */
+        .impact-quote-section {
+            padding: 90px var(--padding-global);
+            background: #000000;
+            border-bottom: 1px solid var(--lp-border);
+            text-align: center;
+            position: relative;
+        }
+
+        .impact-quote-container {
+            max-width: 960px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .impact-quote-p1 {
+            font-size: clamp(1.1rem, 2vw, 1.45rem);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--lp-text-dim);
+            font-weight: 500;
+        }
+
+        .impact-quote-p2 {
+            font-size: clamp(1.5rem, 3.2vw, 2.5rem);
+            font-family: var(--font-heading);
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.25;
+            letter-spacing: -0.01em;
+        }
+
+        .impact-quote-p2 span {
+            color: var(--lp-gold);
+        }
+
+        /* 3. VÍDEO EXPLICATIVO */
+        .video-section {
+            padding: 90px var(--padding-global);
+            background: radial-gradient(circle at 50% 30%, rgba(199, 161, 83, 0.08) 0%, var(--lp-bg) 70%);
+            border-bottom: 1px solid var(--lp-border);
+        }
+
+        .video-container {
+            max-width: 980px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            text-align: center;
+        }
+
+        .section-kicker {
+            font-size: 0.78rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--lp-gold);
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .section-main-title {
+            font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: -0.01em;
+            line-height: 1.2;
+        }
+
+        .section-main-sub {
+            font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+            color: var(--lp-text-dim);
+            font-weight: 300;
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        .video-card-player {
+            position: relative;
+            width: 100%;
+            background: #000;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid rgba(199, 161, 83, 0.25);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 40px rgba(199, 161, 83, 0.15);
+        }
+
+        .video-card-player video {
+            width: 100%;
+            height: auto;
+            display: block;
+            max-height: 540px;
+            object-fit: cover;
+        }
+
+        /* 4. O QUE VOCÊ VAI ENCONTRAR */
+        .concepts-section {
+            padding: 100px var(--padding-global);
+            background: var(--lp-bg);
+            border-bottom: 1px solid var(--lp-border);
+        }
+
+        .concepts-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+        }
+
+        .concepts-header {
+            text-align: center;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .concepts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+            gap: 24px;
+        }
+
+        .concept-card {
+            background: var(--lp-card-bg);
+            border: 1px solid var(--lp-border);
+            padding: 32px 28px;
+            border-radius: 6px;
+            transition: all 0.35s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            border-top: 2px solid transparent;
+        }
+
+        .concept-card:hover {
+            border-color: rgba(199, 161, 83, 0.4);
+            border-top-color: var(--lp-gold);
+            transform: translateY(-4px);
+            background: rgba(255, 255, 255, 0.035);
+        }
+
+        .concept-card-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            color: var(--lp-gold-light);
+            text-transform: uppercase;
+        }
+
+        .concept-card-desc {
+            font-size: 0.92rem;
+            color: rgba(255, 255, 255, 0.78);
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        .concepts-closing {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 22px;
+            margin-top: 15px;
+            padding-top: 30px;
+            border-top: 1px solid var(--lp-border);
+        }
+
+        .concepts-closing-phrase {
+            font-size: 1.12rem;
+            color: #ffffff;
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        /* 5. PARA QUEM É O LIVRO */
+        .audience-section {
+            padding: 95px var(--padding-global);
+            background: #080c14;
+            border-bottom: 1px solid var(--lp-border);
+        }
+
+        .audience-container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .audience-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .audience-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 20px 24px;
+            border-radius: 6px;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.5;
             transition: all 0.3s ease;
         }
 
-        .manifesto-domain:hover {
-            background: var(--color-gold);
-            color: var(--bg-dark);
+        .audience-item:hover {
+            border-color: rgba(199, 161, 83, 0.35);
+            background: rgba(199, 161, 83, 0.04);
+            transform: translateX(4px);
         }
 
-        .manifesto-footer-phrase {
-            margin-top: 30px;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            width: 100%;
+        .audience-dash {
+            color: var(--lp-gold);
+            font-weight: 700;
+            font-size: 1.2rem;
+            line-height: 1;
         }
 
-        .manifesto-mahamba {
-            font-size: clamp(1.3rem, 2.2vw, 1.9rem);
+        .audience-highlight-box {
+            margin-top: 20px;
+            padding: 35px 28px;
+            border-top: 2px solid var(--lp-gold);
+            border-bottom: 2px solid var(--lp-gold);
+            background: rgba(199, 161, 83, 0.05);
+            text-align: center;
+        }
+
+        .audience-highlight-text {
+            font-size: clamp(1.25rem, 2.5vw, 1.8rem);
             font-family: var(--font-heading);
             font-weight: 700;
-            color: var(--color-gold);
-            letter-spacing: 3px;
+            color: #ffffff;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
+            line-height: 1.35;
         }
 
-        .manifesto-submahamba {
-            font-size: clamp(0.95rem, 1.4vw, 1.2rem);
+        .audience-highlight-text span {
+            color: var(--lp-gold);
+        }
+
+        /* 6. APRESENTAÇÃO DA OBRA */
+        .presentation-section {
+            padding: 95px var(--padding-global);
+            background: var(--lp-bg);
+            border-bottom: 1px solid var(--lp-border);
+        }
+
+        .presentation-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 460px 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        @media (max-width: 992px) {
+            .presentation-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 40px;
+            }
+        }
+
+        .presentation-content {
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+        }
+
+        .presentation-lead {
+            font-size: clamp(1.4rem, 2.4vw, 2.1rem);
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.25;
+            letter-spacing: -0.01em;
+        }
+
+        .presentation-desc {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
             font-weight: 300;
-            color: rgba(255, 255, 255, 0.85);
-            letter-spacing: 2px;
-            margin-top: 6px;
+        }
+
+        .presentation-mantra {
+            font-size: 1.15rem;
+            color: var(--lp-gold-light);
+            font-style: italic;
+            font-weight: 500;
+            border-left: 2px solid var(--lp-gold);
+            padding-left: 18px;
+        }
+
+        @media (max-width: 992px) {
+            .presentation-mantra {
+                border-left: none;
+                border-top: 2px solid var(--lp-gold);
+                padding-left: 0;
+                padding-top: 15px;
+            }
+            .presentation-content .btn-cta-sales {
+                margin: 0 auto;
+            }
+        }
+
+        /* 7. OFERTA & CONVERSÃO (COM TIMER) */
+        .offer-section {
+            padding: 110px var(--padding-global);
+            background: radial-gradient(circle at 50% 50%, rgba(199, 161, 83, 0.16) 0%, rgba(10, 14, 23, 0.95) 60%, #020202 100%);
+            border-bottom: 1px solid var(--lp-border);
+            text-align: center;
+        }
+
+        .offer-container {
+            max-width: 820px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.025);
+            border: 1px solid rgba(199, 161, 83, 0.4);
+            border-radius: 8px;
+            padding: 55px 45px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 28px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 50px rgba(199, 161, 83, 0.15);
+        }
+
+        @media (max-width: 600px) {
+            .offer-container {
+                padding: 40px 22px;
+            }
+        }
+
+        .offer-headline {
+            font-size: clamp(1.6rem, 3vw, 2.5rem);
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -0.01em;
+            line-height: 1.2;
+        }
+
+        .countdown-wrapper {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin: 5px 0;
+            flex-wrap: wrap;
+        }
+
+        .countdown-block {
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(199, 161, 83, 0.35);
+            padding: 14px 20px;
+            border-radius: 4px;
+            min-width: 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .countdown-val {
+            font-size: 1.8rem;
+            font-family: var(--font-heading);
+            font-weight: 800;
+            color: var(--lp-gold);
+            line-height: 1;
+        }
+
+        .countdown-lbl {
+            font-size: 0.65rem;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 4px;
+        }
+
+        .offer-price-showcase {
+            display: flex;
+            align-items: baseline;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .offer-current-price {
+            font-size: clamp(2.4rem, 5vw, 3.8rem);
+            font-family: var(--font-heading);
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -0.02em;
+        }
+
+        .offer-old-price {
+            font-size: clamp(1.3rem, 2vw, 1.8rem);
+            color: rgba(255, 255, 255, 0.38);
+            text-decoration: line-through;
+            font-weight: 600;
+        }
+
+        .offer-sub-rules {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.6;
+        }
+
+        .offer-guarantee-note {
+            font-size: 0.8rem;
+            color: var(--lp-text-dim);
+            letter-spacing: 0.5px;
+        }
+
+        /* 8. O QUE RECEBE */
+        .deliverables-section {
+            padding: 95px var(--padding-global);
+            background: var(--lp-bg);
+            border-bottom: 1px solid var(--lp-border);
+        }
+
+        .deliverables-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 45px;
+        }
+
+        .deliverables-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+            gap: 26px;
+        }
+
+        .deliverable-card {
+            background: var(--lp-card-bg);
+            border: 1px solid var(--lp-border);
+            padding: 38px 30px;
+            border-radius: 6px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .deliverable-card:hover {
+            border-color: rgba(199, 161, 83, 0.35);
+            transform: translateY(-4px);
+        }
+
+        .deliverable-tag {
+            font-size: 0.72rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--lp-gold);
+            font-weight: 700;
+        }
+
+        .deliverable-title {
+            font-size: 1.15rem;
+            color: #ffffff;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .deliverable-text {
+            font-size: 0.92rem;
+            color: rgba(255, 255, 255, 0.75);
+            line-height: 1.65;
+            font-weight: 300;
+        }
+
+        /* 9. AUTOR */
+        .author-section {
+            padding: 95px var(--padding-global);
+            background: #070a10;
+            border-bottom: 1px solid var(--lp-border);
+        }
+
+        .author-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        @media (max-width: 850px) {
+            .author-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 35px;
+            }
+        }
+
+        .author-img-wrap {
+            position: relative;
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1px solid rgba(199, 161, 83, 0.35);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.8);
+            max-width: 320px;
+            margin: 0 auto;
+        }
+
+        .author-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        .author-content {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .author-name {
+            font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+            font-weight: 800;
+            color: #ffffff;
+            line-height: 1.2;
+        }
+
+        .author-name span {
+            color: var(--lp-gold);
+        }
+
+        .author-bio {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.75;
+            font-weight: 300;
+        }
+
+        /* 10. FAQ */
+        .faq-section {
+            padding: 95px var(--padding-global);
+            background: var(--lp-bg);
+            border-bottom: 1px solid var(--lp-border);
+        }
+
+        .faq-container {
+            max-width: 840px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+        }
+
+        .faq-accordion {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .faq-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--lp-border);
+            border-radius: 6px;
+            overflow: hidden;
+            transition: border-color 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: rgba(199, 161, 83, 0.3);
+        }
+
+        .faq-question {
+            padding: 20px 24px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #ffffff;
+            user-select: none;
+            gap: 15px;
+        }
+
+        .faq-icon {
+            color: var(--lp-gold);
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, padding 0.35s ease;
+            padding: 0 24px;
+            font-size: 0.92rem;
+            color: rgba(255, 255, 255, 0.75);
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding: 0 24px 22px 24px;
+        }
+
+        /* 11. FECHO EMOCIONAL */
+        .emotional-close-section {
+            padding: 110px var(--padding-global);
+            background: radial-gradient(circle at center, rgba(199, 161, 83, 0.15) 0%, #000000 75%);
+            border-top: 1px solid rgba(199, 161, 83, 0.25);
+            text-align: center;
+        }
+
+        .emotional-close-box {
+            max-width: 860px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 26px;
+        }
+
+        .close-p1 {
+            font-size: clamp(1.2rem, 2.2vw, 1.7rem);
+            font-family: var(--font-heading);
+            color: var(--lp-text-dim);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        .close-p2 {
+            font-size: clamp(1.6rem, 3.2vw, 2.6rem);
+            font-family: var(--font-heading);
+            color: #ffffff;
+            font-weight: 800;
+            line-height: 1.25;
+            letter-spacing: -0.01em;
+        }
+
+        .close-p2 span {
+            color: var(--lp-gold);
+        }
+
+        .close-book-name {
+            font-size: 1.15rem;
+            color: var(--lp-gold-light);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .close-pricing-info {
+            font-size: 1.1rem;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .close-pricing-info strong {
+            color: var(--lp-gold);
+            font-size: 1.35rem;
+        }
+
+        /* ========================================================================== */
+        /*                          MODAL DE COMPRA / CHECKOUT                        */
+        /* ========================================================================== */
+
+        .checkout-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.88);
+            backdrop-filter: blur(12px);
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .checkout-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .checkout-box {
+            background: #0d121c;
+            border: 1px solid rgba(199, 161, 83, 0.4);
+            border-radius: 8px;
+            max-width: 540px;
+            width: 100%;
+            padding: 40px 35px;
+            position: relative;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.95), 0 0 50px rgba(199, 161, 83, 0.2);
+        }
+
+        @media (max-width: 500px) {
+            .checkout-box {
+                padding: 30px 20px;
+            }
+        }
+
+        .close-modal-x {
+            position: absolute;
+            top: 18px;
+            right: 20px;
+            background: transparent;
+            border: none;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.6rem;
+            cursor: pointer;
+            transition: color 0.2s;
+            line-height: 1;
+        }
+
+        .close-modal-x:hover {
+            color: var(--lp-gold);
+        }
+
+        .checkout-header {
+            margin-bottom: 24px;
+            text-align: left;
+        }
+
+        .checkout-header h3 {
+            font-size: 1.4rem;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+
+        .checkout-header p {
+            font-size: 0.85rem;
+            color: var(--lp-text-dim);
+        }
+
+        .checkout-price-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(199, 161, 83, 0.12);
+            border: 1px solid var(--lp-gold);
+            padding: 8px 16px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            width: 100%;
+            justify-content: space-between;
+        }
+
+        .checkout-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            text-align: left;
+        }
+
+        .form-group label {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 600;
+        }
+
+        .form-group input, .form-group select {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 12px 14px;
+            border-radius: 4px;
+            color: #ffffff;
+            font-family: var(--font-body);
+            font-size: 0.92rem;
+            outline: none;
+            transition: border-color 0.25s;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            border-color: var(--lp-gold);
+        }
+
+        .checkout-note {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.5);
+            line-height: 1.5;
+            text-align: center;
+            margin-top: 8px;
         }
     </style>
 </head>
@@ -533,7 +1050,7 @@
                 </ul>
             </li>
             <li><a href="/contacto.html">CONTACTO</a></li>
-            <li><a href="/parcerias.html" class="btn btn-primary" style="padding: 8px 15px; font-size: 0.65rem;">PARCERIAS</a></li>
+            <li><a href="#" class="btn btn-primary open-checkout-btn" style="padding: 8px 16px; font-size: 0.7rem; font-weight: 700;">COMPRAR LIVRO</a></li>
         </ul>
         <div class="menu-toggle"><span></span><span></span></div>
     </nav>
@@ -552,7 +1069,7 @@
             <li><a href="/projectos.html">PROJECTOS</a></li>
             <li><a href="/investimento.html">INVESTIMENTO</a></li>
             <li><a href="/contacto.html">CONTACTO</a></li>
-            <li><a href="/parcerias.html">PARCERIAS</a></li>
+            <li><a href="#" class="open-checkout-btn" style="color: var(--color-gold); font-weight: 700;">ADQUIRIR LIVRO (9.900 KZ)</a></li>
         </ul>
     </div>
 
@@ -560,37 +1077,44 @@
     <main id="smooth-wrapper">
         <div id="smooth-content">
             
-            <!-- HERO SECTION: APRESENTAÇÃO DO LIVRO -->
-            <section class="hc-hero">
-                <div class="hc-hero-grid">
+            <!-- ============================================================ -->
+            <!-- 1. HERO — A PRIMEIRA IMPRESSÃO                               -->
+            <!-- ============================================================ -->
+            <section class="sales-hero">
+                <div class="sales-hero-grid">
                     
-                    <!-- CAPA DO LIVRO (MUITO GRANDE & SEM FUNDO / CAIXA DE MOLDURA) -->
-                    <div class="book-showcase">
-                        <div class="book-cover-wrapper">
-                            <img src="/coover.png" alt="MAHAMBA — Arquitectura Civilizacional do Humano Concreto" class="book-cover-img">
-                        </div>
+                    <!-- Capa Grande, Limpa e sem Fundo -->
+                    <div class="hero-book-wrapper">
+                        <img src="/coover.png" alt="Capa do Livro MAHAMBA — Arquitectura Civilizacional do Humano Concreto" class="hero-book-img">
                     </div>
 
-                    <!-- DETALHES PRINCIPAIS DA OBRA (HEADLINE & SUBHEADLINE REINICIALIZADOS EM TAMANHO ELEGANTE) -->
-                    <div class="hc-hero-content">
-                        <div class="institution-tag">
-                            ID&IA — INSTITUTO DE IDENTIDADE & INTELIGÊNCIA ARTIFICIAL
+                    <!-- Conteúdo de Venda Imediata -->
+                    <div class="hero-sales-content">
+                        <span class="hero-pre-headline">E SE A HUMANIDADE PRECISASSE REPENSAR A FORMA COMO COMPREENDE A SI PRÓPRIA?</span>
+                        
+                        <div>
+                            <h1 class="hero-book-title">MAHAMBA</h1>
+                            <div class="hero-book-subtitle">Arquitectura Civilizacional do Humano Concreto</div>
                         </div>
 
-                        <h1 class="hc-main-title">
-                            MAHAMBA — <span class="gold-accent">ARQUITECTURA CIVILIZACIONAL</span> DO HUMANO CONCRETO
-                        </h1>
-
-                        <p class="hc-description">
-                            Uma obra que propõe uma arquitectura para compreender, experimentar e tornar perceptível a Continuidade Humana no campo da <span class="astro-highlight">ASTROBIOTECNIA</span>.
+                        <p class="hero-synopsis">
+                            Uma obra que propõe uma nova perspectiva sobre humanidade, inteligência, tecnologia, vida e continuidade.
                         </p>
 
-                        <div class="hc-meta-info">
-                            <div class="meta-pill">
-                                Lançamento: <strong>11.09.2026</strong>
+                        <!-- Box de Preço e Ação Direta -->
+                        <div class="hero-pricing-box">
+                            <div class="price-row">
+                                <span class="promo-tag">Edição promocional</span>
+                                <span class="current-price">9.900 Kz</span>
+                                <span class="old-price">14.900 Kz</span>
                             </div>
-                            <div class="meta-pill">
-                                Formato Digital & Multilingue
+
+                            <a href="#comprar" class="btn-cta-sales open-checkout-btn">
+                                QUERO O MEU EXEMPLAR POR 9.900 KZ
+                            </a>
+
+                            <div class="promo-validity-text">
+                                Preço promocional válido durante os primeiros 6 dias.
                             </div>
                         </div>
                     </div>
@@ -598,131 +1122,408 @@
                 </div>
             </section>
 
-            <!-- SEÇÃO: O ESPAÇO QUE SE ABRE (OS TRÊS PILARES) -->
-            <section class="opening-space-section">
-                <div class="section-header">
-                    <span class="section-subtitle">ID&IA — INSTITUTO DE IDENTIDADE & INTELIGÊNCIA ARTIFICIAL</span>
-                    <h2 class="section-heading">É neste espaço que MAHAMBA se abre:</h2>
-                </div>
-
-                <div class="opening-grid">
-                    <!-- PILAR 1 -->
-                    <div class="opening-card">
-                        <span class="opening-number">01</span>
-                        <h3 class="opening-title">METODOLOGIA APLICÁVEL</h3>
-                        <p class="opening-desc">Estruturação pragmática e conceitual para a aplicação directa dos princípios da Continuidade Humana nas dinâmicas sociais e tecnológicas.</p>
-                    </div>
-
-                    <!-- PILAR 2 -->
-                    <div class="opening-card">
-                        <span class="opening-number">02</span>
-                        <h3 class="opening-title">APLICATIVO RESPONSÁVEL</h3>
-                        <p class="opening-desc">Desenvolvimento de soluções digitais e inteligência artificial alinhadas com a integridade ética, preservação identitária e soberania orgânica.</p>
-                    </div>
-
-                    <!-- PILAR 3 -->
-                    <div class="opening-card">
-                        <span class="opening-number">03</span>
-                        <h3 class="opening-title">INVESTIGAÇÃO HABITÁVEL</h3>
-                        <p class="opening-desc">Criação de ecossistemas de pesquisa vivenciáveis onde o conhecimento científico e filosófico habita o quotidiano humano.</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- SEÇÃO: LANÇAMENTO DIGITAL E IDIOMAS -->
-            <section class="digital-launch-section">
-                <div class="digital-launch-card">
-                    <div class="digital-box-primary">
-                        <h3>Lançamento em formato digital e na língua Portuguesa.</h3>
-                    </div>
-                    <div class="digital-box-secondary">
-                        <p>
-                            Brevemente, em mais <strong>7 línguas</strong>, ampliando o seu espaço de diálogo e investigação entre diferentes experiências humanas, culturas e territórios.
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- SEÇÃO: 5 TRAVESSIAS & 5 REGIMES CIVILIZACIONAIS -->
-            <section class="civilization-architecture-section">
-                <div class="section-header">
-                    <span class="section-subtitle">ARQUITECTURA CIVILIZACIONAL</span>
-                    <h2 class="section-heading">Dimensões da Continuidade</h2>
-                </div>
-
-                <div class="duo-grid">
-                    <!-- CARD 1: 5 TRAVESSIAS CIVILIZACIONAIS -->
-                    <div class="duo-card">
-                        <div class="duo-card-header">
-                            <div class="duo-title-group">
-                                <span>DIMENSÃO TERRITORIAL</span>
-                                <h3>5 TRAVESSIAS CIVILIZACIONAIS</h3>
-                            </div>
-                        </div>
-
-                        <div class="continents-pills">
-                            <div class="continent-pill">ÁFRICA</div>
-                            <div class="continent-pill">ÁSIA</div>
-                            <div class="continent-pill">EUROPA</div>
-                            <div class="continent-pill">AMÉRICA</div>
-                            <div class="continent-pill">OCEÂNEA</div>
-                        </div>
-                    </div>
-
-                    <!-- CARD 2: 5 REGIMES CIVILIZACIONAIS -->
-                    <div class="duo-card">
-                        <div class="duo-card-header">
-                            <div class="duo-title-group">
-                                <span>ESTADOS DA PERCEPÇÃO</span>
-                                <h3>5 REGIMES CIVILIZACIONAIS</h3>
-                            </div>
-                        </div>
-
-                        <div class="regimes-timeline">
-                            <div class="regime-item">
-                                <span class="regime-name">COBERTO</span>
-                                <span class="regime-index">01</span>
-                            </div>
-                            <div class="regime-item">
-                                <span class="regime-name">“DES”COBERTO</span>
-                                <span class="regime-index">02</span>
-                            </div>
-                            <div class="regime-item">
-                                <span class="regime-name">SECRETO</span>
-                                <span class="regime-index">03</span>
-                            </div>
-                            <div class="regime-item">
-                                <span class="regime-name">DISCRETO</span>
-                                <span class="regime-index">04</span>
-                            </div>
-                            <div class="regime-item">
-                                <span class="regime-name">CONCRETO</span>
-                                <span class="regime-index">05</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- BANNER FINAL: IDENTIDADE E ENCERRAMENTO -->
-            <section class="hc-manifesto-banner">
-                <div class="manifesto-box">
-                    <span class="manifesto-divider">– HUMANO CONCRETO –</span>
-                    
-                    <h2 class="manifesto-work-title">
-                        MAHAMBA — ARQUITECTURA CIVILIZACIONAL DO HUMANO CONCRETO.
+            <!-- ============================================================ -->
+            <!-- 2. UMA FRASE DE IMPACTO                                      -->
+            <!-- ============================================================ -->
+            <section class="impact-quote-section">
+                <div class="impact-quote-container">
+                    <p class="impact-quote-p1">HÁ LIVROS QUE TRANSMITEM CONHECIMENTO.</p>
+                    <h2 class="impact-quote-p2">
+                        E HÁ LIVROS QUE FAZEM VOCÊ <span>REPENSAR O QUE JÁ ACREDITAVA SABER</span>.
                     </h2>
-                    
-                    <div class="manifesto-date">11.09.2026</div>
+                </div>
+            </section>
 
-                    <a href="https://www.idia-africa.com" target="_blank" rel="noopener noreferrer" class="manifesto-domain">
-                        www.idia-africa.com
-                    </a>
-
-                    <div class="manifesto-footer-phrase">
-                        <div class="manifesto-mahamba">MAHAMBA.</div>
-                        <div class="manifesto-submahamba">O CENTRO QUE SE ABRE.</div>
+            <!-- ============================================================ -->
+            <!-- 3. O VÍDEO (ATÉ 90 SEGUNDOS)                                 -->
+            <!-- ============================================================ -->
+            <section class="video-section">
+                <div class="video-container">
+                    <div>
+                        <span class="section-kicker">UMA MENSAGEM DO AUTOR</span>
+                        <h2 class="section-main-title">POR QUE ESTE LIVRO FOI ESCRITO?</h2>
+                        <p class="section-main-sub">Assista ao vídeo e descubra a ideia por trás de MAHAMBA.</p>
                     </div>
+
+                    <!-- Player de Vídeo Cinematográfico -->
+                    <div class="video-card-player">
+                        <video controls poster="/filme.jpeg" playsinline preload="metadata">
+                            <source src="/vidbanner.mp4" type="video/mp4">
+                            O seu navegador não suporta a reprodução de vídeo.
+                        </video>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============================================================ -->
+            <!-- 4. “O QUE VOCÊ VAI ENCONTRAR?”                               -->
+            <!-- ============================================================ -->
+            <section class="concepts-section">
+                <div class="concepts-container">
+                    <div class="concepts-header">
+                        <span class="section-kicker">UMA ARQUITECTURA DE IDEIAS</span>
+                        <h2 class="section-main-title">UMA OBRA PARA SER LIDA. UMA IDEIA PARA SER DESCOBERTA.</h2>
+                        <p class="section-main-sub" style="margin-top: 14px;">
+                            Ao longo de MAHAMBA, você será conduzido por uma arquitectura de ideias que atravessa diferentes dimensões da experiência humana.
+                        </p>
+                    </div>
+
+                    <div class="concepts-grid">
+                        <div class="concept-card">
+                            <h3 class="concept-card-title">ASTROBIOTECNIA</h3>
+                            <p class="concept-card-desc">Uma nova perspectiva sobre a continuidade concreta da vida.</p>
+                        </div>
+
+                        <div class="concept-card">
+                            <h3 class="concept-card-title">MPACH</h3>
+                            <p class="concept-card-desc">Uma metodologia aplicada à Continuidade Humana.</p>
+                        </div>
+
+                        <div class="concept-card">
+                            <h3 class="concept-card-title">HUMANO CONCRETO</h3>
+                            <p class="concept-card-desc">O ser humano enquanto participante activo da sua própria continuidade.</p>
+                        </div>
+
+                        <div class="concept-card">
+                            <h3 class="concept-card-title">VIDA CONCRETA</h3>
+                            <p class="concept-card-desc">A passagem da ideia para a realidade vivida.</p>
+                        </div>
+
+                        <div class="concept-card" style="grid-column: 1 / -1;">
+                            <h3 class="concept-card-title">CONTINUIDADE HUMANA</h3>
+                            <p class="concept-card-desc">A questão que atravessa toda a obra e redefine a relação entre tecnologia, memória e futuro.</p>
+                        </div>
+                    </div>
+
+                    <div class="concepts-closing">
+                        <div class="concepts-closing-phrase">
+                            "Você não precisa compreender tudo antes de começar. Precisa apenas começar a leitura."
+                        </div>
+                        <a href="#comprar" class="btn-cta-sales open-checkout-btn">
+                            QUERO LER MAHAMBA
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============================================================ -->
+            <!-- 5. PARA QUEM É O LIVRO?                                      -->
+            <!-- ============================================================ -->
+            <section class="audience-section">
+                <div class="audience-container">
+                    <div style="text-align: center;">
+                        <span class="section-kicker">IDENTIFICAÇÃO</span>
+                        <h2 class="section-main-title">ESTE LIVRO É PARA VOCÊ SE...</h2>
+                    </div>
+
+                    <div class="audience-list">
+                        <div class="audience-item">
+                            <span class="audience-dash">—</span>
+                            <div>Gosta de questionar ideias estabelecidas;</div>
+                        </div>
+
+                        <div class="audience-item">
+                            <span class="audience-dash">—</span>
+                            <div>Procura novas perspectivas sobre a humanidade;</div>
+                        </div>
+
+                        <div class="audience-item">
+                            <span class="audience-dash">—</span>
+                            <div>Se interessa por inteligência, tecnologia e futuro;</div>
+                        </div>
+
+                        <div class="audience-item">
+                            <span class="audience-dash">—</span>
+                            <div>Gosta de obras que provocam reflexão;</div>
+                        </div>
+
+                        <div class="audience-item">
+                            <span class="audience-dash">—</span>
+                            <div>Acredita que o conhecimento deve produzir transformação;</div>
+                        </div>
+
+                        <div class="audience-item">
+                            <span class="audience-dash">—</span>
+                            <div>Quer conhecer uma proposta original de pensamento desenvolvida a partir da realidade humana.</div>
+                        </div>
+                    </div>
+
+                    <div class="audience-highlight-box">
+                        <div class="audience-highlight-text">
+                            NÃO É PRECISO CONCORDAR COM TUDO. <span>É PRECISO ESTAR DISPOSTO A PENSAR.</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============================================================ -->
+            <!-- 6. APRESENTAÇÃO DA OBRA                                      -->
+            <!-- ============================================================ -->
+            <section class="presentation-section">
+                <div class="presentation-grid">
+                    <div style="display: flex; justify-content: center;">
+                        <img src="/coover.png" alt="MAHAMBA" style="max-width: 420px; width: 100%; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.9));">
+                    </div>
+
+                    <div class="presentation-content">
+                        <span class="section-kicker">O CONVITE À LEITURA</span>
+                        <h2 class="presentation-lead">UMA OBRA PARA TER, LER E REVISITAR.</h2>
+                        
+                        <div style="font-size: 1.15rem; color: #fff; font-weight: 700;">
+                            MAHAMBA — Arquitectura Civilizacional do Humano Concreto
+                        </div>
+
+                        <p class="presentation-desc">
+                            Uma obra concebida para provocar reflexão sobre a condição humana e sobre aquilo que podemos construir a partir do conhecimento, da inteligência e da consciência.
+                        </p>
+
+                        <div class="presentation-mantra">
+                            "Uma leitura para agora. Uma ideia para levar consigo."
+                        </div>
+
+                        <a href="#comprar" class="btn-cta-sales open-checkout-btn" style="margin-top: 10px;">
+                            ADQUIRIR O LIVRO
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============================================================ -->
+            <!-- 7. OFERTA — A SECÇÃO DE CONVERSÃO COM CONTADOR               -->
+            <!-- ============================================================ -->
+            <section class="offer-section" id="comprar">
+                <div class="offer-container">
+                    <span class="section-kicker" style="color: var(--lp-gold-light);">CONDIÇÃO EXCLUSIVA DE LANÇAMENTO</span>
+                    <h2 class="offer-headline">ADQUIRA MAHAMBA PELO PREÇO ESPECIAL</h2>
+
+                    <!-- Contador Regressivo Funcional (6 Dias) -->
+                    <div class="countdown-wrapper" id="sales-countdown">
+                        <div class="countdown-block">
+                            <span class="countdown-val" id="timer-days">05</span>
+                            <span class="countdown-lbl">Dias</span>
+                        </div>
+                        <div class="countdown-block">
+                            <span class="countdown-val" id="timer-hours">23</span>
+                            <span class="countdown-lbl">Horas</span>
+                        </div>
+                        <div class="countdown-block">
+                            <span class="countdown-val" id="timer-mins">59</span>
+                            <span class="countdown-lbl">Minutos</span>
+                        </div>
+                        <div class="countdown-block">
+                            <span class="countdown-val" id="timer-secs">48</span>
+                            <span class="countdown-lbl">Segundos</span>
+                        </div>
+                    </div>
+
+                    <!-- Preços -->
+                    <div class="offer-price-showcase">
+                        <span class="offer-current-price">9.900 Kz</span>
+                        <span class="offer-old-price">14.900 Kz</span>
+                    </div>
+
+                    <div class="offer-sub-rules">
+                        <strong>PREÇO PROMOCIONAL DURANTE 6 DIAS</strong><br>
+                        Depois desse período: <span style="text-decoration: line-through; opacity: 0.7;">14.900 Kz</span>
+                    </div>
+
+                    <p style="font-size: 1.05rem; color: #fff; font-weight: 500;">
+                        Garanta agora o seu exemplar pelo preço promocional.
+                    </p>
+
+                    <button class="btn-cta-sales open-checkout-btn" style="width: 100%; max-width: 440px;">
+                        QUERO O MEU EXEMPLAR POR 9.900 KZ
+                    </button>
+
+                    <div class="offer-guarantee-note">
+                        Oferta promocional limitada aos primeiros 6 dias.
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============================================================ -->
+            <!-- 8. O QUE RECEBE                                              -->
+            <!-- ============================================================ -->
+            <section class="deliverables-section">
+                <div class="deliverables-container">
+                    <div style="text-align: center;">
+                        <span class="section-kicker">TRANSPARÊNCIA TOTAL</span>
+                        <h2 class="section-main-title">AO ADQUIRIR MAHAMBA, VOCÊ RECEBE</h2>
+                    </div>
+
+                    <div class="deliverables-grid">
+                        <div class="deliverable-card">
+                            <span class="deliverable-tag">FORMATO</span>
+                            <h3 class="deliverable-title">O EBOOK</h3>
+                            <p class="deliverable-text">
+                                <strong>MAHAMBA — Arquitectura Civilizacional do Humano Concreto</strong>.<br>
+                                Uma obra digital concebida para ler confortavelmente no seu computador, tablet ou smartphone.
+                            </p>
+                        </div>
+
+                        <div class="deliverable-card">
+                            <span class="deliverable-tag">ENTREGA</span>
+                            <h3 class="deliverable-title">ACESSO IMEDIATO</h3>
+                            <p class="deliverable-text">
+                                Após a confirmação do pagamento, você recebe imediatamente as instruções e o link seguro para aceder à obra sem esperas.
+                            </p>
+                        </div>
+
+                        <div class="deliverable-card">
+                            <span class="deliverable-tag">LEGADO</span>
+                            <h3 class="deliverable-title">UMA OBRA PARA GUARDAR</h3>
+                            <p class="deliverable-text">
+                                Leia agora. Releia depois. Volte sempre às ideias, esquemas e reflexões que mais o provocarem e desafiarem a sua visão.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 15px;">
+                        <div style="font-size: 1rem; color: var(--lp-text-dim); margin-bottom: 20px;">
+                            <strong>9.900 Kz</strong> durante a promoção de lançamento
+                        </div>
+                        <a href="#comprar" class="btn-cta-sales open-checkout-btn">
+                            ADQUIRIR AGORA
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============================================================ -->
+            <!-- 9. AUTOR                                                     -->
+            <!-- ============================================================ -->
+            <section class="author-section">
+                <div class="author-container">
+                    <div class="author-img-wrap">
+                        <img src="/antonio.jpeg" alt="António José Augusto 'Tony Nguxi'" class="author-img">
+                    </div>
+
+                    <div class="author-content">
+                        <span class="section-kicker">AUTOR DA OBRA</span>
+                        <h2 class="author-name">António José Augusto <span>"Tony Nguxi"</span></h2>
+                        <p class="author-bio">
+                            Investigador, pensador e Fundador do ecossistema MAHAMBA e do ID&IA Global — Instituto de Identidade e Inteligência Artificial. Dedica a sua trajetória ao desenvolvimento de matrizes de soberania cognitiva, inteligência artificial ética e preservação da continuidade humana a partir do solo africano para o mundo.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============================================================ -->
+            <!-- 10. FAQ — PERGUNTAS FREQUENTES                               -->
+            <!-- ============================================================ -->
+            <section class="faq-section">
+                <div class="faq-container">
+                    <div style="text-align: center;">
+                        <span class="section-kicker">ESCLARECIMENTOS</span>
+                        <h2 class="section-main-title">PERGUNTAS FREQUENTES</h2>
+                    </div>
+
+                    <div class="faq-accordion">
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>Qual é o preço do livro?</span>
+                                <span class="faq-icon">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                Durante os primeiros 6 dias, o preço promocional é de 9.900 Kz. Após este período inicial de lançamento, passa para o valor normal de 14.900 Kz.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>Em que formato está disponível?</span>
+                                <span class="faq-icon">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                Está disponível em formato Ebook digital de alta qualidade, pronto para leitura instantânea.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>Como recebo o livro?</span>
+                                <span class="faq-icon">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                Imediatamente após a confirmação do pagamento, você receberá as instruções e o link seguro para download e acesso ao ebook diretamente no seu email e/ou WhatsApp.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>Posso ler no telemóvel?</span>
+                                <span class="faq-icon">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                Sim. O ebook foi optimizado para visualização e leitura em qualquer computador, tablet ou smartphone compatível.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>Preciso conhecer Astrobiotecnia ou MPACH para ler?</span>
+                                <span class="faq-icon">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                Não. Os conceitos fazem parte da proposta original da obra e são cuidadosamente apresentados e desdobrados ao longo da leitura de forma clara e envolvente.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>O livro é para qualquer pessoa?</span>
+                                <span class="faq-icon">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                A obra é especialmente indicada para leitores interessados em humanidade, inteligência, tecnologia, conhecimento, futuro e continuidade, que valorizam o questionamento crítico e a reflexão profunda.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>Como posso comprar?</span>
+                                <span class="faq-icon">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                Basta clicar no botão de compra ("QUERO ADQUIRIR MAHAMBA"), preencher os seus dados de contacto e escolher a forma de pagamento desejada (Multicaixa Express, Transferência ou Atendimento Oficial).
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 15px;">
+                        <button class="btn-cta-sales open-checkout-btn">
+                            QUERO ADQUIRIR MAHAMBA
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============================================================ -->
+            <!-- 11. ÚLTIMA SECÇÃO — FECHO EMOCIONAL                          -->
+            <!-- ============================================================ -->
+            <section class="emotional-close-section">
+                <div class="emotional-close-box">
+                    <p class="close-p1">
+                        TALVEZ ESTE LIVRO NÃO LHE DÊ TODAS AS RESPOSTAS.
+                    </p>
+                    
+                    <h2 class="close-p2">
+                        MAS PODE FAZER VOCÊ COMEÇAR A <span>FAZER NOVAS PERGUNTAS</span>.
+                    </h2>
+
+                    <div class="close-book-name">
+                        MAHAMBA — Arquitectura Civilizacional do Humano Concreto
+                    </div>
+
+                    <div class="close-pricing-info">
+                        <span>Preço promocional durante 6 dias:</span>
+                        <strong>9.900 Kz</strong>
+                        <span style="opacity: 0.6;">(Depois: 14.900 Kz)</span>
+                    </div>
+
+                    <button class="btn-cta-sales open-checkout-btn" style="margin-top: 10px;">
+                        QUERO O MEU EXEMPLAR
+                    </button>
                 </div>
             </section>
 
@@ -792,6 +1593,156 @@
         </div>
     </main>
 
+    <!-- MODAL DE CHECKOUT / PEDIDO DIRETO -->
+    <div id="checkout-modal" class="checkout-modal">
+        <div class="checkout-box">
+            <button class="close-modal-x" id="close-checkout-x">&times;</button>
+            <div class="checkout-header">
+                <h3>Adquirir MAHAMBA</h3>
+                <p>Edição Especial de Lançamento em Formato Digital</p>
+            </div>
+
+            <div class="checkout-price-badge">
+                <span style="font-size: 0.85rem; color: var(--lp-text-dim);">Preço Promocional:</span>
+                <strong style="font-size: 1.25rem; color: var(--color-gold);">9.900 Kz</strong>
+            </div>
+
+            <form class="checkout-form" id="order-form">
+                <div class="form-group">
+                    <label for="order-name">Nome Completo</label>
+                    <input type="text" id="order-name" name="name" placeholder="O seu nome" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="order-email">Email (para envio do Ebook)</label>
+                    <input type="email" id="order-email" name="email" placeholder="seuemail@exemplo.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="order-phone">WhatsApp / Telemóvel</label>
+                    <input type="tel" id="order-phone" name="phone" placeholder="+244 9XX XXX XXX" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="order-payment">Forma de Pagamento Preferida</label>
+                    <select id="order-payment" name="payment">
+                        <option value="multicaixa">Multicaixa Express (Angola)</option>
+                        <option value="transferencia">Transferência Bancária / IBAN</option>
+                        <option value="whatsapp">Atendimento Directo via WhatsApp</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-cta-sales" style="width: 100%; margin-top: 8px;">
+                    CONFIRMAR PEDIDO POR 9.900 KZ
+                </button>
+
+                <p class="checkout-note">
+                    Acesso imediato enviado após validação. Compra 100% segura pelo ID&IA Global.
+                </p>
+            </form>
+        </div>
+    </div>
+
     <script type="module" src="/src/main.js"></script>
+    <script>
+        // Lógica da Landing Page (FAQ, Countdown Timer e Checkout Modal)
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // 1. FAQ Accordion
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    const isOpen = item.classList.contains('active');
+                    faqItems.forEach(i => i.classList.remove('active'));
+                    if (!isOpen) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+
+            // 2. Countdown Timer de 6 dias persistente
+            const daysEl = document.getElementById('timer-days');
+            const hoursEl = document.getElementById('timer-hours');
+            const minsEl = document.getElementById('timer-mins');
+            const secsEl = document.getElementById('timer-secs');
+
+            // Define ou recupera o fim da promoção (6 dias a partir do primeiro acesso)
+            let promoDeadline = localStorage.getItem('mahamba_promo_deadline');
+            if (!promoDeadline) {
+                const sixDaysInMs = 6 * 24 * 60 * 60 * 1000;
+                promoDeadline = Date.now() + sixDaysInMs;
+                localStorage.setItem('mahamba_promo_deadline', promoDeadline);
+            }
+
+            function updateCountdown() {
+                const now = Date.now();
+                const diff = Math.max(0, promoDeadline - now);
+
+                const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+                if (daysEl) daysEl.textContent = String(d).padStart(2, '0');
+                if (hoursEl) hoursEl.textContent = String(h).padStart(2, '0');
+                if (minsEl) minsEl.textContent = String(m).padStart(2, '0');
+                if (secsEl) secsEl.textContent = String(s).padStart(2, '0');
+            }
+
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+
+            // 3. Modal de Checkout
+            const modal = document.getElementById('checkout-modal');
+            const openButtons = document.querySelectorAll('.open-checkout-btn');
+            const closeBtn = document.getElementById('close-checkout-x');
+            const orderForm = document.getElementById('order-form');
+
+            openButtons.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if (modal) {
+                        modal.classList.add('active');
+                    }
+                });
+            });
+
+            const closeModal = () => {
+                if (modal) modal.classList.remove('active');
+            };
+
+            if (closeBtn) closeBtn.addEventListener('click', closeModal);
+            if (modal) {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) closeModal();
+                });
+            }
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeModal();
+            });
+
+            // Submissão do Formulário
+            if (orderForm) {
+                orderForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const name = document.getElementById('order-name').value;
+                    const email = document.getElementById('order-email').value;
+                    const phone = document.getElementById('order-phone').value;
+                    const payment = document.getElementById('order-payment').value;
+
+                    // Mensagem para direcionamento oficial
+                    const message = encodeURIComponent(`Olá ID&IA! Quero adquirir o meu exemplar do livro MAHAMBA por 9.900 Kz.\n\nNome: ${name}\nEmail: ${email}\nTelefone: ${phone}\nPagamento: ${payment}`);
+                    
+                    alert('Obrigado pelo seu interesse! Você será direcionado para o atendimento oficial para receber os dados de pagamento e acesso imediato.');
+                    closeModal();
+
+                    // Direcionar para o WhatsApp oficial ou email
+                    window.open(`https://wa.me/244923000000?text=${message}`, '_blank');
+                });
+            }
+        });
+    </script>
 </body>
 </html>
