@@ -249,21 +249,6 @@
             color: var(--lp-gold);
         }
 
-        /* 3. VÍDEO EXPLICATIVO */
-        .video-section {
-            padding: 90px var(--padding-global);
-            background: radial-gradient(circle at 50% 30%, rgba(199, 161, 83, 0.08) 0%, var(--lp-bg) 70%);
-            border-bottom: 1px solid var(--lp-border);
-        }
-
-        .video-container {
-            max-width: 980px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 32px;
-            text-align: center;
-        }
 
         .section-kicker {
             font-size: 0.78rem;
@@ -289,24 +274,6 @@
             font-weight: 300;
             max-width: 680px;
             margin: 0 auto;
-        }
-
-        .video-card-player {
-            position: relative;
-            width: 100%;
-            background: #000;
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid rgba(199, 161, 83, 0.25);
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 40px rgba(199, 161, 83, 0.15);
-        }
-
-        .video-card-player video {
-            width: 100%;
-            height: auto;
-            display: block;
-            max-height: 540px;
-            object-fit: cover;
         }
 
         /* 4. O QUE VOCÊ VAI ENCONTRAR */
@@ -1134,26 +1101,6 @@
                 </div>
             </section>
 
-            <!-- ============================================================ -->
-            <!-- 3. O VÍDEO (ATÉ 90 SEGUNDOS)                                 -->
-            <!-- ============================================================ -->
-            <section class="video-section">
-                <div class="video-container">
-                    <div>
-                        <span class="section-kicker">UMA MENSAGEM DO AUTOR</span>
-                        <h2 class="section-main-title">POR QUE ESTE LIVRO FOI ESCRITO?</h2>
-                        <p class="section-main-sub">Assista ao vídeo e descubra a ideia por trás de MAHAMBA.</p>
-                    </div>
-
-                    <!-- Player de Vídeo Cinematográfico -->
-                    <div class="video-card-player">
-                        <video controls poster="/filme.jpeg" playsinline preload="metadata">
-                            <source src="/vidbanner.mp4" type="video/mp4">
-                            O seu navegador não suporta a reprodução de vídeo.
-                        </video>
-                    </div>
-                </div>
-            </section>
 
             <!-- ============================================================ -->
             <!-- 4. “O QUE VOCÊ VAI ENCONTRAR?”                               -->
