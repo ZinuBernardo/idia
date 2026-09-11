@@ -62,33 +62,129 @@
             transform: translateY(0);
         }
 
-        /* 1. HERO SECTION */
+        /* ========================================================================== */
+        /*               NAVEGAÇÃO REFINADA (SEM QUEBRAS & LAYOUT HARMONIOSO)         */
+        /* ========================================================================== */
+        .main-nav {
+            height: 70px !important;
+            padding: 0 clamp(16px, 3vw, 44px) !important;
+            background: rgba(5, 5, 5, 0.94) !important;
+            backdrop-filter: blur(16px) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            gap: 16px !important;
+        }
+
+        .nav-brand {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-logo {
+            height: 38px !important;
+            width: auto;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex !important;
+            align-items: center !important;
+            gap: clamp(6px, 0.95vw, 16px) !important;
+            list-style: none !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            flex-wrap: nowrap !important;
+        }
+
+        .nav-links li {
+            white-space: nowrap !important;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a {
+            white-space: nowrap !important;
+            font-size: clamp(0.61rem, 0.68vw, 0.72rem) !important;
+            letter-spacing: 0.6px !important;
+            font-weight: 500 !important;
+            color: rgba(255, 255, 255, 0.75) !important;
+            text-transform: uppercase !important;
+            transition: color 0.25s ease !important;
+            padding: 6px 0 !important;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--lp-gold-light) !important;
+        }
+
+        /* Botão de Compra no Topo */
+        .nav-buy-btn {
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            white-space: nowrap !important;
+            background: linear-gradient(135deg, #e6c887 0%, #c7a153 60%, #a37c2d 100%) !important;
+            color: #050505 !important;
+            font-family: var(--font-heading) !important;
+            font-size: 0.72rem !important;
+            font-weight: 800 !important;
+            letter-spacing: 1px !important;
+            text-transform: uppercase !important;
+            padding: 9px 20px !important;
+            border-radius: 4px !important;
+            border: 1px solid var(--lp-gold-light) !important;
+            box-shadow: 0 4px 15px rgba(199, 161, 83, 0.35) !important;
+            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+            text-decoration: none !important;
+            margin-left: 6px;
+            flex-shrink: 0;
+        }
+
+        .nav-buy-btn:hover {
+            transform: translateY(-2px) !important;
+            background: linear-gradient(135deg, #ffffff 0%, #e6c887 50%, #c7a153 100%) !important;
+            box-shadow: 0 6px 20px rgba(199, 161, 83, 0.6) !important;
+            color: #000 !important;
+        }
+
+        /* ========================================================================== */
+        /*               1. HERO SECTION (TUDO NA PRIMEIRA DOBRA)                     */
+        /* ========================================================================== */
         .sales-hero {
             position: relative;
-            min-height: 92vh;
-            padding: calc(var(--nav-height) + 40px) var(--padding-global) 70px var(--padding-global);
+            min-height: calc(100vh - 70px);
+            padding: 85px clamp(16px, 3.5vw, 45px) 25px clamp(16px, 3.5vw, 45px);
             display: flex;
             align-items: center;
             justify-content: center;
             background: radial-gradient(circle at 35% 45%, rgba(199, 161, 83, 0.12) 0%, rgba(10, 14, 23, 0.98) 60%, var(--lp-bg) 100%);
             border-bottom: 1px solid var(--lp-border);
             overflow: hidden;
+            box-sizing: border-box;
         }
 
         .sales-hero-grid {
-            max-width: 1380px;
+            max-width: 1320px;
             width: 100%;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 620px 1fr;
-            gap: 50px;
+            grid-template-columns: minmax(320px, 460px) 1fr;
+            gap: clamp(24px, 3.5vw, 50px);
             align-items: center;
         }
 
-        @media (max-width: 1100px) {
+        @media (max-width: 1024px) {
+            .sales-hero {
+                min-height: auto;
+                padding: 95px 20px 50px 20px;
+            }
             .sales-hero-grid {
                 grid-template-columns: 1fr;
-                gap: 40px;
+                gap: 35px;
                 text-align: center;
             }
         }
@@ -103,70 +199,81 @@
 
         .hero-book-img {
             width: 100%;
-            max-width: 600px;
+            max-width: 460px;
+            max-height: clamp(340px, 62vh, 500px);
             height: auto;
             display: block;
             object-fit: contain;
             background: transparent !important;
-            filter: drop-shadow(0 30px 65px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 55px rgba(199, 161, 83, 0.35));
+            filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 45px rgba(199, 161, 83, 0.35));
             transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1), filter 0.6s ease;
         }
 
         .hero-book-wrapper:hover .hero-book-img {
-            transform: scale(1.03) translateY(-8px);
-            filter: drop-shadow(0 40px 80px rgba(0, 0, 0, 0.98)) drop-shadow(0 0 70px rgba(199, 161, 83, 0.45));
+            transform: scale(1.025) translateY(-6px);
+            filter: drop-shadow(0 35px 65px rgba(0, 0, 0, 0.98)) drop-shadow(0 0 60px rgba(199, 161, 83, 0.45));
         }
 
         .hero-sales-content {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 12px;
         }
 
         .hero-pre-headline {
-            font-size: clamp(0.78rem, 1.2vw, 0.9rem);
-            letter-spacing: 2px;
+            font-size: clamp(0.72rem, 0.88vw, 0.82rem);
+            letter-spacing: 1.5px;
             text-transform: uppercase;
             color: var(--lp-gold);
             font-weight: 700;
-            line-height: 1.4;
+            line-height: 1.35;
+            margin: 0;
+        }
+
+        .hero-title-group {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
         }
 
         .hero-book-title {
-            font-size: clamp(2.2rem, 4vw, 3.4rem);
+            font-size: clamp(2.3rem, 3.6vw, 3.5rem);
             font-weight: 800;
-            line-height: 1.08;
-            letter-spacing: -0.02em;
+            line-height: 1;
+            letter-spacing: -0.015em;
             color: #ffffff;
             margin: 0;
         }
 
         .hero-book-subtitle {
-            font-size: clamp(1.1rem, 2vw, 1.45rem);
+            font-size: clamp(1.02rem, 1.35vw, 1.25rem);
             color: var(--lp-gold-light);
             font-weight: 600;
-            letter-spacing: 0.5px;
-            line-height: 1.3;
+            letter-spacing: 0.3px;
+            line-height: 1.25;
+            margin: 0;
         }
 
         .hero-synopsis {
-            font-size: clamp(0.95rem, 1.3vw, 1.08rem);
-            line-height: 1.65;
+            font-size: clamp(0.88rem, 1.02vw, 0.96rem);
+            line-height: 1.52;
             color: rgba(255, 255, 255, 0.82);
             font-weight: 300;
-            max-width: 620px;
+            max-width: 560px;
+            margin: 2px 0 4px 0;
         }
 
+        /* CARD DO PREÇO TOTALMENTE SEM CONTORNOS (BORDERLESS) */
         .hero-pricing-box {
             display: flex;
             flex-direction: column;
-            gap: 14px;
-            background: rgba(255, 255, 255, 0.025);
-            border: 1px solid rgba(199, 161, 83, 0.3);
-            border-left: 3px solid var(--lp-gold);
-            padding: 24px 28px;
-            border-radius: 6px;
-            margin-top: 5px;
+            gap: 12px;
+            background: transparent !important;
+            border: none !important;
+            border-left: none !important;
+            padding: 0 !important;
+            margin-top: 4px;
+            box-shadow: none !important;
             max-width: fit-content;
         }
 
@@ -183,40 +290,42 @@
         .price-row {
             display: flex;
             align-items: baseline;
-            gap: 16px;
+            gap: 14px;
             flex-wrap: wrap;
         }
 
         .promo-tag {
-            font-size: 0.72rem;
-            letter-spacing: 1.5px;
+            font-size: 0.68rem;
+            letter-spacing: 1.2px;
             text-transform: uppercase;
-            color: var(--lp-gold);
+            color: var(--lp-gold-light);
             font-weight: 700;
-            background: rgba(199, 161, 83, 0.15);
+            background: rgba(199, 161, 83, 0.16);
+            border: 1px solid rgba(199, 161, 83, 0.35);
             padding: 4px 10px;
-            border-radius: 3px;
+            border-radius: 20px;
         }
 
         .current-price {
-            font-size: clamp(1.8rem, 2.8vw, 2.4rem);
+            font-size: clamp(1.9rem, 2.7vw, 2.5rem);
             font-family: var(--font-heading);
             font-weight: 800;
             color: #ffffff;
             letter-spacing: -0.01em;
+            line-height: 1;
         }
 
         .old-price {
-            font-size: 1.15rem;
+            font-size: 1.05rem;
             color: rgba(255, 255, 255, 0.4);
             text-decoration: line-through;
             font-weight: 500;
         }
 
         .promo-validity-text {
-            font-size: 0.8rem;
-            color: var(--lp-text-dim);
-            letter-spacing: 0.5px;
+            font-size: 0.74rem;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 0.3px;
         }
 
         /* 2. FRASE DE IMPACTO */
@@ -1413,18 +1522,19 @@
             pointer-events: none;
         }
 
-        /* ESTRUTURA DO LIVRO ABERTO */
+        /* ESTRUTURA DO LIVRO ABERTO (ESTÉTICA EDITORIAL REALISTA) */
         .flipbook-book {
             position: relative;
             width: 100%;
-            max-width: 920px;
-            height: 570px;
+            max-width: 980px;
+            height: 620px;
             perspective: 2500px;
             display: flex;
-            border-radius: 6px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9), 0 0 40px rgba(0, 0, 0, 0.7);
-            background: #f7f3e8;
+            border-radius: 4px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.95), 0 0 45px rgba(199, 161, 83, 0.15);
+            background: #ffffff;
             overflow: visible;
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .book-spine-crease {
@@ -1432,9 +1542,9 @@
             top: 0;
             bottom: 0;
             left: 50%;
-            width: 46px;
+            width: 28px;
             transform: translateX(-50%);
-            background: linear-gradient(90deg, rgba(0, 0, 0, 0.22) 0%, rgba(0, 0, 0, 0.04) 25%, rgba(0, 0, 0, 0.32) 50%, rgba(0, 0, 0, 0.04) 75%, rgba(0, 0, 0, 0.22) 100%);
+            background: linear-gradient(90deg, rgba(0, 0, 0, 0.12) 0%, rgba(0, 0, 0, 0.02) 30%, rgba(0, 0, 0, 0.22) 50%, rgba(0, 0, 0, 0.02) 70%, rgba(0, 0, 0, 0.12) 100%);
             pointer-events: none;
             z-index: 25;
         }
@@ -1447,7 +1557,7 @@
             height: 100%;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.35s ease;
         }
 
         .flipbook-spread.is-active {
@@ -1458,10 +1568,10 @@
         .fp-page {
             width: 50%;
             height: 100%;
-            background: #fcf9f2;
-            color: #1a1816;
-            font-family: 'Cormorant Garamond', Georgia, serif;
-            padding: 38px 40px;
+            background: #ffffff !important;
+            color: #1a1a1a !important;
+            font-family: 'Cormorant Garamond', Garamond, 'Times New Roman', serif;
+            padding: 42px 48px 24px 48px;
             box-sizing: border-box;
             position: relative;
             overflow: hidden;
@@ -1473,140 +1583,152 @@
 
         .fp-page.fp-left {
             border-radius: 4px 0 0 4px;
-            box-shadow: inset -14px 0 24px rgba(0, 0, 0, 0.06);
-            border-right: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: inset -16px 0 26px rgba(0, 0, 0, 0.035);
+            border-right: 1px solid rgba(0, 0, 0, 0.06);
         }
 
         .fp-page.fp-right {
             border-radius: 0 4px 4px 0;
-            box-shadow: inset 14px 0 24px rgba(0, 0, 0, 0.06);
-        }
-
-        /* Cabeçalho de página corrida */
-        .fp-header {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.68rem;
-            letter-spacing: 2px;
-            color: #8c8474;
-            text-transform: uppercase;
-            border-bottom: 1px solid #e7e0d0;
-            padding-bottom: 8px;
-            margin-bottom: 18px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            box-shadow: inset 16px 0 26px rgba(0, 0, 0, 0.035);
         }
 
         .fp-body {
             flex: 1;
             overflow-y: auto;
-            padding-right: 4px;
+            padding: 0 4px;
         }
 
         .fp-body::-webkit-scrollbar {
             width: 4px;
         }
         .fp-body::-webkit-scrollbar-thumb {
-            background: rgba(0, 0, 0, 0.15);
+            background: rgba(0, 0, 0, 0.12);
             border-radius: 2px;
         }
 
-        .fp-footer {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.72rem;
-            color: #8c8474;
-            font-weight: 600;
-            margin-top: 14px;
-            border-top: 1px solid #e7e0d0;
-            padding-top: 8px;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        /* Tipografia Editorial da Obra */
-        .fp-title-large {
-            font-family: 'Cinzel', serif;
-            font-size: 1.6rem;
-            color: #111;
-            margin-bottom: 8px;
+        /* Tipografia Realista do Livro Impresso (Conforme Fotos) */
+        .book-title-main {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 1.85rem;
+            font-weight: 700;
+            color: #111111;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-align: center;
+            margin: 8px 0 4px 0;
             line-height: 1.2;
-            letter-spacing: 1px;
-            font-weight: 700;
         }
 
-        .fp-subtitle {
-            font-family: 'Cinzel', serif;
-            font-size: 0.88rem;
-            color: #a37c2d;
-            letter-spacing: 1.5px;
-            margin-bottom: 24px;
-            font-weight: 600;
-        }
-
-        .fp-author-line {
-            font-size: 0.95rem;
-            font-style: italic;
-            color: #4a453e;
-            margin-bottom: 24px;
-        }
-
-        .fp-epigraph {
-            border-left: 2px solid #c7a153;
-            padding-left: 16px;
-            margin: 24px 0;
-            font-style: italic;
-            font-size: 1.12rem;
-            line-height: 1.6;
-            color: #3b3731;
-        }
-
-        .fp-epigraph-cite {
-            display: block;
-            margin-top: 8px;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.72rem;
-            color: #7b7468;
-            font-style: normal;
-            letter-spacing: 1px;
-        }
-
-        .fp-paragraph {
+        .book-title-sub {
+            font-family: 'Cormorant Garamond', Georgia, serif;
             font-size: 1.05rem;
-            line-height: 1.72;
-            color: #24211e;
-            text-align: justify;
-            margin-bottom: 16px;
-        }
-
-        .fp-drop-cap {
-            float: left;
-            font-size: 3.4rem;
-            line-height: 0.85;
-            padding-top: 4px;
-            padding-right: 10px;
-            font-family: 'Cinzel', serif;
-            color: #a37c2d;
-            font-weight: 700;
-        }
-
-        .fp-concept-highlight {
             font-weight: 600;
-            color: #8c6a1e;
+            color: #111111;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            text-align: center;
+            margin: 0 0 22px 0;
+        }
+
+        .book-section-title {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 0.94rem;
+            font-weight: 700;
+            color: #111111;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            text-align: center;
+            margin: 14px 0 10px 0;
+            line-height: 1.35;
+        }
+
+        .book-paragraph {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 1.02rem;
+            line-height: 1.56;
+            color: #1c1c1c;
+            text-align: justify;
+            text-justify: inter-word;
+            margin-bottom: 11px;
+            font-weight: 500;
+        }
+
+        .book-drop-cap {
+            float: left;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 3.4rem;
+            line-height: 0.78;
+            font-weight: 400;
+            color: #111111;
+            padding-top: 4px;
+            padding-right: 8px;
+            margin-left: -2px;
+        }
+
+        .book-dimension-list {
+            margin: 8px 0 12px 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .book-dimension-item {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 0.98rem;
+            line-height: 1.5;
+            color: #1c1c1c;
+            font-weight: 500;
+        }
+
+        .book-closing-mahamba {
+            text-align: center;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            color: #111111;
+            margin-top: 20px;
+        }
+
+        /* Rodapé Realista com Barra Dourada e Numeração */
+        .book-footer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            margin-top: auto;
+            padding-top: 14px;
+            user-select: none;
+        }
+
+        .book-page-num {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #555047;
+        }
+
+        .book-gold-bar {
+            display: inline-block;
+            width: 75px;
+            height: 1.5px;
+            background: #c5a059;
+            border-radius: 1px;
         }
 
         /* PÁGINA FINAL (O Grande Convite para Compra) */
         .fp-page.fp-final-cta {
-            background: #0c0d12;
-            color: #ffffff;
+            background: #0d0f15 !important;
+            color: #ffffff !important;
             border-radius: 0 4px 4px 0;
             box-shadow: inset 16px 0 28px rgba(0, 0, 0, 0.6);
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
             text-align: center;
-            padding: 36px 32px;
-            border: 1px solid rgba(199, 161, 83, 0.4);
+            padding: 36px 32px 18px 32px;
+            border: 1px solid rgba(199, 161, 83, 0.35);
         }
 
         .final-cta-card {
@@ -1615,6 +1737,8 @@
             align-items: center;
             gap: 14px;
             width: 100%;
+            margin-top: auto;
+            margin-bottom: auto;
         }
 
         .final-cta-tag {
@@ -1765,30 +1889,47 @@
         /* RESPONSIVIDADE DO SIMULADOR */
         @media (max-width: 900px) {
             .flipbook-viewport {
-                padding: 20px 10px;
-                min-height: 520px;
+                padding: 16px 8px;
+                min-height: auto;
             }
 
             .flipbook-book {
-                height: 500px;
-                max-width: 96%;
+                height: auto;
+                min-height: 560px;
+                max-width: 100%;
+                background: transparent;
+                box-shadow: none;
+                border: none;
             }
 
             .book-spine-crease {
                 display: none;
             }
 
-            .fp-page.fp-left {
-                display: none;
+            .flipbook-spread {
+                position: relative;
+                flex-direction: column;
+                height: auto;
+                gap: 18px;
             }
 
+            .fp-page {
+                width: 100% !important;
+                min-height: 520px;
+                height: auto;
+                border-radius: 4px !important;
+                box-shadow: 0 10px 35px rgba(0, 0, 0, 0.6) !important;
+                padding: 34px 22px 18px 22px;
+            }
+
+            .fp-page.fp-left,
             .fp-page.fp-right {
-                width: 100%;
-                border-radius: 4px;
+                display: flex !important;
+                border-right: none;
             }
 
             .reader-toolbar {
-                padding: 10px 16px;
+                padding: 10px 14px;
             }
 
             .reader-book-title {
@@ -1801,13 +1942,9 @@
                 text-align: center;
             }
 
-            .fp-page {
-                padding: 24px 20px;
-            }
-
-            .fp-paragraph {
-                font-size: 0.95rem;
-                line-height: 1.6;
+            .book-paragraph {
+                font-size: 0.98rem;
+                line-height: 1.54;
             }
         }
 
@@ -1865,7 +2002,7 @@
                 </ul>
             </li>
             <li><a href="/contacto.html">CONTACTO</a></li>
-            <li><a href="https://pay.kursinha.com/c/6aa172a0a012e3d0fbca319a" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.7rem; font-weight: 700;">COMPRAR LIVRO</a></li>
+            <li><a href="https://pay.kursinha.com/c/6aa172a0a012e3d0fbca319a" target="_blank" rel="noopener noreferrer" class="nav-buy-btn">COMPRAR LIVRO</a></li>
         </ul>
         <div class="menu-toggle"><span></span><span></span></div>
     </nav>
@@ -1907,7 +2044,7 @@
                     <div class="hero-sales-content">
                         <span class="hero-pre-headline">E SE A HUMANIDADE ESTIVESSE A CONSTRUIR O SEU FUTURO SEM COMPREENDER A SUA PRÓPRIA CONTINUIDADE?</span>
                         
-                        <div>
+                        <div class="hero-title-group">
                             <h1 class="hero-book-title">MAHAMBA</h1>
                             <div class="hero-book-subtitle">Arquitectura Civilizacional do Humano Concreto</div>
                         </div>
@@ -1971,11 +2108,11 @@
                                 <div class="book-3d">
                                     <!-- Capa frontal -->
                                     <div class="book-cover-front">
-                                        <img src="/coover.png" alt="Capa do Livro MAHAMBA — Arquitectura Civilizacional do Humano Concreto" class="cover-image">
+                                        <img src="/mahamba-capa.jpg" alt="Capa do Livro MAHAMBA — Arquitectura Civilizacional do Humano Concreto" class="cover-image">
                                         <div class="book-glare"></div>
                                         <div class="book-open-badge">
                                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
-                                            <span>CLIQUE PARA FOLHEAR</span>
+                                            <span>Clique para ler</span>
                                         </div>
                                     </div>
                                     <!-- Lombada 3D -->
@@ -1992,7 +2129,7 @@
                             <div class="closed-book-cta">
                                 <button type="button" class="btn-open-simulator" id="btn-open-book">
                                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
-                                    <span>ABRIR E LER A INTRODUÇÃO</span>
+                                    <span>Clique para ler</span>
                                 </button>
                                 <div class="simulator-micro-note">
                                     Leitor interactivo folheável &bull; Degustação gratuita da introdução
@@ -2010,7 +2147,7 @@
                                     <span class="reader-book-title">MAHAMBA &mdash; Introdução</span>
                                 </div>
                                 <div class="reader-actions">
-                                    <span class="reader-page-indicator" id="reader-page-num">Páginas 1 - 2 de 10</span>
+                                    <span class="reader-page-indicator" id="reader-page-num">Páginas 39 - 40</span>
                                     <button type="button" class="reader-tool-btn" id="btn-reader-fullscreen" title="Alternar ecrã completo">
                                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
                                         <span>Expandir</span>
@@ -2035,312 +2172,221 @@
                                     <!-- Contentor de Spreads (Páginas Duplas) -->
                                     <div class="flipbook-pages-container" id="flipbook-pages-container">
                                         
-                                        <!-- SPREAD 1 (Páginas 1 e 2) -->
+                                        <!-- SPREAD 1: Páginas 39 e 40 (Preâmbulo / O Movimento Molecular MA-HA-MBA) -->
                                         <div class="flipbook-spread is-active" data-spread="0">
-                                            <!-- Página Esquerda: Frontispício / Folha de Rosto -->
+                                            <!-- Página Esquerda: Pág. 39 -->
                                             <div class="fp-page fp-left">
-                                                <div class="fp-header">
-                                                    <span>INSTITUTO ID&IA</span>
-                                                    <span>EDIÇÃO ESPECIAL</span>
+                                                <div class="fp-body">
+                                                    <h2 class="book-title-main">PREÂMBULO</h2>
+                                                    <h3 class="book-title-sub">HUMANO CONCRETO</h3>
+                                                    <p class="book-paragraph">
+                                                        Esta obra surge da necessidade de compreender a travessia da humanidade a partir da sua maturidade civilizacional, identificando, com profundidade orgânica e rigor interpretativo, os fundamentos que sustentam o seu desenvolvimento e as potencialidades da sua continuidade.
+                                                    </p>
+                                                    <p class="book-paragraph">
+                                                        Através de uma leitura estrutural da experiência humana, procura-se traduzir em aplicabilidade concreta e operacionalidade tecnológica contemporânea os elementos que emergem da evolução histórica da consciência, da organização social e da produção de conhecimento. O propósito central consiste em estruturar uma atitude civilizacional compatível com a dimensão alcançada pela humanidade no actual estágio do seu percurso evolutivo.
+                                                    </p>
+                                                    <p class="book-paragraph">
+                                                        Neste contexto, a presente reflexão fundamenta-se na formação e conclusão da TRIOLOGIA LÓGICA, entendida como base matricial da ASTROBIOTECNIA, campo emergente de investigação dedicado ao estudo da continuidade da vida concreta, da sua sustentabilidade civilizacional e da sua expansão consciente através da integração entre conhecimento, tecnologia, natureza e humanidade.
+                                                    </p>
+                                                    <p class="book-paragraph">
+                                                        O HUMANO CONCRETO constitui, assim, uma proposta de interpretação e operacionalização da condição humana contemporânea, procurando estabelecer pontes entre a experiência acumulada da travessia civilizacional e os desafios futuros da existência colectiva. Mais do que uma formulação teórica, apresenta-se como um instru-mento de leitura, orientação e construção de uma nova etapa da evolu-
+                                                    </p>
                                                 </div>
-                                                <div class="fp-body" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
-                                                    <div style="font-family: 'Cinzel', serif; font-size: 0.72rem; letter-spacing: 3px; color: #8c8474; margin-bottom: 20px;">
-                                                        PUBLICAÇÃO OFICIAL
-                                                    </div>
-                                                    <div class="fp-title-large" style="font-size: 2.1rem; letter-spacing: 2px;">
-                                                        MAHAMBA
-                                                    </div>
-                                                    <div class="fp-subtitle" style="max-width: 290px; margin: 0 auto 26px auto; line-height: 1.4;">
-                                                        Arquitectura Civilizacional do Humano Concreto
-                                                    </div>
-                                                    <div style="width: 40px; height: 1px; background: #c7a153; margin-bottom: 26px;"></div>
-                                                    <div class="fp-author-line" style="margin-bottom: 6px;">
-                                                        <strong>António José Augusto</strong>
-                                                    </div>
-                                                    <div style="font-family: 'Inter', sans-serif; font-size: 0.72rem; color: #8c8474; letter-spacing: 1px;">
-                                                        "Tony Nguxi"
-                                                    </div>
-                                                </div>
-                                                <div class="fp-footer">
-                                                    <span>Pág. 1</span>
-                                                    <span>MAHAMBA</span>
+                                                <div class="book-footer left-footer">
+                                                    <span class="book-page-num">39</span>
+                                                    <span class="book-gold-bar"></span>
                                                 </div>
                                             </div>
 
-                                            <!-- Página Direita: Preâmbulo — Humano Concreto (Pág. 40) -->
+                                            <!-- Página Direita: Pág. 40 -->
                                             <div class="fp-page fp-right">
-                                                <div class="fp-header">
-                                                    <span>PREÂMBULO</span>
-                                                    <span>HUMANO CONCRETO</span>
-                                                </div>
                                                 <div class="fp-body">
-                                                    <div style="font-family: 'Cinzel', serif; font-size: 1.25rem; color: #111; margin-bottom: 4px; font-weight: 700;">
-                                                        PREÂMBULO
-                                                    </div>
-                                                    <div style="font-family: 'Cinzel', serif; font-size: 0.85rem; color: #a37c2d; margin-bottom: 14px; letter-spacing: 1px; font-weight: 600;">
-                                                        Humano Concreto
-                                                    </div>
-                                                    <p class="fp-paragraph">
-                                                        <span class="fp-drop-cap">E</span>sta obra surge da necessidade de compreender a travessia da humanidade a partir da sua maturidade civilizacional, identificando, com profundidade orgânica e rigor interpretativo, os fundamentos que sustentam o seu desenvolvimento e as potencialidades da sua continuidade.
+                                                    <p class="book-paragraph">
+                                                        ção humana, assente na responsabilidade, na lucidez e na continuidade da vida como princípio fundamental da organização civilizacional.
                                                     </p>
-                                                    <p class="fp-paragraph">
-                                                        Através de uma leitura estrutural da experiência humana, procura-se traduzir em aplicabilidade concreta e operacionalidade tecnológica contemporânea os elementos que emergem da evolução histórica da consciência, da organização social e da produção de conhecimento.
+                                                    <h4 class="book-section-title">O MOVIMENTO MOLECULAR MA-HA-MBA</h4>
+                                                    <p class="book-paragraph">
+                                                        É desta profundidade interpretativa que emerge o movimento molecular MA-HA-MBA, entendido como estrutura orgânica de leitura, tradução e continuidade da Travessia Civilizacional.
                                                     </p>
-                                                    <p class="fp-paragraph">
-                                                        O propósito central consiste em estruturar uma atitude civilizacional compatível com a dimensão alcançada pela humanidade no actual estágio do seu percurso evolutivo.
-                                                    </p>
-                                                    <p class="fp-paragraph">
-                                                        Neste contexto, a presente reflexão fundamenta-se na formação e conclusão da <strong>TRIOLOGIA LÓGICA</strong>, entendida como base matricial da <strong>ASTROBIOTECNIA</strong>, campo emergente de investigação dedicado ao estudo da continuidade da vida concreta, da sua sustentabilidade civilizacional e da sua expansão consciente através da integração entre conhecimento, tecnologia, natureza e humanidade.
-                                                    </p>
-                                                </div>
-                                                <div class="fp-footer">
-                                                    <span>MAHAMBA</span>
-                                                    <span>Pág. 40</span>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- SPREAD 2 (Páginas 3 e 4) -->
-                                        <div class="flipbook-spread" data-spread="1">
-                                            <!-- Página Esquerda: O Humano Concreto & Movimento MA-HA-MBA (Pág. 40-41) -->
-                                            <div class="fp-page fp-left">
-                                                <div class="fp-header">
-                                                    <span>PREÂMBULO</span>
-                                                    <span>A CONTINUIDADE</span>
-                                                </div>
-                                                <div class="fp-body">
-                                                    <p class="fp-paragraph">
-                                                        O <strong>HUMANO CONCRETO</strong> constitui, assim, uma proposta de interpretação e operacionalização da condição humana contemporânea, procurando estabelecer pontes entre a experiência acumulada da travessia civilizacional e os desafios futuros da existência colectiva.
-                                                    </p>
-                                                    <p class="fp-paragraph">
-                                                        Mais do que uma formulação teórica, apresenta-se como um instrumento de leitura, orientação e construção de uma nova etapa da evolução humana, assente na responsabilidade, na lucidez e na continuidade da vida como princípio fundamental da organização civilizacional.
-                                                    </p>
-                                                    <div style="border-top: 1px solid #e7e0d0; padding-top: 14px; margin-top: 16px;">
-                                                        <div style="font-family: 'Cinzel', serif; font-size: 1.05rem; color: #111; margin-bottom: 10px; font-weight: 700;">
-                                                            O Movimento Molecular MA-HA-MBA
-                                                        </div>
-                                                        <p class="fp-paragraph">
-                                                            É desta profundidade interpretativa que emerge o movimento molecular <strong>MA-HA-MBA</strong>, entendido como estrutura orgânica de leitura, tradução e continuidade da Travessia Civilizacional.
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div class="fp-footer">
-                                                    <span>Pág. 40</span>
-                                                    <span>MAHAMBA</span>
-                                                </div>
-                                            </div>
-
-                                            <!-- Página Direita: As Três Dimensões MA-HA-MBA (Pág. 41) -->
-                                            <div class="fp-page fp-right">
-                                                <div class="fp-header">
-                                                    <span>ESTRUTURA ORGÂNICA</span>
-                                                    <span>MA - HA - MBA</span>
-                                                </div>
-                                                <div class="fp-body">
-                                                    <p class="fp-paragraph" style="margin-bottom: 12px;">
+                                                    <p class="book-paragraph">
                                                         A sua composição conceptual organiza-se em três dimensões fundamentais:
                                                     </p>
-                                                    <div style="background: rgba(199, 161, 83, 0.08); border-left: 2px solid #c7a153; padding: 12px 14px; margin-bottom: 14px;">
-                                                        <p class="fp-paragraph" style="margin-bottom: 8px;">
-                                                            <strong>MA</strong> &mdash; <em>A Matriz</em>, princípio originário da estrutura, da formação e da organização da vida;
-                                                        </p>
-                                                        <p class="fp-paragraph" style="margin-bottom: 8px;">
-                                                            <strong>HA</strong> &mdash; <em>A Respiração</em>, princípio dinâmico da circulação, da transformação e da continuidade do movimento civilizacional;
-                                                        </p>
-                                                        <p class="fp-paragraph" style="margin-bottom: 0;">
-                                                            <strong>MBA</strong> &mdash; <em>A Confirmação e Memória</em>, princípio de conservação, validação e transmissão da experiência acumulada ao longo da travessia humana.
-                                                        </p>
+                                                    <div class="book-dimension-list">
+                                                        <div class="book-dimension-item"><strong>MA</strong> - A Matriz, princípio originário da estrutura, da formação e da organização da vida;</div>
+                                                        <div class="book-dimension-item"><strong>HA</strong> - A Respiração, princípio dinâmico da circulação, da transformação e da continuidade do movimento civilizacional;</div>
+                                                        <div class="book-dimension-item"><strong>MBA</strong> - A Confirmação e Memória, princípio de conservação, validação e transmissão da experiência acumulada ao longo da travessia humana.</div>
                                                     </div>
-                                                    <p class="fp-paragraph">
+                                                    <p class="book-paragraph">
                                                         A articulação destas três dimensões estabelece uma conduta matricial capaz de interpretar os ciclos sucessivos da evolução humana, permitindo compreender a forma como a humanidade construiu, preservou e transformou os seus mecanismos de sobrevivência, conhecimento e continuidade.
                                                     </p>
-                                                    <p class="fp-paragraph">
-                                                        Neste enquadramento, o movimento MA-HA-MBA constitui um instrumento de tradução da Travessia Civilizacional, acompanhando os diferentes estágios da sua evolução até à formulação do <strong>HUMANO CONCRETO</strong>, entendido como expressão contemporânea da maturidade orgânica, tecnológica e civilizacional da espécie humana.
+                                                    <p class="book-paragraph">
+                                                        Neste enquadramento, o movimento MA-HA-MBA constitui um instrumento de tradução da Travessia Civilizacional, acompanhando os diferentes estágios da sua evolução até à formulação do HUMANO CONCRETO, entendido como expressão contemporânea da maturidade orgânica, tecnológica e civilizacional da espécie humana.
+                                                    </p>
+                                                    <p class="book-paragraph">
+                                                        Nesta fase, a recuperação orgânica que sustenta o percurso histórico da humanidade passa a ser transportada e operacionalizada tecnologicamente através do MPACH- Metodologia Perceptível Aplicada
                                                     </p>
                                                 </div>
-                                                <div class="fp-footer">
-                                                    <span>MAHAMBA</span>
-                                                    <span>Pág. 41</span>
+                                                <div class="book-footer right-footer">
+                                                    <span class="book-gold-bar"></span>
+                                                    <span class="book-page-num">40</span>
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <!-- SPREAD 3 (Páginas 5 e 6) -->
-                                        <div class="flipbook-spread" data-spread="2">
-                                            <!-- Página Esquerda: MPACH & MPACH APP (Pág. 41-42) -->
+                                        <!-- SPREAD 2: Páginas 41 e 42 (MPACH APP & MPACH Da Mesma Costela) -->
+                                        <div class="flipbook-spread" data-spread="1">
+                                            <!-- Página Esquerda: Pág. 41 -->
                                             <div class="fp-page fp-left">
-                                                <div class="fp-header">
-                                                    <span>RECUPERAÇÃO ORGÂNICA</span>
-                                                    <span>MPACH</span>
-                                                </div>
                                                 <div class="fp-body">
-                                                    <p class="fp-paragraph">
-                                                        Nesta fase, a recuperação orgânica que sustenta o percurso histórico da humanidade passa a ser transportada e operacionalizada tecnologicamente através do <strong>MPACH &mdash; Metodologia Perceptível Aplicada da Continuidade Humana</strong> e da plataforma <strong>MPACH APP</strong>, concebidos como instrumentos de recuperação, organização e transmissão da inteligência ancestral.
+                                                    <p class="book-paragraph">
+                                                        da Continuidade Humana e da plataforma <strong>MPACH APP</strong>, concebidos como instrumentos de recuperação, organização e transmissão da inteligência ancestral.
                                                     </p>
-                                                    <p class="fp-paragraph">
-                                                        Por intermédio destes mecanismos, procura-se traduzir simbolicamente a formação da primeira costela humana enquanto princípio de origem, continuidade e pertença, reafirmando a ligação entre memória, identidade e evolução.
+                                                    <p class="book-paragraph">
+                                                        Por intermédio destes mecanismos, procura-se traduzir simbolicamente a formação da primeira costela humana enquanto princípio de origem, continuidade e pertença, reafirmando a ligação entre memória, identidade e evolução. O MPACH e o MPACH APP assumem, assim, a função de consagração tecnológica da recuperação da inteligência ancestral, permitindo a sua integração activa na construção do HUMANO CONCRETO e na continuidade da Travessia Civilizacional.
                                                     </p>
-                                                    <p class="fp-paragraph">
-                                                        O MPACH e o MPACH APP assumem, assim, a função de consagração tecnológica da recuperação da inteligência ancestral, permitindo a sua integração activa na construção do HUMANO CONCRETO e na continuidade da Travessia Civilizacional.
-                                                    </p>
-                                                    <p class="fp-paragraph">
+                                                    <p class="book-paragraph">
                                                         MAHAMBA surge, deste modo, não apenas como conceito, mas como mecanismo de leitura da continuidade da vida, onde Matriz, Respiração, Confirmação e Memória convergem para sustentar a permanência consciente da experiência humana através do tempo.
                                                     </p>
+                                                    <h4 class="book-section-title">MPACH- DA MESMA COSTELA</h4>
+                                                    <p class="book-paragraph">
+                                                        Deste modo, o MPACH constitui a tradução tecnológica de um princípio ancestral preservado na língua Cokwe, onde o termo <em>Mpach</em> remete simbolicamente para a costela, elemento associado à origem, à continuidade e à protecção do corpo humano.
+                                                    </p>
+                                                    <p class="book-paragraph">
+                                                        Na sua interpretação contemporânea, <strong>MPACH- Da Mesma Costela</strong> representa a compreensão de que toda a humanidade partilha uma origem comum, uma mesma estrutura biológica fundamental e uma mesma condição civilizacional. A costela deixa, assim, de ser apenas uma referência anatómica para assumir o significado de vínculo matricial que une os seres humanos na sua travessia histórica e evolutiva.
+                                                    </p>
+                                                    <p class="book-paragraph">
+                                                        Enquanto instrumento tecnológico da recuperação orgânica da memória humana, o MPACH procura traduzir para a contemporaneidade os princípios ancestrais de preservação, continuidade e pertença,
+                                                    </p>
                                                 </div>
-                                                <div class="fp-footer">
-                                                    <span>Pág. 41</span>
-                                                    <span>MAHAMBA</span>
+                                                <div class="book-footer left-footer">
+                                                    <span class="book-page-num">41</span>
+                                                    <span class="book-gold-bar"></span>
                                                 </div>
                                             </div>
 
-                                            <!-- Página Direita: MPACH — Da Mesma Costela (Pág. 42) -->
+                                            <!-- Página Direita: Pág. 42 -->
                                             <div class="fp-page fp-right">
-                                                <div class="fp-header">
-                                                    <span>PREÂMBULO</span>
-                                                    <span>DA MESMA COSTELA</span>
-                                                </div>
                                                 <div class="fp-body">
-                                                    <div style="font-family: 'Cinzel', serif; font-size: 1.15rem; color: #111; margin-bottom: 12px; font-weight: 700;">
-                                                        MPACH &mdash; Da Mesma Costela
-                                                    </div>
-                                                    <p class="fp-paragraph">
-                                                        Deste modo, o MPACH constitui a tradução tecnológica de um princípio ancestral preservado na língua Cokwe, onde o termo <em>Mpach</em> remete simbolicamente para a costela, elemento associado à origem, à continuidade e à protecção do corpo humano.
+                                                    <p class="book-paragraph">
+                                                        transformando-os em mecanismos operacionais de registo, protecção e transmissão da inteligência acumulada ao longo da Travessia Civilizacional.
                                                     </p>
-                                                    <p class="fp-paragraph">
-                                                        Na sua interpretação contemporânea, <strong>MPACH &mdash; Da Mesma Costela</strong> representa a compreensão de que toda a humanidade partilha uma origem comum, uma mesma estrutura biológica fundamental e uma mesma condição civilizacional. A costela deixa, assim, de ser apenas uma referência anatómica para assumir o significado de vínculo matricial que une os seres humanos na sua travessia histórica e evolutiva.
+                                                    <p class="book-paragraph">
+                                                        A expressão “Da Mesma Costela” afirma, portanto, que a diversidade das culturas, dos povos e das civilizações não anula a unidade fundamental da condição humana. Pelo contrário, confirma que a multiplicidade das experiências humanas emerge de uma mesma matriz biológica e civilizacional, cuja memória necessita de ser preservada, compreendida e projectada para o futuro.
                                                     </p>
-                                                    <p class="fp-paragraph">
-                                                        A expressão “Da Mesma Costela” afirma, portanto, que a diversidade das culturas, dos povos e das civilizações não anula a unidade fundamental da condição humana.
+                                                    <p class="book-paragraph">
+                                                        Neste sentido, o MPACH APP surge como uma extensão tecnológica desta visão, funcionando como plataforma de activação da memória, de preservação da identidade humana e de fortalecimento dos laços de continuidade entre passado, presente e futuro.
                                                     </p>
-                                                    <p class="fp-paragraph">
-                                                        Assim, o <strong>HUMANO CONCRETO</strong> apresenta-se como a etapa de convergência entre memória ancestral, consciência civilizacional e capacidade tecnológica contemporânea.
+                                                    <p class="book-paragraph">
+                                                        <strong>MPACH - DA MESMA COSTELA</strong> torna-se, assim, a expressão tecnológica da recuperação da inteligência ancestral, reafirmando que a humanidade permanece ligada por uma origem comum, por uma memória partilhada e por uma responsabilidade colectiva na continuidade da vida concreta.
+                                                    </p>
+                                                    <p class="book-paragraph">
+                                                        Assim, o <strong>HUMANO CONCRETO</strong> apresenta-se como a etapa de convergência entre memória ancestral, consciência civilizacional e capacidade tecnológica contemporânea. Sustentado pela Triologia Lógica, interpretado pelo movimento molecular MA-HA-MBA e operacionalizado através do MPACH - Da Mesma Costela, este percurso propõe uma nova leitura da continuidade humana, orientada para a preservação da vida concreta, da inteligência acumulada e da responsabilidade colectiva perante o futuro da civilização.
                                                     </p>
                                                 </div>
-                                                <div class="fp-footer">
-                                                    <span>MAHAMBA</span>
-                                                    <span>Pág. 42</span>
+                                                <div class="book-footer right-footer">
+                                                    <span class="book-gold-bar"></span>
+                                                    <span class="book-page-num">42</span>
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <!-- SPREAD 4 (Páginas 7 e 8) -->
-                                        <div class="flipbook-spread" data-spread="3">
-                                            <!-- Página Esquerda: Introdução Geral — Pág. 54 -->
+                                        <!-- SPREAD 3: Páginas 53 e 54 (Introdução Geral — Conforme Foto Real) -->
+                                        <div class="flipbook-spread" data-spread="2">
+                                            <!-- Página Esquerda: Pág. 53 -->
                                             <div class="fp-page fp-left">
-                                                <div class="fp-header">
-                                                    <span>INTRODUÇÃO GERAL</span>
-                                                    <span>CORPO DOUTRINÁRIO</span>
-                                                </div>
                                                 <div class="fp-body">
-                                                    <div style="font-family: 'Cinzel', serif; font-size: 1.3rem; color: #111; margin-bottom: 14px; font-weight: 700;">
-                                                        INTRODUÇÃO GERAL
-                                                    </div>
-                                                    <p class="fp-paragraph">
-                                                        <span class="fp-drop-cap">O</span> presente corpo doutrinário emerge num tempo histórico de transição profunda, onde a humanidade deixa de se compreender apenas como resultado biológico, cultural ou tecnológico isolado, passando a reconhecer-se como um sistema integrado de consciência, matéria, informação e projecção evolutiva.
+                                                    <h2 class="book-title-main" style="margin-top: 24px; margin-bottom: 20px;">INTRODUÇÃO GERAL</h2>
+                                                    <p class="book-paragraph">
+                                                        <span class="book-drop-cap">O</span> presente corpo doutrinário emerge num tempo histórico de transição profunda, onde a humanidade deixa de se compreender apenas como resultado biológico, cultural ou tecnológico isolado, passando a reconhecer-se como um sistema integrado de consciência, matéria, informação e projecção evolutiva. Esta obra inscreve-se, assim, no horizonte de uma reconfiguração civilizacional que exige novos instrumentos conceptuais, novas linguagens estruturantes e novas arquitecturas de pensamento capazes de sustentar a complexidade do real contemporâneo.
                                                     </p>
-                                                    <p class="fp-paragraph">
-                                                        Esta obra inscreve-se, assim, no horizonte de uma reconfiguração civilizacional que exige novos instrumentos conceptuais, novas linguagens estruturantes e novas arquitecturas de pensamento capazes de sustentar a complexidade do real contemporâneo.
+                                                    <p class="book-paragraph">
+                                                        Neste contexto, o HUMANO CONCRETO não se apresenta como abstracção filosófica nem como mero modelo teórico, mas como uma matriz operativa de leitura e intervenção no real. Ele propõe a reintegração do humano às suas dimensões fundamentais biológica, tecnológica, simbólica, económica e existencial sem fragmentação e com preservação da coerência sistémica. O humano deixa de ser visto como unidade isolada e passa a ser entendido como nó dinâmico de um ecossistema evolutivo mais vasto.
                                                     </p>
-                                                    <p class="fp-paragraph">
-                                                        Neste contexto, o <strong>HUMANO CONCRETO</strong> não se apresenta como abstracção filosófica nem como mero modelo teórico, mas como uma matriz operativa de leitura e intervenção no real.
+                                                    <p class="book-paragraph">
+                                                        A partir desta base, desenvolve-se a arquitectura conceptual da ASTROBIOTECNIA, enquanto campo emergente de convergência entre vida, tecnologia e dinâmica cósmica, onde a matéria viva é interpretada como continuidade adaptativa de processos universais de organização.
                                                     </p>
-                                                    <p class="fp-paragraph">
-                                                        A partir desta base, desenvolve-se a arquitectura conceptual da <strong>ASTROBIOTECNIA</strong>, enquanto campo emergente de convergência entre vida, tecnologia e dinâmica cósmica. Em paralelo, integra-se o <strong>MPACH</strong> como mecanismo estruturante de leitura, antecipação e modelação de trajectórias evolutivas.
+                                                    <p class="book-paragraph">
+                                                        Em paralelo, integra-se o MPACH (Metodologia Perceptível Aplicada da Continuidade Humana) como mecanismo estruturante de leitura, antecipação e modelação de trajectórias evolutivas humanas, sociais e institucionais.
                                                     </p>
                                                 </div>
-                                                <div class="fp-footer">
-                                                    <span>Pág. 54</span>
-                                                    <span>MAHAMBA</span>
+                                                <div class="book-footer left-footer">
+                                                    <span class="book-page-num">53</span>
+                                                    <span class="book-gold-bar"></span>
                                                 </div>
                                             </div>
 
-                                            <!-- Página Direita: O Protocolo MAHAMBA & Abertura (Pág. 55) -->
+                                            <!-- Página Direita: Pág. 54 -->
                                             <div class="fp-page fp-right">
-                                                <div class="fp-header">
-                                                    <span>O PROTOCOLO</span>
-                                                    <span>MAHAMBA</span>
-                                                </div>
                                                 <div class="fp-body">
-                                                    <p class="fp-paragraph">
-                                                        É neste enquadramento que o protocolo <strong>MAHAMBA</strong> se afirma como operador metodológico e simbólico de coerência, funcionando como princípio de articulação entre linguagem, acção e direcção civilizacional. MAHAMBA não é apenas uma designação; é uma chave de ordenação interna que permite alinhar discurso, prática e intenção num mesmo eixo de consistência.
+                                                    <p class="book-paragraph">
+                                                        É neste enquadramento que o protocolo MAHAMBA se afirma como operador metodológico e simbólico de coerência, funcionando como princípio de articulação entre linguagem, acção e direcção civilizacional. MAHAMBA não é apenas uma designação; é uma chave de ordenação interna que permite alinhar discurso, prática e intenção num mesmo eixo de consistência.
                                                     </p>
-                                                    <p class="fp-paragraph">
-                                                        A presente obra estrutura-se, portanto, como um <strong>Dossiê de Travessia Civilizacional</strong>, em que cada capítulo representa uma etapa de aprofundamento progressivo da consciência aplicada à realidade.
+                                                    <p class="book-paragraph">
+                                                        A presente obra estrutura-se, portanto, como um Dossiê de Travessia Civilizacional, em que cada capítulo representa uma etapa de aprofundamento progressivo da consciência aplicada à realidade. O Capítulo I- A Travessia Civilizacional inaugura este percurso, estabelecendo os fundamentos da transformação em curso e introduzindo os pilares da ASTROBIOTECNIA e do MPACH como instrumentos de leitura, tradução e intervenção estruturada.
                                                     </p>
-                                                    <p class="fp-paragraph">
-                                                        Mais do que descrever o mundo, este enquadramento pretende reorganizar a forma como o mundo é compreendido, projectado e construído: da fragmentação para a integração, da reacção para a projecção consciente, e da análise isolada para a síntese operativa.
+                                                    <p class="book-paragraph">
+                                                        Mais do que descrever o mundo, este enquadramento pretende reorganizar a forma como o mundo é compreendido, projectado e construído. Trata-se de um movimento de passagem: da fragmentação para a integração, da reacção para a projecção consciente, e da análise isolada para a síntese operativa.
                                                     </p>
-                                                    <p class="fp-paragraph">
-                                                        Assim, esta Introdução Geral não se encerra como simples preâmbulo, mas abre um campo de trabalho contínuo... O HUMANO CONCRETO afirma-se como proposta de reorganização integral da condição humana perante os desafios do presente e as possibilidades do futuro.
+                                                    <p class="book-paragraph">
+                                                        Assim, esta Introdução Geral não se encerra como simples preâmbulo, mas abre um campo de trabalho contínuo, onde pensamento e acção deixam de ser separados e passam a constituir um único processo de construção evolutiva. O HUMANO CONCRETO afirma-se, deste modo, como proposta de reorganização integral da condição humana perante os desafios do presente e as possibilidades do futuro, constituindo-se como base conceptual de uma nova gramática civilizacional em formação.
                                                     </p>
-                                                    <div style="text-align: right; font-family: 'Cinzel', serif; font-size: 1.45rem; letter-spacing: 4px; color: #a37c2d; font-weight: 700; margin-top: 24px;">
+                                                    <div class="book-closing-mahamba">
                                                         MAHAMBA.
                                                     </div>
                                                 </div>
-                                                <div class="fp-footer">
-                                                    <span>MAHAMBA</span>
-                                                    <span>Pág. 55</span>
+                                                <div class="book-footer right-footer">
+                                                    <span class="book-gold-bar"></span>
+                                                    <span class="book-page-num">54</span>
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <!-- SPREAD 5 (Páginas 9 e 10 — O Grande Encerramento & Convite) -->
-                                        <div class="flipbook-spread" data-spread="4">
-                                            <!-- Página Esquerda: Conclusão da Degustação -->
+                                        <!-- SPREAD 4: Conclusão da Degustação & Grande Convite de Compra -->
+                                        <div class="flipbook-spread" data-spread="3">
+                                            <!-- Página Esquerda: Conclusão Editorial (Pág. 55) -->
                                             <div class="fp-page fp-left">
-                                                <div class="fp-header">
-                                                    <span>FIM DA DEGUSTAÇÃO</span>
-                                                    <span>O CONVITE</span>
-                                                </div>
-                                                <div class="fp-body" style="display: flex; flex-direction: column; justify-content: center;">
-                                                    <div style="font-family: 'Cinzel', serif; font-size: 0.72rem; letter-spacing: 2px; color: #a37c2d; margin-bottom: 8px; font-weight: 700;">
-                                                        O PRIMEIRO PASSO FOI DADO
-                                                    </div>
-                                                    <h3 style="font-family: 'Cinzel', serif; font-size: 1.35rem; color: #111; margin-bottom: 16px; line-height: 1.3; font-weight: 700;">
-                                                        Você Acaba de Ler o Preâmbulo e a Introdução Geral
-                                                    </h3>
-                                                    <p class="fp-paragraph">
-                                                        Esta é apenas a matriz fundamental de <strong>MAHAMBA</strong>.
+                                                <div class="fp-body" style="display: flex; flex-direction: column; justify-content: center; text-align: center;">
+                                                    <h2 class="book-title-main" style="font-size: 1.45rem; margin-top: 10px;">FIM DA INTRODUÇÃO</h2>
+                                                    <h3 class="book-title-sub" style="font-size: 0.95rem; color: #8c6a1e; margin-bottom: 20px;">O CONVITE À CONTINUIDADE</h3>
+                                                    <p class="book-paragraph" style="text-align: center; font-size: 1.08rem; line-height: 1.65; margin-bottom: 16px;">
+                                                        Você concluiu a leitura da degustação oficial de <strong>MAHAMBA</strong>.
                                                     </p>
-                                                    <p class="fp-paragraph">
-                                                        No volume completo, você terá acesso imediato ao <em>Capítulo I &mdash; A Travessia Civilizacional</em>, seguido pelos protocolos operacionais da <em>Astrobiotecnia</em>, a formulação completa do <em>MPACH</em> e os pilares estratégicos para o futuro da nossa civilização.
+                                                    <p class="book-paragraph" style="text-align: justify; margin-bottom: 14px;">
+                                                        O que você acabou de percorrer é apenas o ponto de partida. No livro integral, você desvenda todos os protocolos da <em>Astrobiotecnia</em>, as aplicações práticas do <em>MPACH</em> e as matrizes que preparam a humanidade para a soberania do seu próprio destino civilizacional.
                                                     </p>
-                                                    <p class="fp-paragraph" style="font-weight: 600; color: #8c6a1e;">
-                                                        Uma obra integral para líderes, pensadores e construtores de um novo tempo.
+                                                    <p class="book-paragraph" style="text-align: justify; font-weight: 600; color: #8c6a1e;">
+                                                        Uma obra fundamental para quem não aceita respostas prontas e busca arquiteturas de pensamento de alto nível.
                                                     </p>
                                                 </div>
-                                                <div class="fp-footer">
-                                                    <span>Pág. 56</span>
-                                                    <span>MAHAMBA</span>
+                                                <div class="book-footer left-footer">
+                                                    <span class="book-page-num">55</span>
+                                                    <span class="book-gold-bar"></span>
                                                 </div>
                                             </div>
 
-                                            <!-- Página Direita: O GRANDE CONVITE & CTA DE COMPRA -->
+                                            <!-- Página Direita: O Grande Convite & Compra (Pág. 56) -->
                                             <div class="fp-page fp-final-cta">
                                                 <div class="final-cta-card">
-                                                    <span class="final-cta-tag">OBRA INTEGRAL</span>
-                                                    <h3 class="final-cta-title">CONTINUE A LEITURA COMPLETA</h3>
+                                                    <span class="final-cta-tag">OBRA COMPLETA</span>
+                                                    <h3 class="final-cta-title" style="font-size: 1.45rem; line-height: 1.25; margin: 6px 0;">CONTINUE A LEITURA INTEGRAL</h3>
                                                     <p class="final-cta-desc">
-                                                        Garanta agora o seu exemplar com acesso imediato e aprofunde todas as dimensões de MAHAMBA.
+                                                        Garanta o seu exemplar completo pelo valor promocional de lançamento com envio imediato.
                                                     </p>
-
                                                     <div class="final-cta-price-box">
                                                         <span class="final-cta-price">9.900 Kz</span>
                                                         <span class="final-cta-old-price">14.900 Kz</span>
                                                     </div>
-
                                                     <a href="https://pay.kursinha.com/c/6aa172a0a012e3d0fbca319a" target="_blank" rel="noopener noreferrer" class="btn-cta-final-book">
                                                         <span>QUERO O MEU EXEMPLAR</span>
                                                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                                                     </a>
-
                                                     <div class="final-cta-guarantee">
-                                                        Pagamento seguro Kursinha Pay &bull; Envio Imediato
+                                                        Pagamento seguro Kursinha Pay &bull; Acesso Imediato
                                                     </div>
                                                 </div>
-                                                <div class="fp-footer" style="width: 100%; border-color: rgba(255, 255, 255, 0.1); color: rgba(255, 255, 255, 0.4);">
-                                                    <span>MAHAMBA</span>
-                                                    <span>Pág. 57</span>
+                                                <div class="book-footer right-footer" style="padding-top: 0; margin-top: 0;">
+                                                    <span class="book-gold-bar" style="background: rgba(199, 161, 83, 0.5);"></span>
+                                                    <span class="book-page-num" style="color: rgba(255, 255, 255, 0.6);">56</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -2918,8 +2964,15 @@
             const pagesContainer = document.getElementById('flipbook-pages-container');
 
             let currentSpread = 0;
-            let totalSpreads = 5;
             let spreads = document.querySelectorAll('.flipbook-spread');
+            let totalSpreads = spreads.length || 4;
+
+            const SPREAD_LABELS = [
+                "Páginas 39 - 40",
+                "Páginas 41 - 42",
+                "Páginas 53 - 54",
+                "Conclusão & Obra Completa"
+            ];
 
             function updateSpreadView() {
                 spreads = document.querySelectorAll('.flipbook-spread');
@@ -2933,10 +2986,8 @@
                     }
                 });
 
-                const pageStart = (currentSpread * 2) + 1;
-                const pageEnd = Math.min((currentSpread * 2) + 2, totalSpreads * 2);
                 if (pageIndicator) {
-                    pageIndicator.textContent = `Páginas ${pageStart} - ${pageEnd} de ${totalSpreads * 2}`;
+                    pageIndicator.textContent = SPREAD_LABELS[currentSpread] || `Páginas ${(currentSpread * 2) + 1} - ${(currentSpread * 2) + 2}`;
                 }
 
                 if (btnPrev) btnPrev.disabled = (currentSpread === 0);
