@@ -148,6 +148,97 @@
             gap: 30px;
             margin-top: 50px;
         }
+
+        /* TEAM / STRATEGIC BODY SECTION */
+        .team-section {
+            padding: 80px var(--padding-global) 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .team-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(199, 161, 83, 0.2);
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .team-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(199, 161, 83, 0.5);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 20px rgba(199, 161, 83, 0.15);
+        }
+
+        .team-card-image-wrap {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1 / 1.15;
+            overflow: hidden;
+            background: #0d0d0f;
+        }
+
+        .team-card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .team-card:hover .team-card-image {
+            transform: scale(1.05);
+        }
+
+        .team-card-image-wrap::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(0deg, rgba(10, 10, 12, 0.95) 0%, rgba(10, 10, 12, 0.2) 60%, transparent 100%);
+            pointer-events: none;
+        }
+
+        .team-card-content {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .team-card-role {
+            font-size: 0.72rem;
+            color: var(--color-gold);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .team-card-name {
+            font-size: 1.25rem;
+            color: #ffffff;
+            font-weight: 700;
+            margin-bottom: 14px;
+            line-height: 1.3;
+        }
+
+        .team-card-desc {
+            font-size: 0.88rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
+            font-weight: 300;
+        }
     </style>
 </head>
 <body>
@@ -239,7 +330,7 @@
                 <div class="glow-orb glow-orb-secondary" style="bottom: 10%; right: -10%;"></div>
                 <div class="ceo-container">
                     <div class="ceo-image-wrapper">
-                        <img src="/antonio.jpeg" alt="António José Augusto 'Tony Nguxi' - CEO do ID&IA" class="ceo-image">
+                        <img src="/tony-nguxi.jpg" alt="António José Augusto 'Tony Nguxi' - CEO do ID&IA" class="ceo-image">
                     </div>
                     <div class="ceo-details">
                         <h4 class="kicker" style="margin-bottom: 10px;">LIDERANÇA E VISÃO</h4>
@@ -254,6 +345,76 @@
                         <div class="ceo-contact-card">
                             <span class="ceo-contact-label">Correio Electrónico</span>
                             <span class="ceo-contact-val"><a href="mailto:tony.nguxi@idia-africa.com">tony.nguxi@idia-africa.com</a></span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CORPO ESTRATÉGICO E DE INVESTIGAÇÃO -->
+            <section class="team-section">
+                <div class="glow-orb glow-orb-secondary" style="top: 20%; right: -5%;"></div>
+                <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+                    <h4 class="kicker">CORPO ESTRATÉGICO E CIENTÍFICO</h4>
+                    <h2 class="section-title">Liderança & <span class="text-gold">Investigação</span></h2>
+                    <p class="cinematic-desc" style="margin: 15px auto 0; font-size: 0.95rem; color: rgba(255,255,255,0.7);">
+                        Investigadores, pensadores e gestores comprometidos com o desenvolvimento do ecossistema ID&IA e a consolidação do Humano Concreto.
+                    </p>
+                </div>
+
+                <div class="team-grid">
+                    <!-- Orlando Domingos -->
+                    <div class="team-card">
+                        <div class="team-card-image-wrap">
+                            <img src="/orlando-domingos.jpg" alt="Orlando Domingos" class="team-card-image">
+                        </div>
+                        <div class="team-card-content">
+                            <span class="team-card-role">ADMINISTRAÇÃO & INTERVENÇÃO SOCIAL</span>
+                            <h3 class="team-card-name">Orlando Domingos</h3>
+                            <p class="team-card-desc">
+                                Orlando Domingos administrador do grupo VAALOREMP, percursor do projecto CAFÉ DO HOMEM e interventor social...
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Abreu Paxe -->
+                    <div class="team-card">
+                        <div class="team-card-image-wrap">
+                            <img src="/abreu-paxe.jpg" alt="Abreu Paxe" class="team-card-image">
+                        </div>
+                        <div class="team-card-content">
+                            <span class="team-card-role">COMUNICAÇÃO & SEMIÓTICA</span>
+                            <h3 class="team-card-name">Dr. Abreu Paxe</h3>
+                            <p class="team-card-desc">
+                                Abreu Paxe é Doutor em Comunicação e Semiótica (PUC-SP) e Mestre em Ensino de Literaturas em Língua Portuguesa (UAN/ISCED-Luanda). Poeta, ensaísta e professor, dirige o Centro de Estudos Literários Angolanos da União dos Escritores Angolanos. Desenvolve pesquisas em Comunicação, Semiótica e Literatura, com publicações em Angola, Brasil, Portugal e outros países. Coordena linhas de pesquisa em educação e cultura no ISCED/Luanda e integra grupos de pesquisa internacionais. Autor premiado, atua como curador, consultor cultural e membro de comissões científicas e organizadoras.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Álvaro Veloso -->
+                    <div class="team-card">
+                        <div class="team-card-image-wrap">
+                            <img src="/alvaro-veloso.jpg" alt="Álvaro Veloso" class="team-card-image">
+                        </div>
+                        <div class="team-card-content">
+                            <span class="team-card-role">LOGÍSTICA MAHAMBA</span>
+                            <h3 class="team-card-name">Álvaro Veloso</h3>
+                            <p class="team-card-desc">
+                                Álvaro Veloso, logística MAHAMBA desde 2016, tendo participação nas pesquisas WEZA ANGOLA IMOSHI no país, em reuniões com o Secretariado Executivo da SADC em Gaborone e na Cimeira de Chefes de Estado e de Governo da SADC em Pretória, África do Sul em 2017 pelo projecto regional IMOSHI
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- José Guimarães -->
+                    <div class="team-card">
+                        <div class="team-card-image-wrap">
+                            <img src="/jose-guimaraes.jpg" alt="José Guimarães" class="team-card-image">
+                        </div>
+                        <div class="team-card-content">
+                            <span class="team-card-role">INVESTIGAÇÃO CIENTÍFICA</span>
+                            <h3 class="team-card-name">José Guimarães</h3>
+                            <p class="team-card-desc">
+                                Investigação científica e secretário da Comissão Conjunta ID&IA CONCRETO ÁFRICA;
+                            </p>
                         </div>
                     </div>
                 </div>
