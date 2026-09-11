@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MAHAMBA — Arquitectura Civilizacional do Humano Concreto | Edição Especial</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
     <script>
         if (window['pdfjs-dist/build/pdf']) {
@@ -90,13 +89,22 @@
         }
 
         .nav-links {
-            display: flex !important;
-            align-items: center !important;
-            gap: clamp(6px, 0.95vw, 16px) !important;
-            list-style: none !important;
-            margin: 0 !important;
-            padding: 0 !important;
-            flex-wrap: nowrap !important;
+            display: flex;
+            align-items: center;
+            gap: clamp(6px, 0.95vw, 16px);
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            flex-wrap: nowrap;
+        }
+
+        @media (max-width: 992px) {
+            .main-nav .nav-links {
+                display: none !important;
+            }
+            .main-nav .menu-toggle {
+                display: flex !important;
+            }
         }
 
         .nav-links li {
@@ -1264,7 +1272,7 @@
             writing-mode: vertical-rl;
             transform: rotate(180deg);
             color: var(--lp-gold);
-            font-family: 'Cinzel', serif;
+            font-family: var(--font-heading);
             font-size: 0.7rem;
             letter-spacing: 3px;
             font-weight: 700;
@@ -1410,7 +1418,7 @@
 
         .reader-book-title {
             color: #ffffff;
-            font-family: 'Cinzel', serif;
+            font-family: var(--font-heading);
             font-size: 0.92rem;
             font-weight: 600;
             letter-spacing: 0.8px;
@@ -1426,7 +1434,7 @@
             font-size: 0.82rem;
             color: var(--lp-gold-light);
             font-weight: 600;
-            font-family: 'Inter', sans-serif;
+            font-family: var(--font-body);
             background: rgba(255, 255, 255, 0.04);
             padding: 6px 12px;
             border-radius: 20px;
@@ -1570,7 +1578,7 @@
             height: 100%;
             background: #ffffff !important;
             color: #1a1a1a !important;
-            font-family: 'Cormorant Garamond', Garamond, 'Times New Roman', serif;
+            font-family: var(--font-heading)'Times New Roman', serif;
             padding: 42px 48px 24px 48px;
             box-sizing: border-box;
             position: relative;
@@ -1608,7 +1616,7 @@
 
         /* Tipografia Realista do Livro Impresso (Conforme Fotos) */
         .book-title-main {
-            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-family: var(--font-heading);
             font-size: 1.85rem;
             font-weight: 700;
             color: #111111;
@@ -1620,7 +1628,7 @@
         }
 
         .book-title-sub {
-            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-family: var(--font-heading);
             font-size: 1.05rem;
             font-weight: 600;
             color: #111111;
@@ -1631,7 +1639,7 @@
         }
 
         .book-section-title {
-            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-family: var(--font-heading);
             font-size: 0.94rem;
             font-weight: 700;
             color: #111111;
@@ -1643,7 +1651,7 @@
         }
 
         .book-paragraph {
-            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-family: var(--font-heading);
             font-size: 1.02rem;
             line-height: 1.56;
             color: #1c1c1c;
@@ -1655,7 +1663,7 @@
 
         .book-drop-cap {
             float: left;
-            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-family: var(--font-heading);
             font-size: 3.4rem;
             line-height: 0.78;
             font-weight: 400;
@@ -1673,7 +1681,7 @@
         }
 
         .book-dimension-item {
-            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-family: var(--font-heading);
             font-size: 0.98rem;
             line-height: 1.5;
             color: #1c1c1c;
@@ -1682,7 +1690,7 @@
 
         .book-closing-mahamba {
             text-align: center;
-            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-family: var(--font-heading);
             font-size: 1.15rem;
             font-weight: 700;
             letter-spacing: 2.5px;
@@ -1702,7 +1710,7 @@
         }
 
         .book-page-num {
-            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-family: var(--font-heading);
             font-size: 1.05rem;
             font-weight: 600;
             color: #555047;
@@ -1744,7 +1752,7 @@
         .final-cta-tag {
             background: rgba(199, 161, 83, 0.2);
             color: var(--lp-gold-light);
-            font-family: 'Inter', sans-serif;
+            font-family: var(--font-body);
             font-size: 0.68rem;
             font-weight: 800;
             padding: 4px 12px;
@@ -1755,7 +1763,7 @@
         }
 
         .final-cta-title {
-            font-family: 'Cinzel', serif;
+            font-family: var(--font-heading);
             font-size: 1.45rem;
             color: #ffffff;
             line-height: 1.25;
@@ -1763,7 +1771,7 @@
         }
 
         .final-cta-desc {
-            font-family: 'Inter', sans-serif;
+            font-family: var(--font-body);
             font-size: 0.86rem;
             line-height: 1.55;
             color: var(--lp-text-dim);
@@ -1782,7 +1790,7 @@
         }
 
         .final-cta-price {
-            font-family: 'Cinzel', serif;
+            font-family: var(--font-heading);
             font-size: 1.7rem;
             font-weight: 800;
             color: var(--lp-gold);
@@ -1825,7 +1833,7 @@
         }
 
         .final-cta-guarantee {
-            font-family: 'Inter', sans-serif;
+            font-family: var(--font-body);
             font-size: 0.72rem;
             color: rgba(255, 255, 255, 0.5);
         }
@@ -1838,7 +1846,7 @@
             padding: 12px 24px;
             background: rgba(12, 13, 18, 0.95);
             border-top: 1px solid rgba(255, 255, 255, 0.08);
-            font-family: 'Inter', sans-serif;
+            font-family: var(--font-body);
             font-size: 0.8rem;
             color: var(--lp-text-dim);
             z-index: 30;
@@ -1886,89 +1894,290 @@
             transform: rotateY(-180deg);
         }
 
-        /* RESPONSIVIDADE DO SIMULADOR */
+        /* RESPONSIVIDADE DO SIMULADOR DE LIVRO / PDF */
         @media (max-width: 900px) {
             .flipbook-viewport {
-                padding: 16px 8px;
-                min-height: auto;
+                padding: 10px 6px 68px 6px !important;
+                min-height: auto !important;
+                overflow-x: hidden !important;
+                position: relative !important;
+                touch-action: pan-y pinch-zoom !important;
             }
 
             .flipbook-book {
-                height: auto;
-                min-height: 560px;
-                max-width: 100%;
-                background: transparent;
-                box-shadow: none;
-                border: none;
+                height: auto !important;
+                min-height: auto !important;
+                width: 100% !important;
+                max-width: 440px !important;
+                margin: 0 auto !important;
+                background: transparent !important;
+                box-shadow: none !important;
+                border: none !important;
+                display: block !important;
+                position: relative !important;
             }
 
             .book-spine-crease {
-                display: none;
+                display: none !important;
+            }
+
+            .flipbook-pages-container {
+                width: 100% !important;
+                display: block !important;
+                position: relative !important;
             }
 
             .flipbook-spread {
-                position: relative;
-                flex-direction: column;
-                height: auto;
-                gap: 18px;
+                position: relative !important;
+                display: none !important;
+                width: 100% !important;
+                height: auto !important;
+                opacity: 1 !important;
+                pointer-events: auto !important;
             }
 
+            .flipbook-spread.is-active {
+                display: block !important;
+            }
+
+            /* APRESENTAR APENAS UMA PÁGINA DE CADA VEZ NO MOBILE */
             .fp-page {
+                display: none !important;
                 width: 100% !important;
-                min-height: 520px;
-                height: auto;
-                border-radius: 4px !important;
-                box-shadow: 0 10px 35px rgba(0, 0, 0, 0.6) !important;
-                padding: 34px 22px 18px 22px;
+                max-width: 100% !important;
+                min-height: 480px !important;
+                max-height: 72vh !important;
+                overflow-y: auto !important;
+                -webkit-overflow-scrolling: touch;
+                border-radius: 10px !important;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(199, 161, 83, 0.15) !important;
+                padding: 22px 18px 16px 18px !important;
+                margin: 0 auto !important;
+                box-sizing: border-box !important;
+                background: #ffffff !important;
+                color: #1a1a1a !important;
+                animation: mobilePageSlide 0.28s cubic-bezier(0.165, 0.84, 0.44, 1);
+            }
+
+            .fp-page.is-mobile-active {
+                display: flex !important;
+                flex-direction: column !important;
+            }
+
+            @keyframes mobilePageSlide {
+                from { opacity: 0; transform: translateX(18px); }
+                to { opacity: 1; transform: translateX(0); }
+            }
+
+            .fp-page canvas {
+                max-width: 100% !important;
+                height: auto !important;
+                display: block !important;
+                margin: 0 auto !important;
             }
 
             .fp-page.fp-left,
             .fp-page.fp-right {
-                display: flex !important;
-                border-right: none;
+                border-right: none !important;
             }
 
             .reader-toolbar {
-                padding: 10px 14px;
+                padding: 8px 12px !important;
+                gap: 6px !important;
+                flex-wrap: wrap !important;
             }
 
             .reader-book-title {
-                display: none;
+                display: none !important;
+            }
+
+            .reader-page-indicator {
+                font-size: 0.75rem !important;
+                padding: 4px 10px !important;
+                font-weight: 700 !important;
+            }
+
+            .reader-tool-btn {
+                padding: 5px 8px !important;
+                font-size: 0.72rem !important;
             }
 
             .reader-footer {
-                flex-direction: column;
-                gap: 8px;
-                text-align: center;
+                flex-direction: column !important;
+                gap: 6px !important;
+                padding: 8px 12px !important;
+                text-align: center !important;
+            }
+
+            /* Tipografia e Espaçamentos Enxutos do Leitor no Mobile */
+            .book-title-main {
+                font-size: 1.15rem !important;
+                letter-spacing: 1px !important;
+                margin: 2px 0 2px 0 !important;
+                line-height: 1.25 !important;
+            }
+
+            .book-title-sub {
+                font-size: 0.8rem !important;
+                margin: 0 0 8px 0 !important;
+                letter-spacing: 0.8px !important;
+            }
+
+            .book-section-title {
+                font-size: 0.82rem !important;
+                margin: 8px 0 4px 0 !important;
+                line-height: 1.3 !important;
             }
 
             .book-paragraph {
-                font-size: 0.98rem;
-                line-height: 1.54;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .book-simulator-section {
-                padding: 70px 16px;
+                font-size: 0.84rem !important;
+                line-height: 1.54 !important;
+                margin-bottom: 7px !important;
+                text-align: justify !important;
             }
 
-            .book-3d {
-                width: 240px;
-                height: 350px;
+            .book-drop-cap {
+                font-size: 2.1rem !important;
+                line-height: 0.82 !important;
+                padding-right: 5px !important;
             }
 
+            .book-dimension-list {
+                margin: 4px 0 6px 8px !important;
+                gap: 3px !important;
+            }
+
+            .book-dimension-item {
+                font-size: 0.78rem !important;
+                line-height: 1.4 !important;
+            }
+
+            .book-closing-mahamba {
+                font-size: 0.92rem !important;
+                letter-spacing: 1.5px !important;
+                margin-top: 10px !important;
+            }
+
+            .book-footer {
+                padding-top: 6px !important;
+                margin-top: auto !important;
+                gap: 8px !important;
+            }
+
+            .book-page-num {
+                font-size: 0.8rem !important;
+            }
+
+            .book-gold-bar {
+                width: 32px !important;
+            }
+
+            /* Cartão Final de Checkout */
+            .final-cta-card {
+                padding: 16px 12px !important;
+            }
+            .final-cta-title {
+                font-size: 1.05rem !important;
+                margin-bottom: 6px !important;
+            }
+            .final-cta-desc {
+                font-size: 0.76rem !important;
+                margin-bottom: 10px !important;
+            }
+            .final-cta-price {
+                font-size: 1.3rem !important;
+            }
+            .btn-cta-final-book {
+                padding: 10px 14px !important;
+                font-size: 0.74rem !important;
+                width: 100% !important;
+            }
+
+            /* Botões de Navegação & Dica de Slide no Mobile */
             .flip-nav-btn {
-                width: 40px;
-                height: 40px;
+                position: absolute !important;
+                top: auto !important;
+                bottom: 12px !important;
+                transform: none !important;
+                width: 42px !important;
+                height: 42px !important;
+                background: rgba(18, 19, 26, 0.95) !important;
+                border: 1px solid rgba(199, 161, 83, 0.4) !important;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6) !important;
+                border-radius: 50% !important;
+                z-index: 40 !important;
             }
 
             .flip-nav-btn.prev-btn {
-                left: 6px;
+                left: calc(50% - 95px) !important;
             }
 
             .flip-nav-btn.next-btn {
-                right: 6px;
+                right: calc(50% - 95px) !important;
+            }
+
+            .mobile-swipe-hint {
+                display: flex !important;
+                position: absolute;
+                bottom: 22px;
+                left: 0;
+                right: 0;
+                justify-content: center;
+                align-items: center;
+                font-size: 0.72rem;
+                color: rgba(199, 161, 83, 0.85);
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                pointer-events: none;
+                font-weight: 500;
+                z-index: 35;
+            }
+        }
+
+        @media (min-width: 901px) {
+            .mobile-swipe-hint {
+                display: none !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sales-hero {
+                padding: 85px 14px 20px 14px !important;
+                min-height: auto !important;
+            }
+
+            .book-simulator-section {
+                padding: 40px 14px !important;
+            }
+
+            .book-3d {
+                width: 220px !important;
+                height: 320px !important;
+            }
+
+            .hero-actions-box {
+                flex-direction: column !important;
+                width: 100% !important;
+                max-width: 290px !important;
+                margin: 0 auto !important;
+                gap: 10px !important;
+            }
+
+            .btn-cta-buy-large,
+            .btn-open-simulator {
+                width: 100% !important;
+                padding: 12px 18px !important;
+                font-size: 0.78rem !important;
+                text-align: center !important;
+                justify-content: center !important;
+            }
+
+            .price-main {
+                font-size: 1.8rem !important;
+            }
+
+            .author-img-wrap {
+                max-width: 240px !important;
             }
         }
     </style>
@@ -1989,7 +2198,7 @@
             <li><a href="/index.html">INÍCIO</a></li>
             <li><a href="/instituto.html">O INSTITUTO</a></li>
             <li><a href="/sobre-nos.html">SOBRE NÓS</a></li>
-            <li><a href="/humano-concreto.html" class="active">HUMANO CONCRETO</a></li>
+            <li><a href="/humano-concreto.html">HUMANO CONCRETO</a></li>
             <li><a href="/areas-estrategicas.html">ÁREAS</a></li>
             <li><a href="/centros.html">CENTROS</a></li>
             <li><a href="/astrobiotecnia.html">ASTROBIOTECNIA</a></li>
@@ -2002,7 +2211,7 @@
                 </ul>
             </li>
             <li><a href="/contacto.html">CONTACTO</a></li>
-            <li><a href="https://pay.kursinha.com/c/6aa172a0a012e3d0fbca319a" target="_blank" rel="noopener noreferrer" class="nav-buy-btn">COMPRAR LIVRO</a></li>
+            <li><a href="/parcerias.html" class="btn btn-primary" style="padding: 8px 15px; font-size: 0.65rem;">PARCERIAS</a></li>
         </ul>
         <div class="menu-toggle"><span></span><span></span></div>
     </nav>
@@ -2021,7 +2230,7 @@
             <li><a href="/projectos.html">PROJECTOS</a></li>
             <li><a href="/investimento.html">INVESTIMENTO</a></li>
             <li><a href="/contacto.html">CONTACTO</a></li>
-            <li><a href="https://pay.kursinha.com/c/6aa172a0a012e3d0fbca319a" target="_blank" rel="noopener noreferrer" style="color: var(--color-gold); font-weight: 700;">ADQUIRIR LIVRO (9.900 KZ)</a></li>
+            <li><a href="/parcerias.html">PARCERIAS</a></li>
         </ul>
     </div>
 
@@ -2387,6 +2596,7 @@
                                 <button type="button" class="flip-nav-btn next-btn" id="btn-flip-next" aria-label="Próxima página" title="Próxima página">
                                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
                                 </button>
+                                <div class="mobile-swipe-hint"><span>&larr; Deslize para folhear &rarr;</span></div>
                             </div>
 
                             <!-- Rodapé do Leitor -->
@@ -2954,8 +3164,11 @@
             const pagesContainer = document.getElementById('flipbook-pages-container');
 
             let currentSpread = 0;
+            let mobileCurrentPage = 0;
             let spreads = document.querySelectorAll('.flipbook-spread');
             let totalSpreads = spreads.length || 4;
+            let allPages = document.querySelectorAll('.fp-page');
+            let totalPages = allPages.length || 8;
 
             const SPREAD_LABELS = [
                 "Páginas 39 - 40",
@@ -2964,24 +3177,79 @@
                 "Conclusão & Obra Completa"
             ];
 
+            const PAGE_LABELS = [
+                "Página 39 (1 de 8)",
+                "Página 40 (2 de 8)",
+                "Página 41 (3 de 8)",
+                "Página 42 (4 de 8)",
+                "Página 53 (5 de 8)",
+                "Página 54 (6 de 8)",
+                "Conclusão (7 de 8)",
+                "Obra Completa (8 de 8)"
+            ];
+
+            function isMobileMode() {
+                return window.innerWidth <= 900;
+            }
+
             function updateSpreadView() {
                 spreads = document.querySelectorAll('.flipbook-spread');
+                allPages = document.querySelectorAll('.fp-page');
                 totalSpreads = spreads.length;
+                totalPages = allPages.length;
 
-                spreads.forEach((spread, idx) => {
-                    if (idx === currentSpread) {
-                        spread.classList.add('is-active');
-                    } else {
-                        spread.classList.remove('is-active');
+                if (isMobileMode()) {
+                    // MODO MOBILE: EXATAMENTE 1 PÁGINA DE CADA VEZ
+                    if (mobileCurrentPage < 0) mobileCurrentPage = 0;
+                    if (mobileCurrentPage >= totalPages) mobileCurrentPage = totalPages - 1;
+
+                    const activeSpreadIdx = Math.floor(mobileCurrentPage / 2);
+                    spreads.forEach((spread, sIdx) => {
+                        if (sIdx === activeSpreadIdx) {
+                            spread.classList.add('is-active');
+                        } else {
+                            spread.classList.remove('is-active');
+                        }
+                    });
+
+                    allPages.forEach((page, pIdx) => {
+                        if (pIdx === mobileCurrentPage) {
+                            page.classList.add('is-mobile-active');
+                        } else {
+                            page.classList.remove('is-mobile-active');
+                        }
+                    });
+
+                    if (pageIndicator) {
+                        pageIndicator.textContent = PAGE_LABELS[mobileCurrentPage] || `Página ${mobileCurrentPage + 1} de ${totalPages}`;
                     }
-                });
 
-                if (pageIndicator) {
-                    pageIndicator.textContent = SPREAD_LABELS[currentSpread] || `Páginas ${(currentSpread * 2) + 1} - ${(currentSpread * 2) + 2}`;
+                    if (btnPrev) btnPrev.disabled = (mobileCurrentPage === 0);
+                    if (btnNext) btnNext.disabled = (mobileCurrentPage >= totalPages - 1);
+                } else {
+                    // MODO DESKTOP: 2 PÁGINAS LADO A LADO
+                    if (currentSpread < 0) currentSpread = 0;
+                    if (currentSpread >= totalSpreads) currentSpread = totalSpreads - 1;
+
+                    spreads.forEach((spread, idx) => {
+                        if (idx === currentSpread) {
+                            spread.classList.add('is-active');
+                        } else {
+                            spread.classList.remove('is-active');
+                        }
+                    });
+
+                    allPages.forEach((page) => {
+                        page.classList.remove('is-mobile-active');
+                    });
+
+                    if (pageIndicator) {
+                        pageIndicator.textContent = SPREAD_LABELS[currentSpread] || `Páginas ${(currentSpread * 2) + 1} - ${(currentSpread * 2) + 2}`;
+                    }
+
+                    if (btnPrev) btnPrev.disabled = (currentSpread === 0);
+                    if (btnNext) btnNext.disabled = (currentSpread >= totalSpreads - 1);
                 }
-
-                if (btnPrev) btnPrev.disabled = (currentSpread === 0);
-                if (btnNext) btnNext.disabled = (currentSpread >= totalSpreads - 1);
             }
 
             function openBookSimulator() {
@@ -2990,12 +3258,13 @@
                     openReader.style.display = 'flex';
                     const stage = document.getElementById('book-stage');
                     if (stage) {
-                        const yOffset = -80;
+                        const yOffset = -70;
                         const y = stage.getBoundingClientRect().top + window.pageYOffset + yOffset;
                         window.scrollTo({ top: y, behavior: 'smooth' });
                     }
                 }
                 currentSpread = 0;
+                mobileCurrentPage = 0;
                 updateSpreadView();
             }
 
@@ -3008,16 +3277,34 @@
             }
 
             function flipNext() {
-                if (currentSpread < totalSpreads - 1) {
-                    currentSpread++;
-                    updateSpreadView();
+                if (isMobileMode()) {
+                    if (mobileCurrentPage < totalPages - 1) {
+                        mobileCurrentPage++;
+                        currentSpread = Math.floor(mobileCurrentPage / 2);
+                        updateSpreadView();
+                    }
+                } else {
+                    if (currentSpread < totalSpreads - 1) {
+                        currentSpread++;
+                        mobileCurrentPage = currentSpread * 2;
+                        updateSpreadView();
+                    }
                 }
             }
 
             function flipPrev() {
-                if (currentSpread > 0) {
-                    currentSpread--;
-                    updateSpreadView();
+                if (isMobileMode()) {
+                    if (mobileCurrentPage > 0) {
+                        mobileCurrentPage--;
+                        currentSpread = Math.floor(mobileCurrentPage / 2);
+                        updateSpreadView();
+                    }
+                } else {
+                    if (currentSpread > 0) {
+                        currentSpread--;
+                        mobileCurrentPage = currentSpread * 2;
+                        updateSpreadView();
+                    }
                 }
             }
 
@@ -3055,24 +3342,48 @@
                 }
             });
 
+            // Gesto de Toque / Slide no Mobile (Swipe Esquerda / Direita)
             const viewport = document.getElementById('flipbook-viewport');
             let touchStartX = 0;
-            let touchEndX = 0;
+            let touchStartY = 0;
 
             if (viewport) {
                 viewport.addEventListener('touchstart', (e) => {
-                    touchStartX = e.changedTouches[0].screenX;
+                    if (e.touches && e.touches.length > 0) {
+                        touchStartX = e.touches[0].clientX;
+                        touchStartY = e.touches[0].clientY;
+                    }
                 }, { passive: true });
 
                 viewport.addEventListener('touchend', (e) => {
-                    touchEndX = e.changedTouches[0].screenX;
-                    const diffX = touchStartX - touchEndX;
-                    if (Math.abs(diffX) > 45) {
-                        if (diffX > 0) flipNext();
-                        else flipPrev();
+                    if (e.changedTouches && e.changedTouches.length > 0) {
+                        const touchEndX = e.changedTouches[0].clientX;
+                        const touchEndY = e.changedTouches[0].clientY;
+                        const diffX = touchStartX - touchEndX;
+                        const diffY = touchStartY - touchEndY;
+
+                        // Se o movimento horizontal for predominante e maior que 35px
+                        if (Math.abs(diffX) > 35 && Math.abs(diffX) > Math.abs(diffY)) {
+                            if (diffX > 0) {
+                                // Deslize para a esquerda -> Próxima página
+                                flipNext();
+                            } else {
+                                // Deslize para a direita -> Página anterior
+                                flipPrev();
+                            }
+                        }
                     }
                 }, { passive: true });
             }
+
+            window.addEventListener('resize', () => {
+                if (isMobileMode()) {
+                    mobileCurrentPage = currentSpread * 2;
+                } else {
+                    currentSpread = Math.floor(mobileCurrentPage / 2);
+                }
+                updateSpreadView();
+            });
 
             // Suporte ao Carregamento Dinâmico de PDF se fornecido
             const POSSIBLE_PDF_PATHS = [
@@ -3165,7 +3476,7 @@
                             <span>A CONTINUIDADE</span>
                         </div>
                         <div class="fp-body" style="display: flex; flex-direction: column; justify-content: center; text-align: center; padding: 20px;">
-                            <div style="font-family: 'Cinzel', serif; font-size: 1.4rem; color: #111; margin-bottom: 12px; font-weight: 700;">
+                            <div style="font-family: var(--font-heading); font-size: 1.4rem; color: #111; margin-bottom: 12px; font-weight: 700;">
                                 O Despertar do Humano Concreto
                             </div>
                             <p class="fp-paragraph" style="text-align: center;">
@@ -3212,6 +3523,29 @@
             }
 
             checkAndLoadPDF();
+
+            // Menu Mobile Toggle
+            (function() {
+                const menuToggle = document.querySelector('.main-nav .menu-toggle');
+                const mobileMenu = document.querySelector('.mobile-menu');
+                const mobileLinks = document.querySelectorAll('.mobile-links a');
+
+                if (menuToggle && mobileMenu) {
+                    menuToggle.addEventListener('click', function() {
+                        menuToggle.classList.toggle('active');
+                        mobileMenu.classList.toggle('active');
+                        document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+                    });
+
+                    mobileLinks.forEach(function(link) {
+                        link.addEventListener('click', function() {
+                            menuToggle.classList.remove('active');
+                            mobileMenu.classList.remove('active');
+                            document.body.style.overflow = '';
+                        });
+                    });
+                }
+            })();
         });
     </script>
 </body>
