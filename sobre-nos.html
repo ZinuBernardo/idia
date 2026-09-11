@@ -239,6 +239,142 @@
             line-height: 1.7;
             font-weight: 300;
         }
+
+        /* MOBILE RESPONSIVENESS & SCROLL REDUCTION */
+        @media (max-width: 768px) {
+            .movie-hero {
+                padding: 110px 16px 40px !important;
+                min-height: auto !important;
+            }
+            .massive-title {
+                font-size: 2rem !important;
+                letter-spacing: -0.5px !important;
+                margin-bottom: 8px !important;
+            }
+            .cinematic-desc {
+                font-size: 0.85rem !important;
+                line-height: 1.45 !important;
+            }
+            .kicker {
+                font-size: 0.65rem !important;
+                letter-spacing: 1.5px !important;
+                margin-bottom: 6px !important;
+            }
+            .section-title {
+                font-size: 1.45rem !important;
+                line-height: 1.25 !important;
+            }
+            .editorial-content {
+                padding: 30px 16px 15px !important;
+            }
+            .intro-lead {
+                font-size: 0.95rem !important;
+                line-height: 1.5 !important;
+                margin-bottom: 25px !important;
+                padding-left: 14px !important;
+                border-left-width: 2px !important;
+            }
+            .ceo-section {
+                padding: 35px 16px !important;
+            }
+            .ceo-container {
+                gap: 20px !important;
+            }
+            .ceo-image-wrapper {
+                max-width: 190px !important;
+                border-radius: 12px !important;
+            }
+            .ceo-details h2 {
+                font-size: 1.35rem !important;
+                margin-bottom: 10px !important;
+            }
+            .ceo-quote {
+                font-size: 0.88rem !important;
+                line-height: 1.45 !important;
+                margin-bottom: 12px !important;
+                padding-left: 12px !important;
+            }
+            .ceo-bio {
+                font-size: 0.82rem !important;
+                line-height: 1.55 !important;
+                margin-bottom: 16px !important;
+            }
+            .ceo-contact-card {
+                padding: 10px 16px !important;
+            }
+            .team-section {
+                padding: 35px 16px 25px !important;
+            }
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 12px !important;
+                margin-top: 22px !important;
+            }
+            .team-card {
+                border-radius: 10px !important;
+            }
+            .team-card-image-wrap {
+                height: 120px !important;
+            }
+            .team-card-content {
+                padding: 10px !important;
+            }
+            .team-card-role {
+                font-size: 0.58rem !important;
+                letter-spacing: 0.5px !important;
+                margin-bottom: 4px !important;
+            }
+            .team-card-name {
+                font-size: 0.88rem !important;
+                margin-bottom: 6px !important;
+                line-height: 1.25 !important;
+            }
+            .team-card-desc {
+                font-size: 0.72rem !important;
+                line-height: 1.4 !important;
+            }
+            .values-section {
+                padding: 35px 16px !important;
+            }
+            .values-grid {
+                grid-template-columns: 1fr !important;
+                gap: 12px !important;
+                margin-top: 20px !important;
+            }
+            .values-grid .premium-glass-card {
+                padding: 16px !important;
+            }
+            .values-grid h4 {
+                font-size: 0.95rem !important;
+                margin-bottom: 6px !important;
+            }
+            .values-grid p {
+                font-size: 0.8rem !important;
+                line-height: 1.5 !important;
+            }
+            .footer-section {
+                padding-top: 40px !important;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 8px !important;
+            }
+            .team-card-image-wrap {
+                height: 105px !important;
+            }
+            .team-card-content {
+                padding: 8px !important;
+            }
+            .team-card-name {
+                font-size: 0.82rem !important;
+            }
+            .team-card-desc {
+                font-size: 0.68rem !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -456,6 +592,20 @@
                             <h3 class="team-card-name">Ilídio Romão</h3>
                             <p class="team-card-desc">
                                 Guardião do cuidado MAHAMBA
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Zinu Bernardo -->
+                    <div class="team-card">
+                        <div class="team-card-image-wrap">
+                            <img src="/zinu-bernardo.jpg" alt="Zinu Bernardo" class="team-card-image">
+                        </div>
+                        <div class="team-card-content">
+                            <span class="team-card-role">MONITORIA & DADOS</span>
+                            <h3 class="team-card-name">Zinu Bernardo</h3>
+                            <p class="team-card-desc">
+                                Área de monitoria e dados
                             </p>
                         </div>
                     </div>
