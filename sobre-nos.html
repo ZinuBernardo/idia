@@ -172,44 +172,45 @@
         }
 
         .team-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(199, 161, 83, 0.2);
-            border-radius: 14px;
-            overflow: hidden;
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            border-radius: 0;
+            overflow: visible;
             display: flex;
             flex-direction: column;
-            transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
-            backdrop-filter: blur(10px);
+            transition: transform 0.4s ease;
         }
 
         .team-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(199, 161, 83, 0.5);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 15px rgba(199, 161, 83, 0.15);
+            transform: translateY(-4px);
+            border: none;
+            box-shadow: none;
         }
 
         .team-card-image-wrap {
             position: relative;
             width: 100%;
-            height: 270px;
+            aspect-ratio: 1 / 1.15;
+            height: auto;
+            border-radius: 14px;
             overflow: hidden;
-            background: radial-gradient(circle at 50% 35%, #181a24 0%, #08090d 100%);
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
+            background: #0d0d12;
+            display: block;
         }
 
         .team-card-image {
             width: 100%;
             height: 100%;
-            object-fit: contain;
-            object-position: center bottom;
-            transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
-            padding: 8px 8px 0 8px;
+            object-fit: cover;
+            object-position: top center;
+            display: block;
+            transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+            padding: 0;
         }
 
         .team-card:hover .team-card-image {
-            transform: scale(1.03);
+            transform: scale(1.04);
         }
 
         .team-card-image-wrap::after {
@@ -219,12 +220,12 @@
             left: 0;
             right: 0;
             height: 35px;
-            background: linear-gradient(0deg, rgba(10, 10, 12, 0.75) 0%, transparent 100%);
+            background: linear-gradient(0deg, rgba(10, 10, 12, 0.6) 0%, transparent 100%);
             pointer-events: none;
         }
 
         .team-card-content {
-            padding: 18px;
+            padding: 16px 0 0 0;
             display: flex;
             flex-direction: column;
             flex-grow: 1;
@@ -325,13 +326,25 @@
                 margin-top: 22px !important;
             }
             .team-card {
-                border-radius: 10px !important;
+                border: none !important;
+                background: transparent !important;
+                box-shadow: none !important;
+                border-radius: 0 !important;
             }
             .team-card-image-wrap {
-                height: 120px !important;
+                width: 100% !important;
+                height: auto !important;
+                aspect-ratio: 1 / 1.15 !important;
+                border-radius: 10px !important;
+            }
+            .team-card-image {
+                width: 100% !important;
+                height: 100% !important;
+                object-fit: cover !important;
+                padding: 0 !important;
             }
             .team-card-content {
-                padding: 10px !important;
+                padding: 10px 0 0 0 !important;
             }
             .team-card-role {
                 font-size: 0.58rem !important;
@@ -377,10 +390,11 @@
                 gap: 8px !important;
             }
             .team-card-image-wrap {
-                height: 105px !important;
+                height: auto !important;
+                aspect-ratio: 1 / 1.15 !important;
             }
             .team-card-content {
-                padding: 8px !important;
+                padding: 8px 0 0 0 !important;
             }
             .team-card-name {
                 font-size: 0.82rem !important;

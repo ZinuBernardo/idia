@@ -474,8 +474,9 @@ a {
 
 @media (max-width: 768px) {
     .movie-hero {
-        height: 100vh; /* Maintain 100vh for immersive feel */
-        padding: calc(var(--padding-global) / 2);
+        height: auto;
+        min-height: 320px;
+        padding: 90px 20px 35px 20px;
     }
 }
 
@@ -1326,12 +1327,46 @@ a {
         overflow-x: hidden !important;
     }
     
-    /* Reduz paddings verticais excessivos */
+    /* Normalização de alturas de seção e eliminação de vazios no mobile */
+    .hero {
+        height: auto !important;
+        min-height: auto !important;
+        padding: 85px var(--padding-global) 35px var(--padding-global) !important;
+    }
+
+    .movie-hero {
+        height: auto !important;
+        min-height: 280px !important;
+        max-height: 380px !important;
+        padding: 85px var(--padding-global) 25px var(--padding-global) !important;
+    }
+
+    .hero-bottom-stats {
+        position: relative !important;
+        bottom: auto !important;
+        left: auto !important;
+        right: auto !important;
+        margin-top: 25px !important;
+        padding-top: 15px !important;
+    }
+
+    /* Reduz paddings e alturas verticais excessivas para medida normal */
+    section, 
+    .chapter-section, 
+    .pyramid-section, 
+    .stats-section, 
+    .editorial-section, 
+    .values-section, 
+    .team-section, 
+    .ceo-section,
     section[style*="padding:"], 
     div[style*="padding:"], 
     footer[style*="padding:"] {
-        padding-top: clamp(40px, 6vh, 55px) !important;
-        padding-bottom: clamp(40px, 6vh, 55px) !important;
+        min-height: auto !important;
+        height: auto !important;
+        padding-top: 40px !important;
+        padding-bottom: 40px !important;
+        gap: 20px !important;
     }
     
     /* Otimiza espaçamento de flexboxes empilhados */
@@ -1339,7 +1374,7 @@ a {
     div[style*="display: flex"][style*="gap: 40px"],
     div[style*="display: flex"][style*="gap: 30px"],
     .stats-content {
-        gap: 20px !important;
+        gap: 18px !important;
     }
     
     /* Força grids complexos a uma coluna em dispositivos móveis */
@@ -1565,7 +1600,34 @@ a {
 
     /* Editorial content on mobile */
     .editorial-content {
-        padding: 40px var(--padding-global) !important;
+        padding: 30px var(--padding-global) !important;
+    }
+
+    /* Medida normal e eliminação de vazios em smartphones */
+    section,
+    .chapter-section,
+    .pyramid-section,
+    .stats-section,
+    .editorial-section,
+    .values-section,
+    .team-section,
+    .ceo-section,
+    section[style*="padding:"],
+    div[style*="padding:"],
+    footer[style*="padding:"] {
+        padding-top: 30px !important;
+        padding-bottom: 30px !important;
+        gap: 16px !important;
+    }
+
+    .hero {
+        padding: 80px var(--padding-global) 25px var(--padding-global) !important;
+    }
+
+    .movie-hero {
+        min-height: 240px !important;
+        max-height: 320px !important;
+        padding: 80px var(--padding-global) 20px var(--padding-global) !important;
     }
 }
 
