@@ -4,8 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MAHAMBA — Arquitectura Civilizacional do Humano Concreto | Edição Especial</title>
-    <meta name="description" content="E se a humanidade estivesse a construir o seu futuro sem compreender a sua própria continuidade? Adquira o livro MAHAMBA de Tony Nguxi pelo preço promocional de lançamento de 9.900 Kz.">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script>
+        if (window['pdfjs-dist/build/pdf']) {
+            window.pdfjsLib = window['pdfjs-dist/build/pdf'];
+            window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+        }
+    </script>
     <link rel="stylesheet" href="/src/style.css">
     <style>
         /* ========================================================================== */
@@ -988,6 +994,846 @@
             text-align: center;
             margin-top: 8px;
         }
+
+        /* ========================================================================== */
+        /*               SIMULADOR DE LIVRO E LEITOR FLIPBOOK INTERATIVO              */
+        /* ========================================================================== */
+        .book-simulator-section {
+            padding: 110px 24px;
+            position: relative;
+            background: radial-gradient(circle at 50% 30%, rgba(199, 161, 83, 0.07) 0%, rgba(5, 5, 5, 0.96) 65%, #050505 100%);
+            border-bottom: 1px solid var(--lp-border);
+            overflow: hidden;
+        }
+
+        .book-simulator-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 1px;
+            background: radial-gradient(circle, var(--lp-gold) 0%, transparent 80%);
+            opacity: 0.4;
+        }
+
+        .simulator-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .simulator-header {
+            text-align: center;
+            max-width: 800px;
+            margin-bottom: 45px;
+        }
+
+        .book-stage {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 520px;
+            position: relative;
+        }
+
+        /* 1. VISTA LIVRO FECHADO (3D Showcase) */
+        .closed-book-view {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+            width: 100%;
+            transition: opacity 0.4s ease;
+        }
+
+        .book-3d-wrapper {
+            perspective: 1600px;
+            cursor: pointer;
+            padding: 20px;
+            display: inline-block;
+            position: relative;
+        }
+
+        .book-3d {
+            position: relative;
+            width: 290px;
+            height: 420px;
+            transform-style: preserve-3d;
+            transform: rotateY(-24deg) rotateX(10deg);
+            transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.6s ease;
+        }
+
+        .book-3d-wrapper:hover .book-3d {
+            transform: rotateY(-12deg) rotateX(4deg) translateY(-14px) scale(1.03);
+        }
+
+        .book-cover-front {
+            position: absolute;
+            inset: 0;
+            border-radius: 2px 6px 6px 2px;
+            overflow: hidden;
+            box-shadow: 6px 8px 30px rgba(0, 0, 0, 0.85);
+            backface-visibility: hidden;
+            z-index: 5;
+            background: #0d0e14;
+            border: 1px solid rgba(199, 161, 83, 0.35);
+        }
+
+        .book-cover-front .cover-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .book-glare {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(125deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.05) 25%, transparent 60%);
+            pointer-events: none;
+            mix-blend-mode: overlay;
+        }
+
+        .book-open-badge {
+            position: absolute;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(8, 9, 12, 0.9);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--lp-gold);
+            color: #fff;
+            padding: 10px 18px;
+            border-radius: 30px;
+            font-size: 0.76rem;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 15px rgba(199, 161, 83, 0.35);
+            transition: all 0.3s ease;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+
+        .book-open-badge svg {
+            stroke: var(--lp-gold-light);
+        }
+
+        .book-3d-wrapper:hover .book-open-badge {
+            background: var(--lp-gold);
+            color: #000;
+            box-shadow: 0 12px 35px rgba(199, 161, 83, 0.6);
+        }
+
+        .book-3d-wrapper:hover .book-open-badge svg {
+            stroke: #000;
+        }
+
+        .book-spine {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 42px;
+            height: 100%;
+            background: linear-gradient(90deg, #13141a 0%, #2a2b36 35%, #15161f 100%);
+            transform-origin: left;
+            transform: rotateY(-90deg);
+            border-left: 1px solid rgba(199, 161, 83, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .spine-text {
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            color: var(--lp-gold);
+            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .book-pages-side {
+            position: absolute;
+            top: 4px;
+            right: 0;
+            width: 38px;
+            height: calc(100% - 8px);
+            background: repeating-linear-gradient(to right, #f4f0e6, #f4f0e6 1.5px, #d8d3c1 2.5px, #d8d3c1 3.5px);
+            transform-origin: right;
+            transform: rotateY(90deg) translateZ(0);
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.35);
+        }
+
+        .book-shadow {
+            position: absolute;
+            bottom: -35px;
+            left: 5%;
+            width: 90%;
+            height: 38px;
+            background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 70%);
+            transform: rotateX(85deg) translateZ(-40px);
+            pointer-events: none;
+        }
+
+        .closed-book-cta {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn-open-simulator {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(199, 161, 83, 0.12);
+            color: var(--lp-gold-light);
+            border: 1px solid var(--lp-gold);
+            padding: 16px 36px;
+            border-radius: 4px;
+            font-family: var(--font-heading);
+            font-size: 0.92rem;
+            font-weight: 800;
+            letter-spacing: 1.2px;
+            cursor: pointer;
+            transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-open-simulator svg {
+            stroke: var(--lp-gold);
+            transition: transform 0.3s ease;
+        }
+
+        .btn-open-simulator:hover {
+            background: linear-gradient(135deg, #ffffff 0%, #e6c887 50%, #c7a153 100%);
+            color: #000;
+            box-shadow: 0 16px 40px rgba(199, 161, 83, 0.5);
+            transform: translateY(-3px);
+        }
+
+        .btn-open-simulator:hover svg {
+            stroke: #000;
+            transform: scale(1.1);
+        }
+
+        .simulator-micro-note {
+            font-size: 0.78rem;
+            color: var(--lp-text-dim);
+            letter-spacing: 0.5px;
+        }
+
+        /* 2. VISTA LEITOR ABERTO (FLIPBOOK) */
+        .open-book-reader {
+            width: 100%;
+            max-width: 1080px;
+            background: #0a0b0f;
+            border: 1px solid rgba(199, 161, 83, 0.3);
+            border-radius: 12px;
+            box-shadow: 0 35px 80px rgba(0, 0, 0, 0.95), 0 0 50px rgba(199, 161, 83, 0.1);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+            animation: readerAppear 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes readerAppear {
+            from {
+                opacity: 0;
+                transform: scale(0.96) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .open-book-reader.is-fullscreen {
+            position: fixed;
+            inset: 0;
+            z-index: 999999;
+            max-width: 100vw;
+            height: 100vh;
+            border-radius: 0;
+            border: none;
+            background: #050608;
+        }
+
+        .reader-toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 24px;
+            background: rgba(12, 13, 18, 0.95);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            z-index: 30;
+        }
+
+        .reader-book-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .reader-book-tag {
+            background: rgba(199, 161, 83, 0.18);
+            color: var(--lp-gold-light);
+            font-size: 0.68rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 3px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border: 1px solid rgba(199, 161, 83, 0.35);
+        }
+
+        .reader-book-title {
+            color: #ffffff;
+            font-family: 'Cinzel', serif;
+            font-size: 0.92rem;
+            font-weight: 600;
+            letter-spacing: 0.8px;
+        }
+
+        .reader-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .reader-page-indicator {
+            font-size: 0.82rem;
+            color: var(--lp-gold-light);
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            background: rgba(255, 255, 255, 0.04);
+            padding: 6px 12px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .reader-tool-btn {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #fff;
+            border-radius: 4px;
+            padding: 7px 12px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.25s ease;
+        }
+
+        .reader-tool-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: var(--lp-gold);
+            border-color: var(--lp-gold);
+        }
+
+        .reader-tool-btn.close-btn {
+            background: rgba(199, 161, 83, 0.15);
+            border-color: rgba(199, 161, 83, 0.4);
+            color: var(--lp-gold-light);
+            font-weight: 600;
+        }
+
+        .reader-tool-btn.close-btn:hover {
+            background: var(--lp-gold);
+            color: #000;
+        }
+
+        /* VIEWPORT DO LIVRO */
+        .flipbook-viewport {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 60px;
+            min-height: 620px;
+            background: radial-gradient(circle at 50% 50%, #15161e 0%, #08090c 100%);
+            overflow: hidden;
+        }
+
+        .open-book-reader.is-fullscreen .flipbook-viewport {
+            min-height: calc(100vh - 125px);
+            padding: 20px 60px;
+        }
+
+        .flip-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(12, 13, 18, 0.85);
+            border: 1px solid rgba(199, 161, 83, 0.35);
+            color: var(--lp-gold-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 30;
+            transition: all 0.25s ease;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+        }
+
+        .flip-nav-btn.prev-btn {
+            left: 14px;
+        }
+
+        .flip-nav-btn.next-btn {
+            right: 14px;
+        }
+
+        .flip-nav-btn:hover:not(:disabled) {
+            background: var(--lp-gold);
+            color: #000;
+            box-shadow: 0 0 25px rgba(199, 161, 83, 0.6);
+            transform: translateY(-50%) scale(1.08);
+        }
+
+        .flip-nav-btn:disabled {
+            opacity: 0.2;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        /* ESTRUTURA DO LIVRO ABERTO */
+        .flipbook-book {
+            position: relative;
+            width: 100%;
+            max-width: 920px;
+            height: 570px;
+            perspective: 2500px;
+            display: flex;
+            border-radius: 6px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9), 0 0 40px rgba(0, 0, 0, 0.7);
+            background: #f7f3e8;
+            overflow: visible;
+        }
+
+        .book-spine-crease {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 46px;
+            transform: translateX(-50%);
+            background: linear-gradient(90deg, rgba(0, 0, 0, 0.22) 0%, rgba(0, 0, 0, 0.04) 25%, rgba(0, 0, 0, 0.32) 50%, rgba(0, 0, 0, 0.04) 75%, rgba(0, 0, 0, 0.22) 100%);
+            pointer-events: none;
+            z-index: 25;
+        }
+
+        .flipbook-spread {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .flipbook-spread.is-active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .fp-page {
+            width: 50%;
+            height: 100%;
+            background: #fcf9f2;
+            color: #1a1816;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            padding: 38px 40px;
+            box-sizing: border-box;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            user-select: none;
+        }
+
+        .fp-page.fp-left {
+            border-radius: 4px 0 0 4px;
+            box-shadow: inset -14px 0 24px rgba(0, 0, 0, 0.06);
+            border-right: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .fp-page.fp-right {
+            border-radius: 0 4px 4px 0;
+            box-shadow: inset 14px 0 24px rgba(0, 0, 0, 0.06);
+        }
+
+        /* Cabeçalho de página corrida */
+        .fp-header {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.68rem;
+            letter-spacing: 2px;
+            color: #8c8474;
+            text-transform: uppercase;
+            border-bottom: 1px solid #e7e0d0;
+            padding-bottom: 8px;
+            margin-bottom: 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .fp-body {
+            flex: 1;
+            overflow-y: auto;
+            padding-right: 4px;
+        }
+
+        .fp-body::-webkit-scrollbar {
+            width: 4px;
+        }
+        .fp-body::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.15);
+            border-radius: 2px;
+        }
+
+        .fp-footer {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.72rem;
+            color: #8c8474;
+            font-weight: 600;
+            margin-top: 14px;
+            border-top: 1px solid #e7e0d0;
+            padding-top: 8px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Tipografia Editorial da Obra */
+        .fp-title-large {
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
+            color: #111;
+            margin-bottom: 8px;
+            line-height: 1.2;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+
+        .fp-subtitle {
+            font-family: 'Cinzel', serif;
+            font-size: 0.88rem;
+            color: #a37c2d;
+            letter-spacing: 1.5px;
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+
+        .fp-author-line {
+            font-size: 0.95rem;
+            font-style: italic;
+            color: #4a453e;
+            margin-bottom: 24px;
+        }
+
+        .fp-epigraph {
+            border-left: 2px solid #c7a153;
+            padding-left: 16px;
+            margin: 24px 0;
+            font-style: italic;
+            font-size: 1.12rem;
+            line-height: 1.6;
+            color: #3b3731;
+        }
+
+        .fp-epigraph-cite {
+            display: block;
+            margin-top: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.72rem;
+            color: #7b7468;
+            font-style: normal;
+            letter-spacing: 1px;
+        }
+
+        .fp-paragraph {
+            font-size: 1.05rem;
+            line-height: 1.72;
+            color: #24211e;
+            text-align: justify;
+            margin-bottom: 16px;
+        }
+
+        .fp-drop-cap {
+            float: left;
+            font-size: 3.4rem;
+            line-height: 0.85;
+            padding-top: 4px;
+            padding-right: 10px;
+            font-family: 'Cinzel', serif;
+            color: #a37c2d;
+            font-weight: 700;
+        }
+
+        .fp-concept-highlight {
+            font-weight: 600;
+            color: #8c6a1e;
+        }
+
+        /* PÁGINA FINAL (O Grande Convite para Compra) */
+        .fp-page.fp-final-cta {
+            background: #0c0d12;
+            color: #ffffff;
+            border-radius: 0 4px 4px 0;
+            box-shadow: inset 16px 0 28px rgba(0, 0, 0, 0.6);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 36px 32px;
+            border: 1px solid rgba(199, 161, 83, 0.4);
+        }
+
+        .final-cta-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+            width: 100%;
+        }
+
+        .final-cta-tag {
+            background: rgba(199, 161, 83, 0.2);
+            color: var(--lp-gold-light);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.68rem;
+            font-weight: 800;
+            padding: 4px 12px;
+            border-radius: 20px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            border: 1px solid rgba(199, 161, 83, 0.4);
+        }
+
+        .final-cta-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.45rem;
+            color: #ffffff;
+            line-height: 1.25;
+            font-weight: 700;
+        }
+
+        .final-cta-desc {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.86rem;
+            line-height: 1.55;
+            color: var(--lp-text-dim);
+            max-width: 360px;
+        }
+
+        .final-cta-price-box {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(199, 161, 83, 0.35);
+            border-radius: 6px;
+            padding: 10px 20px;
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            margin: 4px 0;
+        }
+
+        .final-cta-price {
+            font-family: 'Cinzel', serif;
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: var(--lp-gold);
+        }
+
+        .final-cta-old-price {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.4);
+            text-decoration: line-through;
+        }
+
+        .btn-cta-final-book {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #e6c887 0%, #c7a153 60%, #a37c2d 100%);
+            color: #050505 !important;
+            font-family: var(--font-heading);
+            font-size: 0.85rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 14px 24px;
+            border-radius: 4px;
+            border: 1px solid var(--lp-gold-light);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(199, 161, 83, 0.35);
+            text-decoration: none;
+            width: 100%;
+            max-width: 320px;
+        }
+
+        .btn-cta-final-book:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, #ffffff 0%, #e6c887 50%, #c7a153 100%);
+            box-shadow: 0 12px 30px rgba(199, 161, 83, 0.55);
+            color: #000 !important;
+        }
+
+        .final-cta-guarantee {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.72rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* RODAPÉ DO LEITOR */
+        .reader-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 24px;
+            background: rgba(12, 13, 18, 0.95);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            color: var(--lp-text-dim);
+            z-index: 30;
+        }
+
+        .reader-hint {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .reader-hint svg {
+            stroke: var(--lp-gold);
+        }
+
+        .btn-quick-buy {
+            color: var(--lp-gold-light);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+            transition: color 0.25s;
+        }
+
+        .btn-quick-buy:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        /* ANIMAÇÃO 3D DO FOLHEAMENTO */
+        .flip-page-turning {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            transform-origin: left center;
+            transform-style: preserve-3d;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            z-index: 20;
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .flip-page-turning.flipped {
+            transform: rotateY(-180deg);
+        }
+
+        /* RESPONSIVIDADE DO SIMULADOR */
+        @media (max-width: 900px) {
+            .flipbook-viewport {
+                padding: 20px 10px;
+                min-height: 520px;
+            }
+
+            .flipbook-book {
+                height: 500px;
+                max-width: 96%;
+            }
+
+            .book-spine-crease {
+                display: none;
+            }
+
+            .fp-page.fp-left {
+                display: none;
+            }
+
+            .fp-page.fp-right {
+                width: 100%;
+                border-radius: 4px;
+            }
+
+            .reader-toolbar {
+                padding: 10px 16px;
+            }
+
+            .reader-book-title {
+                display: none;
+            }
+
+            .reader-footer {
+                flex-direction: column;
+                gap: 8px;
+                text-align: center;
+            }
+
+            .fp-page {
+                padding: 24px 20px;
+            }
+
+            .fp-paragraph {
+                font-size: 0.95rem;
+                line-height: 1.6;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .book-simulator-section {
+                padding: 70px 16px;
+            }
+
+            .book-3d {
+                width: 240px;
+                height: 350px;
+            }
+
+            .flip-nav-btn {
+                width: 40px;
+                height: 40px;
+            }
+
+            .flip-nav-btn.prev-btn {
+                left: 6px;
+            }
+
+            .flip-nav-btn.next-btn {
+                right: 6px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1103,10 +1949,428 @@
                 </div>
             </section>
 
+            <!-- ============================================================ -->
+            <!-- 3. SIMULADOR DE LIVRO / DEGUSTAÇÃO INTERATIVA DA INTRODUÇÃO  -->
+            <!-- ============================================================ -->
+            <section class="book-simulator-section" id="degustacao">
+                <div class="simulator-container">
+                    <div class="simulator-header">
+                        <span class="section-kicker">DEGUSTAÇÃO EXCLUSIVA</span>
+                        <h2 class="section-main-title">FOLHEIE A INTRODUÇÃO DE MAHAMBA</h2>
+                        <p class="section-main-sub" style="margin-top: 14px;">
+                            Experimente as primeiras páginas da obra antes de adquirir. Toque no livro abaixo para abrir o simulador e folhear a introdução oficial como se estivesse com o exemplar físico em suas mãos.
+                        </p>
+                    </div>
 
-            <!-- ============================================================ -->
-            <!-- 4. “O QUE VOCÊ VAI ENCONTRAR?”                               -->
-            <!-- ============================================================ -->
+                    <!-- STAGE DO LIVRO (3D Showcase & Leitor) -->
+                    <div class="book-stage" id="book-stage">
+                        
+                        <!-- VISTA 1: LIVRO FECHADO (3D Showcase Interativo) -->
+                        <div class="closed-book-view" id="closed-book-view">
+                            <div class="book-3d-wrapper" id="book-3d-trigger" role="button" tabindex="0" title="Clique para abrir e folhear o livro">
+                                <div class="book-3d">
+                                    <!-- Capa frontal -->
+                                    <div class="book-cover-front">
+                                        <img src="/coover.png" alt="Capa do Livro MAHAMBA — Arquitectura Civilizacional do Humano Concreto" class="cover-image">
+                                        <div class="book-glare"></div>
+                                        <div class="book-open-badge">
+                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                                            <span>CLIQUE PARA FOLHEAR</span>
+                                        </div>
+                                    </div>
+                                    <!-- Lombada 3D -->
+                                    <div class="book-spine">
+                                        <span class="spine-text">MAHAMBA &bull; HUMANO CONCRETO</span>
+                                    </div>
+                                    <!-- Páginas laterais (corte de papel) -->
+                                    <div class="book-pages-side"></div>
+                                    <!-- Sombra projetada -->
+                                    <div class="book-shadow"></div>
+                                </div>
+                            </div>
+
+                            <div class="closed-book-cta">
+                                <button type="button" class="btn-open-simulator" id="btn-open-book">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                                    <span>ABRIR E LER A INTRODUÇÃO</span>
+                                </button>
+                                <div class="simulator-micro-note">
+                                    Leitor interactivo folheável &bull; Degustação gratuita da introdução
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- VISTA 2: LEITOR ABERTO / SIMULADOR FOLHEÁVEL (FLIPBOOK) -->
+                        <div class="open-book-reader" id="open-book-reader" style="display: none;">
+                            
+                            <!-- Barra Superior de Controles -->
+                            <div class="reader-toolbar">
+                                <div class="reader-book-info">
+                                    <span class="reader-book-tag">AMOSTRA OFICIAL</span>
+                                    <span class="reader-book-title">MAHAMBA &mdash; Introdução</span>
+                                </div>
+                                <div class="reader-actions">
+                                    <span class="reader-page-indicator" id="reader-page-num">Páginas 1 - 2 de 10</span>
+                                    <button type="button" class="reader-tool-btn" id="btn-reader-fullscreen" title="Alternar ecrã completo">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
+                                        <span>Expandir</span>
+                                    </button>
+                                    <button type="button" class="reader-tool-btn close-btn" id="btn-close-reader" title="Fechar o simulador">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                                        <span>Fechar</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Viewport do Livro Aberto -->
+                            <div class="flipbook-viewport" id="flipbook-viewport">
+                                <button type="button" class="flip-nav-btn prev-btn" id="btn-flip-prev" aria-label="Página anterior" title="Página anterior">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                                </button>
+
+                                <div class="flipbook-book" id="flipbook-book">
+                                    <!-- Vinco e sombra central da lombada interna -->
+                                    <div class="book-spine-crease"></div>
+
+                                    <!-- Contentor de Spreads (Páginas Duplas) -->
+                                    <div class="flipbook-pages-container" id="flipbook-pages-container">
+                                        
+                                        <!-- SPREAD 1 (Páginas 1 e 2) -->
+                                        <div class="flipbook-spread is-active" data-spread="0">
+                                            <!-- Página Esquerda: Frontispício / Folha de Rosto -->
+                                            <div class="fp-page fp-left">
+                                                <div class="fp-header">
+                                                    <span>INSTITUTO ID&IA</span>
+                                                    <span>EDIÇÃO ESPECIAL</span>
+                                                </div>
+                                                <div class="fp-body" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+                                                    <div style="font-family: 'Cinzel', serif; font-size: 0.72rem; letter-spacing: 3px; color: #8c8474; margin-bottom: 20px;">
+                                                        PUBLICAÇÃO OFICIAL
+                                                    </div>
+                                                    <div class="fp-title-large" style="font-size: 2.1rem; letter-spacing: 2px;">
+                                                        MAHAMBA
+                                                    </div>
+                                                    <div class="fp-subtitle" style="max-width: 290px; margin: 0 auto 26px auto; line-height: 1.4;">
+                                                        Arquitectura Civilizacional do Humano Concreto
+                                                    </div>
+                                                    <div style="width: 40px; height: 1px; background: #c7a153; margin-bottom: 26px;"></div>
+                                                    <div class="fp-author-line" style="margin-bottom: 6px;">
+                                                        <strong>António José Augusto</strong>
+                                                    </div>
+                                                    <div style="font-family: 'Inter', sans-serif; font-size: 0.72rem; color: #8c8474; letter-spacing: 1px;">
+                                                        "Tony Nguxi"
+                                                    </div>
+                                                </div>
+                                                <div class="fp-footer">
+                                                    <span>Pág. 1</span>
+                                                    <span>MAHAMBA</span>
+                                                </div>
+                                            </div>
+
+                                            <!-- Página Direita: Preâmbulo — Humano Concreto (Pág. 40) -->
+                                            <div class="fp-page fp-right">
+                                                <div class="fp-header">
+                                                    <span>PREÂMBULO</span>
+                                                    <span>HUMANO CONCRETO</span>
+                                                </div>
+                                                <div class="fp-body">
+                                                    <div style="font-family: 'Cinzel', serif; font-size: 1.25rem; color: #111; margin-bottom: 4px; font-weight: 700;">
+                                                        PREÂMBULO
+                                                    </div>
+                                                    <div style="font-family: 'Cinzel', serif; font-size: 0.85rem; color: #a37c2d; margin-bottom: 14px; letter-spacing: 1px; font-weight: 600;">
+                                                        Humano Concreto
+                                                    </div>
+                                                    <p class="fp-paragraph">
+                                                        <span class="fp-drop-cap">E</span>sta obra surge da necessidade de compreender a travessia da humanidade a partir da sua maturidade civilizacional, identificando, com profundidade orgânica e rigor interpretativo, os fundamentos que sustentam o seu desenvolvimento e as potencialidades da sua continuidade.
+                                                    </p>
+                                                    <p class="fp-paragraph">
+                                                        Através de uma leitura estrutural da experiência humana, procura-se traduzir em aplicabilidade concreta e operacionalidade tecnológica contemporânea os elementos que emergem da evolução histórica da consciência, da organização social e da produção de conhecimento.
+                                                    </p>
+                                                    <p class="fp-paragraph">
+                                                        O propósito central consiste em estruturar uma atitude civilizacional compatível com a dimensão alcançada pela humanidade no actual estágio do seu percurso evolutivo.
+                                                    </p>
+                                                    <p class="fp-paragraph">
+                                                        Neste contexto, a presente reflexão fundamenta-se na formação e conclusão da <strong>TRIOLOGIA LÓGICA</strong>, entendida como base matricial da <strong>ASTROBIOTECNIA</strong>, campo emergente de investigação dedicado ao estudo da continuidade da vida concreta, da sua sustentabilidade civilizacional e da sua expansão consciente através da integração entre conhecimento, tecnologia, natureza e humanidade.
+                                                    </p>
+                                                </div>
+                                                <div class="fp-footer">
+                                                    <span>MAHAMBA</span>
+                                                    <span>Pág. 40</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- SPREAD 2 (Páginas 3 e 4) -->
+                                        <div class="flipbook-spread" data-spread="1">
+                                            <!-- Página Esquerda: O Humano Concreto & Movimento MA-HA-MBA (Pág. 40-41) -->
+                                            <div class="fp-page fp-left">
+                                                <div class="fp-header">
+                                                    <span>PREÂMBULO</span>
+                                                    <span>A CONTINUIDADE</span>
+                                                </div>
+                                                <div class="fp-body">
+                                                    <p class="fp-paragraph">
+                                                        O <strong>HUMANO CONCRETO</strong> constitui, assim, uma proposta de interpretação e operacionalização da condição humana contemporânea, procurando estabelecer pontes entre a experiência acumulada da travessia civilizacional e os desafios futuros da existência colectiva.
+                                                    </p>
+                                                    <p class="fp-paragraph">
+                                                        Mais do que uma formulação teórica, apresenta-se como um instrumento de leitura, orientação e construção de uma nova etapa da evolução humana, assente na responsabilidade, na lucidez e na continuidade da vida como princípio fundamental da organização civilizacional.
+                                                    </p>
+                                                    <div style="border-top: 1px solid #e7e0d0; padding-top: 14px; margin-top: 16px;">
+                                                        <div style="font-family: 'Cinzel', serif; font-size: 1.05rem; color: #111; margin-bottom: 10px; font-weight: 700;">
+                                                            O Movimento Molecular MA-HA-MBA
+                                                        </div>
+                                                        <p class="fp-paragraph">
+                                                            É desta profundidade interpretativa que emerge o movimento molecular <strong>MA-HA-MBA</strong>, entendido como estrutura orgânica de leitura, tradução e continuidade da Travessia Civilizacional.
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="fp-footer">
+                                                    <span>Pág. 40</span>
+                                                    <span>MAHAMBA</span>
+                                                </div>
+                                            </div>
+
+                                            <!-- Página Direita: As Três Dimensões MA-HA-MBA (Pág. 41) -->
+                                            <div class="fp-page fp-right">
+                                                <div class="fp-header">
+                                                    <span>ESTRUTURA ORGÂNICA</span>
+                                                    <span>MA - HA - MBA</span>
+                                                </div>
+                                                <div class="fp-body">
+                                                    <p class="fp-paragraph" style="margin-bottom: 12px;">
+                                                        A sua composição conceptual organiza-se em três dimensões fundamentais:
+                                                    </p>
+                                                    <div style="background: rgba(199, 161, 83, 0.08); border-left: 2px solid #c7a153; padding: 12px 14px; margin-bottom: 14px;">
+                                                        <p class="fp-paragraph" style="margin-bottom: 8px;">
+                                                            <strong>MA</strong> &mdash; <em>A Matriz</em>, princípio originário da estrutura, da formação e da organização da vida;
+                                                        </p>
+                                                        <p class="fp-paragraph" style="margin-bottom: 8px;">
+                                                            <strong>HA</strong> &mdash; <em>A Respiração</em>, princípio dinâmico da circulação, da transformação e da continuidade do movimento civilizacional;
+                                                        </p>
+                                                        <p class="fp-paragraph" style="margin-bottom: 0;">
+                                                            <strong>MBA</strong> &mdash; <em>A Confirmação e Memória</em>, princípio de conservação, validação e transmissão da experiência acumulada ao longo da travessia humana.
+                                                        </p>
+                                                    </div>
+                                                    <p class="fp-paragraph">
+                                                        A articulação destas três dimensões estabelece uma conduta matricial capaz de interpretar os ciclos sucessivos da evolução humana, permitindo compreender a forma como a humanidade construiu, preservou e transformou os seus mecanismos de sobrevivência, conhecimento e continuidade.
+                                                    </p>
+                                                    <p class="fp-paragraph">
+                                                        Neste enquadramento, o movimento MA-HA-MBA constitui um instrumento de tradução da Travessia Civilizacional, acompanhando os diferentes estágios da sua evolução até à formulação do <strong>HUMANO CONCRETO</strong>, entendido como expressão contemporânea da maturidade orgânica, tecnológica e civilizacional da espécie humana.
+                                                    </p>
+                                                </div>
+                                                <div class="fp-footer">
+                                                    <span>MAHAMBA</span>
+                                                    <span>Pág. 41</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- SPREAD 3 (Páginas 5 e 6) -->
+                                        <div class="flipbook-spread" data-spread="2">
+                                            <!-- Página Esquerda: MPACH & MPACH APP (Pág. 41-42) -->
+                                            <div class="fp-page fp-left">
+                                                <div class="fp-header">
+                                                    <span>RECUPERAÇÃO ORGÂNICA</span>
+                                                    <span>MPACH</span>
+                                                </div>
+                                                <div class="fp-body">
+                                                    <p class="fp-paragraph">
+                                                        Nesta fase, a recuperação orgânica que sustenta o percurso histórico da humanidade passa a ser transportada e operacionalizada tecnologicamente através do <strong>MPACH &mdash; Metodologia Perceptível Aplicada da Continuidade Humana</strong> e da plataforma <strong>MPACH APP</strong>, concebidos como instrumentos de recuperação, organização e transmissão da inteligência ancestral.
+                                                    </p>
+                                                    <p class="fp-paragraph">
+                                                        Por intermédio destes mecanismos, procura-se traduzir simbolicamente a formação da primeira costela humana enquanto princípio de origem, continuidade e pertença, reafirmando a ligação entre memória, identidade e evolução.
+                                                    </p>
+                                                    <p class="fp-paragraph">
+                                                        O MPACH e o MPACH APP assumem, assim, a função de consagração tecnológica da recuperação da inteligência ancestral, permitindo a sua integração activa na construção do HUMANO CONCRETO e na continuidade da Travessia Civilizacional.
+                                                    </p>
+                                                    <p class="fp-paragraph">
+                                                        MAHAMBA surge, deste modo, não apenas como conceito, mas como mecanismo de leitura da continuidade da vida, onde Matriz, Respiração, Confirmação e Memória convergem para sustentar a permanência consciente da experiência humana através do tempo.
+                                                    </p>
+                                                </div>
+                                                <div class="fp-footer">
+                                                    <span>Pág. 41</span>
+                                                    <span>MAHAMBA</span>
+                                                </div>
+                                            </div>
+
+                                            <!-- Página Direita: MPACH — Da Mesma Costela (Pág. 42) -->
+                                            <div class="fp-page fp-right">
+                                                <div class="fp-header">
+                                                    <span>PREÂMBULO</span>
+                                                    <span>DA MESMA COSTELA</span>
+                                                </div>
+                                                <div class="fp-body">
+                                                    <div style="font-family: 'Cinzel', serif; font-size: 1.15rem; color: #111; margin-bottom: 12px; font-weight: 700;">
+                                                        MPACH &mdash; Da Mesma Costela
+                                                    </div>
+                                                    <p class="fp-paragraph">
+                                                        Deste modo, o MPACH constitui a tradução tecnológica de um princípio ancestral preservado na língua Cokwe, onde o termo <em>Mpach</em> remete simbolicamente para a costela, elemento associado à origem, à continuidade e à protecção do corpo humano.
+                                                    </p>
+                                                    <p class="fp-paragraph">
+                                                        Na sua interpretação contemporânea, <strong>MPACH &mdash; Da Mesma Costela</strong> representa a compreensão de que toda a humanidade partilha uma origem comum, uma mesma estrutura biológica fundamental e uma mesma condição civilizacional. A costela deixa, assim, de ser apenas uma referência anatómica para assumir o significado de vínculo matricial que une os seres humanos na sua travessia histórica e evolutiva.
+                                                    </p>
+                                                    <p class="fp-paragraph">
+                                                        A expressão “Da Mesma Costela” afirma, portanto, que a diversidade das culturas, dos povos e das civilizações não anula a unidade fundamental da condição humana.
+                                                    </p>
+                                                    <p class="fp-paragraph">
+                                                        Assim, o <strong>HUMANO CONCRETO</strong> apresenta-se como a etapa de convergência entre memória ancestral, consciência civilizacional e capacidade tecnológica contemporânea.
+                                                    </p>
+                                                </div>
+                                                <div class="fp-footer">
+                                                    <span>MAHAMBA</span>
+                                                    <span>Pág. 42</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- SPREAD 4 (Páginas 7 e 8) -->
+                                        <div class="flipbook-spread" data-spread="3">
+                                            <!-- Página Esquerda: Introdução Geral — Pág. 54 -->
+                                            <div class="fp-page fp-left">
+                                                <div class="fp-header">
+                                                    <span>INTRODUÇÃO GERAL</span>
+                                                    <span>CORPO DOUTRINÁRIO</span>
+                                                </div>
+                                                <div class="fp-body">
+                                                    <div style="font-family: 'Cinzel', serif; font-size: 1.3rem; color: #111; margin-bottom: 14px; font-weight: 700;">
+                                                        INTRODUÇÃO GERAL
+                                                    </div>
+                                                    <p class="fp-paragraph">
+                                                        <span class="fp-drop-cap">O</span> presente corpo doutrinário emerge num tempo histórico de transição profunda, onde a humanidade deixa de se compreender apenas como resultado biológico, cultural ou tecnológico isolado, passando a reconhecer-se como um sistema integrado de consciência, matéria, informação e projecção evolutiva.
+                                                    </p>
+                                                    <p class="fp-paragraph">
+                                                        Esta obra inscreve-se, assim, no horizonte de uma reconfiguração civilizacional que exige novos instrumentos conceptuais, novas linguagens estruturantes e novas arquitecturas de pensamento capazes de sustentar a complexidade do real contemporâneo.
+                                                    </p>
+                                                    <p class="fp-paragraph">
+                                                        Neste contexto, o <strong>HUMANO CONCRETO</strong> não se apresenta como abstracção filosófica nem como mero modelo teórico, mas como uma matriz operativa de leitura e intervenção no real.
+                                                    </p>
+                                                    <p class="fp-paragraph">
+                                                        A partir desta base, desenvolve-se a arquitectura conceptual da <strong>ASTROBIOTECNIA</strong>, enquanto campo emergente de convergência entre vida, tecnologia e dinâmica cósmica. Em paralelo, integra-se o <strong>MPACH</strong> como mecanismo estruturante de leitura, antecipação e modelação de trajectórias evolutivas.
+                                                    </p>
+                                                </div>
+                                                <div class="fp-footer">
+                                                    <span>Pág. 54</span>
+                                                    <span>MAHAMBA</span>
+                                                </div>
+                                            </div>
+
+                                            <!-- Página Direita: O Protocolo MAHAMBA & Abertura (Pág. 55) -->
+                                            <div class="fp-page fp-right">
+                                                <div class="fp-header">
+                                                    <span>O PROTOCOLO</span>
+                                                    <span>MAHAMBA</span>
+                                                </div>
+                                                <div class="fp-body">
+                                                    <p class="fp-paragraph">
+                                                        É neste enquadramento que o protocolo <strong>MAHAMBA</strong> se afirma como operador metodológico e simbólico de coerência, funcionando como princípio de articulação entre linguagem, acção e direcção civilizacional. MAHAMBA não é apenas uma designação; é uma chave de ordenação interna que permite alinhar discurso, prática e intenção num mesmo eixo de consistência.
+                                                    </p>
+                                                    <p class="fp-paragraph">
+                                                        A presente obra estrutura-se, portanto, como um <strong>Dossiê de Travessia Civilizacional</strong>, em que cada capítulo representa uma etapa de aprofundamento progressivo da consciência aplicada à realidade.
+                                                    </p>
+                                                    <p class="fp-paragraph">
+                                                        Mais do que descrever o mundo, este enquadramento pretende reorganizar a forma como o mundo é compreendido, projectado e construído: da fragmentação para a integração, da reacção para a projecção consciente, e da análise isolada para a síntese operativa.
+                                                    </p>
+                                                    <p class="fp-paragraph">
+                                                        Assim, esta Introdução Geral não se encerra como simples preâmbulo, mas abre um campo de trabalho contínuo... O HUMANO CONCRETO afirma-se como proposta de reorganização integral da condição humana perante os desafios do presente e as possibilidades do futuro.
+                                                    </p>
+                                                    <div style="text-align: right; font-family: 'Cinzel', serif; font-size: 1.45rem; letter-spacing: 4px; color: #a37c2d; font-weight: 700; margin-top: 24px;">
+                                                        MAHAMBA.
+                                                    </div>
+                                                </div>
+                                                <div class="fp-footer">
+                                                    <span>MAHAMBA</span>
+                                                    <span>Pág. 55</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- SPREAD 5 (Páginas 9 e 10 — O Grande Encerramento & Convite) -->
+                                        <div class="flipbook-spread" data-spread="4">
+                                            <!-- Página Esquerda: Conclusão da Degustação -->
+                                            <div class="fp-page fp-left">
+                                                <div class="fp-header">
+                                                    <span>FIM DA DEGUSTAÇÃO</span>
+                                                    <span>O CONVITE</span>
+                                                </div>
+                                                <div class="fp-body" style="display: flex; flex-direction: column; justify-content: center;">
+                                                    <div style="font-family: 'Cinzel', serif; font-size: 0.72rem; letter-spacing: 2px; color: #a37c2d; margin-bottom: 8px; font-weight: 700;">
+                                                        O PRIMEIRO PASSO FOI DADO
+                                                    </div>
+                                                    <h3 style="font-family: 'Cinzel', serif; font-size: 1.35rem; color: #111; margin-bottom: 16px; line-height: 1.3; font-weight: 700;">
+                                                        Você Acaba de Ler o Preâmbulo e a Introdução Geral
+                                                    </h3>
+                                                    <p class="fp-paragraph">
+                                                        Esta é apenas a matriz fundamental de <strong>MAHAMBA</strong>.
+                                                    </p>
+                                                    <p class="fp-paragraph">
+                                                        No volume completo, você terá acesso imediato ao <em>Capítulo I &mdash; A Travessia Civilizacional</em>, seguido pelos protocolos operacionais da <em>Astrobiotecnia</em>, a formulação completa do <em>MPACH</em> e os pilares estratégicos para o futuro da nossa civilização.
+                                                    </p>
+                                                    <p class="fp-paragraph" style="font-weight: 600; color: #8c6a1e;">
+                                                        Uma obra integral para líderes, pensadores e construtores de um novo tempo.
+                                                    </p>
+                                                </div>
+                                                <div class="fp-footer">
+                                                    <span>Pág. 56</span>
+                                                    <span>MAHAMBA</span>
+                                                </div>
+                                            </div>
+
+                                            <!-- Página Direita: O GRANDE CONVITE & CTA DE COMPRA -->
+                                            <div class="fp-page fp-final-cta">
+                                                <div class="final-cta-card">
+                                                    <span class="final-cta-tag">OBRA INTEGRAL</span>
+                                                    <h3 class="final-cta-title">CONTINUE A LEITURA COMPLETA</h3>
+                                                    <p class="final-cta-desc">
+                                                        Garanta agora o seu exemplar com acesso imediato e aprofunde todas as dimensões de MAHAMBA.
+                                                    </p>
+
+                                                    <div class="final-cta-price-box">
+                                                        <span class="final-cta-price">9.900 Kz</span>
+                                                        <span class="final-cta-old-price">14.900 Kz</span>
+                                                    </div>
+
+                                                    <a href="https://pay.kursinha.com/c/6aa172a0a012e3d0fbca319a" target="_blank" rel="noopener noreferrer" class="btn-cta-final-book">
+                                                        <span>QUERO O MEU EXEMPLAR</span>
+                                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                                    </a>
+
+                                                    <div class="final-cta-guarantee">
+                                                        Pagamento seguro Kursinha Pay &bull; Envio Imediato
+                                                    </div>
+                                                </div>
+                                                <div class="fp-footer" style="width: 100%; border-color: rgba(255, 255, 255, 0.1); color: rgba(255, 255, 255, 0.4);">
+                                                    <span>MAHAMBA</span>
+                                                    <span>Pág. 57</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <button type="button" class="flip-nav-btn next-btn" id="btn-flip-next" aria-label="Próxima página" title="Próxima página">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                </button>
+                            </div>
+
+                            <!-- Rodapé do Leitor -->
+                            <div class="reader-footer">
+                                <div class="reader-hint">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                                    <span>Navegação: Clique nas setas ou use as teclas &larr; &rarr; do seu teclado</span>
+                                </div>
+                                <div class="reader-cta-quick">
+                                    <a href="https://pay.kursinha.com/c/6aa172a0a012e3d0fbca319a" target="_blank" rel="noopener noreferrer" class="btn-quick-buy">
+                                        Adquirir livro completo por 9.900 Kz &rarr;
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </section>
             <section class="concepts-section">
                 <div class="concepts-container">
                     <div class="concepts-header">
@@ -1638,6 +2902,275 @@
 
             updateCountdown();
             setInterval(updateCountdown, 1000);
+
+            // ================================================================
+            // 3. SIMULADOR DE LIVRO / LEITOR DE EBOOK (FLIPBOOK DA INTRODUÇÃO)
+            // ================================================================
+            const closedView = document.getElementById('closed-book-view');
+            const openReader = document.getElementById('open-book-reader');
+            const btnOpenBook = document.getElementById('btn-open-book');
+            const book3dTrigger = document.getElementById('book-3d-trigger');
+            const btnCloseReader = document.getElementById('btn-close-reader');
+            const btnFullscreen = document.getElementById('btn-reader-fullscreen');
+            const btnPrev = document.getElementById('btn-flip-prev');
+            const btnNext = document.getElementById('btn-flip-next');
+            const pageIndicator = document.getElementById('reader-page-num');
+            const pagesContainer = document.getElementById('flipbook-pages-container');
+
+            let currentSpread = 0;
+            let totalSpreads = 5;
+            let spreads = document.querySelectorAll('.flipbook-spread');
+
+            function updateSpreadView() {
+                spreads = document.querySelectorAll('.flipbook-spread');
+                totalSpreads = spreads.length;
+
+                spreads.forEach((spread, idx) => {
+                    if (idx === currentSpread) {
+                        spread.classList.add('is-active');
+                    } else {
+                        spread.classList.remove('is-active');
+                    }
+                });
+
+                const pageStart = (currentSpread * 2) + 1;
+                const pageEnd = Math.min((currentSpread * 2) + 2, totalSpreads * 2);
+                if (pageIndicator) {
+                    pageIndicator.textContent = `Páginas ${pageStart} - ${pageEnd} de ${totalSpreads * 2}`;
+                }
+
+                if (btnPrev) btnPrev.disabled = (currentSpread === 0);
+                if (btnNext) btnNext.disabled = (currentSpread >= totalSpreads - 1);
+            }
+
+            function openBookSimulator() {
+                if (closedView) closedView.style.display = 'none';
+                if (openReader) {
+                    openReader.style.display = 'flex';
+                    const stage = document.getElementById('book-stage');
+                    if (stage) {
+                        const yOffset = -80;
+                        const y = stage.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                        window.scrollTo({ top: y, behavior: 'smooth' });
+                    }
+                }
+                currentSpread = 0;
+                updateSpreadView();
+            }
+
+            function closeBookSimulator() {
+                if (openReader) {
+                    openReader.classList.remove('is-fullscreen');
+                    openReader.style.display = 'none';
+                }
+                if (closedView) closedView.style.display = 'flex';
+            }
+
+            function flipNext() {
+                if (currentSpread < totalSpreads - 1) {
+                    currentSpread++;
+                    updateSpreadView();
+                }
+            }
+
+            function flipPrev() {
+                if (currentSpread > 0) {
+                    currentSpread--;
+                    updateSpreadView();
+                }
+            }
+
+            if (btnOpenBook) btnOpenBook.addEventListener('click', openBookSimulator);
+            if (book3dTrigger) {
+                book3dTrigger.addEventListener('click', openBookSimulator);
+                book3dTrigger.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        openBookSimulator();
+                    }
+                });
+            }
+            if (btnCloseReader) btnCloseReader.addEventListener('click', closeBookSimulator);
+
+            if (btnFullscreen) {
+                btnFullscreen.addEventListener('click', () => {
+                    if (openReader) {
+                        openReader.classList.toggle('is-fullscreen');
+                        const isFull = openReader.classList.contains('is-fullscreen');
+                        const textSpan = btnFullscreen.querySelector('span');
+                        if (textSpan) textSpan.textContent = isFull ? 'Reduzir' : 'Expandir';
+                    }
+                });
+            }
+
+            if (btnNext) btnNext.addEventListener('click', flipNext);
+            if (btnPrev) btnPrev.addEventListener('click', flipPrev);
+
+            document.addEventListener('keydown', (e) => {
+                if (openReader && openReader.style.display !== 'none') {
+                    if (e.key === 'ArrowRight') flipNext();
+                    if (e.key === 'ArrowLeft') flipPrev();
+                    if (e.key === 'Escape') closeBookSimulator();
+                }
+            });
+
+            const viewport = document.getElementById('flipbook-viewport');
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            if (viewport) {
+                viewport.addEventListener('touchstart', (e) => {
+                    touchStartX = e.changedTouches[0].screenX;
+                }, { passive: true });
+
+                viewport.addEventListener('touchend', (e) => {
+                    touchEndX = e.changedTouches[0].screenX;
+                    const diffX = touchStartX - touchEndX;
+                    if (Math.abs(diffX) > 45) {
+                        if (diffX > 0) flipNext();
+                        else flipPrev();
+                    }
+                }, { passive: true });
+            }
+
+            // Suporte ao Carregamento Dinâmico de PDF se fornecido
+            const POSSIBLE_PDF_PATHS = [
+                '/mahamba-introducao.pdf',
+                '/introducao-mahamba.pdf',
+                '/mahamba.pdf',
+                '/introducao.pdf'
+            ];
+
+            async function checkAndLoadPDF() {
+                if (!window.pdfjsLib) return;
+
+                let foundUrl = null;
+                for (const path of POSSIBLE_PDF_PATHS) {
+                    try {
+                        const res = await fetch(path, { method: 'HEAD' });
+                        if (res.ok && (res.headers.get('content-type')?.includes('pdf') || path.endsWith('.pdf'))) {
+                            foundUrl = path;
+                            break;
+                        }
+                    } catch (e) {}
+                }
+
+                if (!foundUrl) {
+                    console.info('[MAHAMBA Flipbook] O simulador está a exibir a introdução editorial padrão. Para exibir as páginas reais do seu PDF, adicione o ficheiro "mahamba-introducao.pdf" na raiz do site.');
+                    return;
+                }
+
+                try {
+                    console.info('[MAHAMBA Flipbook] Carregando PDF da introdução:', foundUrl);
+                    const loadingTask = pdfjsLib.getDocument(foundUrl);
+                    const pdf = await loadingTask.promise;
+                    const numPages = pdf.numPages;
+
+                    if (numPages === 0 || !pagesContainer) return;
+
+                    pagesContainer.innerHTML = '';
+                    let currentSpreadDiv = null;
+
+                    for (let pageNum = 1; pageNum <= numPages; pageNum++) {
+                        const spreadIdx = Math.floor((pageNum - 1) / 2);
+                        const isLeft = (pageNum % 2 !== 0);
+
+                        if (isLeft || !currentSpreadDiv) {
+                            currentSpreadDiv = document.createElement('div');
+                            currentSpreadDiv.className = `flipbook-spread ${spreadIdx === 0 ? 'is-active' : ''}`;
+                            currentSpreadDiv.setAttribute('data-spread', spreadIdx);
+                            pagesContainer.appendChild(currentSpreadDiv);
+                        }
+
+                        const page = await pdf.getPage(pageNum);
+                        const vp = page.getViewport({ scale: 1.5 });
+
+                        const pageDiv = document.createElement('div');
+                        pageDiv.className = `fp-page ${isLeft ? 'fp-left' : 'fp-right'}`;
+                        pageDiv.style.padding = '12px';
+                        pageDiv.style.alignItems = 'center';
+                        pageDiv.style.justifyContent = 'center';
+
+                        const canvas = document.createElement('canvas');
+                        const context = canvas.getContext('2d');
+                        canvas.height = vp.height;
+                        canvas.width = vp.width;
+                        canvas.style.maxWidth = '100%';
+                        canvas.style.maxHeight = '100%';
+                        canvas.style.objectFit = 'contain';
+                        canvas.style.boxShadow = '0 4px 15px rgba(0,0,0,0.15)';
+
+                        const renderContext = {
+                            canvasContext: context,
+                            viewport: vp
+                        };
+                        await page.render(renderContext).promise;
+
+                        pageDiv.appendChild(canvas);
+                        currentSpreadDiv.appendChild(pageDiv);
+                    }
+
+                    // Inserir página final com o Grande Convite e Checkout
+                    const finalSpreadIdx = Math.ceil((numPages + 1) / 2);
+                    const finalSpread = document.createElement('div');
+                    finalSpread.className = 'flipbook-spread';
+                    finalSpread.setAttribute('data-spread', finalSpreadIdx);
+
+                    const leftClose = document.createElement('div');
+                    leftClose.className = 'fp-page fp-left';
+                    leftClose.innerHTML = `
+                        <div class="fp-header">
+                            <span>FIM DA INTRODUÇÃO</span>
+                            <span>A CONTINUIDADE</span>
+                        </div>
+                        <div class="fp-body" style="display: flex; flex-direction: column; justify-content: center; text-align: center; padding: 20px;">
+                            <div style="font-family: 'Cinzel', serif; font-size: 1.4rem; color: #111; margin-bottom: 12px; font-weight: 700;">
+                                O Despertar do Humano Concreto
+                            </div>
+                            <p class="fp-paragraph" style="text-align: center;">
+                                Você concluiu a leitura da introdução. A obra integral desenvolve todas as metodologias e directrizes para o futuro da nossa civilização.
+                            </p>
+                        </div>
+                        <div class="fp-footer">
+                            <span>Amostra Oficial</span>
+                            <span>MAHAMBA</span>
+                        </div>
+                    `;
+
+                    const rightCta = document.createElement('div');
+                    rightCta.className = 'fp-page fp-final-cta';
+                    rightCta.innerHTML = `
+                        <div class="final-cta-card">
+                            <span class="final-cta-tag">OBRA COMPLETA</span>
+                            <h3 class="final-cta-title">CONTINUE A LEITURA INTEGRAL</h3>
+                            <p class="final-cta-desc">
+                                Garanta o seu exemplar completo pelo valor promocional de lançamento com envio imediato.
+                            </p>
+                            <div class="final-cta-price-box">
+                                <span class="final-cta-price">9.900 Kz</span>
+                                <span class="final-cta-old-price">14.900 Kz</span>
+                            </div>
+                            <a href="https://pay.kursinha.com/c/6aa172a0a012e3d0fbca319a" target="_blank" rel="noopener noreferrer" class="btn-cta-final-book">
+                                <span>QUERO O MEU EXEMPLAR</span>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                            </a>
+                            <div class="final-cta-guarantee">
+                                Pagamento seguro Kursinha Pay &bull; Acesso Imediato
+                            </div>
+                        </div>
+                    `;
+
+                    finalSpread.appendChild(leftClose);
+                    finalSpread.appendChild(rightCta);
+                    pagesContainer.appendChild(finalSpread);
+
+                    updateSpreadView();
+                } catch (err) {
+                    console.error('[MAHAMBA Flipbook] Erro ao carregar PDF:', err);
+                }
+            }
+
+            checkAndLoadPDF();
         });
     </script>
 </body>
