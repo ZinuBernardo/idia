@@ -12,6 +12,9 @@
         }
     </script>
     <link rel="stylesheet" href="/src/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
     <style>
         /* ========================================================================== */
         /*               DESIGN SYSTEM - LANDING PAGE DE VENDAS MAHAMBA               */
@@ -1578,7 +1581,7 @@
             height: 100%;
             background: #ffffff !important;
             color: #1a1a1a !important;
-            font-family: var(--font-heading)'Times New Roman', serif;
+            font-family: 'Cormorant Garamond', Garamond, 'Times New Roman', serif;
             padding: 42px 48px 24px 48px;
             box-sizing: border-box;
             position: relative;
@@ -1614,36 +1617,49 @@
             border-radius: 2px;
         }
 
-        /* Tipografia Realista do Livro Impresso (Conforme Fotos) */
+        /* Tipografia Realista do Livro Impresso com Cormorant Garamond */
         .book-title-main {
-            font-family: var(--font-heading);
-            font-size: 1.85rem;
+            font-family: 'Cormorant Garamond', Garamond, Georgia, serif;
+            font-size: 1.45rem;
             font-weight: 700;
             color: #111111;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             text-transform: uppercase;
             text-align: center;
-            margin: 8px 0 4px 0;
-            line-height: 1.2;
+            margin: 6px 0 6px 0;
+            line-height: 1.25;
         }
 
         .book-title-sub {
-            font-family: var(--font-heading);
-            font-size: 1.05rem;
+            font-family: 'Cormorant Garamond', Garamond, Georgia, serif;
+            font-size: 1.08rem;
             font-weight: 600;
-            color: #111111;
-            letter-spacing: 1.5px;
+            color: #2b2b2b;
+            letter-spacing: 0.8px;
             text-transform: uppercase;
             text-align: center;
-            margin: 0 0 22px 0;
+            margin: 0 0 10px 0;
+            line-height: 1.35;
+        }
+
+        .book-title-kicker {
+            font-family: 'Cormorant Garamond', Garamond, Georgia, serif;
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: #4a453e;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            text-align: center;
+            margin: 0 0 16px 0;
+            line-height: 1.4;
         }
 
         .book-section-title {
-            font-family: var(--font-heading);
-            font-size: 0.94rem;
+            font-family: 'Cormorant Garamond', Garamond, Georgia, serif;
+            font-size: 0.98rem;
             font-weight: 700;
             color: #111111;
-            letter-spacing: 1.2px;
+            letter-spacing: 1px;
             text-transform: uppercase;
             text-align: center;
             margin: 14px 0 10px 0;
@@ -1651,9 +1667,9 @@
         }
 
         .book-paragraph {
-            font-family: var(--font-heading);
-            font-size: 1.02rem;
-            line-height: 1.56;
+            font-family: 'Cormorant Garamond', Garamond, Georgia, serif;
+            font-size: 1.08rem;
+            line-height: 1.6;
             color: #1c1c1c;
             text-align: justify;
             text-justify: inter-word;
@@ -1663,10 +1679,10 @@
 
         .book-drop-cap {
             float: left;
-            font-family: var(--font-heading);
-            font-size: 3.4rem;
+            font-family: 'Cormorant Garamond', Garamond, Georgia, serif;
+            font-size: 3.6rem;
             line-height: 0.78;
-            font-weight: 400;
+            font-weight: 600;
             color: #111111;
             padding-top: 4px;
             padding-right: 8px;
@@ -1681,8 +1697,8 @@
         }
 
         .book-dimension-item {
-            font-family: var(--font-heading);
-            font-size: 0.98rem;
+            font-family: 'Cormorant Garamond', Garamond, Georgia, serif;
+            font-size: 1rem;
             line-height: 1.5;
             color: #1c1c1c;
             font-weight: 500;
@@ -1690,10 +1706,10 @@
 
         .book-closing-mahamba {
             text-align: center;
-            font-family: var(--font-heading);
-            font-size: 1.15rem;
+            font-family: 'Cormorant Garamond', Garamond, Georgia, serif;
+            font-size: 1.25rem;
             font-weight: 700;
-            letter-spacing: 2.5px;
+            letter-spacing: 3px;
             color: #111111;
             margin-top: 20px;
         }
@@ -2018,9 +2034,17 @@
             }
 
             .book-title-sub {
-                font-size: 0.8rem !important;
-                margin: 0 0 8px 0 !important;
-                letter-spacing: 0.8px !important;
+                font-size: 0.82rem !important;
+                margin: 0 0 6px 0 !important;
+                letter-spacing: 0.6px !important;
+                line-height: 1.3 !important;
+            }
+
+            .book-title-kicker {
+                font-size: 0.72rem !important;
+                margin: 0 0 10px 0 !important;
+                letter-spacing: 0.6px !important;
+                line-height: 1.35 !important;
             }
 
             .book-section-title {
@@ -2411,130 +2435,14 @@
                                     <!-- Contentor de Spreads (Páginas Duplas) -->
                                     <div class="flipbook-pages-container" id="flipbook-pages-container">
                                         
-                                        <!-- SPREAD 1: Páginas 39 e 40 (Preâmbulo / O Movimento Molecular MA-HA-MBA) -->
+                                        <!-- SPREAD 1: Introdução Geral (Conforme Foto Real e Especificação Oficial) -->
                                         <div class="flipbook-spread is-active" data-spread="0">
-                                            <!-- Página Esquerda: Pág. 39 -->
+                                            <!-- Página Esquerda: Pág. 1 -->
                                             <div class="fp-page fp-left">
                                                 <div class="fp-body">
-                                                    <h2 class="book-title-main">PREÂMBULO</h2>
-                                                    <h3 class="book-title-sub">HUMANO CONCRETO</h3>
-                                                    <p class="book-paragraph">
-                                                        Esta obra surge da necessidade de compreender a travessia da humanidade a partir da sua maturidade civilizacional, identificando, com profundidade orgânica e rigor interpretativo, os fundamentos que sustentam o seu desenvolvimento e as potencialidades da sua continuidade.
-                                                    </p>
-                                                    <p class="book-paragraph">
-                                                        Através de uma leitura estrutural da experiência humana, procura-se traduzir em aplicabilidade concreta e operacionalidade tecnológica contemporânea os elementos que emergem da evolução histórica da consciência, da organização social e da produção de conhecimento. O propósito central consiste em estruturar uma atitude civilizacional compatível com a dimensão alcançada pela humanidade no actual estágio do seu percurso evolutivo.
-                                                    </p>
-                                                    <p class="book-paragraph">
-                                                        Neste contexto, a presente reflexão fundamenta-se na formação e conclusão da TRIOLOGIA LÓGICA, entendida como base matricial da ASTROBIOTECNIA, campo emergente de investigação dedicado ao estudo da continuidade da vida concreta, da sua sustentabilidade civilizacional e da sua expansão consciente através da integração entre conhecimento, tecnologia, natureza e humanidade.
-                                                    </p>
-                                                    <p class="book-paragraph">
-                                                        O HUMANO CONCRETO constitui, assim, uma proposta de interpretação e operacionalização da condição humana contemporânea, procurando estabelecer pontes entre a experiência acumulada da travessia civilizacional e os desafios futuros da existência colectiva. Mais do que uma formulação teórica, apresenta-se como um instru-mento de leitura, orientação e construção de uma nova etapa da evolu-
-                                                    </p>
-                                                </div>
-                                                <div class="book-footer left-footer">
-                                                    <span class="book-page-num">39</span>
-                                                    <span class="book-gold-bar"></span>
-                                                </div>
-                                            </div>
-
-                                            <!-- Página Direita: Pág. 40 -->
-                                            <div class="fp-page fp-right">
-                                                <div class="fp-body">
-                                                    <p class="book-paragraph">
-                                                        ção humana, assente na responsabilidade, na lucidez e na continuidade da vida como princípio fundamental da organização civilizacional.
-                                                    </p>
-                                                    <h4 class="book-section-title">O MOVIMENTO MOLECULAR MA-HA-MBA</h4>
-                                                    <p class="book-paragraph">
-                                                        É desta profundidade interpretativa que emerge o movimento molecular MA-HA-MBA, entendido como estrutura orgânica de leitura, tradução e continuidade da Travessia Civilizacional.
-                                                    </p>
-                                                    <p class="book-paragraph">
-                                                        A sua composição conceptual organiza-se em três dimensões fundamentais:
-                                                    </p>
-                                                    <div class="book-dimension-list">
-                                                        <div class="book-dimension-item"><strong>MA</strong> - A Matriz, princípio originário da estrutura, da formação e da organização da vida;</div>
-                                                        <div class="book-dimension-item"><strong>HA</strong> - A Respiração, princípio dinâmico da circulação, da transformação e da continuidade do movimento civilizacional;</div>
-                                                        <div class="book-dimension-item"><strong>MBA</strong> - A Confirmação e Memória, princípio de conservação, validação e transmissão da experiência acumulada ao longo da travessia humana.</div>
-                                                    </div>
-                                                    <p class="book-paragraph">
-                                                        A articulação destas três dimensões estabelece uma conduta matricial capaz de interpretar os ciclos sucessivos da evolução humana, permitindo compreender a forma como a humanidade construiu, preservou e transformou os seus mecanismos de sobrevivência, conhecimento e continuidade.
-                                                    </p>
-                                                    <p class="book-paragraph">
-                                                        Neste enquadramento, o movimento MA-HA-MBA constitui um instrumento de tradução da Travessia Civilizacional, acompanhando os diferentes estágios da sua evolução até à formulação do HUMANO CONCRETO, entendido como expressão contemporânea da maturidade orgânica, tecnológica e civilizacional da espécie humana.
-                                                    </p>
-                                                    <p class="book-paragraph">
-                                                        Nesta fase, a recuperação orgânica que sustenta o percurso histórico da humanidade passa a ser transportada e operacionalizada tecnologicamente através do MPACH- Metodologia Perceptível Aplicada
-                                                    </p>
-                                                </div>
-                                                <div class="book-footer right-footer">
-                                                    <span class="book-gold-bar"></span>
-                                                    <span class="book-page-num">40</span>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- SPREAD 2: Páginas 41 e 42 (MPACH APP & MPACH Da Mesma Costela) -->
-                                        <div class="flipbook-spread" data-spread="1">
-                                            <!-- Página Esquerda: Pág. 41 -->
-                                            <div class="fp-page fp-left">
-                                                <div class="fp-body">
-                                                    <p class="book-paragraph">
-                                                        da Continuidade Humana e da plataforma <strong>MPACH APP</strong>, concebidos como instrumentos de recuperação, organização e transmissão da inteligência ancestral.
-                                                    </p>
-                                                    <p class="book-paragraph">
-                                                        Por intermédio destes mecanismos, procura-se traduzir simbolicamente a formação da primeira costela humana enquanto princípio de origem, continuidade e pertença, reafirmando a ligação entre memória, identidade e evolução. O MPACH e o MPACH APP assumem, assim, a função de consagração tecnológica da recuperação da inteligência ancestral, permitindo a sua integração activa na construção do HUMANO CONCRETO e na continuidade da Travessia Civilizacional.
-                                                    </p>
-                                                    <p class="book-paragraph">
-                                                        MAHAMBA surge, deste modo, não apenas como conceito, mas como mecanismo de leitura da continuidade da vida, onde Matriz, Respiração, Confirmação e Memória convergem para sustentar a permanência consciente da experiência humana através do tempo.
-                                                    </p>
-                                                    <h4 class="book-section-title">MPACH- DA MESMA COSTELA</h4>
-                                                    <p class="book-paragraph">
-                                                        Deste modo, o MPACH constitui a tradução tecnológica de um princípio ancestral preservado na língua Cokwe, onde o termo <em>Mpach</em> remete simbolicamente para a costela, elemento associado à origem, à continuidade e à protecção do corpo humano.
-                                                    </p>
-                                                    <p class="book-paragraph">
-                                                        Na sua interpretação contemporânea, <strong>MPACH- Da Mesma Costela</strong> representa a compreensão de que toda a humanidade partilha uma origem comum, uma mesma estrutura biológica fundamental e uma mesma condição civilizacional. A costela deixa, assim, de ser apenas uma referência anatómica para assumir o significado de vínculo matricial que une os seres humanos na sua travessia histórica e evolutiva.
-                                                    </p>
-                                                    <p class="book-paragraph">
-                                                        Enquanto instrumento tecnológico da recuperação orgânica da memória humana, o MPACH procura traduzir para a contemporaneidade os princípios ancestrais de preservação, continuidade e pertença,
-                                                    </p>
-                                                </div>
-                                                <div class="book-footer left-footer">
-                                                    <span class="book-page-num">41</span>
-                                                    <span class="book-gold-bar"></span>
-                                                </div>
-                                            </div>
-
-                                            <!-- Página Direita: Pág. 42 -->
-                                            <div class="fp-page fp-right">
-                                                <div class="fp-body">
-                                                    <p class="book-paragraph">
-                                                        transformando-os em mecanismos operacionais de registo, protecção e transmissão da inteligência acumulada ao longo da Travessia Civilizacional.
-                                                    </p>
-                                                    <p class="book-paragraph">
-                                                        A expressão “Da Mesma Costela” afirma, portanto, que a diversidade das culturas, dos povos e das civilizações não anula a unidade fundamental da condição humana. Pelo contrário, confirma que a multiplicidade das experiências humanas emerge de uma mesma matriz biológica e civilizacional, cuja memória necessita de ser preservada, compreendida e projectada para o futuro.
-                                                    </p>
-                                                    <p class="book-paragraph">
-                                                        Neste sentido, o MPACH APP surge como uma extensão tecnológica desta visão, funcionando como plataforma de activação da memória, de preservação da identidade humana e de fortalecimento dos laços de continuidade entre passado, presente e futuro.
-                                                    </p>
-                                                    <p class="book-paragraph">
-                                                        <strong>MPACH - DA MESMA COSTELA</strong> torna-se, assim, a expressão tecnológica da recuperação da inteligência ancestral, reafirmando que a humanidade permanece ligada por uma origem comum, por uma memória partilhada e por uma responsabilidade colectiva na continuidade da vida concreta.
-                                                    </p>
-                                                    <p class="book-paragraph">
-                                                        Assim, o <strong>HUMANO CONCRETO</strong> apresenta-se como a etapa de convergência entre memória ancestral, consciência civilizacional e capacidade tecnológica contemporânea. Sustentado pela Triologia Lógica, interpretado pelo movimento molecular MA-HA-MBA e operacionalizado através do MPACH - Da Mesma Costela, este percurso propõe uma nova leitura da continuidade humana, orientada para a preservação da vida concreta, da inteligência acumulada e da responsabilidade colectiva perante o futuro da civilização.
-                                                    </p>
-                                                </div>
-                                                <div class="book-footer right-footer">
-                                                    <span class="book-gold-bar"></span>
-                                                    <span class="book-page-num">42</span>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- SPREAD 3: Páginas 53 e 54 (Introdução Geral — Conforme Foto Real) -->
-                                        <div class="flipbook-spread" data-spread="2">
-                                            <!-- Página Esquerda: Pág. 53 -->
-                                            <div class="fp-page fp-left">
-                                                <div class="fp-body">
-                                                    <h2 class="book-title-main" style="margin-top: 24px; margin-bottom: 20px;">INTRODUÇÃO GERAL</h2>
+                                                    <h2 class="book-title-main">INTRODUÇÃO GERAL- A CHAVE EPISTEMOLÓGICA DE MAHAMBA.</h2>
+                                                    <h3 class="book-title-sub">MAHAMBA- Arquitectura civilizacional do humano concreto</h3>
+                                                    <h4 class="book-title-kicker">REORGANIZAR OS ELEMENTOS PARA TORNAR PERCEPTÍVEL A LEITURA DO TEMPO DENTRO DA ASTROBIOTECNIA</h4>
                                                     <p class="book-paragraph">
                                                         <span class="book-drop-cap">O</span> presente corpo doutrinário emerge num tempo histórico de transição profunda, onde a humanidade deixa de se compreender apenas como resultado biológico, cultural ou tecnológico isolado, passando a reconhecer-se como um sistema integrado de consciência, matéria, informação e projecção evolutiva. Esta obra inscreve-se, assim, no horizonte de uma reconfiguração civilizacional que exige novos instrumentos conceptuais, novas linguagens estruturantes e novas arquitecturas de pensamento capazes de sustentar a complexidade do real contemporâneo.
                                                     </p>
@@ -2544,19 +2452,19 @@
                                                     <p class="book-paragraph">
                                                         A partir desta base, desenvolve-se a arquitectura conceptual da ASTROBIOTECNIA, enquanto campo emergente de convergência entre vida, tecnologia e dinâmica cósmica, onde a matéria viva é interpretada como continuidade adaptativa de processos universais de organização.
                                                     </p>
-                                                    <p class="book-paragraph">
-                                                        Em paralelo, integra-se o MPACH (Metodologia Perceptível Aplicada da Continuidade Humana) como mecanismo estruturante de leitura, antecipação e modelação de trajectórias evolutivas humanas, sociais e institucionais.
-                                                    </p>
                                                 </div>
                                                 <div class="book-footer left-footer">
-                                                    <span class="book-page-num">53</span>
+                                                    <span class="book-page-num">1</span>
                                                     <span class="book-gold-bar"></span>
                                                 </div>
                                             </div>
 
-                                            <!-- Página Direita: Pág. 54 -->
+                                            <!-- Página Direita: Pág. 2 -->
                                             <div class="fp-page fp-right">
                                                 <div class="fp-body">
+                                                    <p class="book-paragraph">
+                                                        Em paralelo, integra-se o MPACH (Metodologia Perceptível Aplicada da Continuidade Humana) como mecanismo estruturante de leitura, antecipação e modelação de trajectórias evolutivas humanas, sociais e institucionais.
+                                                    </p>
                                                     <p class="book-paragraph">
                                                         É neste enquadramento que o protocolo MAHAMBA se afirma como operador metodológico e simbólico de coerência, funcionando como princípio de articulação entre linguagem, acção e direcção civilizacional. MAHAMBA não é apenas uma designação; é uma chave de ordenação interna que permite alinhar discurso, prática e intenção num mesmo eixo de consistência.
                                                     </p>
@@ -2575,14 +2483,14 @@
                                                 </div>
                                                 <div class="book-footer right-footer">
                                                     <span class="book-gold-bar"></span>
-                                                    <span class="book-page-num">54</span>
+                                                    <span class="book-page-num">2</span>
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <!-- SPREAD 4: Conclusão da Degustação & Grande Convite de Compra -->
-                                        <div class="flipbook-spread" data-spread="3">
-                                            <!-- Página Esquerda: Conclusão Editorial (Pág. 55) -->
+                                        <!-- SPREAD 2: Conclusão da Degustação & Grande Convite de Compra -->
+                                        <div class="flipbook-spread" data-spread="1">
+                                            <!-- Página Esquerda: Conclusão Editorial (Pág. 3) -->
                                             <div class="fp-page fp-left">
                                                 <div class="fp-body" style="display: flex; flex-direction: column; justify-content: center; text-align: center;">
                                                     <h2 class="book-title-main" style="font-size: 1.45rem; margin-top: 10px;">FIM DA INTRODUÇÃO</h2>
@@ -2598,12 +2506,12 @@
                                                     </p>
                                                 </div>
                                                 <div class="book-footer left-footer">
-                                                    <span class="book-page-num">55</span>
+                                                    <span class="book-page-num">3</span>
                                                     <span class="book-gold-bar"></span>
                                                 </div>
                                             </div>
 
-                                            <!-- Página Direita: O Grande Convite & Compra (Pág. 56) -->
+                                            <!-- Página Direita: O Grande Convite & Compra (Pág. 4) -->
                                             <div class="fp-page fp-final-cta">
                                                 <div class="final-cta-card">
                                                     <span class="final-cta-tag">OBRA COMPLETA</span>
@@ -2625,7 +2533,7 @@
                                                 </div>
                                                 <div class="book-footer right-footer" style="padding-top: 0; margin-top: 0;">
                                                     <span class="book-gold-bar" style="background: rgba(199, 161, 83, 0.5);"></span>
-                                                    <span class="book-page-num" style="color: rgba(255, 255, 255, 0.6);">56</span>
+                                                    <span class="book-page-num" style="color: rgba(255, 255, 255, 0.6);">4</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -3206,26 +3114,20 @@
             let currentSpread = 0;
             let mobileCurrentPage = 0;
             let spreads = document.querySelectorAll('.flipbook-spread');
-            let totalSpreads = spreads.length || 4;
+            let totalSpreads = spreads.length || 2;
             let allPages = document.querySelectorAll('.fp-page');
-            let totalPages = allPages.length || 8;
+            let totalPages = allPages.length || 4;
 
             const SPREAD_LABELS = [
-                "Páginas 39 - 40",
-                "Páginas 41 - 42",
-                "Páginas 53 - 54",
+                "Introdução Geral",
                 "Conclusão & Obra Completa"
             ];
 
             const PAGE_LABELS = [
-                "Página 39 (1 de 8)",
-                "Página 40 (2 de 8)",
-                "Página 41 (3 de 8)",
-                "Página 42 (4 de 8)",
-                "Página 53 (5 de 8)",
-                "Página 54 (6 de 8)",
-                "Conclusão (7 de 8)",
-                "Obra Completa (8 de 8)"
+                "Introdução Geral (1 de 4)",
+                "Introdução Geral (2 de 4)",
+                "Conclusão (3 de 4)",
+                "Obra Completa (4 de 4)"
             ];
 
             function isMobileMode() {
