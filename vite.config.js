@@ -38,6 +38,7 @@ export default defineConfig({
         astrobiotecnia: resolve(__dirname, 'astrobiotecnia.html'),
         museu: resolve(__dirname, 'museu.html'),
         sobreNos: resolve(__dirname, 'sobre-nos.html'),
+        candidatura: resolve(__dirname, 'candidatura.html'),
       }
     }
   }

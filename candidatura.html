@@ -1,0 +1,1605 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candidatura | Arquitectura Civilizacional do Humano Concreto — ID&IA</title>
+    <meta name="description" content="Ciclo de formação de 28 de Setembro a 31 de Dezembro promovido pelo ID&IA CONCRETO ÁFRICA para licenciados em Ciências da Educação.">
+    
+    <link rel="stylesheet" href="/src/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ========================================================================== */
+        /*          LANDING PAGE DE CANDIDATURA — DESIGN VIVO & REFINADO              */
+        /* ========================================================================== */
+
+        :root {
+            --c-bg: #07090d;
+            --c-card-bg: rgba(14, 18, 26, 0.72);
+            --c-card-border: rgba(199, 161, 83, 0.22);
+            --c-card-border-hover: rgba(199, 161, 83, 0.45);
+            --c-gold: #c7a153;
+            --c-gold-light: #edd8a6;
+            --c-gold-dark: #91702c;
+            --c-gold-glow: rgba(199, 161, 83, 0.18);
+            --c-text-main: #f0f2f5;
+            --c-text-dim: #9aa4b2;
+            --c-text-soft: #677487;
+            --c-font-serif: 'Cormorant Garamond', Georgia, serif;
+            --c-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--c-bg);
+            color: var(--c-text-main);
+            font-family: var(--c-font-sans);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Camada de Fundo Dinâmica e Viva */
+        .bg-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .bg-layer-img {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 1920px;
+            height: 85vh;
+            object-fit: cover;
+            object-position: center top;
+            opacity: 0.18;
+            filter: saturate(1.2) contrast(1.1) brightness(0.85);
+            mask-image: radial-gradient(circle at 50% 30%, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 75%);
+            -webkit-mask-image: radial-gradient(circle at 50% 30%, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 75%);
+        }
+
+        .bg-layer-glow-top {
+            position: absolute;
+            top: -15vw;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80vw;
+            height: 50vw;
+            background: radial-gradient(circle, rgba(199, 161, 83, 0.12) 0%, rgba(199, 161, 83, 0.03) 45%, transparent 70%);
+        }
+
+        .bg-layer-glow-bottom {
+            position: absolute;
+            bottom: 5vw;
+            right: 10vw;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, rgba(199, 161, 83, 0.08) 0%, transparent 65%);
+        }
+
+        /* HEADER ELEGANTE & MINIMALISTA */
+        .header-bar {
+            position: relative;
+            z-index: 20;
+            padding: 16px clamp(18px, 4vw, 48px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(7, 9, 13, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .brand-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .brand-logo-img {
+            height: 32px;
+            width: auto;
+            display: block;
+        }
+
+        .brand-sep {
+            width: 1px;
+            height: 18px;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .brand-entity {
+            font-size: 0.75rem;
+            letter-spacing: 1.5px;
+            font-weight: 700;
+            color: var(--c-gold-light);
+            text-transform: uppercase;
+        }
+
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.72rem;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: #86efac;
+            background: rgba(34, 197, 94, 0.1);
+            padding: 5px 12px;
+            border-radius: 999px;
+            border: 1px solid rgba(34, 197, 94, 0.25);
+        }
+
+        .status-live-dot {
+            width: 6px;
+            height: 6px;
+            background: #22c55e;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #22c55e;
+            animation: pulseDot 2s infinite ease-in-out;
+        }
+
+        @keyframes pulseDot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.85); }
+        }
+
+        /* CONTAINER PRINCIPAL */
+        .content-wrap {
+            position: relative;
+            z-index: 10;
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 0 clamp(16px, 3.5vw, 32px);
+        }
+
+        /* ========================================================================== */
+        /* 1. HERO — VIBRANTE, CALIBRADO E SEM EXAGERO DE TAMANHO                    */
+        /* ========================================================================== */
+        .hero-section {
+            padding: clamp(42px, 7vh, 70px) 0 clamp(32px, 5vh, 48px);
+            text-align: center;
+        }
+
+        .hero-badge-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.68rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--c-gold-light);
+            background: rgba(199, 161, 83, 0.08);
+            border: 1px solid rgba(199, 161, 83, 0.3);
+            padding: 5px 14px;
+            border-radius: 999px;
+            margin-bottom: 18px;
+        }
+
+        .hero-title {
+            font-family: var(--font-heading);
+            font-size: clamp(1.4rem, 2.3vw, 1.85rem);
+            font-weight: 700;
+            line-height: 1.25;
+            letter-spacing: 0.5px;
+            color: #ffffff;
+            margin: 0 auto 12px;
+            max-width: 720px;
+            text-transform: uppercase;
+        }
+
+        .hero-audience {
+            font-size: clamp(0.92rem, 1.25vw, 1.05rem);
+            font-weight: 500;
+            color: var(--c-gold-light);
+            margin-bottom: 26px;
+            letter-spacing: 0.3px;
+        }
+
+        /* Citação Editorial Viva e Elegante */
+        .quote-container {
+            position: relative;
+            max-width: 660px;
+            margin: 0 auto 26px;
+            padding: 24px 30px;
+            background: linear-gradient(135deg, rgba(199, 161, 83, 0.08) 0%, rgba(14, 18, 26, 0.7) 100%);
+            border: 1px solid rgba(199, 161, 83, 0.28);
+            border-left: 3px solid var(--c-gold);
+            border-radius: 8px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+            text-align: center;
+        }
+
+        .quote-mark-watermark {
+            position: absolute;
+            top: 2px;
+            left: 16px;
+            font-family: var(--c-font-serif);
+            font-size: 3.8rem;
+            line-height: 1;
+            color: rgba(199, 161, 83, 0.15);
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .quote-main-text {
+            font-family: var(--c-font-serif);
+            font-size: clamp(1.15rem, 1.8vw, 1.35rem);
+            font-style: italic;
+            font-weight: 600;
+            color: #ffffff;
+            line-height: 1.45;
+            margin: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-desc-line {
+            font-size: clamp(0.88rem, 1.1vw, 0.96rem);
+            color: var(--c-text-dim);
+            max-width: 600px;
+            margin: 0 auto 24px;
+            line-height: 1.6;
+        }
+
+        .hero-desc-line strong {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        /* Botão Primário Refinado (Proporções Nobres) */
+        .btn-cta-gold {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #e4c585 0%, #c7a153 50%, #997327 100%);
+            color: #07090d !important;
+            font-family: var(--c-font-sans);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 13px 30px;
+            border-radius: 5px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 8px 22px rgba(199, 161, 83, 0.32);
+            transition: all 0.25s ease;
+        }
+
+        .btn-cta-gold:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, #ffffff 0%, #edd8a6 50%, #c7a153 100%);
+            box-shadow: 0 12px 28px rgba(199, 161, 83, 0.5);
+            color: #000000 !important;
+        }
+
+        .btn-cta-gold:active {
+            transform: translateY(0);
+        }
+
+        /* SEPARADOR DELICADO */
+        .section-sep {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 28px 0;
+        }
+
+        .section-sep::before {
+            content: '';
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(199, 161, 83, 0.2), transparent);
+        }
+
+        .section-sep-diamond {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: var(--c-gold);
+            transform: rotate(45deg);
+        }
+
+        /* ========================================================================== */
+        /* 2. POR QUE PARTICIPAR?                                                     */
+        /* ========================================================================== */
+        .why-section {
+            padding: 24px 0 16px;
+            text-align: center;
+        }
+
+        .sub-headline {
+            font-family: var(--font-heading);
+            font-size: clamp(1.15rem, 1.8vw, 1.4rem);
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .body-desc-text {
+            font-size: clamp(0.88rem, 1.1vw, 0.95rem);
+            color: var(--c-text-dim);
+            max-width: 680px;
+            margin: 0 auto 20px;
+            line-height: 1.7;
+        }
+
+        .body-desc-text strong {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .pills-row {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 14px;
+        }
+
+        .pill-feature {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: rgba(14, 18, 26, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.76rem;
+            color: var(--c-gold-light);
+        }
+
+        /* ========================================================================== */
+        /* 3. O CONVITE                                                               */
+        /* ========================================================================== */
+        .invite-section {
+            padding: 20px 0 16px;
+            text-align: center;
+        }
+
+        .invite-panel {
+            background: var(--c-card-bg);
+            border: 1px solid var(--c-card-border);
+            border-radius: 10px;
+            padding: clamp(24px, 4vw, 36px);
+            margin: 24px auto 0;
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .invite-grid-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin: 20px 0 24px;
+            padding: 18px 12px;
+            background: rgba(7, 9, 13, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 8px;
+        }
+
+        .invite-col {
+            text-align: center;
+            padding: 4px 8px;
+        }
+
+        .invite-col-label {
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: var(--c-gold);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .invite-col-val {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: #ffffff;
+            line-height: 1.3;
+        }
+
+        /* ========================================================================== */
+        /* 4. FORMULÁRIO DE CANDIDATURA (COMPACTO, MODERNO E ELEGANTE)                */
+        /* ========================================================================== */
+        .form-section {
+            padding: 24px 0 50px;
+            scroll-margin-top: 30px;
+        }
+
+        .form-card {
+            background: var(--c-card-bg);
+            border: 1px solid var(--c-card-border);
+            border-radius: 12px;
+            padding: clamp(24px, 4vw, 44px);
+            box-shadow: 0 25px 65px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            position: relative;
+        }
+
+        .form-top {
+            text-align: center;
+            margin-bottom: 28px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .form-badge-sub {
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--c-gold);
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .form-title-h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(1.25rem, 2vw, 1.55rem);
+            color: #ffffff;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            margin-bottom: 6px;
+        }
+
+        .form-desc-lead {
+            font-size: 0.84rem;
+            color: var(--c-text-dim);
+            max-width: 520px;
+            margin: 0 auto;
+        }
+
+        /* Seções de Grupo */
+        .form-sec-block {
+            margin-bottom: 26px;
+            padding-bottom: 22px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .form-sec-block:last-of-type {
+            border-bottom: none;
+            margin-bottom: 18px;
+            padding-bottom: 0;
+        }
+
+        .form-sec-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--c-gold-light);
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .form-sec-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(199, 161, 83, 0.18);
+        }
+
+        .grid-fields-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 14px 18px;
+        }
+
+        .field-unit {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .field-unit.col-span-full {
+            grid-column: 1 / -1;
+        }
+
+        .f-label {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .f-label .req {
+            color: var(--c-gold);
+            margin-left: 2px;
+        }
+
+        .f-hint {
+            font-size: 0.7rem;
+            color: var(--c-text-soft);
+            font-weight: 400;
+        }
+
+        /* Inputs Modernos e Menos Pesados */
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            background: rgba(7, 9, 13, 0.65);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #ffffff;
+            padding: 10px 14px;
+            border-radius: 5px;
+            font-size: 0.86rem;
+            transition: all 0.2s ease;
+            outline: none;
+            box-sizing: border-box;
+            font-family: var(--c-font-sans);
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            border-color: var(--c-gold);
+            background: rgba(199, 161, 83, 0.05);
+            box-shadow: 0 0 0 2px rgba(199, 161, 83, 0.2);
+        }
+
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: rgba(255, 255, 255, 0.28);
+            font-size: 0.82rem;
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 95px;
+            line-height: 1.55;
+        }
+
+        /* Disponibilidade */
+        .avail-box {
+            background: rgba(7, 9, 13, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 7px;
+            padding: 16px 18px;
+        }
+
+        .avail-question {
+            font-size: 0.84rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 12px;
+        }
+
+        .avail-options-row {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .avail-btn-radio {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            font-size: 0.82rem;
+            color: var(--c-text-dim);
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+
+        .avail-btn-radio:hover {
+            border-color: rgba(199, 161, 83, 0.4);
+            color: #ffffff;
+        }
+
+        .avail-btn-radio input[type="radio"] {
+            appearance: none;
+            width: 15px;
+            height: 15px;
+            border: 1.5px solid rgba(255, 255, 255, 0.35);
+            border-radius: 50%;
+            display: grid;
+            place-content: center;
+            margin: 0;
+            cursor: pointer;
+            transition: border-color 0.2s ease;
+        }
+
+        .avail-btn-radio input[type="radio"]::before {
+            content: "";
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            transform: scale(0);
+            transition: 0.15s transform ease-in-out;
+            background-color: var(--c-gold);
+        }
+
+        .avail-btn-radio input[type="radio"]:checked {
+            border-color: var(--c-gold);
+        }
+
+        .avail-btn-radio input[type="radio"]:checked::before {
+            transform: scale(1);
+        }
+
+        .avail-btn-radio.is-selected {
+            border-color: var(--c-gold);
+            background: rgba(199, 161, 83, 0.1);
+            color: #ffffff;
+        }
+
+        /* Documentação e Dropzone PDF */
+        .docs-block-card {
+            background: rgba(7, 9, 13, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 7px;
+            padding: 18px 20px;
+        }
+
+        .docs-notice {
+            font-size: 0.82rem;
+            color: var(--c-gold-light);
+            margin-bottom: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .docs-checklist-grid {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px 16px;
+            margin-bottom: 20px;
+        }
+
+        .docs-checklist-grid li {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.8rem;
+            color: var(--c-text-dim);
+        }
+
+        .docs-checklist-grid li svg {
+            flex-shrink: 0;
+            color: var(--c-gold);
+        }
+
+        .pdf-dropzone {
+            border: 1.5px dashed rgba(199, 161, 83, 0.35);
+            background: rgba(5, 7, 10, 0.5);
+            border-radius: 7px;
+            padding: 22px 16px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .pdf-dropzone:hover,
+        .pdf-dropzone.dragover {
+            border-color: var(--c-gold);
+            background: rgba(199, 161, 83, 0.06);
+        }
+
+        .dropzone-btn-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(199, 161, 83, 0.14);
+            color: var(--c-gold-light);
+            border: 1px solid rgba(199, 161, 83, 0.35);
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-size: 0.74rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin: 6px 0 6px;
+        }
+
+        .dropzone-tip {
+            font-size: 0.72rem;
+            color: var(--c-text-soft);
+        }
+
+        .attached-file-pill {
+            display: none;
+            margin-top: 12px;
+            padding: 10px 14px;
+            background: rgba(34, 197, 94, 0.08);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 5px;
+            align-items: center;
+            justify-content: space-between;
+            color: #86efac;
+            font-size: 0.8rem;
+        }
+
+        .attached-file-pill.active {
+            display: flex;
+        }
+
+        .btn-remove-attach {
+            background: none;
+            border: none;
+            color: #f87171;
+            cursor: pointer;
+            font-size: 0.74rem;
+            text-decoration: underline;
+        }
+
+        /* Declaração */
+        .declare-wrap {
+            margin: 20px 0 24px;
+            padding: 14px 16px;
+            background: rgba(199, 161, 83, 0.04);
+            border: 1px solid rgba(199, 161, 83, 0.16);
+            border-radius: 6px;
+        }
+
+        .declare-check-label {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.82rem;
+            color: var(--c-text-dim);
+            cursor: pointer;
+            line-height: 1.45;
+            user-select: none;
+        }
+
+        .declare-check-label input[type="checkbox"] {
+            appearance: none;
+            width: 17px;
+            height: 17px;
+            border: 1.5px solid rgba(199, 161, 83, 0.5);
+            border-radius: 3px;
+            margin-top: 2px;
+            flex-shrink: 0;
+            display: grid;
+            place-content: center;
+            background: rgba(0, 0, 0, 0.4);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .declare-check-label input[type="checkbox"]:checked {
+            background-color: var(--c-gold);
+            border-color: var(--c-gold);
+        }
+
+        .declare-check-label input[type="checkbox"]:checked::before {
+            content: "✓";
+            color: #07090d;
+            font-weight: 900;
+            font-size: 0.75rem;
+        }
+
+        /* Botão de Envio */
+        .submit-action-row {
+            text-align: center;
+        }
+
+        .btn-submit-main {
+            width: 100%;
+            max-width: 420px;
+            padding: 15px 24px;
+            font-size: 0.84rem;
+            letter-spacing: 1.5px;
+            font-weight: 700;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 5px;
+            background: linear-gradient(135deg, #e4c585 0%, #c7a153 50%, #997327 100%);
+            color: #07090d;
+            cursor: pointer;
+            box-shadow: 0 8px 24px rgba(199, 161, 83, 0.32);
+            transition: all 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-family: var(--c-font-sans);
+        }
+
+        .btn-submit-main:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(199, 161, 83, 0.5);
+            background: linear-gradient(135deg, #ffffff 0%, #edd8a6 50%, #c7a153 100%);
+        }
+
+        .btn-submit-main:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+
+        /* ========================================================================== */
+        /* 5. RODAPÉ                                                                  */
+        /* ========================================================================== */
+        .lp-footer {
+            position: relative;
+            z-index: 10;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 40px clamp(18px, 4vw, 48px) 32px;
+            background: #040507;
+            text-align: center;
+        }
+
+        .footer-entity-name {
+            font-family: var(--font-heading);
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            color: #ffffff;
+            margin-bottom: 4px;
+        }
+
+        .footer-sub-course {
+            font-size: 0.76rem;
+            color: var(--c-gold);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 14px;
+        }
+
+        .footer-motto-quote {
+            font-family: var(--c-font-serif);
+            font-style: italic;
+            font-size: 0.98rem;
+            color: var(--c-text-dim);
+            margin-bottom: 18px;
+        }
+
+        .btn-terms-link {
+            background: none;
+            border: none;
+            color: var(--c-text-soft);
+            font-size: 0.74rem;
+            text-decoration: underline;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .btn-terms-link:hover {
+            color: var(--c-gold-light);
+        }
+
+        /* MODAIS */
+        .modal-layer {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
+
+        .modal-layer.active {
+            display: flex;
+            animation: modalFadeIn 0.25s ease;
+        }
+
+        .modal-panel-box {
+            background: #0d1118;
+            border: 1px solid var(--c-gold);
+            border-radius: 10px;
+            max-width: 520px;
+            width: 100%;
+            padding: clamp(24px, 5vw, 36px);
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.85), 0 0 30px rgba(199, 161, 83, 0.2);
+        }
+
+        .check-badge-circle {
+            width: 54px;
+            height: 54px;
+            background: rgba(34, 197, 94, 0.12);
+            border: 1.5px solid #22c55e;
+            border-radius: 50%;
+            color: #22c55e;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        .protocol-tag-card {
+            background: rgba(199, 161, 83, 0.08);
+            border: 1px dashed var(--c-gold);
+            padding: 10px 16px;
+            border-radius: 6px;
+            margin: 16px 0;
+        }
+
+        .protocol-title-sm {
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--c-gold);
+            margin-bottom: 3px;
+        }
+
+        .protocol-hash-num {
+            font-family: monospace;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 1.5px;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.97); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @media (max-width: 720px) {
+            .invite-grid-stats {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            .docs-checklist-grid {
+                grid-template-columns: 1fr;
+            }
+            .avail-options-row {
+                flex-direction: column;
+                gap: 8px;
+            }
+            .btn-cta-gold, .btn-submit-main {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CAMADA DE FUNDO COM IMAGEM SUTIL E LUZ AMBIENTE -->
+    <div class="bg-layer">
+        <img src="/bg_africa_concreta_1778978607545.png" alt="" class="bg-layer-img">
+        <div class="bg-layer-glow-top"></div>
+        <div class="bg-layer-glow-bottom"></div>
+    </div>
+
+    <!-- HEADER MINIMALISTA & DIRETO -->
+    <header class="header-bar">
+        <a href="/index.html" class="brand-link" title="Página Inicial ID&IA">
+            <img src="/ideiaa.png" alt="ID&IA" class="brand-logo-img">
+            <span class="brand-sep"></span>
+            <span class="brand-entity">ID&IA CONCRETO ÁFRICA</span>
+        </a>
+
+        <div class="status-pill">
+            <span class="status-live-dot"></span>
+            <span>Candidaturas Abertas</span>
+        </div>
+    </header>
+
+    <main class="content-wrap">
+
+        <!-- ==================================================================== -->
+        <!-- 1. ABERTURA — HERO                                                   -->
+        <!-- ==================================================================== -->
+        <section class="hero-section">
+            <div class="hero-badge-pill">
+                <span>CICLO DE FORMAÇÃO 2026</span>
+            </div>
+            
+            <h1 class="hero-title">ARQUITECTURA CIVILIZACIONAL DO HUMANO CONCRETO</h1>
+            
+            <div class="hero-audience">Para licenciados em Ciências da Educação</div>
+
+            <div class="quote-container">
+                <span class="quote-mark-watermark">“</span>
+                <p class="quote-main-text">
+                    “África precisa produzir a sua própria inteligência e soberania cognitiva.”
+                </p>
+            </div>
+
+            <p class="hero-desc-line">
+                Um ciclo de formação promovido pelo <strong>ID&IA CONCRETO ÁFRICA</strong>, de <strong>28 de Setembro a 31 de Dezembro</strong>.
+            </p>
+
+            <div>
+                <a href="#ficha-candidatura" class="btn-cta-gold">
+                    <span>CANDIDATAR-ME</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+                </a>
+            </div>
+        </section>
+
+        <div class="section-sep"><span class="section-sep-diamond"></span></div>
+
+        <!-- ==================================================================== -->
+        <!-- 2. POR QUE PARTICIPAR?                                               -->
+        <!-- ==================================================================== -->
+        <section class="why-section">
+            <h2 class="sub-headline">A licenciatura pode ser apenas o começo.</h2>
+            
+            <p class="body-desc-text">
+                A formação não termina com a conclusão da licenciatura. Ela pode ser o ponto de partida para uma nova etapa de <strong>consciência, conhecimento e participação na transformação de África.</strong>
+            </p>
+
+            <div class="pills-row">
+                <span class="pill-feature">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+                    Consciência Crítica
+                </span>
+                <span class="pill-feature">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path></svg>
+                    Soberania Cognitiva
+                </span>
+                <span class="pill-feature">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                    Inteligência Estrutural
+                </span>
+            </div>
+        </section>
+
+        <div class="section-sep"><span class="section-sep-diamond"></span></div>
+
+        <!-- ==================================================================== -->
+        <!-- 3. O CONVITE                                                         -->
+        <!-- ==================================================================== -->
+        <section class="invite-section">
+            <h2 class="sub-headline">Faça parte desta transformação.</h2>
+            
+            <p class="body-desc-text">
+                Procuramos licenciados em Ciências da Educação interessados em ampliar as suas capacidades e participar numa iniciativa orientada para a produção de conhecimento, consciência e <strong>inteligência estrutural para África</strong>.
+            </p>
+
+            <div class="invite-panel">
+                <div class="invite-grid-stats">
+                    <div class="invite-col">
+                        <div class="invite-col-label">Período</div>
+                        <div class="invite-col-val">28 de Setembro — 31 de Dezembro</div>
+                    </div>
+                    <div class="invite-col">
+                        <div class="invite-col-label">Entidade</div>
+                        <div class="invite-col-val">ID&IA CONCRETO ÁFRICA</div>
+                    </div>
+                    <div class="invite-col">
+                        <div class="invite-col-label">Público Elegível</div>
+                        <div class="invite-col-val">Licenciados em Ciências da Educação</div>
+                    </div>
+                </div>
+
+                <div>
+                    <a href="#ficha-candidatura" class="btn-cta-gold">
+                        <span>FAZER CANDIDATURA</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-sep"><span class="section-sep-diamond"></span></div>
+
+        <!-- ==================================================================== -->
+        <!-- 4. FORMULÁRIO DE CANDIDATURA                                         -->
+        <!-- ==================================================================== -->
+        <section class="form-section" id="ficha-candidatura">
+            <div class="form-card">
+                
+                <div class="form-top">
+                    <div class="form-badge-sub">Inscrições Oficiais</div>
+                    <h2 class="form-title-h2">Ficha de Candidatura</h2>
+                    <p class="form-desc-lead">
+                        Preencha com rigor os seus dados. Toda a documentação comprobatória deve ser compilada e enviada num único ficheiro PDF.
+                    </p>
+                </div>
+
+                <form id="candidaturaForm" novalidate>
+                    
+                    <!-- Bloco A: Dados Pessoais -->
+                    <div class="form-sec-block">
+                        <h3 class="form-sec-title">Dados pessoais</h3>
+                        
+                        <div class="grid-fields-2">
+                            <div class="field-unit col-span-full">
+                                <label class="f-label" for="nomeCompleto">
+                                    <span>Nome completo<span class="req">*</span></span>
+                                </label>
+                                <input type="text" id="nomeCompleto" name="nomeCompleto" class="form-input" placeholder="Ex.: Manuel Domingos António" required>
+                            </div>
+
+                            <div class="field-unit">
+                                <label class="f-label" for="dataNascimento">
+                                    <span>Data de nascimento<span class="req">*</span></span>
+                                </label>
+                                <input type="date" id="dataNascimento" name="dataNascimento" class="form-input" required>
+                            </div>
+
+                            <div class="field-unit">
+                                <label class="f-label" for="telefone">
+                                    <span>Telefone / WhatsApp<span class="req">*</span></span>
+                                </label>
+                                <input type="tel" id="telefone" name="telefone" class="form-input" placeholder="+244 9XX XXX XXX" required>
+                            </div>
+
+                            <div class="field-unit">
+                                <label class="f-label" for="email">
+                                    <span>E-mail<span class="req">*</span></span>
+                                </label>
+                                <input type="email" id="email" name="email" class="form-input" placeholder="seuemail@exemplo.com" required>
+                            </div>
+
+                            <div class="field-unit">
+                                <label class="f-label" for="provinciaMunicipio">
+                                    <span>Província / Município<span class="req">*</span></span>
+                                </label>
+                                <input type="text" id="provinciaMunicipio" name="provinciaMunicipio" class="form-input" placeholder="Ex.: Luanda / Talatona" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bloco B: Formação -->
+                    <div class="form-sec-block">
+                        <h3 class="form-sec-title">Formação</h3>
+                        
+                        <div class="grid-fields-2">
+                            <div class="field-unit col-span-full">
+                                <label class="f-label" for="instituicao">
+                                    <span>Instituição de ensino<span class="req">*</span></span>
+                                    <span class="f-hint">Universidade ou Instituto Superior onde concluiu a licenciatura</span>
+                                </label>
+                                <input type="text" id="instituicao" name="instituicao" class="form-input" placeholder="Ex.: ISCED-Luanda, Universidade Agostinho Neto..." required>
+                            </div>
+
+                            <div class="field-unit">
+                                <label class="f-label" for="curso">
+                                    <span>Curso<span class="req">*</span></span>
+                                </label>
+                                <input type="text" id="curso" name="curso" class="form-input" placeholder="Ex.: Pedagogia, Ensino da História..." required>
+                            </div>
+
+                            <div class="field-unit">
+                                <label class="f-label" for="anoConclusao">
+                                    <span>Ano de conclusão<span class="req">*</span></span>
+                                </label>
+                                <input type="number" id="anoConclusao" name="anoConclusao" class="form-input" min="1990" max="2026" placeholder="Ex.: 2023" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bloco C: Motivação -->
+                    <div class="form-sec-block">
+                        <h3 class="form-sec-title">Motivação</h3>
+                        
+                        <div class="field-unit col-span-full">
+                            <label class="f-label" for="motivacao">
+                                <span>Por que deseja participar neste ciclo de formação?<span class="req">*</span></span>
+                            </label>
+                            <textarea id="motivacao" name="motivacao" class="form-textarea" rows="3" placeholder="Apresente sucintamente as suas motivações e o que espera construir a partir deste ciclo de formação..." required></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Bloco D: Disponibilidade -->
+                    <div class="form-sec-block">
+                        <h3 class="form-sec-title">Disponibilidade</h3>
+                        
+                        <div class="avail-box">
+                            <p class="avail-question">
+                                Tem disponibilidade para participar no ciclo de formação de 28 de Setembro a 31 de Dezembro?<span class="req" style="color: var(--c-gold);">*</span>
+                            </p>
+                            
+                            <div class="avail-options-row">
+                                <label class="avail-btn-radio" id="opt-sim">
+                                    <input type="radio" name="disponibilidade" value="Sim" required>
+                                    <span>Sim, tenho disponibilidade</span>
+                                </label>
+                                
+                                <label class="avail-btn-radio" id="opt-nao">
+                                    <input type="radio" name="disponibilidade" value="Não">
+                                    <span>Não</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bloco E: Documentação -->
+                    <div class="form-sec-block">
+                        <h3 class="form-sec-title">Documentação</h3>
+                        
+                        <div class="docs-block-card">
+                            <p class="docs-notice">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                                <span>Envie todos os documentos solicitados reunidos num <strong>único ficheiro PDF</strong>.</span>
+                            </p>
+
+                            <ul class="docs-checklist-grid">
+                                <li>
+                                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    <span>Bilhete de Identidade</span>
+                                </li>
+                                <li>
+                                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    <span>Curriculum Vitae</span>
+                                </li>
+                                <li>
+                                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    <span>Certificado ou Diploma</span>
+                                </li>
+                                <li>
+                                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    <span>Declaração manuscrita de desemprego</span>
+                                </li>
+                                <li>
+                                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    <span>Declaração manuscrita de motivação</span>
+                                </li>
+                                <li>
+                                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    <span>Fotografia tipo passe</span>
+                                </li>
+                            </ul>
+
+                            <input type="file" id="documentoPdf" name="documentoPdf" accept=".pdf,application/pdf" style="display: none;" required>
+
+                            <div class="pdf-dropzone" id="dropzone" onclick="document.getElementById('documentoPdf').click()">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--c-gold)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 4px;">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                    <line x1="12" y1="18" x2="12" y2="12"></line>
+                                    <line x1="9" y1="15" x2="15" y2="15"></line>
+                                </svg>
+                                <div>
+                                    <span class="dropzone-btn-tag">[ ANEXAR DOCUMENTOS ]</span>
+                                </div>
+                                <div class="dropzone-tip">Clique aqui ou arraste o ficheiro em formato PDF (Máx. 25MB)</div>
+                            </div>
+
+                            <div class="attached-file-pill" id="fileBadge">
+                                <div>
+                                    <strong id="fileNameDisplay">documentos_candidatura.pdf</strong>
+                                    <span id="fileSizeDisplay" style="margin-left: 6px; opacity: 0.8; font-size: 0.75rem;"></span>
+                                </div>
+                                <button type="button" class="btn-remove-attach" id="removeFileBtn">Substituir</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bloco F: Declaração -->
+                    <div class="declare-wrap">
+                        <label class="declare-check-label" for="declaracaoTermos">
+                            <input type="checkbox" id="declaracaoTermos" name="declaracaoTermos" required>
+                            <span>Declaro que as informações fornecidas são verdadeiras e aceito os termos e condições aplicáveis.<span class="req" style="color: var(--c-gold);">*</span></span>
+                        </label>
+                    </div>
+
+                    <!-- Submissão -->
+                    <div class="submit-action-row">
+                        <button type="submit" class="btn-submit-main" id="submitBtn">
+                            <span>SUBMETER CANDIDATURA</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                        </button>
+                    </div>
+
+                </form>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==================================================================== -->
+    <!-- MODAL DE SUCESSO                                                     -->
+    <!-- ==================================================================== -->
+    <div class="modal-layer" id="successModal">
+        <div class="modal-panel-box">
+            <div class="check-badge-circle">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+            </div>
+            
+            <h3 style="font-family: var(--font-heading); font-size: 1.35rem; color: #ffffff; margin-bottom: 8px;">Candidatura Submetida</h3>
+            
+            <p style="color: var(--c-text-dim); font-size: 0.85rem; line-height: 1.55;">
+                A sua ficha de candidatura e o dossier documental foram registados com sucesso no <strong>ID&IA CONCRETO ÁFRICA</strong>.
+            </p>
+
+            <div class="protocol-tag-card">
+                <div class="protocol-title-sm">Protocolo de Confirmação</div>
+                <div class="protocol-hash-num" id="protocolDisplay">IDIA-2026-0000</div>
+            </div>
+
+            <p style="color: var(--c-text-soft); font-size: 0.78rem; margin-bottom: 22px;">
+                Receberá atualizações via e-mail e contacto telefónico. Os candidatos apurados serão convocados oportunamente.
+            </p>
+
+            <button type="button" class="btn-cta-gold" style="width: 100%;" onclick="fecharModalSucesso()">
+                CONCLUÍDO
+            </button>
+        </div>
+    </div>
+
+    <!-- ==================================================================== -->
+    <!-- MODAL DE TERMOS E CONDIÇÕES                                          -->
+    <!-- ==================================================================== -->
+    <div class="modal-layer" id="termsModal">
+        <div class="modal-panel-box" style="text-align: left; max-height: 80vh; overflow-y: auto;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+                <h3 style="font-family: var(--font-heading); font-size: 1.15rem; color: var(--c-gold); margin: 0;">
+                    Termos e Condições Aplicáveis
+                </h3>
+                <button type="button" onclick="fecharTermos()" style="background: none; border: none; color: #fff; font-size: 1.2rem; cursor: pointer;">&times;</button>
+            </div>
+            <div style="font-size: 0.82rem; color: var(--c-text-dim); line-height: 1.6; display: flex; flex-direction: column; gap: 10px;">
+                <p><strong>1. Elegibilidade:</strong> O presente ciclo de formação destina-se exclusivamente a cidadãos licenciados em Ciências da Educação pelo ID&IA CONCRETO ÁFRICA.</p>
+                <p><strong>2. Veracidade Documental:</strong> Todas as informações e documentos remetidos são prestados sob compromisso de honra. Quaisquer desconformidades implicam anulação imediata.</p>
+                <p><strong>3. Compilação PDF:</strong> Os 6 documentos solicitados devem estar contidos em arquivo único legível formato PDF.</p>
+                <p><strong>4. Tratamento de Dados:</strong> Os dados pessoais fornecidos são confidenciais e utilizados estritamente para o processo seletivo do ID&IA.</p>
+                <p><strong>5. Cronograma:</strong> O ciclo pedagógico decorre de 28 de Setembro a 31 de Dezembro.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================================================================== -->
+    <!-- 5. RODAPÉ                                                            -->
+    <!-- ==================================================================== -->
+    <footer class="lp-footer">
+        <div class="footer-entity-name">ID&IA CONCRETO ÁFRICA</div>
+        <div class="footer-sub-course">ARQUITECTURA CIVILIZACIONAL DO HUMANO CONCRETO</div>
+        
+        <p class="footer-motto-quote">
+            “Consciência. Conhecimento. Valores. Inteligência estrutural.”
+        </p>
+
+        <div>
+            <button type="button" class="btn-terms-link" onclick="abrirTermos()">
+                Termos e condições aplicáveis
+            </button>
+        </div>
+    </footer>
+
+    <!-- SCRIPT DA LANDING PAGE -->
+    <script>
+        // Gestão do Radio de Disponibilidade
+        const optSim = document.getElementById('opt-sim');
+        const optNao = document.getElementById('opt-nao');
+        const radios = document.querySelectorAll('input[name="disponibilidade"]');
+
+        radios.forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                optSim.classList.toggle('is-selected', e.target.value === 'Sim');
+                optNao.classList.toggle('is-selected', e.target.value === 'Não');
+            });
+        });
+
+        // Gestão de Upload de Ficheiro PDF
+        const fileInput = document.getElementById('documentoPdf');
+        const dropzone = document.getElementById('dropzone');
+        const fileBadge = document.getElementById('fileBadge');
+        const fileNameDisplay = document.getElementById('fileNameDisplay');
+        const fileSizeDisplay = document.getElementById('fileSizeDisplay');
+        const removeFileBtn = document.getElementById('removeFileBtn');
+
+        function formatBytes(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        function handleSelectedFile(file) {
+            if (!file) return;
+
+            if (file.type !== 'application/pdf' && !file.name.toLowerCase().endsWith('.pdf')) {
+                alert('Atenção: Por favor, selecione um ficheiro compilado no formato PDF.');
+                fileInput.value = '';
+                fileBadge.classList.remove('active');
+                return;
+            }
+
+            if (file.size > 26214400) { // 25MB
+                alert('O ficheiro excede o limite máximo permitido de 25MB.');
+                fileInput.value = '';
+                fileBadge.classList.remove('active');
+                return;
+            }
+
+            fileNameDisplay.textContent = file.name;
+            fileSizeDisplay.textContent = '(' + formatBytes(file.size) + ')';
+            fileBadge.classList.add('active');
+        }
+
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                handleSelectedFile(e.target.files[0]);
+            }
+        });
+
+        removeFileBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            fileInput.value = '';
+            fileBadge.classList.remove('active');
+            fileInput.click();
+        });
+
+        // Drag & Drop
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropzone.addEventListener(eventName, (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                dropzone.classList.add('dragover');
+            }, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropzone.addEventListener(eventName, (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                dropzone.classList.remove('dragover');
+            }, false);
+        });
+
+        dropzone.addEventListener('drop', (e) => {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            if (files.length > 0) {
+                fileInput.files = files;
+                handleSelectedFile(files[0]);
+            }
+        });
+
+        // Submissão do Formulário
+        const form = document.getElementById('candidaturaForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const successModal = document.getElementById('successModal');
+        const protocolDisplay = document.getElementById('protocolDisplay');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // Validação
+            const nome = document.getElementById('nomeCompleto').value.trim();
+            const dataNascimento = document.getElementById('dataNascimento').value;
+            const telefone = document.getElementById('telefone').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const provinciaMunicipio = document.getElementById('provinciaMunicipio').value.trim();
+            const instituicao = document.getElementById('instituicao').value.trim();
+            const curso = document.getElementById('curso').value.trim();
+            const anoConclusao = document.getElementById('anoConclusao').value;
+            const motivacao = document.getElementById('motivacao').value.trim();
+            const disponibilidade = document.querySelector('input[name="disponibilidade"]:checked');
+            const declaracao = document.getElementById('declaracaoTermos').checked;
+            const pdfFile = fileInput.files[0];
+
+            if (!nome || !dataNascimento || !telefone || !email || !provinciaMunicipio || !instituicao || !curso || !anoConclusao || !motivacao) {
+                alert('Por favor, preencha todos os campos obrigatórios (*).');
+                return;
+            }
+
+            if (!disponibilidade) {
+                alert('Por favor, confirme a sua disponibilidade para a formação.');
+                return;
+            }
+
+            if (!pdfFile) {
+                alert('Por favor, anexe o ficheiro compilado em PDF com todos os documentos solicitados.');
+                fileInput.click();
+                return;
+            }
+
+            if (!declaracao) {
+                alert('Por favor, confirme a declaração de veracidade e termos.');
+                return;
+            }
+
+            // Estado de Envio
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="animation: spin 1s linear infinite;"><path d="M21 12a9 9 0 1 1-6.219-8.56"></path></svg>
+                <span>A PROCESSAR CANDIDATURA...</span>
+            `;
+
+            setTimeout(() => {
+                const randomCode = Math.floor(1000 + Math.random() * 9000);
+                const protocol = `IDIA-2026-${randomCode}`;
+                protocolDisplay.textContent = protocol;
+
+                // Guardar no localStorage
+                const candidaturaData = {
+                    protocolo: protocol,
+                    dataHora: new Date().toISOString(),
+                    nome,
+                    telefone,
+                    email,
+                    curso,
+                    disponibilidade: disponibilidade.value,
+                    ficheiroNome: pdfFile.name
+                };
+
+                try {
+                    const candidaturas = JSON.parse(localStorage.getItem('idia_candidaturas') || '[]');
+                    candidaturas.push(candidaturaData);
+                    localStorage.setItem('idia_candidaturas', JSON.stringify(candidaturas));
+                } catch (err) {
+                    console.warn(err);
+                }
+
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = `
+                    <span>SUBMETER CANDIDATURA</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                `;
+
+                successModal.classList.add('active');
+                form.reset();
+                fileBadge.classList.remove('active');
+                optSim.classList.remove('is-selected');
+                optNao.classList.remove('is-selected');
+            }, 800);
+        });
+
+        function fecharModalSucesso() {
+            successModal.classList.remove('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Modal de Termos
+        const termsModal = document.getElementById('termsModal');
+        function abrirTermos() {
+            termsModal.classList.add('active');
+        }
+        function fecharTermos() {
+            termsModal.classList.remove('active');
+        }
+
+        window.addEventListener('click', (e) => {
+            if (e.target === termsModal) fecharTermos();
+            if (e.target === successModal) fecharModalSucesso();
+        });
+    </script>
+
+    <style>
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+
+</body>
+</html>
