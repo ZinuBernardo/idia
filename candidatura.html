@@ -1532,46 +1532,87 @@
             submitBtn.disabled = true;
             submitBtn.innerHTML = `
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="animation: spin 1s linear infinite;"><path d="M21 12a9 9 0 1 1-6.219-8.56"></path></svg>
-                <span>A PROCESSAR CANDIDATURA...</span>
+                <span>A ENVIAR DOCUMENTOS E CANDIDATURA...</span>
             `;
 
-            setTimeout(() => {
-                const randomCode = Math.floor(1000 + Math.random() * 9000);
-                const protocol = `IDIA-2026-${randomCode}`;
-                protocolDisplay.textContent = protocol;
-
-                // Guardar no localStorage
-                const candidaturaData = {
-                    protocolo: protocol,
-                    dataHora: new Date().toISOString(),
-                    nome,
-                    telefone,
-                    email,
-                    curso,
-                    disponibilidade: disponibilidade.value,
-                    ficheiroNome: pdfFile.name
-                };
-
-                try {
-                    const candidaturas = JSON.parse(localStorage.getItem('idia_candidaturas') || '[]');
-                    candidaturas.push(candidaturaData);
-                    localStorage.setItem('idia_candidaturas', JSON.stringify(candidaturas));
-                } catch (err) {
-                    console.warn(err);
-                }
-
+            const reader = new FileReader();
+            reader.onerror = () => {
+                alert('Erro ao ler o ficheiro PDF anexado. Por favor, tente novamente.');
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = `
                     <span>SUBMETER CANDIDATURA</span>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
                 `;
+            };
 
-                successModal.classList.add('active');
-                form.reset();
-                fileBadge.classList.remove('active');
-                optSim.classList.remove('is-selected');
-                optNao.classList.remove('is-selected');
-            }, 800);
+            reader.onload = async () => {
+                const randomCode = Math.floor(1000 + Math.random() * 9000);
+                const protocol = `IDIA-2026-${randomCode}`;
+
+                const payload = {
+                    protocolo: protocol,
+                    nomeCompleto: nome,
+                    dataNascimento: dataNascimento,
+                    telefone: telefone,
+                    email: email,
+                    provinciaMunicipio: provinciaMunicipio,
+                    instituicao: instituicao,
+                    curso: curso,
+                    anoConclusao: anoConclusao,
+                    motivacao: motivacao,
+                    disponibilidade: disponibilidade.value,
+                    pdfBase64: reader.result
+                };
+
+                const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzoIhJbmcXw032bArDZEvJkRLVktFJu6cN4zNPszIiytmUxr7jUskUA3YosU-0iPlgR/exec";
+
+                try {
+                    await fetch(GOOGLE_SCRIPT_URL, {
+                        method: "POST",
+                        mode: "no-cors",
+                        headers: {
+                            "Content-Type": "text/plain;charset=utf-8"
+                        },
+                        body: JSON.stringify(payload)
+                    });
+
+                    // Guardar cópia local de segurança
+                    try {
+                        const candidaturas = JSON.parse(localStorage.getItem('idia_candidaturas') || '[]');
+                        candidaturas.push({
+                            protocolo: protocol,
+                            dataHora: new Date().toISOString(),
+                            nome,
+                            telefone,
+                            email,
+                            curso,
+                            ficheiroNome: pdfFile.name
+                        });
+                        localStorage.setItem('idia_candidaturas', JSON.stringify(candidaturas));
+                    } catch (errLocal) {
+                        console.warn(errLocal);
+                    }
+
+                    protocolDisplay.textContent = protocol;
+                    successModal.classList.add('active');
+                    form.reset();
+                    fileBadge.classList.remove('active');
+                    optSim.classList.remove('is-selected');
+                    optNao.classList.remove('is-selected');
+
+                } catch (error) {
+                    console.error("Erro no envio:", error);
+                    alert("Ocorreu um erro temporário na comunicação. Verifique a sua ligação à internet e tente novamente.");
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = `
+                        <span>SUBMETER CANDIDATURA</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                    `;
+                }
+            };
+
+            reader.readAsDataURL(pdfFile);
         });
 
         function fecharModalSucesso() {
