@@ -39,6 +39,8 @@ export default defineConfig({
         museu: resolve(__dirname, 'museu.html'),
         sobreNos: resolve(__dirname, 'sobre-nos.html'),
         candidatura: resolve(__dirname, 'candidatura.html'),
+        admin: resolve(__dirname, 'admin.html'),
+        artigo: resolve(__dirname, 'artigo.html'),
       }
     }
   }

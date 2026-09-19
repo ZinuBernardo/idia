@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Editorial | ID&IA Concreto África</title>
+    <link rel="stylesheet" href="/src/style.css">
+    <style>
+        :root {
+            --admin-bg: #09090b;
+            --admin-card-bg: rgba(255,255,255,0.02);
+            --admin-border: rgba(255,255,255,0.08);
+            --admin-gold: #d4af37;
+            --admin-gold-hover: #b89628;
+            --admin-danger: #ef4444;
+        }
+
+        body {
+            background-color: var(--admin-bg);
+            color: #f4f4f5;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            min-height: 100vh;
+        }
+
+        /* Top Bar */
+        .admin-topbar {
+            border-bottom: 1px solid var(--admin-border);
+            padding: 16px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 10, 12, 0.8);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .admin-brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .admin-brand img {
+            height: 32px;
+        }
+        .admin-brand span {
+            font-family: var(--font-heading);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            color: var(--admin-gold);
+            text-transform: uppercase;
+        }
+        .admin-topbar-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* Layout Container */
+        .admin-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+        /* Cards & Panels */
+        .admin-card {
+            background: var(--admin-card-bg);
+            border: 1px solid var(--admin-border);
+            padding: 32px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        /* Botões */
+        .btn-gold {
+            background: var(--admin-gold);
+            color: #000;
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            transition: all 0.2s ease;
+        }
+        .btn-gold:hover {
+            background: var(--admin-gold-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid var(--admin-border);
+            color: #fff;
+            padding: 10px 18px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.2);
+        }
+
+        .btn-danger {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            color: #f87171;
+            padding: 8px 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+        }
+        .btn-danger:hover {
+            background: rgba(239, 68, 68, 0.2);
+            border-color: #ef4444;
+        }
+
+        /* Formulários */
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+        label {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 8px;
+            font-family: var(--font-heading);
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        select,
+        textarea {
+            width: 100%;
+            background: rgba(0,0,0,0.4);
+            border: 1px solid var(--admin-border);
+            border-radius: 4px;
+            padding: 12px 16px;
+            color: #fff;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s;
+            box-sizing: border-box;
+        }
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus,
+        select:focus,
+        textarea:focus {
+            border-color: var(--admin-gold);
+        }
+
+        /* Toolbar do Editor */
+        .editor-toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            background: rgba(0,0,0,0.6);
+            padding: 8px 12px;
+            border: 1px solid var(--admin-border);
+            border-bottom: none;
+            border-radius: 4px 4px 0 0;
+        }
+        .editor-btn {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid var(--admin-border);
+            color: #ddd;
+            padding: 4px 10px;
+            font-size: 0.75rem;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .editor-btn:hover {
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--admin-gold);
+            border-color: var(--admin-gold);
+        }
+        .editor-textarea {
+            border-radius: 0 0 4px 4px !important;
+            font-family: "Courier New", Courier, monospace;
+            min-height: 260px;
+            line-height: 1.5;
+        }
+
+        /* Filtros e Tabs */
+        .filter-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 24px;
+            border-bottom: 1px solid var(--admin-border);
+            padding-bottom: 12px;
+        }
+        .tab-btn {
+            background: transparent;
+            border: none;
+            color: rgba(255,255,255,0.6);
+            font-size: 0.85rem;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .tab-btn.active {
+            background: rgba(212, 175, 55, 0.15);
+            color: var(--admin-gold);
+            font-weight: 600;
+        }
+
+        /* Tabela de Posts */
+        .posts-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+        .posts-table th {
+            padding: 12px 16px;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.4);
+            border-bottom: 1px solid var(--admin-border);
+        }
+        .posts-table td {
+            padding: 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            vertical-align: middle;
+        }
+        .posts-table tr:hover td {
+            background: rgba(255,255,255,0.02);
+        }
+        .post-thumb {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 4px;
+            background: #222;
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 3px;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+        .badge-pub {
+            background: rgba(212, 175, 55, 0.15);
+            color: var(--admin-gold);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        .badge-noticia {
+            background: rgba(59, 130, 246, 0.15);
+            color: #60a5fa;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        /* Notificações */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: #18181b;
+            border: 1px solid var(--admin-gold);
+            color: #fff;
+            padding: 14px 24px;
+            border-radius: 6px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            z-index: 1000;
+            display: none;
+            animation: slideUp 0.3s ease;
+        }
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BARRA SUPERIOR -->
+    <header class="admin-topbar">
+        <div class="admin-brand">
+            <a href="/index.html"><img src="/ideiaa.png" alt="ID&IA"></a>
+            <span>Painel Editorial</span>
+        </div>
+        <div class="admin-topbar-actions">
+            <a href="/publicacoes.html" target="_blank" class="btn-secondary">Ver Publicações ↗</a>
+            <a href="/noticias.html" target="_blank" class="btn-secondary">Ver Notícias ↗</a>
+            <button id="btn-logout" class="btn-secondary" style="display: none;">Terminar Sessão</button>
+        </div>
+    </header>
+
+    <main class="admin-container">
+
+        <!-- SEÇÃO 1: CONFIGURAÇÃO RÁPIDA DO SUPABASE (CASO AINDA NÃO CONECTADO) -->
+        <div id="section-config" class="admin-card" style="display: none; border-color: var(--admin-gold);">
+            <h3 style="font-size: 1.3rem; margin-bottom: 10px; color: var(--admin-gold);">⚙️ Configuração Inicial do Banco de Dados (Supabase)</h3>
+            <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-bottom: 25px; line-height: 1.5;">
+                Insira abaixo as credenciais do seu projeto Supabase (Project URL e Project Anon Key). Elas ficarão salvas com segurança no seu navegador.
+            </p>
+            <form id="form-config">
+                <div class="form-group">
+                    <label>Project URL (Ex: https://xyz.supabase.co)</label>
+                    <input type="text" id="cfg-url" placeholder="https://xxxxxxxx.supabase.co" required>
+                </div>
+                <div class="form-group">
+                    <label>Project Anon Key (Public Key)</label>
+                    <input type="text" id="cfg-key" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." required>
+                </div>
+                <button type="submit" class="btn-gold">Guardar Configuração & Continuar</button>
+            </form>
+        </div>
+
+        <!-- SEÇÃO 2: ECRÃ DE LOGIN -->
+        <div id="section-login" class="admin-card" style="max-width: 480px; margin: 60px auto; display: none;">
+            <h2 style="font-size: 1.5rem; margin-bottom: 8px; font-weight: 500;">Autenticação Editorial</h2>
+            <p style="color: rgba(255,255,255,0.6); font-size: 0.85rem; margin-bottom: 30px;">Introduza os seus dados para gerir artigos e notícias.</p>
+
+            <form id="form-login">
+                <div class="form-group">
+                    <label>E-mail</label>
+                    <input type="email" id="login-email" placeholder="admin@idia-africa.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Palavra-passe</label>
+                    <input type="password" id="login-password" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn-gold" style="width: 100%; justify-content: center; padding: 12px;">Entrar no Painel</button>
+                <p id="login-error" style="color: var(--admin-danger); font-size: 0.85rem; margin-top: 15px; display: none;"></p>
+            </form>
+
+            <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--admin-border); font-size: 0.75rem; color: rgba(255,255,255,0.4);">
+                <a href="#" id="btn-reconfig" style="color: var(--admin-gold); text-decoration: none;">Alterar credenciais de conexão do Supabase</a>
+            </div>
+        </div>
+
+        <!-- SEÇÃO 3: DASHBOARD / LISTA DE POSTS -->
+        <div id="section-dashboard" style="display: none;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+                <div>
+                    <h2 style="font-size: 1.8rem; margin-bottom: 4px; font-weight: 400;">Gestão de Conteúdos</h2>
+                    <p style="color: rgba(255,255,255,0.5); font-size: 0.85rem;">Crie, edite e publique artigos científicos e novidades da ID&IA.</p>
+                </div>
+                <button id="btn-new-post" class="btn-gold">+ Nova Publicação</button>
+            </div>
+
+            <!-- Abas de Filtro -->
+            <div class="filter-tabs">
+                <button class="tab-btn active" data-filter="all">Todas (<span id="count-all">0</span>)</button>
+                <button class="tab-btn" data-filter="publicacao">Publicações & Ensaios (<span id="count-pub">0</span>)</button>
+                <button class="tab-btn" data-filter="noticia">Notícias & Eventos (<span id="count-not">0</span>)</button>
+            </div>
+
+            <!-- Tabela -->
+            <div class="admin-card" style="padding: 0; overflow-x: auto;">
+                <table class="posts-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 70px;">Capa</th>
+                            <th>Título & Resumo</th>
+                            <th>Tipo</th>
+                            <th>Categoria</th>
+                            <th>Data</th>
+                            <th style="text-align: right;">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="posts-table-body">
+                        <!-- Carregado via JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- SEÇÃO 4: FORMULÁRIO DE EDIÇÃO / CRIAÇÃO -->
+        <div id="section-editor" class="admin-card" style="display: none;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+                <h2 id="editor-title" style="font-size: 1.6rem; font-weight: 400;">Nova Publicação</h2>
+                <button id="btn-cancel-edit" class="btn-secondary">✕ Cancelar</button>
+            </div>
+
+            <form id="form-post">
+                <input type="hidden" id="post-id">
+
+                <div class="form-row">
+                    <div class="form-group" style="grid-column: span 2;">
+                        <label>Título da Publicação *</label>
+                        <input type="text" id="input-title" placeholder="Ex: A Autonomia Cognitiva e os Modelos Linguísticos em África" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Slug / Link Amigável (URL) *</label>
+                        <input type="text" id="input-slug" placeholder="autonomia-cognitiva-modelos" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Destino no Site *</label>
+                        <select id="input-type" required>
+                            <option value="publicacao">Publicações (Artigo / Ensaio / Estudo)</option>
+                            <option value="noticia">Notícias & Eventos (Acontecimento / Nota de Imprensa)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Categoria / Rótulo *</label>
+                        <input type="text" id="input-category" placeholder="Ex: Tratado Científico / 2026" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Autor</label>
+                        <input type="text" id="input-author" placeholder="ID&IA Concreto África - Direcção Científica">
+                    </div>
+                    <div class="form-group">
+                        <label>Tempo Estimado de Leitura</label>
+                        <input type="text" id="input-reading-time" placeholder="5 min de leitura">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Imagem de Capa (URL ou Caminho)</label>
+                        <input type="text" id="input-cover" placeholder="/bg_instituto_1778978636191.png ou URL externa">
+                    </div>
+                    <div class="form-group">
+                        <label>Ou Fazer Upload de Imagem (Storage)</label>
+                        <input type="file" id="input-file" accept="image/*" style="padding: 9px; font-size: 0.85rem;">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Resumo Breve (Exibido nos cartões de listagem) *</label>
+                    <textarea id="input-summary" rows="3" placeholder="Uma breve sinopse do que o leitor encontrará neste artigo..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Conteúdo Completo (Formatado) *</label>
+                    <div class="editor-toolbar">
+                        <button type="button" class="editor-btn" data-tag="h2">Subtítulo (H2)</button>
+                        <button type="button" class="editor-btn" data-tag="h3">Subseção (H3)</button>
+                        <button type="button" class="editor-btn" data-tag="p">Parágrafo</button>
+                        <button type="button" class="editor-btn" data-tag="blockquote">Citação em Destaque</button>
+                        <button type="button" class="editor-btn" data-tag="b">Negrito</button>
+                        <button type="button" class="editor-btn" data-tag="ul">Lista com Marcadores</button>
+                    </div>
+                    <textarea id="input-content" class="editor-textarea" placeholder="Escreva aqui o texto do artigo. Pode usar as ferramentas da barra superior..." required></textarea>
+                </div>
+
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--admin-border);">
+                    <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; text-transform: none;">
+                        <input type="checkbox" id="input-published" checked style="width: 18px; height: 18px;">
+                        <span>Publicar imediatamente (visível para todos os visitantes)</span>
+                    </label>
+
+                    <div style="display: flex; gap: 12px;">
+                        <button type="button" id="btn-cancel-edit-2" class="btn-secondary">Cancelar</button>
+                        <button type="submit" id="btn-save-post" class="btn-gold">Guardar & Publicar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </main>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="toast">Ação concluída com sucesso!</div>
+
+    <script type="module" src="/src/admin.js"></script>
+</body>
+</html>
