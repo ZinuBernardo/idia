@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /scratch/
+
+Sitemap: https://idia-africa.com/sitemap.xml

@@ -298,12 +298,12 @@
     <!-- BARRA SUPERIOR -->
     <header class="admin-topbar">
         <div class="admin-brand">
-            <a href="/index.html"><img src="/ideiaa.png" alt="ID&IA"></a>
+            <a href="/"><img src="/ideiaa.png" alt="ID&IA"></a>
             <span>Painel Editorial</span>
         </div>
         <div class="admin-topbar-actions">
-            <a href="/publicacoes.html" target="_blank" class="btn-secondary">Ver Publicações ↗</a>
-            <a href="/noticias.html" target="_blank" class="btn-secondary">Ver Notícias ↗</a>
+            <a href="/publicacoes" target="_blank" class="btn-secondary">Ver Publicações ↗</a>
+            <a href="/noticias" target="_blank" class="btn-secondary">Ver Notícias ↗</a>
             <button id="btn-logout" class="btn-secondary" style="display: none;">Terminar Sessão</button>
         </div>
     </header>
@@ -423,31 +423,49 @@
                 <div class="form-row">
                     <div class="form-group">
                         <label>Categoria / Rótulo *</label>
-                        <input type="text" id="input-category" placeholder="Ex: Tratado Científico / 2026" required>
+                        <input type="text" id="input-category" list="category-suggestions" placeholder="Ex: Artigo / 2026" required>
+                        <datalist id="category-suggestions">
+                            <option value="Artigo / 2026">
+                            <option value="Tratado Científico / 2026">
+                            <option value="Ensaio Metodológico / 2026">
+                            <option value="Policy Brief / 2026">
+                            <option value="Notícia & Evento / 2026">
+                            <option value="Fórum Internacional / 2026">
+                            <option value="Comunicado Oficial / 2026">
+                        </datalist>
                     </div>
                     <div class="form-group">
                         <label>Autor</label>
-                        <input type="text" id="input-author" placeholder="ID&IA Concreto África - Direcção Científica">
+                        <input type="text" id="input-author" placeholder="ID&IA Concreto África">
                     </div>
                     <div class="form-group">
-                        <label>Tempo Estimado de Leitura</label>
-                        <input type="text" id="input-reading-time" placeholder="5 min de leitura">
+                        <label>Tempo de Leitura (Automático)</label>
+                        <input type="text" id="input-reading-time" placeholder="Calculado automaticamente...">
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group">
                         <label>Imagem de Capa (URL ou Caminho)</label>
-                        <input type="text" id="input-cover" placeholder="/bg_instituto_1778978636191.png ou URL externa">
+                        <input type="text" id="input-cover" placeholder="/bg_instituto_1778978636191.png">
                     </div>
                     <div class="form-group">
-                        <label>Ou Fazer Upload de Imagem (Storage)</label>
+                        <label>Ou Enviar Imagem do Computador</label>
                         <input type="file" id="input-file" accept="image/*" style="padding: 9px; font-size: 0.85rem;">
                     </div>
                 </div>
 
+                <!-- Preview de Capa -->
+                <div id="cover-preview-box" style="margin-bottom: 20px; display: flex; align-items: center; gap: 15px;">
+                    <img id="cover-preview" src="/bg_instituto_1778978636191.png" alt="Pré-visualização da Capa" style="width: 120px; height: 68px; object-fit: cover; border-radius: 4px; border: 1px solid var(--admin-border);">
+                    <span style="font-size: 0.75rem; color: rgba(255,255,255,0.5);">Pré-visualização da Capa Atual</span>
+                </div>
+
                 <div class="form-group">
-                    <label>Resumo Breve (Exibido nos cartões de listagem) *</label>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                        <label style="margin-bottom: 0;">Resumo Breve (Exibido nos cartões de listagem) *</label>
+                        <button type="button" id="btn-auto-summary" class="editor-btn" style="color: var(--admin-gold); border-color: rgba(212,175,55,0.4); padding: 3px 8px;">✨ Gerar do texto</button>
+                    </div>
                     <textarea id="input-summary" rows="3" placeholder="Uma breve sinopse do que o leitor encontrará neste artigo..." required></textarea>
                 </div>
 

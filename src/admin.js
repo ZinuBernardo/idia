@@ -45,6 +45,8 @@ const inputPublished = document.getElementById('input-published');
 const postIdField = document.getElementById('post-id');
 const editorTitle = document.getElementById('editor-title');
 const btnSavePost = document.getElementById('btn-save-post');
+const btnAutoSummary = document.getElementById('btn-auto-summary');
+const coverPreview = document.getElementById('cover-preview');
 
 const postsTableBody = document.getElementById('posts-table-body');
 const toastEl = document.getElementById('toast');
@@ -57,6 +59,24 @@ function showToast(message) {
     setTimeout(() => {
         toastEl.style.display = 'none';
     }, 3500);
+}
+
+// CÁLCULO AUTOMÁTICO DE TEMPO DE LEITURA
+function calculateReadingTime(text) {
+    if (!text) return '1 min de leitura';
+    const cleanText = text.replace(/<[^>]*>/g, ' ').trim();
+    const words = cleanText.split(/\s+/).filter(Boolean).length;
+    const minutes = Math.max(1, Math.ceil(words / 180));
+    return `${minutes} min de leitura`;
+}
+
+// GERAÇÃO AUTOMÁTICA DE RESUMO
+function generateAutoSummary(text) {
+    if (!text) return '';
+    const cleanText = text.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+    const words = cleanText.split(' ').filter(Boolean);
+    if (words.length <= 30) return cleanText;
+    return words.slice(0, 30).join(' ') + '...';
 }
 
 // GERAÇÃO AUTOMÁTICA DE SLUG
@@ -168,7 +188,7 @@ function renderPostsTable() {
                     ${postDate}
                 </td>
                 <td style="text-align: right; white-space: nowrap;">
-                    <a href="/artigo.html?slug=${post.slug}" target="_blank" class="btn-secondary" style="padding: 6px 10px; font-size: 0.75rem; margin-right: 6px;">Ver ↗</a>
+                    <a href="/artigo?slug=${post.slug}" target="_blank" class="btn-secondary" style="padding: 6px 10px; font-size: 0.75rem; margin-right: 6px;">Ver ↗</a>
                     <button type="button" class="btn-secondary btn-edit-post" data-id="${post.id}" style="padding: 6px 10px; font-size: 0.75rem; margin-right: 6px;">Editar</button>
                     <button type="button" class="btn-danger btn-delete-post" data-id="${post.id}" style="padding: 6px 10px; font-size: 0.75rem;">Apagar</button>
                 </td>
@@ -217,6 +237,7 @@ function openEditor(postId = null) {
             inputAuthor.value = post.author || '';
             inputReadingTime.value = post.reading_time || '';
             inputCover.value = post.cover_image || '';
+            if (coverPreview) coverPreview.src = post.cover_image || '/ideiaa.png';
             inputSummary.value = post.summary || '';
             inputContent.value = post.content || '';
             inputPublished.checked = post.published !== false;
@@ -225,13 +246,63 @@ function openEditor(postId = null) {
     } else {
         editorTitle.textContent = 'Nova Publicação';
         postIdField.value = '';
+        inputType.value = 'publicacao';
+        inputCategory.value = 'Artigo / 2026';
         inputAuthor.value = 'ID&IA Concreto África';
-        inputReadingTime.value = '4 min de leitura';
+        inputReadingTime.value = '1 min de leitura';
+        inputCover.value = '/bg_instituto_1778978636191.png';
+        if (coverPreview) coverPreview.src = '/bg_instituto_1778978636191.png';
         inputPublished.checked = true;
         btnSavePost.textContent = 'Guardar & Publicar';
     }
 
     showView('editor');
+}
+
+// AUTOMAÇÕES DE CAMPOS INTELIGENTES
+if (inputContent) {
+    inputContent.addEventListener('input', () => {
+        // Atualizar tempo de leitura automaticamente
+        if (inputReadingTime) {
+            inputReadingTime.value = calculateReadingTime(inputContent.value);
+        }
+    });
+}
+
+if (btnAutoSummary) {
+    btnAutoSummary.addEventListener('click', () => {
+        const summary = generateAutoSummary(inputContent.value);
+        if (summary) {
+            inputSummary.value = summary;
+            showToast('Resumo gerado automaticamente!');
+        } else {
+            alert('Escreva primeiro algum texto no Conteúdo Completo para poder gerar o resumo.');
+        }
+    });
+}
+
+if (inputType) {
+    inputType.addEventListener('change', () => {
+        if (!editingPostId) {
+            if (inputType.value === 'noticia') {
+                inputCategory.value = 'Notícia & Evento / 2026';
+                inputCover.value = '/bg_centros_1778978650925.png';
+                if (coverPreview) coverPreview.src = '/bg_centros_1778978650925.png';
+            } else {
+                inputCategory.value = 'Artigo / 2026';
+                inputCover.value = '/bg_instituto_1778978636191.png';
+                if (coverPreview) coverPreview.src = '/bg_instituto_1778978636191.png';
+            }
+        }
+    });
+}
+
+if (inputCover) {
+    inputCover.addEventListener('input', () => {
+        if (coverPreview) {
+            coverPreview.src = inputCover.value || '/ideiaa.png';
+        }
+    });
 }
 
 // EVENTOS DE SUBMISSÃO E BOTÕES

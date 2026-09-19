@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                             ${post.summary || ''}
                         </p>
                     </div>
-                    <a href="/artigo.html?slug=${post.slug}" class="btn btn-primary" style="align-self: flex-start; padding: 10px 20px;">SABER MAIS →</a>
+                    <a href="/artigo?slug=${post.slug}" class="btn btn-primary" style="align-self: flex-start; padding: 10px 20px;">SABER MAIS →</a>
                 </div>
             `;
         }).join('');

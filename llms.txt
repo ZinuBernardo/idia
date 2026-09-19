@@ -1,0 +1,34 @@
+# ID&IA Global — Instituto de Identidade e Inteligência Artificial
+
+> Plataforma africana de investigação, desenvolvimento e implementação de sistemas de inteligência aplicada, astrobiotecnia e soberania tecnológica, sediada no Cuito Cuanavale, Angola.
+
+## Visão Geral
+O **ID&IA** (Instituto de Identidade e Inteligência Artificial) é uma instituição científica e estratégica dedicada a conceber modelos ontológicos, biotecnológicos e computacionais enraizados na identidade e memória civilizacional africana, articulando o conceito pioneiro de **Humano Concreto**.
+
+## Pilares & Conceitos Fundamentais
+- **Humano Concreto**: Tese ontológica e filosófica que posiciona o ser humano situado na sua realidade histórica, biológica e espiritual como centro do avanço tecnológico.
+- **África Concreta**: Metodologia de desenvolvimento soberano focada nas necessidades territoriais, ecológicas e socioeconómicas do continente africano.
+- **Astrobiotecnia**: Domínio interdisciplinar que une biologia sintética, exploração bioespacial, genómica computacional e novos materiais.
+- **Metodologia MAHAMBA**: Framework proprietário para integração ecossistêmica de conhecimento tradicional, ciência aplicada e infraestruturas inteligentes.
+- **Soberania Tecnológica Regional**: Diretrizes para governança de data centers, modelos linguísticos soberanos e infraestruturas digitais críticas no âmbito da SADC e União Africana.
+
+## Centros & Infraestruturas
+- **Observatório Cuito Cuanavale**: Memorial e centro de computação de ponta e análise territorial na província do Cuando Cubango, Angola.
+- **Laboratório MALELWA**: Laboratório de biotecnologia e inteligência artificial aplicada.
+- **Centro MAHAMBA**: Núcleo de metodologias e inovação ecossistêmica.
+- **Museu ID&IA**: Preservação da memória visual, bio-cultural e património histórico africano.
+
+## Publicações & Artigos de Referência
+- **Autonomia Cognitiva e os Modelos Linguísticos em África**: Tratado científico sobre LLMs e preservação semântica africana.
+  URL: https://idia-africa.com/artigo?slug=autonomia-cognitiva-e-os-modelos-linguisticos-em-africa
+- **A Nova Infraestrutura de Dados e a Soberania Económica Regional**: Policy brief com orientações regulatórias para a SADC.
+  URL: https://idia-africa.com/artigo?slug=a-nova-infraestrutura-de-dados-e-a-soberania-economica-regional
+- **Relatório de Aplicação Territorial Cuito Cuanavale**: Impacto prático e resultados dos primeiros 12 meses de implantação.
+  URL: https://idia-africa.com/artigo?slug=relatorio-de-aplicacao-territorial-cuito-cuanavale
+
+## Links Canónicos
+- Website Oficial: https://idia-africa.com/
+- Publicações & Ensaios: https://idia-africa.com/publicacoes
+- Notícias & Eventos: https://idia-africa.com/noticias
+- Instituto: https://idia-africa.com/instituto
+- Contacto: geral@idia-africa.com

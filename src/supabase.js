@@ -1,14 +1,13 @@
 import { createClient } from '@supabase/supabase-js';
 
-// 1. Obtenção de configurações (Variáveis de ambiente Vite ou LocalStorage para configuração visual rápida)
-const DEFAULT_URL = import.meta.env.VITE_SUPABASE_URL || localStorage.getItem('idia_supabase_url') || '';
-const DEFAULT_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY || localStorage.getItem('idia_supabase_key') || '';
+const FALLBACK_URL = 'https://qirnekjgmbzlyncbznju.supabase.co';
+const FALLBACK_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFpcm5la2pnbWJ6bHluY2J6bmp1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODk4MDU3NTQsImV4cCI6MjEwNTM4MTc1NH0.bzKcHw4AIhftOkezVmD8nvW3wk9ePPsD--gwTmPXU-8';
 
 let supabaseInstance = null;
 
 export function getSupabase() {
-    const url = import.meta.env.VITE_SUPABASE_URL || localStorage.getItem('idia_supabase_url') || '';
-    const key = import.meta.env.VITE_SUPABASE_ANON_KEY || localStorage.getItem('idia_supabase_key') || '';
+    const url = import.meta.env.VITE_SUPABASE_URL || localStorage.getItem('idia_supabase_url') || FALLBACK_URL;
+    const key = import.meta.env.VITE_SUPABASE_ANON_KEY || localStorage.getItem('idia_supabase_key') || FALLBACK_KEY;
 
     if (!url || !key) {
         return null;

@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const contentEl = document.getElementById('article-content');
 
     if (!slug) {
-        window.location.href = '/publicacoes.html';
+        window.location.href = '/publicacoes';
         return;
     }
 
@@ -23,15 +23,25 @@ document.addEventListener('DOMContentLoaded', async () => {
                     <div style="text-align: center; padding: 100px 20px;">
                         <h2 style="font-size: 2rem; margin-bottom: 20px;">Publicação não encontrada</h2>
                         <p style="color: rgba(255,255,255,0.7); margin-bottom: 40px;">O artigo ou notícia que está à procura não existe ou foi removido.</p>
-                        <a href="/publicacoes.html" class="btn btn-primary" style="padding: 12px 25px;">VOLTAR ÀS PUBLICAÇÕES</a>
+                        <a href="/publicacoes" class="btn btn-primary" style="padding: 12px 25px;">VOLTAR ÀS PUBLICAÇÕES</a>
                     </div>
                 `;
             }
             return;
         }
 
-        // Configurar Título da Página
-        document.title = `${post.title} | ID&IA Concreto África`;
+        // Configurar Título e Meta Tags da Página
+        document.title = `${post.title} | ID&IA Global`;
+
+        const metaDesc = document.getElementById('meta-description');
+        const ogTitle = document.getElementById('og-title');
+        const ogDesc = document.getElementById('og-description');
+        const ogImg = document.getElementById('og-image');
+
+        if (metaDesc && post.summary) metaDesc.setAttribute('content', post.summary);
+        if (ogTitle) ogTitle.setAttribute('content', `${post.title} | ID&IA Global`);
+        if (ogDesc && post.summary) ogDesc.setAttribute('content', post.summary);
+        if (ogImg && post.cover_image) ogImg.setAttribute('content', post.cover_image.startsWith('http') ? post.cover_image : `https://idia-africa.com${post.cover_image}`);
 
         // Preencher elementos
         const titleEl = document.getElementById('post-title');
@@ -74,10 +84,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Link de retorno inteligente
         if (backLinkEl) {
             if (post.type === 'noticia') {
-                backLinkEl.href = '/noticias.html';
+                backLinkEl.href = '/noticias';
                 backLinkEl.textContent = '← Voltar às Notícias & Eventos';
             } else {
-                backLinkEl.href = '/publicacoes.html';
+                backLinkEl.href = '/publicacoes';
                 backLinkEl.textContent = '← Voltar às Publicações';
             }
         }

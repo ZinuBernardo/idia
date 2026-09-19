@@ -2,12 +2,29 @@ import { defineConfig } from 'vite';
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 import { resolve } from 'path';
 
+function cleanUrlsPlugin() {
+  return {
+    name: 'vite-plugin-clean-urls',
+    configureServer(server) {
+      server.middlewares.use((req, res, next) => {
+        if (req.url && !req.url.includes('.') && req.url !== '/') {
+          const [path, query] = req.url.split('?');
+          const cleanPath = `${path}.html`;
+          req.url = query ? `${cleanPath}?${query}` : cleanPath;
+        }
+        next();
+      });
+    }
+  };
+}
+
 export default defineConfig({
   server: {
     port: 5500,
     open: true
   },
   plugins: [
+    cleanUrlsPlugin(),
     ViteImageOptimizer({
       jpg: { quality: 80 },
       jpeg: { quality: 80 },
