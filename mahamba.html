@@ -3,46 +3,163 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Metodologia MAHAMBA | ID&IA Concreto África</title>
+    <title>Metodologia MAHAMBA | Arquitectura Civilizacional do Humano Concreto</title>
     <link rel="stylesheet" href="/src/style.css">
     <style>
-        
         .editorial-content {
             padding: 60px var(--padding-global);
             max-width: 1200px;
             margin: 0 auto;
         }
         .intro-lead {
-            font-size: clamp(1.2rem, 2.5vw, 2rem);
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
             line-height: 1.6;
             font-weight: 300;
             color: rgba(255,255,255,0.9);
-            margin-bottom: 60px;
+            margin-bottom: 50px;
             border-left: 3px solid var(--color-gold);
             padding-left: 30px;
         }
-        .method-layer {
-            border: 1px solid rgba(255,255,255,0.05);
-            background: rgba(255,255,255,0.01);
-            padding: 40px;
-            margin-bottom: 30px;
+        .section-separator {
+            padding: clamp(70px, 10vh, 110px) var(--padding-global);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Molecular Movement MA-HA-MBA */
+        .molecular-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        @media (max-width: 992px) {
+            .molecular-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .molecular-card {
+            background: rgba(10, 14, 23, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
             border-top: 3px solid var(--color-gold);
-        }
-        .layer-header {
+            border-radius: 8px;
+            padding: 40px 30px;
+            transition: all 0.4s ease;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding-bottom: 15px;
-            margin-bottom: 20px;
+            flex-direction: column;
         }
-        .layer-num {
+        .molecular-card:hover {
+            border-color: var(--color-gold);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(199, 161, 83, 0.1);
+        }
+        .molecular-glyph {
             font-family: var(--font-heading);
             color: var(--color-gold);
-            font-size: 1.5rem;
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
         }
-        .layer-title {
-            font-size: 1.8rem;
+        .molecular-role {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.5);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .molecular-title {
+            font-size: 1.4rem;
+            color: #fff;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .molecular-desc {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.75);
+            line-height: 1.7;
+        }
+
+        /* Evolution Chain */
+        .evolution-chain {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            margin: 35px auto 20px auto;
+            max-width: 1050px;
+        }
+        .chain-node {
+            background: rgba(199, 161, 83, 0.06);
+            border: 1px solid rgba(199, 161, 83, 0.25);
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+        .chain-node:hover {
+            border-color: var(--color-gold);
+            background: rgba(199, 161, 83, 0.15);
+            transform: translateY(-2px);
+        }
+        .chain-node.active {
+            border-color: var(--color-gold);
+            background: rgba(199, 161, 83, 0.2);
+            color: var(--color-gold);
+        }
+        .chain-arrow {
+            color: var(--color-gold);
+            font-size: 1.1rem;
+            opacity: 0.7;
+        }
+
+        /* Ecosystem Grid */
+        .ecosystem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        .eco-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 6px;
+            padding: 30px 25px;
+            transition: all 0.3s ease;
+        }
+        .eco-card:hover {
+            border-color: var(--color-gold);
+            background: rgba(199, 161, 83, 0.03);
+            transform: translateY(-3px);
+        }
+        .eco-tag {
+            font-size: 0.7rem;
+            color: var(--color-gold);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .eco-name {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        .eco-desc {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.6;
             margin: 0;
         }
     </style>
@@ -101,47 +218,224 @@
     <main id="smooth-wrapper">
         <div id="smooth-content">
             
+            <!-- HERO SECTION -->
             <section class="movie-hero">
-                <img src="/bg_africa_concreta_1778978607545.png" alt="Metodologia MAHAMBA" class="parallax-bg">
-                <div>
-                    <h4 class="kicker">SISTEMA CONCEITUAL</h4>
+                <img src="/bg_africa_concreta_1778978607545.png" alt="Metodologia MAHAMBA" class="parallax-bg" style="filter: brightness(0.35) contrast(1.15);">
+                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(0deg, var(--bg-dark) 0%, rgba(5,5,5,0.7) 40%, rgba(5,5,5,0.3) 100%); pointer-events: none;"></div>
+                <div style="position: relative; z-index: 2;">
+                    <h4 class="kicker">UNIVERSIDADE MAHAMBA • ARQUITECTURA CIVILIZACIONAL</h4>
                     <h1 class="massive-title">METODOLOGIA <span class="text-gold">MAHAMBA</span></h1>
-                    <p class="cinematic-desc" style="margin: 0 auto;">A união indissolúvel entre Identidade, Consciência e Tecnologia.</p>
+                    <p class="cinematic-desc" style="max-width: 800px; margin: 15px auto 0 auto; font-size: clamp(0.9rem, 2vw, 1.15rem); line-height: 1.5; color: rgba(255,255,255,0.85);">
+                        A Gramática Operativa da Continuidade da Vida Concreta
+                    </p>
+                    <p class="small-dim" style="margin-top: 10px; font-weight: 600; letter-spacing: 2px; color: var(--color-gold);">
+                        MATRIZ • RESPIRAÇÃO • CONFIRMAÇÃO & MEMÓRIA
+                    </p>
                 </div>
             </section>
 
-            <div class="editorial-content">
-                <div class="intro-lead">
-                    O sistema MAHAMBA não é apenas uma teoria de software, mas sim uma grelha lógica e civilizacional desenhada para suportar os pilares operativos da soberania de dados do continente africano.
-                </div>
-
-                <div class="method-layer">
-                    <div class="layer-header">
-                        <h3 class="layer-title">Camada de Identidade</h3>
-                        <span class="layer-num">L01</span>
+            <!-- SEÇÃO I: DECLARAÇÃO FUNDAMENTAL -->
+            <section class="section-separator" style="background: transparent;">
+                <div class="glow-orb glow-orb-primary" style="top: 20%; left: -10%;"></div>
+                <div class="structural-line"></div>
+                <div class="editorial-content">
+                    <h4 class="kicker">I. FUNDAMENTO CIVILIZACIONAL</h4>
+                    <div class="intro-lead">
+                        MAHAMBA não é apenas uma formulação teórica de software ou uma abstração filosófica; é a chave de ordenação interna que permite alinhar pensamento, acção e direcção histórica num mesmo eixo de consistência. Constitui o mecanismo de leitura, tradução e organização da continuidade da vida humana concreta.
                     </div>
-                    <p class="cinematic-desc" style="text-align: left; margin: 0; color: rgba(255,255,255,0.8);">Representa a base existencial e a memória civilizacional de África. Esta camada recolhe a herança epistemológica do continente e a converte nos pressupostos conceituais primários, determinando quais os problemas prioritários a resolver.</p>
-                </div>
+                    
+                    <p style="color: rgba(255,255,255,0.75); line-height: 1.8; font-size: 1rem; max-width: 900px; margin-bottom: 30px;">
+                        A humanidade atravessou milénios acumulando descobertas, memórias, linguagens, técnicas e sabedorias. Ao atingir o <strong>Cúmulo Civilizacional</strong>, a continuidade da vida deixa de depender apenas de acumular mais conhecimento: exige uma <strong>Reorganização Orgânica</strong> capaz de tornar habitável tudo aquilo que já foi construído, integrando a sabedoria ancestral, a ciência contemporânea e a inteligência artificial.
+                    </p>
 
-                <div class="method-layer">
-                    <div class="layer-header">
-                        <h3 class="layer-title">Camada de Consciência</h3>
-                        <span class="layer-num">L02</span>
+                    <!-- CARTOGRAFIA DA CONTINUIDADE -->
+                    <div style="background: rgba(10, 14, 23, 0.6); border: 1px solid rgba(199, 161, 83, 0.2); border-radius: 8px; padding: 30px 25px; margin: 40px 0; text-align: center;">
+                        <span style="font-size: 0.75rem; letter-spacing: 2px; color: var(--color-gold); text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 12px;">Cadeia Evolutiva da Travessia</span>
+                        <h3 style="font-size: 1.35rem; color: #fff; margin-bottom: 20px;">A Arquitectura do Humano Concreto</h3>
+                        <div class="evolution-chain">
+                            <div class="chain-node">ASTRO</div>
+                            <span class="chain-arrow">→</span>
+                            <div class="chain-node">BIO</div>
+                            <span class="chain-arrow">→</span>
+                            <div class="chain-node">TECNO</div>
+                            <span class="chain-arrow">→</span>
+                            <div class="chain-node">IA</div>
+                            <span class="chain-arrow">→</span>
+                            <div class="chain-node active">MPACH</div>
+                            <span class="chain-arrow">→</span>
+                            <div class="chain-node">HUMANO CONCRETO</div>
+                            <span class="chain-arrow">→</span>
+                            <div class="chain-node">VIDA CONCRETA</div>
+                            <span class="chain-arrow">→</span>
+                            <div class="chain-node active">CONTINUIDADE HUMANA</div>
+                        </div>
                     </div>
-                    <p class="cinematic-desc" style="text-align: left; margin: 0; color: rgba(255,255,255,0.8);">Refere-se ao processamento ético, moral e conceitual das variáveis identificadas. Esta camada estabelece a governança dos dados, garantindo que as ferramentas de automação e inteligência artificial respeitem os interesses do desenvolvimento continental soberano.</p>
                 </div>
+            </section>
 
-                <div class="method-layer">
-                    <div class="layer-header">
-                        <h3 class="layer-title">Camada de Tecnologia</h3>
-                        <span class="layer-num">L03</span>
+            <!-- SEÇÃO II: O MOVIMENTO MOLECULAR MA-HA-MBA -->
+            <section class="section-separator" style="background: var(--bg-night);">
+                <div class="glow-orb glow-orb-secondary" style="top: 25%; right: -5%;"></div>
+                <div class="structural-line"></div>
+                <div class="editorial-content">
+                    <h4 class="kicker" style="text-align: center;">II. DINÂMICA MOLECULAR</h4>
+                    <h2 style="font-size: 2.8rem; text-align: center; margin-bottom: 15px; letter-spacing: -1px;">O Movimento <span class="text-gold">MA-HA-MBA</span></h2>
+                    <p class="cinematic-desc" style="max-width: 700px; margin: 0 auto 40px auto; text-align: center;">
+                        A conduta matricial que interpreta os ciclos sucessivos da evolução humana em três dimensões inseparáveis:
+                    </p>
+
+                    <div class="molecular-grid">
+                        <!-- MA -->
+                        <div class="molecular-card">
+                            <div class="molecular-glyph">MA</div>
+                            <div class="molecular-role">A MATRIZ • A ORIGEM</div>
+                            <h3 class="molecular-title">Estrutura & Potencialidade</h3>
+                            <p class="molecular-desc">
+                                Princípio originário da estrutura, da formação ancestral e da organização ontológica da vida. Representa o campo inicial, a memória profunda e a base existencial que antecede e sustenta qualquer manifestação.
+                            </p>
+                        </div>
+
+                        <!-- HA -->
+                        <div class="molecular-card">
+                            <div class="molecular-glyph">HA</div>
+                            <div class="molecular-role">A RESPIRAÇÃO • O MOVIMENTO</div>
+                            <h3 class="molecular-title">Dinâmica & Transformação</h3>
+                            <p class="molecular-desc">
+                                Princípio dinâmico da circulação, da travessia viva, da comunicação e da constante renovação. É o fluxo vital que impede a estagnação e permite a adaptação das estruturas aos desafios do tempo.
+                            </p>
+                        </div>
+
+                        <!-- MBA -->
+                        <div class="molecular-card">
+                            <div class="molecular-glyph">MBA</div>
+                            <div class="molecular-role">A CONFIRMAÇÃO • A MEMÓRIA</div>
+                            <h3 class="molecular-title">Manifestação & Ancoragem</h3>
+                            <p class="molecular-desc">
+                                Princípio de conservação, validação e transmissão da experiência acumulada. É a exteriorização formal, a concretização histórica e a ancoragem real da inteligência e da dignidade humana no mundo.
+                            </p>
+                        </div>
                     </div>
-                    <p class="cinematic-desc" style="text-align: left; margin: 0; color: rgba(255,255,255,0.8);">A infraestrutura de execução lógica. Composta pelos algoritmos desenvolvidos nos nossos laboratórios e pelas redes inteligentes distribuídas, esta camada converte as decisões éticas da Consciência em aplicações práticas de alto impacto económico.</p>
                 </div>
-            </div>
+            </section>
+
+            <!-- SEÇÃO III: TRANSIÇÃO CIVILIZACIONAL -->
+            <section class="section-separator" style="background: transparent;">
+                <div class="glow-orb glow-orb-primary" style="bottom: 15%; left: -5%;"></div>
+                <div class="structural-line"></div>
+                <div class="editorial-content">
+                    <h4 class="kicker">III. TRANSIÇÃO HISTÓRICA</h4>
+                    <h2 style="font-size: 2.4rem; margin-bottom: 25px; letter-spacing: -0.5px;">Da Inteligência Reactiva à <span class="text-gold">Inteligência Consciente</span></h2>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 30px;">
+                        <div class="premium-glass-card" style="padding: 35px; border-left: 3px solid rgba(255,255,255,0.2);">
+                            <span style="font-size: 0.75rem; color: rgba(255,255,255,0.5); letter-spacing: 1.5px; text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 10px;">Fase Anterior</span>
+                            <h3 style="font-size: 1.3rem; color: #fff; margin-bottom: 15px;">Inteligência Reactiva</h3>
+                            <p style="font-size: 0.9rem; color: rgba(255,255,255,0.75); line-height: 1.7; margin: 0;">
+                                A humanidade organizou a sua existência predominantemente através da reacção a emergências imediatas: sobrevivência física, disputas territoriais, acelerações industriais e explorações tecnológicas fragmentadas.
+                            </p>
+                        </div>
+
+                        <div class="premium-glass-card" style="padding: 35px; border-left: 3px solid var(--color-gold);">
+                            <span style="font-size: 0.75rem; color: var(--color-gold); letter-spacing: 1.5px; text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 10px;">Maturação MAHAMBA</span>
+                            <h3 style="font-size: 1.3rem; color: #fff; margin-bottom: 15px;">Inteligência Consciente</h3>
+                            <p style="font-size: 0.9rem; color: rgba(255,255,255,0.85); line-height: 1.7; margin: 0;">
+                                A Humanidade Concreta adquire a capacidade histórica de organizar conscientemente a continuidade da vida, alinhando ciência, ética, tecnologia e ancestralidade num horizonte de sustentabilidade e soberania de longo prazo.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEÇÃO IV: MPACH E ALGO-RITMO-ÉTICO -->
+            <section class="section-separator" style="background: var(--bg-night);">
+                <div class="glow-orb glow-orb-secondary" style="top: 20%; right: -5%;"></div>
+                <div class="structural-line"></div>
+                <div class="editorial-content">
+                    <h4 class="kicker" style="text-align: center;">IV. A OPERACIONALIZAÇÃO TECNOLÓGICA</h4>
+                    <h2 style="font-size: 2.6rem; text-align: center; margin-bottom: 15px; letter-spacing: -1px;">MPACH — <span class="text-gold">Da Mesma Costela</span></h2>
+                    <p class="cinematic-desc" style="max-width: 750px; margin: 0 auto 40px auto; text-align: center;">
+                        A ASTROBIOTECNIA torna a Continuidade inteligível; a MPACH torna a Continuidade aplicável. Entre ambas existe uma complementaridade perfeita: a primeira interpreta, a segunda organiza.
+                    </p>
+
+                    <div style="background: rgba(199, 161, 83, 0.04); border: 1px solid rgba(199, 161, 83, 0.25); border-radius: 8px; padding: 35px 30px; margin-bottom: 40px;">
+                        <h3 style="font-size: 1.3rem; color: var(--color-gold); margin-bottom: 15px;">O Princípio Ancestral Cokwe</h3>
+                        <p style="font-size: 0.95rem; color: rgba(255,255,255,0.85); line-height: 1.7; margin: 0;">
+                            Preservado na língua Cokwe, o termo <em>Mpach</em> designa a costela humana — matriz protetora dos órgãos vitais e metáfora fundacional de que toda a humanidade provém de uma mesma raiz. "Da Mesma Costela" estabelece que a multiplicidade cultural não fragmenta a unidade da espécie, operando como base ética para a soberania digital e o desenvolvimento da inteligência artificial.
+                        </p>
+                    </div>
+
+                    <!-- Tríade ALGO-RITMO-ÉTICO -->
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px;">
+                        <div class="premium-glass-card" style="padding: 30px; border-top: 2px solid var(--color-gold);">
+                            <span style="font-family: var(--font-heading); color: var(--color-gold); font-size: 1.3rem; font-weight: 700; display: block; margin-bottom: 8px;">ALGO</span>
+                            <p style="font-size: 0.88rem; color: rgba(255,255,255,0.75); line-height: 1.6; margin: 0;">
+                                O que precisa de ser recuperado da travessia humana: memória ancestral, sabedoria acumulada e integridade da experiência humana.
+                            </p>
+                        </div>
+                        <div class="premium-glass-card" style="padding: 30px; border-top: 2px solid var(--color-gold);">
+                            <span style="font-family: var(--font-heading); color: var(--color-gold); font-size: 1.3rem; font-weight: 700; display: block; margin-bottom: 8px;">RITMO</span>
+                            <p style="font-size: 0.88rem; color: rgba(255,255,255,0.75); line-height: 1.6; margin: 0;">
+                                As sensibilidades civilizacionais hibernadas: o pulso biológico, a convivência comunitária real e a respiração humana diante da técnica.
+                            </p>
+                        </div>
+                        <div class="premium-glass-card" style="padding: 30px; border-top: 2px solid var(--color-gold);">
+                            <span style="font-family: var(--font-heading); color: var(--color-gold); font-size: 1.3rem; font-weight: 700; display: block; margin-bottom: 8px;">ÉTICO</span>
+                            <p style="font-size: 0.88rem; color: rgba(255,255,255,0.75); line-height: 1.6; margin: 0;">
+                                A reorganização da inteligência artificial orientada pelo respeito à dignidade humana e à continuidade da vida concreta.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEÇÃO V: ECOSSISTEMA INSTITUCIONAL INTEGRADO -->
+            <section class="section-separator" style="background: transparent; border-bottom: none;">
+                <div class="glow-orb glow-orb-primary" style="bottom: 10%; left: -5%;"></div>
+                <div class="structural-line"></div>
+                <div class="editorial-content">
+                    <h4 class="kicker" style="text-align: center;">V. ENQUADRAMENTO OPERATIVO</h4>
+                    <h2 style="font-size: 2.6rem; text-align: center; margin-bottom: 15px; letter-spacing: -1px;">O Ecossistema <span class="text-gold">MAHAMBA</span></h2>
+                    <p class="cinematic-desc" style="max-width: 700px; margin: 0 auto 40px auto; text-align: center;">
+                        A corporização da continuidade habitável através de estruturas de investigação, formação, engenharia e transmissão:
+                    </p>
+
+                    <div class="ecosystem-grid">
+                        <div class="eco-card">
+                            <span class="eco-tag">Guardiã Suprema</span>
+                            <h3 class="eco-name">Universidade MAHAMBA</h3>
+                            <p class="eco-desc">Espaço permanente de preservação, maturação filosófica, debate transdisciplinar e investigação avançada da continuidade da vida.</p>
+                        </div>
+                        <div class="eco-card">
+                            <span class="eco-tag">Realidade Implementada</span>
+                            <h3 class="eco-name">ID&IA Concreto África</h3>
+                            <p class="eco-desc">Eixo de desenvolvimento tecnológico prático, soberania de dados, inteligência artificial e medição Tecno-Lógica.</p>
+                        </div>
+                        <div class="eco-card">
+                            <span class="eco-tag">Origem Comunitária</span>
+                            <h3 class="eco-name">JIKÔ</h3>
+                            <p class="eco-desc">O primeiro centro organizador do encontro, da palavra e da transmissão consciente da experiência humana entre gerações.</p>
+                        </div>
+                        <div class="eco-card">
+                            <span class="eco-tag">Arquitectura de Formação</span>
+                            <h3 class="eco-name">MUKANDA</h3>
+                            <p class="eco-desc">Sistema formador de continuadores conscientes da vida, capacitando homens e mulheres para a responsabilidade civilizacional.</p>
+                        </div>
+                        <div class="eco-card">
+                            <span class="eco-tag">Inteligência Ancestral</span>
+                            <h3 class="eco-name">IAF</h3>
+                            <p class="eco-desc">Investigação e reativação da Inteligência Ancestral Funcional como património vivo e operativo para os desafios contemporâneos.</p>
+                        </div>
+                        <div class="eco-card">
+                            <span class="eco-tag">Engenharia & Distribuição</span>
+                            <h3 class="eco-name">MALELWA & SWA-HA</h3>
+                            <p class="eco-desc">Engenharia de software e plataformas (MPACH APP) pela MALELWA, com conservação e circulação pública assegurada pela SWA-HA.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             <!-- FOOTER -->
-                        <footer class="footer-section" style="padding-top: 80px;">
+            <footer class="footer-section" style="padding-top: 80px;">
                 <div class="footer-grid" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));">
                     <div class="footer-col">
                         <a href="/index.html"><img src="/ideiaa.png" alt="ID&IA" style="height:36px; margin-bottom:12px; display:block;"></a>

@@ -172,6 +172,193 @@
             margin: 0 auto;
         }
 
+        /* Cartografia Evolutiva */
+        .evolution-chain {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            margin: 40px auto 20px auto;
+            max-width: 1050px;
+        }
+        .chain-node {
+            background: rgba(199, 161, 83, 0.06);
+            border: 1px solid rgba(199, 161, 83, 0.25);
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+        .chain-node:hover {
+            border-color: var(--color-gold);
+            background: rgba(199, 161, 83, 0.15);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(199, 161, 83, 0.15);
+        }
+        .chain-node.active {
+            border-color: var(--color-gold);
+            background: rgba(199, 161, 83, 0.18);
+            color: var(--color-gold);
+        }
+        .chain-arrow {
+            color: var(--color-gold);
+            font-size: 1.1rem;
+            opacity: 0.7;
+        }
+
+        /* MPACH & ALGO-RITMO-ETICO */
+        .algo-ritmo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 35px;
+        }
+        @media (max-width: 992px) {
+            .algo-ritmo-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .algo-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-top: 3px solid var(--color-gold);
+            border-radius: 8px;
+            padding: 35px 25px;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .algo-card:hover {
+            border-color: var(--color-gold);
+            background: rgba(199, 161, 83, 0.04);
+            transform: translateY(-4px);
+        }
+        .algo-tag {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--color-gold);
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+        .algo-subtitle {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 18px;
+        }
+        .algo-desc {
+            font-size: 0.88rem;
+            color: rgba(255,255,255,0.75);
+            line-height: 1.65;
+        }
+
+        /* 4 Eixos de Implementacao */
+        .eixos-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-top: 35px;
+        }
+        @media (max-width: 768px) {
+            .eixos-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .eixo-card {
+            background: rgba(10, 14, 23, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-left: 3px solid var(--color-gold);
+            border-radius: 6px;
+            padding: 30px 25px;
+            transition: all 0.3s ease;
+        }
+        .eixo-card:hover {
+            border-color: var(--color-gold);
+            background: rgba(10, 14, 23, 0.7);
+            transform: translateX(4px);
+        }
+        .eixo-title {
+            font-size: 1.15rem;
+            color: #fff;
+            margin-bottom: 12px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .eixo-badge {
+            font-size: 0.65rem;
+            background: rgba(199,161,83,0.15);
+            color: var(--color-gold);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .eixo-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .eixo-list li {
+            position: relative;
+            padding-left: 18px;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+        .eixo-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--color-gold);
+            font-size: 1.1rem;
+            line-height: 1;
+        }
+
+        /* Proverb Box */
+        .proverb-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-top: 40px;
+        }
+        @media (max-width: 768px) {
+            .proverb-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        .proverb-card {
+            background: rgba(199, 161, 83, 0.03);
+            border: 1px solid rgba(199, 161, 83, 0.2);
+            border-radius: 8px;
+            padding: 25px 30px;
+            font-style: italic;
+        }
+        .proverb-orig {
+            font-size: 1.05rem;
+            color: var(--color-gold);
+            font-weight: 600;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+        .proverb-trans {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.6;
+            font-style: normal;
+        }
+
         /* Tabela Comparativa */
         .comparison-table-wrapper {
             width: 100%;
@@ -459,9 +646,35 @@
                         A ASTROBIOTECNIA constitui um campo transdisciplinar e aberto de investigação filosófica, epistemológica e civilizacional que busca compreender possíveis continuidades entre cosmos, vida e tecnologia, com responsabilidade, prudência e abertura ao diálogo interdisciplinar. Não pretende substituir a ciência, mas complementar o horizonte de interrogação humana no tempo contemporâneo.
                     </div>
                     
-                    <p style="color: rgba(255,255,255,0.75); line-height: 1.8; font-size: 1rem; max-width: 900px; margin-bottom: 40px;">
-                        O avanço tecnológico contemporâneo ampliou significativamente a capacidade computacional, a manipulação biológica, a automação e a expansão aeroespacial. Contudo, a civilização contemporânea alcançou este elevado desenvolvimento técnico sem a correspondente consolidação ética, perceptiva e ecológica da <strong>continuidade humana</strong>, gerando uma dissociação crescente entre a aceleração tecnológica e a continuidade humana integrada.
+                    <p style="color: rgba(255,255,255,0.75); line-height: 1.8; font-size: 1rem; max-width: 900px; margin-bottom: 30px;">
+                        O avanço tecnológico contemporâneo ampliou significativamente a capacidade computacional, a manipulação biológica, a automação e a expansão aeroespacial. Contudo, a civilização contemporânea alcançou este elevado desenvolvimento técnico sem a correspondente consolidação ética, perceptiva e ecológica da <strong>continuidade humana</strong>, gerando uma dissociação crescente entre a aceleração técnica e a sustentabilidade existencial da vida concreta.
                     </p>
+
+                    <!-- CARTOGRAFIA DA CONTINUIDADE -->
+                    <div style="background: rgba(10, 14, 23, 0.6); border: 1px solid rgba(199, 161, 83, 0.2); border-radius: 8px; padding: 30px 25px; margin: 35px 0; text-align: center;">
+                        <span style="font-size: 0.75rem; letter-spacing: 2px; color: var(--color-gold); text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 12px;">Cartografia da Continuidade Concreta</span>
+                        <h3 style="font-size: 1.35rem; color: #fff; margin-bottom: 20px;">A Cadeia Evolutiva da Travessia Civilizacional</h3>
+                        <div class="evolution-chain">
+                            <div class="chain-node">ASTRO</div>
+                            <span class="chain-arrow">→</span>
+                            <div class="chain-node">BIO</div>
+                            <span class="chain-arrow">→</span>
+                            <div class="chain-node">TECNO</div>
+                            <span class="chain-arrow">→</span>
+                            <div class="chain-node">IA</div>
+                            <span class="chain-arrow">→</span>
+                            <div class="chain-node active">MPACH</div>
+                            <span class="chain-arrow">→</span>
+                            <div class="chain-node">HUMANO CONCRETO</div>
+                            <span class="chain-arrow">→</span>
+                            <div class="chain-node">VIDA CONCRETA</div>
+                            <span class="chain-arrow">→</span>
+                            <div class="chain-node active">CONTINUIDADE HUMANA</div>
+                        </div>
+                        <p style="font-size: 0.85rem; color: rgba(255,255,255,0.65); margin-top: 15px; margin-bottom: 0;">
+                            A matéria viva é interpretada como continuidade adaptativa de processos universais de organização, onde a técnica prolonga a consciência sem fragmentar a vida.
+                        </p>
+                    </div>
 
                     <!-- SEÇÃO II: HIPÓTESE ESTRUTURAL CENTRAL -->
                     <h4 class="kicker" style="margin-top: 60px;">II. HIPÓTESE ESTRUTURAL CENTRAL</h4>
@@ -658,13 +871,180 @@
                 </div>
             </section>
 
-            <!-- SEÇÃO VI: PRINCÍPIOS EPISTEMOLÓGICOS -->
+            <!-- SEÇÃO VI: METODOLOGIA MPACH (DA MESMA COSTELA) -->
             <section class="section-separator" style="background: transparent;">
+                <div class="glow-orb glow-orb-primary" style="top: 15%; left: -5%;"></div>
+                <div class="structural-line"></div>
+                <div class="editorial-content">
+                    <h4 class="kicker" style="text-align: center;">VI. OPERACIONALIZAÇÃO DA CONTINUIDADE</h4>
+                    <h2 style="font-size: 2.8rem; text-align: center; margin-bottom: 15px; letter-spacing: -1px;">MPACH — <span class="text-gold">Da Mesma Costela</span></h2>
+                    <p class="cinematic-desc" style="max-width: 800px; margin: 0 auto 30px auto; text-align: center; font-size: 1.05rem;">
+                        Metodologia Perceptível Aplicada da Continuidade Humana
+                    </p>
+
+                    <!-- Relação Astrobiotecnia vs MPACH -->
+                    <div style="background: linear-gradient(135deg, rgba(199, 161, 83, 0.08) 0%, rgba(10, 14, 23, 0.6) 100%); border: 1px solid rgba(199, 161, 83, 0.3); border-radius: 8px; padding: 35px 30px; margin-bottom: 45px;">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                            <div>
+                                <h4 style="color: var(--color-gold); font-size: 1.15rem; margin-bottom: 10px;">ASTROBIOTECNIA</h4>
+                                <p style="font-size: 0.92rem; color: rgba(255,255,255,0.85); line-height: 1.6; margin: 0;">
+                                    <strong>Torna a Continuidade Inteligível.</strong> Interpreta as relações cósmicas, biológicas e tecnológicas, fornecendo a chave epistemológica da travessia humana.
+                                </p>
+                            </div>
+                            <div style="border-left: 1px solid rgba(199,161,83,0.25); padding-left: 30px;">
+                                <h4 style="color: var(--color-gold); font-size: 1.15rem; margin-bottom: 10px;">MPACH</h4>
+                                <p style="font-size: 0.92rem; color: rgba(255,255,255,0.85); line-height: 1.6; margin: 0;">
+                                    <strong>Torna a Continuidade Aplicável.</strong> Organiza, implementa e transmite a inteligência ancestral e contemporânea em metodologias, ferramentas e práticas vivas.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Origem Cokwe -->
+                    <div style="max-width: 900px; margin: 0 auto 50px auto;">
+                        <h3 style="font-size: 1.4rem; color: #fff; margin-bottom: 15px; text-align: center;">O Fundamento Ancestral de "Mpach"</h3>
+                        <p style="font-size: 0.95rem; color: rgba(255,255,255,0.8); line-height: 1.8; text-align: justify; margin-bottom: 20px;">
+                            Na língua Cokwe, o termo <em>Mpach</em> remete simbolicamente para a <strong>costela</strong> — elemento matricial de proteção anatómica dos órgãos vitais e metáfora fundacional da origem comum, da fraternidade primordial e da continuidade inquebrantável da vida.
+                        </p>
+                        <p style="font-size: 0.95rem; color: rgba(255,255,255,0.8); line-height: 1.8; text-align: justify; margin: 0;">
+                            A expressão <em>“Da Mesma Costela”</em> afirma categoricamente que a multiplicidade de povos, culturas e civilizações partilha a mesmíssima matriz biológica e existencial. O MPACH converte este princípio matricial num instrumento contemporâneo de salvaguarda, reconexão e projeção da memória humana diante do avanço da automação.
+                        </p>
+                    </div>
+
+                    <!-- ALGO-RITMO-ÉTICO -->
+                    <div style="margin-top: 50px;">
+                        <h4 class="kicker" style="text-align: center;">REORGANIZAÇÃO DA INTELIGÊNCIA ARTIFICIAL</h4>
+                        <h3 style="font-size: 2rem; text-align: center; margin-bottom: 10px; color: #fff;">O <span class="text-gold">ALGO-RITMO-ÉTICO</span></h3>
+                        <p class="cinematic-desc" style="max-width: 700px; margin: 0 auto 30px auto; text-align: center;">
+                            A tríade conceitual que reorienta o meio computacional para a preservação e expansão da vida humana concreta.
+                        </p>
+
+                        <div class="algo-ritmo-grid">
+                            <div class="algo-card">
+                                <div class="algo-tag">ALGO</div>
+                                <div class="algo-subtitle">Memória e Travessia</div>
+                                <p class="algo-desc">
+                                    O que precisa de ser recuperado da travessia humana. A memória ancestral acumulada, a lucidez civilizacional e as experiências históricas indispensáveis à sobrevivência e continuidade da vida.
+                                </p>
+                            </div>
+                            <div class="algo-card">
+                                <div class="algo-tag">RITMO</div>
+                                <div class="algo-subtitle">Sensibilidade e Pulso</div>
+                                <p class="algo-desc">
+                                    As sensibilidades civilizacionais hibernadas ao longo da travessia. O ritmo biológico, a convivência comunitária real, a respiração orgânica e a cadência humana que a hiperaceleração técnica tentou suprimir.
+                                </p>
+                            </div>
+                            <div class="algo-card">
+                                <div class="algo-tag">ÉTICO</div>
+                                <div class="algo-subtitle">Direção e Soberania</div>
+                                <p class="algo-desc">
+                                    A reorganização tecnológica da inteligência artificial orientada pelo respeito incondicional à dignidade humana, à soberania perceptiva e à continuidade das futuras gerações.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- OS 4 EIXOS DE IMPLEMENTAÇÃO -->
+                    <div style="margin-top: 60px;">
+                        <h4 class="kicker" style="text-align: center;">ARQUITETURA OPERACIONAL</h4>
+                        <h3 style="font-size: 2rem; text-align: center; margin-bottom: 10px; color: #fff;">Os Quatro Eixos de <span class="text-gold">Implementação Consciente</span></h3>
+                        <p class="cinematic-desc" style="max-width: 700px; margin: 0 auto 35px auto; text-align: center;">
+                            Diretrizes estruturais para a aplicação da MPACH nas instituições, cidades e redes tecnológicas.
+                        </p>
+
+                        <div class="eixos-grid">
+                            <div class="eixo-card">
+                                <div class="eixo-title">
+                                    <span>1. Eixo Educativo</span>
+                                    <span class="eixo-badge">REPROGRAMAÇÃO</span>
+                                </div>
+                                <ul class="eixo-list">
+                                    <li>Integração obrigatória de ética tecnológica aplicada e literacia em IA.</li>
+                                    <li>Cultivo de inteligência emocional, convivência real e pensamento crítico.</li>
+                                    <li>Formação na metodologia da continuidade humana através do MUKANDA.</li>
+                                </ul>
+                            </div>
+
+                            <div class="eixo-card">
+                                <div class="eixo-title">
+                                    <span>2. Eixo Tecnológico</span>
+                                    <span class="eixo-badge">IA ÉTICA ESTRUTURAL</span>
+                                </div>
+                                <ul class="eixo-list">
+                                    <li>Compatibilidade de todos os sistemas com a integridade do ser humano.</li>
+                                    <li>Transparência algorítmica e limitação da aceleração cognitiva predatória.</li>
+                                    <li>Alinhamento técnico aos padrões de diagnóstico civilizacional ECS.</li>
+                                </ul>
+                            </div>
+
+                            <div class="eixo-card">
+                                <div class="eixo-title">
+                                    <span>3. Eixo Institucional</span>
+                                    <span class="eixo-badge">GOVERNANÇA CONSCIENTE</span>
+                                </div>
+                                <ul class="eixo-list">
+                                    <li>Coexistência deliberativa entre decisão humana soberana e automação.</li>
+                                    <li>Auditorias éticas contínuas a sistemas de recomendação e decisão pública.</li>
+                                    <li>Garantia da soberania de dados e preservação da diversidade cultural.</li>
+                                </ul>
+                            </div>
+
+                            <div class="eixo-card">
+                                <div class="eixo-title">
+                                    <span>4. Eixo Urbano</span>
+                                    <span class="eixo-badge">CONVIVÊNCIA VIVA</span>
+                                </div>
+                                <ul class="eixo-list">
+                                    <li>Cidades desenhadas como ecossistemas de presença e encontro humano.</li>
+                                    <li>Redução ativa do isolamento social induzido pela hiperconectividade.</li>
+                                    <li>Reativação do princípio comunitário ancestral do JIKÔ nos espaços públicos.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SISTEMA ECS v4 & PROVÉRBIOS -->
+                    <div style="margin-top: 60px; display: grid; grid-template-columns: 1fr; gap: 30px;">
+                        <!-- ECS v4 Card -->
+                        <div class="premium-glass-card" style="padding: 35px; border-left: 3px solid var(--color-cyan);">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 10px;">
+                                <span style="font-family: var(--font-heading); color: var(--color-cyan); font-size: 1.25rem; font-weight: 700;">ECS v4 • Civilizational Forecasting System</span>
+                                <span style="font-size: 0.7rem; background: rgba(0,210,255,0.1); color: var(--color-cyan); padding: 4px 10px; border-radius: 4px; letter-spacing: 1px; font-weight: 600;">SISTEMA DE DIAGNÓSTICO</span>
+                            </div>
+                            <p style="font-size: 0.9rem; color: rgba(255,255,255,0.85); line-height: 1.7; margin-bottom: 15px;">
+                                Camada de diagnóstico em tempo real que monitoriza a saúde existencial da sociedade, detetando fragmentações perceptivas, riscos de descontinuidade humana e avaliando o impacto sistémico de novas tecnologias antes da sua disseminação em massa.
+                            </p>
+                            <div style="font-size: 0.8rem; color: rgba(255,255,255,0.55);">
+                                Motor Operacional: Converte diagnósticos epistemológicos em intervenções práticas verificáveis.
+                            </div>
+                        </div>
+
+                        <!-- Provérbios Ancestrais -->
+                        <div class="proverb-container">
+                            <div class="proverb-card">
+                                <div class="proverb-orig">“Nti a wandu kakatulanga kamba ko”</div>
+                                <div class="proverb-trans">
+                                    <em>Sabedoria Kikongo:</em> A árvore de feijão-guando nunca perde a sua estaca de suporte. A expansão técnica não pode decepar as raízes ancestrais que sustentam a dignidade humana.
+                                </div>
+                            </div>
+                            <div class="proverb-card">
+                                <div class="proverb-orig">“Maza me nsansanga ngola kabatukanga ngola ko”</div>
+                                <div class="proverb-trans">
+                                    <em>Sabedoria Ancestral:</em> A água que nutre o peixe não o mata. O ambiente tecnológico deve servir à proliferação e sustentação da vida humana, jamais ao seu sufocamento existencial.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEÇÃO VII: PRINCÍPIOS EPISTEMOLÓGICOS -->
+            <section class="section-separator" style="background: var(--bg-night);">
                 <div class="glow-orb glow-orb-primary" style="bottom: 10%; left: -5%;"></div>
                 <div class="structural-line"></div>
                 <div class="editorial-content" style="display: flex; flex-wrap: wrap; gap: 60px;">
                     <div style="flex: 1.2; min-width: 320px;">
-                        <h4 class="kicker">VI. PRINCÍPIOS EPISTEMOLÓGICOS</h4>
+                        <h4 class="kicker">VII. PRINCÍPIOS EPISTEMOLÓGICOS</h4>
                         <h2 style="font-size: 2.2rem; margin-bottom: 25px; letter-spacing: -0.5px;">Diretrizes de <span class="text-gold">Sustentação Epistémica</span></h2>
                         <ul class="bullet-list">
                             <li style="font-size: 0.95rem; margin-bottom: 20px;">
@@ -685,9 +1065,9 @@
                         </ul>
                     </div>
                     
-                    <!-- SEÇÃO VII: DIFERENCIAÇÃO EPISTEMOLÓGICA (Tabela) -->
+                    <!-- SEÇÃO VIII: DIFERENCIAÇÃO EPISTEMOLÓGICA (Tabela) -->
                     <div style="flex: 1; min-width: 300px;">
-                        <h4 class="kicker">VII. DIFERENCIAÇÃO EPISTEMOLÓGICA</h4>
+                        <h4 class="kicker">VIII. DIFERENCIAÇÃO EPISTEMOLÓGICA</h4>
                         <h2 style="font-size: 2.2rem; margin-bottom: 25px; letter-spacing: -0.5px;">Tabela <span class="text-gold">Comparativa</span></h2>
                         
                         <div class="comparison-table-wrapper">
@@ -726,12 +1106,12 @@
                 </div>
             </section>
 
-            <!-- SEÇÃO VIII: LINHAS PRIORITÁRIAS DE INVESTIGAÇÃO -->
+            <!-- SEÇÃO IX: LINHAS PRIORITÁRIAS DE INVESTIGAÇÃO -->
             <section class="section-separator" style="background: var(--bg-night);">
                 <div class="glow-orb glow-orb-secondary" style="top: 25%; right: -5%;"></div>
                 <div class="structural-line"></div>
                 <div class="editorial-content">
-                    <h4 class="kicker" style="text-align: center;">VIII. ÁREAS DE CONCENTRAÇÃO</h4>
+                    <h4 class="kicker" style="text-align: center;">IX. ÁREAS DE CONCENTRAÇÃO</h4>
                     <h2 style="font-size: 2.8rem; text-align: center; margin-bottom: 20px; letter-spacing: -1px;">Linhas Prioritárias de <span class="text-gold">Investigação</span></h2>
                     
                     <div class="research-lines-grid">
@@ -763,12 +1143,12 @@
                 </div>
             </section>
 
-            <!-- SEÇÃO IX: ORIENTAÇÃO INVESTIGATIVA (FLUXO) -->
+            <!-- SEÇÃO X: ORIENTAÇÃO INVESTIGATIVA (FLUXO) -->
             <section class="section-separator" style="background: transparent;">
                 <div class="glow-orb glow-orb-primary" style="bottom: 20%; left: -5%;"></div>
                 <div class="structural-line"></div>
                 <div class="editorial-content">
-                    <h4 class="kicker" style="text-align: center;">IX. ORIENTAÇÃO INVESTIGATIVA</h4>
+                    <h4 class="kicker" style="text-align: center;">X. ORIENTAÇÃO INVESTIGATIVA</h4>
                     <h2 style="font-size: 2.8rem; text-align: center; margin-bottom: 20px; letter-spacing: -1px;">Fluxo de <span class="text-gold">Publicação e Validação</span></h2>
                     <p class="cinematic-desc" style="max-width: 700px; margin: 0 auto 50px auto; text-align: center;">
                         Todo o conteúdo científico ou reflexivo produzido no ecossistema segue uma estrutura de validação que salvaguarda a autoria e responsabilidade exclusivamente humanas:
@@ -790,25 +1170,44 @@
                 </div>
             </section>
 
-            <!-- SEÇÃO X: ENQUADRAMENTO INSTITUCIONAL -->
+            <!-- SEÇÃO XI: ENQUADRAMENTO INSTITUCIONAL INTEGRADO -->
             <section class="section-separator" style="background: var(--bg-night); border-bottom: none;">
                 <div class="glow-orb glow-orb-secondary" style="top: 20%; right: -5%;"></div>
                 <div class="structural-line"></div>
                 <div class="editorial-content">
-                    <h4 class="kicker" style="text-align: center;">X. ENQUADRAMENTO INSTITUCIONAL</h4>
-                    <h2 style="font-size: 2.5rem; text-align: center; margin-bottom: 50px;">Eixos de <span class="text-gold">Sustentação do Campo</span></h2>
+                    <h4 class="kicker" style="text-align: center;">XI. ENQUADRAMENTO INSTITUCIONAL</h4>
+                    <h2 style="font-size: 2.5rem; text-align: center; margin-bottom: 20px;">O Ecossistema da <span class="text-gold">Continuidade Habitável</span></h2>
+                    <p class="cinematic-desc" style="max-width: 750px; margin: 0 auto 50px auto; text-align: center;">
+                        A Arquitectura MAHAMBA realiza-se na sociedade através de uma rede integrada de organismos operativos e centros de investigação:
+                    </p>
                     
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px;">
-                        <div class="premium-glass-card" style="border-top-color: var(--color-gold);">
-                            <h3 style="font-size: 1.4rem; color: #fff; margin-bottom: 20px;">Universidade MAHAMBA</h3>
-                            <p class="small-dim" style="line-height: 1.7; font-size: 0.9rem;">
-                                Espaço institucional supremo voltado à preservação documental, investigação transdisciplinar avançada, debate filosófico profundo e maturação coletiva e contínua da ASTROBIOTECNIA.
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
+                        <div class="premium-glass-card" style="border-top-color: var(--color-gold); padding: 30px;">
+                            <span style="font-size: 0.7rem; color: var(--color-gold); letter-spacing: 1.5px; text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 8px;">Guardiã Epistémica</span>
+                            <h3 style="font-size: 1.3rem; color: #fff; margin-bottom: 12px;">Universidade MAHAMBA</h3>
+                            <p class="small-dim" style="line-height: 1.6; font-size: 0.85rem;">
+                                Espaço institucional supremo dedicado à preservação documental, investigação transdisciplinar avançada e maturação filosófica contínua da ASTROBIOTECNIA.
                             </p>
                         </div>
-                        <div class="premium-glass-card" style="border-top-color: var(--color-gold);">
-                            <h3 style="font-size: 1.4rem; color: #fff; margin-bottom: 20px;">ID&IA</h3>
-                            <p class="small-dim" style="line-height: 1.7; font-size: 0.9rem;">
-                                Instituto de Identidade e Inteligência Artificial. Atua como o eixo operacional de investigação e desenvolvimento tecnológico prático relacionado à inteligência artificial, identidade clássica, consciência cognitiva e mediação Tecno-Lógica.
+                        <div class="premium-glass-card" style="border-top-color: var(--color-gold); padding: 30px;">
+                            <span style="font-size: 0.7rem; color: var(--color-gold); letter-spacing: 1.5px; text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 8px;">Realidade Implementada</span>
+                            <h3 style="font-size: 1.3rem; color: #fff; margin-bottom: 12px;">ID&IA Concreto África</h3>
+                            <p class="small-dim" style="line-height: 1.6; font-size: 0.85rem;">
+                                Instituto de Identidade e Inteligência Artificial. Eixo de desenvolvimento aplicado, medição Tecno-Lógica, soberania de dados e investigação de ponta.
+                            </p>
+                        </div>
+                        <div class="premium-glass-card" style="border-top-color: var(--color-gold); padding: 30px;">
+                            <span style="font-size: 0.7rem; color: var(--color-gold); letter-spacing: 1.5px; text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 8px;">Memória Viva Funcional</span>
+                            <h3 style="font-size: 1.3rem; color: #fff; margin-bottom: 12px;">IAF & MUKANDA</h3>
+                            <p class="small-dim" style="line-height: 1.6; font-size: 0.85rem;">
+                                Investigação da Inteligência Ancestral Funcional (IAF) e arquitetura de formação para a continuidade (MUKANDA), capacitando continuadores conscientes da vida.
+                            </p>
+                        </div>
+                        <div class="premium-glass-card" style="border-top-color: var(--color-gold); padding: 30px;">
+                            <span style="font-size: 0.7rem; color: var(--color-gold); letter-spacing: 1.5px; text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 8px;">Engenharia & Distribuição</span>
+                            <h3 style="font-size: 1.3rem; color: #fff; margin-bottom: 12px;">MALELWA & SWA-HA</h3>
+                            <p class="small-dim" style="line-height: 1.6; font-size: 0.85rem;">
+                                MALELWA como Engenharia da Continuidade e desenvolvimento de software (MPACH APP), e SWA-HA assegurando a conservação e distribuição pública da arquitetura.
                             </p>
                         </div>
                     </div>
